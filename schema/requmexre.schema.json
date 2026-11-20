@@ -37,16 +37,12 @@
       }
     },
     "meta": {
-      "$comment": "S2 — meta block: fixture expectation, standpoint, funder and identity",
+      "$comment": "S2 — meta block: standpoint, funder and identity",
       "type": "object",
-      "required": ["expect", "standpoint"],
+      "required": ["standpoint"],
       "additionalProperties": false,
       "properties": {
-        "expect": {
-          "type": "string",
-          "pattern": "^(?:valid|S(?:[1-9]|10)|R[1-8])$"
-        },
-        "standpoint": { "enum": ["declared", "none", "undeclared"] },
+          "standpoint": { "enum": ["declared", "none", "undeclared"] },
         "funder": { "enum": ["fwo", "prin", "vub", "horizon", "dfg", "snsf", "other", "none"] },
         "scheme": { "$ref": "#/$defs/text" },
         "title": { "$ref": "#/$defs/text" },

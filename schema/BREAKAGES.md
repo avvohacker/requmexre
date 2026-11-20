@@ -31,7 +31,7 @@ This version records those revisions and what is still open.
 | Bibliotherapy, second question | model gap | model gap: one question slot | fixed by plural questions |
 | Bibliotherapy, funder | model gap | model gap: Wellcome is not in the enum | fixed by change 7 (v0.5): `other` + `scheme` |
 | Standpoint `none` | not noticed | a declaration we made, not the plan's | fixed by change 8 (v0.5): `declared \| none \| undeclared` |
-| `meta.expect` | model gap | fixture machinery inside the plan | open (change 9) |
+| `meta.expect` | model gap | fixture machinery inside the plan | fixed by change 9 (v0.5): negative fixture envelope |
 
 Two of the first-round failures were encoding choices, not model gaps. The model
 gaps were real, but change 4 shows that some of them were also representational:
@@ -100,11 +100,10 @@ Both questions encoded; the mechanisms question declares `mechanistic` (change
 funder is `other` with `scheme: "Wellcome Trust"` (change 7), and the standpoint
 is `undeclared` (change 8).
 
-## Still open (changes 9–10)
+## Still open (change 10)
 
 | # | Breakage | Where | Seen in | Change |
 |---|---|---|---|---|
-| 9 | Fixture machinery sits inside the plan | S2 `meta.expect` | all three | move `expect` to a fixture envelope |
 | 10 | Registration, ethics, timeline have no home | S1 `additionalProperties` | all three | declare them out of scope, or allow `extensions` |
 
 Changes 1–6 touched S3, S5, S6, S7, R1, R2, R5, all fixtures, the template, the
@@ -128,10 +127,10 @@ published plans, the skill, the README and the site.
 ## Next
 
 With sources typed, the funder list opened (change 7), the standpoint
-distinguished (change 8) and limits made explicit (change 11), the next gap is
-the fixture envelope (change 9), then scope (change 10). The v0.5 mappings
-(Horizon, DFG, SNSF) should follow, so they encode the current shape rather than
-the old one.
+distinguished (change 8), limits made explicit (change 11) and the fixture
+envelope separated (change 9), the next gap is scope (change 10). The v0.5
+mappings (Horizon, DFG, SNSF) should follow, so they encode the current shape
+rather than the old one.
 
 ## Sources encoded
 

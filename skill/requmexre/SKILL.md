@@ -139,8 +139,7 @@ speaks.
 
 ## Validation gate
 
-Write the plan to `plan.json` with `"meta": {"expect": "valid", "standpoint": ...}`
-and run:
+Write the plan to `plan.json` with `"meta": {"standpoint": ...}` and run:
 
 ```bash
 cd schema

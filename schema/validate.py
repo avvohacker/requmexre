@@ -14,8 +14,8 @@ Usage
     python3 validate.py cases/prin.json             # one file
     python3 validate.py ../skill/requmexre/assets/template.json
 
-Exit status is 0 when every file behaves as declared in meta.expect, 1 when one
-does not, 2 when there is nothing to check.
+Exit status is 0 when every pure plan is valid and every negative envelope
+reports its expected rule, 1 when one does not, 2 when there is nothing to check.
 """
 
 from __future__ import annotations
@@ -440,9 +440,10 @@ def check_semantics(doc):
 # --------------------------------------------------------------------------
 
 
-def declared_expectation(doc):
-    meta = doc.get("meta") if isinstance(doc, dict) else None
-    return meta.get("expect") if isinstance(meta, dict) else None
+def split_fixture(doc):
+    if isinstance(doc, dict) and "expect" in doc and "plan" in doc:
+        return doc.get("expect"), doc.get("plan")
+    return "valid", doc
 
 
 def display(path):
@@ -468,14 +469,12 @@ def check_file(path, schema):
     except (json.JSONDecodeError, UnicodeDecodeError) as error:
         return False, None, [], f"not readable as JSON: {error}"
 
-    expect = declared_expectation(doc)
-    findings = evaluate(doc, schema, root=schema)
+    expect, plan = split_fixture(doc)
+    findings = evaluate(plan, schema, root=schema)
     if not findings:
-        findings = check_semantics(doc)
+        findings = check_semantics(plan)
 
     codes = sorted({finding.rule for finding in findings})
-    if expect is None:
-        return False, None, findings, "meta.expect missing"
     if expect == "valid":
         ok = not findings
     elif expect in RULE_IDS:
@@ -483,7 +482,7 @@ def check_file(path, schema):
     else:
         ok = False
         findings.append(
-            Violation("?", "$.meta.expect", f"{expect!r} is not 'valid' or a rule code")
+            Violation("?", "$.expect", f"{expect!r} is not 'valid' or a rule code")
         )
         codes = sorted({finding.rule for finding in findings})
 

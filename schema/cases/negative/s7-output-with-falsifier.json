@@ -1,49 +1,51 @@
 {
-  "meta": {
-    "expect": "S7",
-    "standpoint": "none",
-    "funder": "none",
-    "title": "Overtime after a four-day week",
-    "version": "0.1",
-    "date": "2026-11-20"
-  },
-  "questions": {
-    "primary": {
-      "text": "How does a four-day week affect overtime in small firms?",
-      "form": "interrogative",
-      "answer_type": "descriptive",
-      "scope": "Small firms in Belgium with 10 to 49 employees, 2027 to 2029.",
-      "completion_criterion": "The question is answered when overtime hours per employee are estimated before and after adoption and the estimate is compared with non-adopting firms."
-    }
-  },
-  "method": {
-    "approach": "Difference-in-differences on payroll records.",
-    "sources": [
+  "expect": "S7",
+  "plan": {
+    "meta": {
+      "standpoint": "none",
+      "funder": "none",
+      "title": "Overtime after a four-day week",
+      "version": "0.1",
+      "date": "2026-11-20"
+    },
+    "questions": {
+      "primary": {
+        "text": "How does a four-day week affect overtime in small firms?",
+        "form": "interrogative",
+        "answer_type": "descriptive",
+        "scope": "Small firms in Belgium with 10 to 49 employees, 2027 to 2029.",
+        "completion_criterion": "The question is answered when overtime hours per employee are estimated before and after adoption and the estimate is compared with non-adopting firms."
+      }
+    },
+    "method": {
+      "approach": "Difference-in-differences on payroll records.",
+      "sources": [
+        {
+          "kind": "data",
+          "description": "Payroll records, 2025-2029, social secretariats"
+        }
+      ],
+      "procedure": "Match adopting and non-adopting firms on sector and size; estimate overtime hours per employee; test for pre-trends.",
+      "validity_conditions": [
+        "Firms are observed for two years on either side of adoption"
+      ],
+      "limits": [
+        "The design does not cover firms with fewer than 10 employees"
+      ]
+    },
+    "results": [
       {
-        "kind": "data",
-        "description": "Payroll records, 2025-2029, social secretariats"
+        "claim": "A monthly overtime series for adopting and non-adopting firms, with the matching code.",
+        "kind": "output",
+        "falsifier": "The series is not published within the project period.",
+        "evidence_needed": "Monthly payroll records for both groups, two years either side of adoption."
       }
     ],
-    "procedure": "Match adopting and non-adopting firms on sector and size; estimate overtime hours per employee; test for pre-trends.",
-    "validity_conditions": [
-      "Firms are observed for two years on either side of adoption"
-    ],
-    "limits": [
-      "The design does not cover firms with fewer than 10 employees"
-    ]
-  },
-  "results": [
-    {
-      "claim": "A monthly overtime series for adopting and non-adopting firms, with the matching code.",
-      "kind": "output",
-      "falsifier": "The series is not published within the project period.",
-      "evidence_needed": "Monthly payroll records for both groups, two years either side of adoption."
+    "warrant": {
+      "gap_statement": "Belgian evidence on working-time experiments reports employee satisfaction but not overtime hours, so the effect on hours worked remains unmeasured.",
+      "evidence": [
+        "Belgian payroll statistics, 2024 release"
+      ]
     }
-  ],
-  "warrant": {
-    "gap_statement": "Belgian evidence on working-time experiments reports employee satisfaction but not overtime hours, so the effect on hours worked remains unmeasured.",
-    "evidence": [
-      "Belgian payroll statistics, 2024 release"
-    ]
   }
 }

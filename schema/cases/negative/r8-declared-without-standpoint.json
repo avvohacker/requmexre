@@ -1,69 +1,71 @@
 {
-  "meta": {
-    "expect": "R8",
-    "standpoint": "declared",
-    "funder": "fwo",
-    "title": "Declared standpoint without a standpoint block",
-    "version": "0.1",
-    "date": "2026-11-20"
-  },
-  "questions": {
-    "primary": {
-      "text": "To what extent does a four-day working week change the division of unpaid labour between partners in dual-earner households in Belgium?",
-      "form": "interrogative",
-      "answer_type": "comparative",
-      "tertium_comparationis": "the share of unpaid household and care hours performed by each partner, before and after the transition",
-      "scope": "Dual-earner households in Belgium with at least one child under 12, in organisations that adopt a four-day week between 2027 and 2031.",
-      "completion_criterion": "The question is answered when the change in each partner's share of unpaid hours is estimated with a difference-in-differences design and the estimate is distinguishable from zero at conventional confidence."
-    }
-  },
-  "method": {
-    "approach": "Quasi-experimental: difference-in-differences on household time-use diaries, with matched comparison households that stay on five days.",
-    "sources": [
+  "expect": "R8",
+  "plan": {
+    "meta": {
+      "standpoint": "declared",
+      "funder": "fwo",
+      "title": "Declared standpoint without a standpoint block",
+      "version": "0.1",
+      "date": "2026-11-20"
+    },
+    "questions": {
+      "primary": {
+        "text": "To what extent does a four-day working week change the division of unpaid labour between partners in dual-earner households in Belgium?",
+        "form": "interrogative",
+        "answer_type": "comparative",
+        "tertium_comparationis": "the share of unpaid household and care hours performed by each partner, before and after the transition",
+        "scope": "Dual-earner households in Belgium with at least one child under 12, in organisations that adopt a four-day week between 2027 and 2031.",
+        "completion_criterion": "The question is answered when the change in each partner's share of unpaid hours is estimated with a difference-in-differences design and the estimate is distinguishable from zero at conventional confidence."
+      }
+    },
+    "method": {
+      "approach": "Quasi-experimental: difference-in-differences on household time-use diaries, with matched comparison households that stay on five days.",
+      "sources": [
+        {
+          "kind": "data",
+          "description": "Belgian time-use survey, 2022 wave, national statistical office release"
+        },
+        {
+          "kind": "data",
+          "description": "Household diaries collected in adopting organisations, 2028 and 2030"
+        },
+        {
+          "kind": "data",
+          "description": "Administrative payroll records, 2026-2031, for working-time verification"
+        }
+      ],
+      "procedure": "Recruit 40 adopting and 40 matched non-adopting households; collect seven-day diaries from both partners in each wave; code hours into paid work, housework, care and leisure; estimate partner shares with household fixed effects; test for anticipation one quarter before adoption.",
+      "validity_conditions": [
+        "Households are observed before and after the transition with the same diary instrument",
+        "Comparison households are matched on sector, household composition and earnings",
+        "Attrition stays below 15 per cent per wave"
+      ],
+      "limits": [
+        "Findings describe dual-earner households with young children, not single-parent or childless households",
+        "The design cannot separate the four-day week from concurrent changes in organisational workload",
+        "Diary self-reports undercount short care episodes"
+      ]
+    },
+    "results": [
       {
-        "kind": "data",
-        "description": "Belgian time-use survey, 2022 wave, national statistical office release"
+        "claim": "Partners in adopting households converge in their share of unpaid hours, with the larger change coming from the partner who previously did less.",
+        "kind": "expected_finding",
+        "falsifier": "No convergence is observed: the between-partner gap in unpaid hours stays within one standard error of its pre-transition value in both waves.",
+        "evidence_needed": "Two waves of diary data for both partners, coded to a common activity taxonomy, plus the pre-period baseline."
       },
       {
-        "kind": "data",
-        "description": "Household diaries collected in adopting organisations, 2028 and 2030"
-      },
-      {
-        "kind": "data",
-        "description": "Administrative payroll records, 2026-2031, for working-time verification"
+        "claim": "A coding manual and a harmonised diary instrument that later Belgian time-use studies can reuse.",
+        "kind": "output",
+        "evidence_needed": "The manual and the instrument, deposited with the project's data package."
       }
     ],
-    "procedure": "Recruit 40 adopting and 40 matched non-adopting households; collect seven-day diaries from both partners in each wave; code hours into paid work, housework, care and leisure; estimate partner shares with household fixed effects; test for anticipation one quarter before adoption.",
-    "validity_conditions": [
-      "Households are observed before and after the transition with the same diary instrument",
-      "Comparison households are matched on sector, household composition and earnings",
-      "Attrition stays below 15 per cent per wave"
-    ],
-    "limits": [
-      "Findings describe dual-earner households with young children, not single-parent or childless households",
-      "The design cannot separate the four-day week from concurrent changes in organisational workload",
-      "Diary self-reports undercount short care episodes"
-    ]
-  },
-  "results": [
-    {
-      "claim": "Partners in adopting households converge in their share of unpaid hours, with the larger change coming from the partner who previously did less.",
-      "kind": "expected_finding",
-      "falsifier": "No convergence is observed: the between-partner gap in unpaid hours stays within one standard error of its pre-transition value in both waves.",
-      "evidence_needed": "Two waves of diary data for both partners, coded to a common activity taxonomy, plus the pre-period baseline."
-    },
-    {
-      "claim": "A coding manual and a harmonised diary instrument that later Belgian time-use studies can reuse.",
-      "kind": "output",
-      "evidence_needed": "The manual and the instrument, deposited with the project's data package."
+    "warrant": {
+      "gap_statement": "Belgian time-use evidence stops at 2022 and predates the current wave of four-day-week pilots, so no study estimates the reallocation of unpaid hours within households after adoption.",
+      "evidence": [
+        "Belgian time-use survey, 2022 wave, national statistical office release",
+        "OECD, Working time and the four-day week: evidence from pilots, 2023",
+        "FWO application form for a PhD fellowship, 2026"
+      ]
     }
-  ],
-  "warrant": {
-    "gap_statement": "Belgian time-use evidence stops at 2022 and predates the current wave of four-day-week pilots, so no study estimates the reallocation of unpaid hours within households after adoption.",
-    "evidence": [
-      "Belgian time-use survey, 2022 wave, national statistical office release",
-      "OECD, Working time and the four-day week: evidence from pilots, 2023",
-      "FWO application form for a PhD fellowship, 2026"
-    ]
   }
 }

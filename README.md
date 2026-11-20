@@ -85,7 +85,7 @@ python3 validate.py ../skill/requmexre/assets/template.json
 python3 validate.py published/*.json                     # the published plans
 ```
 
-Exit code 0 when every file behaves as declared (`meta.expect`). The skill runs five phases — detect, question, method, results, guards — writes `plan.json`, validates it, and renders it into FWO, PRIN or VUB sections.
+Exit code 0 when every pure plan is valid and every negative envelope reports its expected rule. Negative fixtures wrap the plan as `{ "expect": ..., "plan": ... }`; positive plans, the template and the published plans are pure. The skill runs five phases — detect, question, method, results, guards — writes `plan.json`, validates it, and renders it into FWO, PRIN or VUB sections.
 
 ## Limits
 

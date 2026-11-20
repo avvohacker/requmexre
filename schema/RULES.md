@@ -6,8 +6,10 @@ repeats the question, a falsifier that repeats the claim. The first kind is
 structural and lives in `requmexre.schema.json`; the second needs the words
 themselves and lives in `validate.py`.
 
-Rule codes are stable. A finding always names one, so a fixture can declare which
-rule it is meant to break.
+Rule codes are stable. A finding always names one, so a negative fixture can
+declare which rule it is meant to break. The plan itself carries no expectation:
+a negative fixture wraps it as `{ "expect": "R1", "plan": { ... } }`; positive
+fixtures, the template and the published plans are pure plans.
 
 ## Layer 1 — structural, S1–S10
 
@@ -19,7 +21,7 @@ structural layer.
 | Code | Rule | Where |
 |---|---|---|
 | S1 | The document is a closed object with `meta`, `questions`, `method` and `warrant` required; `results` and `standpoint` optional; no other keys. | root |
-| S2 | `meta` is a closed object with `expect` and `standpoint` required. `standpoint` is `declared`, `none` or `undeclared`; `expect` is `valid`, `S1`–`S10` or `R1`–`R8`; optional `funder` (`fwo`, `prin`, `vub`, `horizon`, `dfg`, `snsf`, `other` or `none`), `scheme` (required when `funder` is `other`, forbidden otherwise), `title`, `version`, `date`, `id`. | `$defs/meta` |
+| S2 | `meta` is a closed object with `standpoint` required. `standpoint` is `declared`, `none` or `undeclared`; optional `funder` (`fwo`, `prin`, `vub`, `horizon`, `dfg`, `snsf`, `other` or `none`), `scheme` (required when `funder` is `other`, forbidden otherwise), `title`, `version`, `date`, `id`. | `$defs/meta` |
 | S3 | `questions` holds one `primary` question and optional `secondary` questions. Every question requires `text` and `form` (interrogative or objective); the primary also requires `answer_type`, `scope` and `completion_criterion`, which is a string or the word `none`. `answer_type` is one of `descriptive`, `exploratory`, `comparative`, `causal`, `evaluative`, `methodological`, `synthesis`, `mechanistic`, `feasibility`, `validation`, `other`. | `$defs/questions`, `$defs/question`, `$defs/primaryQuestion` |
 | S4 | A comparative question requires `tertium_comparationis`. An evaluative question requires `criteria` and `operationalisation`. A question of any other type carries none of the three. Applies to every question that declares an answer type. | `$defs/question/allOf` |
 | S5 | `method` requires `approach`, a non-empty `sources` list and `procedure`. Each source is an object with `kind` (`data`, `literature`, `participants`, `corpus`) and `description`. `validity_conditions` is an optional list of non-blank strings; `limits` is an optional list of non-blank strings or the word `none`; absent means not declared. | `$defs/method`, `$defs/source` |
@@ -92,16 +94,22 @@ R6. That is a known limit, and the reason these are called form checks.
 
 ## Declaring the expectation
 
-`meta.expect` says how the file is meant to behave, so that fixtures are
-self-describing and `python3 validate.py` can return a meaningful exit code:
+A pure plan is expected to be valid: it must produce no finding. A negative
+fixture wraps the plan in an envelope that says which rule it is meant to break,
+so that fixtures are self-describing and `python3 validate.py` can return a
+meaningful exit code:
 
-- `"valid"` — the file must produce no finding.
+- `"valid"` — the plan must produce no finding.
 - `"S3"`, `"R7"` — the named rule must fire. Other findings are reported but do
   not change the verdict; a negative fixture should still be written to break one
   rule cleanly.
 
-The validator exits 0 when every file behaves as declared, 1 when one does not,
-2 when there is nothing to check.
+The envelope is `{ "expect": "R7", "plan": { ... } }`. Positive fixtures, the
+template and the published plans are pure plans, with no `expect`.
+
+The validator exits 0 when every plan is valid and every negative envelope
+reports its expected rule, 1 when one does not, 2 when there is nothing to
+check.
 
 ## What neither layer checks
 
@@ -115,9 +123,9 @@ The validator exits 0 when every file behaves as declared, 1 when one does not,
 ## Extending
 
 A structural rule: add the constraint to the schema, put its code in the
-subschema's `$comment`, then add a negative fixture with `meta.expect` set to the
-new code. `validate.py` refuses any schema keyword it does not implement, so a
-new keyword must be added to its evaluator before the schema will run.
+subschema's `$comment`, then add a negative fixture whose envelope `expect` is
+the new code. `validate.py` refuses any schema keyword it does not implement, so
+a new keyword must be added to its evaluator before the schema will run.
 
 A semantic rule: add a function in the semantic layer, register its code in
 `SEMANTIC_RULES`, add a negative fixture, and run the validator. Keep R codes for
