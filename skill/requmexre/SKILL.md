@@ -161,7 +161,7 @@ content, keep the shape.
 
 ## Limits
 
-- Three funders are mapped; Horizon, DFG and SNSF are not (roadmap v0.3).
+- Three funders are mapped; Horizon, DFG and SNSF are not (roadmap v0.4).
 - The validator checks form, not truth, not citations, not fit between a claim
   and its evidence.
 - Fixtures and the template are synthetic: structure from the funder documents,
