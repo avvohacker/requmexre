@@ -128,7 +128,7 @@ th, td { text-align: left; padding: 0.5rem 0.65rem; border-bottom: 1px solid var
 th { background: var(--head); font-weight: 600; }
 thead th { border-bottom: 2px solid var(--rule); }
 #readme > p:first-of-type { font-size: 1.1rem; color: var(--muted); }
-#rules { margin-top: 4rem; padding-top: 2.5rem; border-top: 2px solid var(--rule); }
+main > section + section { margin-top: 4rem; padding-top: 2.5rem; border-top: 2px solid var(--rule); }
 footer { border-top: 1px solid var(--rule); padding: 1.6rem 0 2.4rem; color: var(--muted); font-size: 0.85rem; }
 footer p { margin: 0 0 0.3rem; }
 @media (max-width: 34rem) {
@@ -159,7 +159,7 @@ PAGE = Template("""<!doctype html>
     <nav aria-label="Sections">
       <a href="#readme">README</a>
       <a href="#rules">Rules</a>
-      <a href="$blob/SOURCES.md">Sources</a>
+      <a href="#sources">Sources</a>
       <a href="$repo">GitHub</a>
     </nav>
   </div>
@@ -171,11 +171,14 @@ $readme
   <section id="rules" aria-label="Rules">
 $rules
   </section>
+  <section id="sources" aria-label="Sources">
+$sources
+  </section>
 </main>
 <footer>
   <div class="wrap">
     <p>requmexre v0.1 · 2026 · Licence: all rights reserved</p>
-    <p>Built from <code>README.md</code> and <code>schema/RULES.md</code> by <code>site/build.py</code>.</p>
+    <p>Built from <code>README.md</code>, <code>schema/RULES.md</code> and <code>SOURCES.md</code> by <code>site/build.py</code>.</p>
   </div>
 </footer>
 </body>
@@ -195,6 +198,8 @@ def rewrite_links(text: str) -> str:
         path, _, anchor = target.partition("#")
         if path.endswith("RULES.md"):
             return f"[{label}](#rules)"
+        if path == "SOURCES.md":
+            return f"[{label}](#sources)"
         if path == "README.md":
             return f"[{label}](#readme)"
         suffix = f"#{anchor}" if anchor else ""
@@ -214,12 +219,14 @@ def render(text: str) -> str:
 def main() -> int:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     rules = (ROOT / "schema" / "RULES.md").read_text(encoding="utf-8")
+    sources = (ROOT / "SOURCES.md").read_text(encoding="utf-8")
 
     OUT.mkdir(parents=True, exist_ok=True)
     page = PAGE.substitute(
         css=CSS,
         readme=render(readme),
         rules=render(rules),
+        sources=render(sources),
         repo=REPO_URL,
         blob=BLOB_URL,
     )
