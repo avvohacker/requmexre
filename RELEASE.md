@@ -30,7 +30,7 @@ mappings. The schema and its `$id` move to v0.5.
 - `python3 validate.py published/*.json`: 3/3 published plans.
 - Draft 2020-12 schema check: ok.
 - `site/build.py`: ok.
-- CI was not polled, per `AGENTS.md`; these are local checks.
+- CI: validate #23 and pages #17 completed successfully on 178f18d.
 
 ### Compatibility
 
