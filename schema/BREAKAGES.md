@@ -50,8 +50,10 @@ cd schema
 python3 validate.py published/imachel.json published/forest-anticipation.json published/bibliotherapy.json
 ```
 
-Exit code 0. The 15 files — 14 fixtures and the template — migrated to the new
-result kinds and still run green (`python3 validate.py`).
+Exit code 0. The 15 files — 14 fixtures and the template — were migrated to the
+new result kinds and still run green (`python3 validate.py`). This is a migration
+count, not a list of files to fix: the other two fixtures are negative cases and
+intentionally have no `results`.
 
 ## What changed in the encodings
 
