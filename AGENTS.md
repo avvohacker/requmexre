@@ -11,7 +11,15 @@ stop at a command, a workflow or a deploy when the next step is already known.
   finished, a result is genuinely needed before the next step, or a question
   needs an answer.
 - Prefer one batched verification command over several sequential ones.
+- Do not poll CI, deploys or other external asynchronous results unless the
+  user asks. Push or start the job, report that the result is pending, and
+  continue with independent work.
+- If a task requires waiting — a long build or test, a deploy, or a CI check
+  the user asked to verify — hand it to a subagent so the main agent can keep
+  working on independent steps. Collect the result before the step that depends
+  on it; do not sit idle.
 
-Some calls must block: a validator, a build or a test whose output decides the
-next edit cannot be skipped. The rule is to avoid idle round trips, not to run
-commands without their results.
+Some calls cannot be skipped: a validator, a build or a test whose output decides
+the next edit must still run. If it is slow, run it in a subagent and keep
+working on independent steps; collect the result before the dependent edit. The
+rule is to avoid idle round trips, not to skip checks.
