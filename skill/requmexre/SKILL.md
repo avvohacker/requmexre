@@ -180,3 +180,5 @@ content, keep the shape.
   and its evidence.
 - Fixtures and the template are synthetic: structure from the funder documents,
   content illustrative.
+- Registration, ethics and timeline are out of scope: keep them in the funder's
+  forms; there is no `extensions` field.

@@ -118,6 +118,8 @@ check.
 - Whether the evidence listed under a claim is the evidence that claim needs.
 - Fit between a claim and its falsifier beyond lexical difference.
 - Funder compliance: section order, page and character limits, eligibility.
+- Registration numbers, ethics approvals and timelines: out of scope, not represented,
+  and no `extensions` field is provided.
 - Language quality beyond the form and overlap tests above.
 
 ## Extending

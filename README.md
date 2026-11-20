@@ -92,6 +92,7 @@ Exit code 0 when every pure plan is valid and every negative envelope reports it
 - Fixtures are synthetic: structure taken from the documents above, content illustrative.
 - The validator checks form, not truth, not the existence of citations, not the fit between a claim and its evidence.
 - The three slots are an administrative form, not a theory of method. The schema formalises the document, not the research.
+- Registration numbers, ethics approvals and timelines are out of scope: they belong to the funder's submission forms, not to the plan. There is no `extensions` field.
 
 ## Roadmap
 
