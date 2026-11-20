@@ -104,6 +104,8 @@ Exit code 0 when every pure plan is valid and every negative envelope reports it
 | v0.5 | Six-funder mappings: Horizon, DFG and SNSF added; schema v0.5 |
 | v1.0 | Stable schema and citation |
 
+v0.5 is the current tree on `main`: it is not tagged and has no GitHub release.
+
 ## Cite
 
 > *requmexre*, v0.5, 2026.
