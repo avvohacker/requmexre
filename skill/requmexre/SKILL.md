@@ -1,6 +1,6 @@
 ---
 name: requmexre
-description: Build, validate and render a research plan typed as research question, methodology and expected results, with warrant and standpoint. Use when drafting, reviewing or reformatting a grant proposal or a doctoral research plan for FWO, PRIN or VUB.
+description: Build, validate and render a research plan typed as research question, methodology and expected results, with warrant and standpoint. Use when drafting, reviewing or reformatting a grant proposal or a doctoral research plan for FWO, PRIN, VUB, Horizon, DFG or SNSF.
 ---
 
 # requmexre
@@ -173,7 +173,7 @@ content, keep the shape.
 ## Limits
 
 - Six funders are mapped: FWO, PRIN, VUB, Horizon, DFG and SNSF. The schema
-  stays v0.4 until the v0.5 release.
+  is v0.5.
 - A funder outside the six known values uses `funder: "other"` and `scheme`;
   there is no section table for it.
 - The validator checks form, not truth, not citations, not fit between a claim

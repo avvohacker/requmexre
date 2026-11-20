@@ -4,7 +4,7 @@ A machine-readable model of a research plan written as **research question → m
 
 The name is the three slots: **RE**search **QU**estion + **ME**thodology + e**X**pected **RE**sults.
 
-**Version:** v0.4 (schema) · **Mappings:** v0.5 draft · **Licence:** all rights reserved · **Sources:** [SOURCES.md](SOURCES.md)
+**Version:** v0.5 · **Licence:** all rights reserved · **Sources:** [SOURCES.md](SOURCES.md)
 
 ## What the funders ask
 
@@ -63,7 +63,7 @@ Full rules: [schema/RULES.md](schema/RULES.md). Structural S1–S10 in JSON Sche
 ## Files
 
 ```
-README.md · SOURCES.md · LICENSE.md · AGENTS.md
+README.md · RELEASE.md · SOURCES.md · LICENSE.md · AGENTS.md
 schema/requmexre.schema.json   JSON Schema draft 2020-12
 schema/RULES.md                S1–S10, R1–R8
 schema/validate.py             two-layer validator
@@ -101,9 +101,9 @@ Exit code 0 when every pure plan is valid and every negative envelope reports it
 | v0.2 | Plural questions, declared form, explicit completion criterion; three published plans in `schema/published` |
 | v0.3 | Outcomes with a measure, and outputs, in `results`; answer types widened; pilot re-run in [schema/BREAKAGES.md](schema/BREAKAGES.md) |
 | v0.4 | Typed sources: `data`, `literature`, `participants`, `corpus` in `method.sources` |
-| v0.5 | Mappings for Horizon, DFG and SNSF in the skill (draft) |
+| v0.5 | Six-funder mappings: Horizon, DFG and SNSF added; schema v0.5 |
 | v1.0 | Stable schema and citation |
 
 ## Cite
 
-> *requmexre*, v0.4, 2026.
+> *requmexre*, v0.5, 2026.

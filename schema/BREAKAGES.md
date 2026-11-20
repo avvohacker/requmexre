@@ -15,6 +15,7 @@ This version records those revisions and what is still open.
 | v0.3 | `outcome` with `measure`, `output`, S7 and R5 updated (change 4) | 3 of 3 pass with the results included |
 | v0.3, second pass | five more answer types (change 5) | 3 of 3 pass; forest is `synthesis`, bibliotherapy secondary is `mechanistic` |
 | v0.4 | typed sources, each with `kind` and `description` (change 6) | 3 of 3 pass; every source classified |
+| v0.5 | other + scheme, standpoint, fixture envelope, scope, limits `"none"` (changes 7–11) | 3 of 3 pass; six-funder mappings shipped |
 
 ## Model gaps and encoding artefacts
 
@@ -39,7 +40,7 @@ gaps were real, but change 4 shows that some of them were also representational:
 the map's outputs and the trial's hypothesis only needed kinds that the schema did
 not have.
 
-## The three plans, after v0.4
+## The three plans, after v0.5
 
 | File | Plan | Type | Result |
 |---|---|---|---|
@@ -103,8 +104,8 @@ is `undeclared` (change 8).
 
 ## Still open
 
-Nothing from the pilot remains open. Changes 1–11 are closed; the v0.5 work
-left is the three funder mappings and the release.
+Nothing from the pilot remains open. Changes 1–11, the six-funder mappings and
+the v0.5 release are closed.
 
 Changes 1–6 touched S3, S5, S6, S7, R1, R2, R5, all fixtures, the template, the
 published plans, the skill, the README and the site.
@@ -126,9 +127,8 @@ published plans, the skill, the README and the site.
 
 ## Next
 
-With registration, ethics and timelines declared out of scope (change 10), the
-model work for v0.5 is complete. The v0.5 mappings (Horizon, DFG, SNSF) and the
-release remain.
+The v0.5 release closes changes 1–11 and the six-funder mappings. The v1.0
+stable schema and citation remain.
 
 ## Sources encoded
 
