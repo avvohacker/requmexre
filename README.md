@@ -54,6 +54,8 @@ schema/requmexre.schema.json   JSON Schema draft 2020-12
 schema/RULES.md                S1–S10, R1–R8
 schema/validate.py             two-layer validator
 schema/cases/                  fwo, prin, vub, negative (fixtures)
+schema/published/               three published plans, encoded (v0.2 pilot)
+schema/BREAKAGES.md            where the model breaks on those plans
 skill/requmexre/               SKILL.md, references/mappings.md, assets/template.json
 ```
 
@@ -78,7 +80,7 @@ Exit code 0 when every file behaves as declared (`meta.expect`). The skill runs 
 
 | Version | Content |
 |---|---|
-| v0.2 | Apply the schema to published plans; record where it breaks |
+| v0.2 | Three published plans in `schema/published`; pilot report in [schema/BREAKAGES.md](schema/BREAKAGES.md); fixes pending |
 | v0.3 | Mappings for Horizon, DFG and SNSF in the skill |
 | v1.0 | Stable schema and citation |
 

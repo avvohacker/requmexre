@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "expect": "valid",
+    "standpoint": "none",
+    "title": "School-based creative bibliotherapy and child mental health: a systematic review and realist synthesis protocol",
+    "version": "0.1",
+    "date": "2026-11-20",
+    "id": "10.1186/s13643-024-02482-8"
+  },
+  "question": {
+    "text": "What are the impacts of school-based creative bibliotherapy interventions on child and adolescent mental health?",
+    "answer_type": "causal",
+    "scope": "Children and adolescents aged 5 to 16 attending mainstream schools; creative bibliotherapy interventions; any mental health or wellbeing outcome; cohort, non-randomised comparative and randomised studies with a comparator.",
+    "completion_criterion": "The question is answered when the included studies are mapped, their risk of bias appraised, and the range and strength of evidence for impact is reported by outcome."
+  },
+  "method": {
+    "approach": "Systematic review with descriptive synthesis and intervention components analysis, followed by a restricted realist synthesis.",
+    "sources": [
+      "APA PsycINFO, Medline via Ovid, CINAHL, ERIC, Education Research Complete and Web of Science",
+      "Forward and backward citation searching in Scopus from the included articles"
+    ],
+    "procedure": "Search the six databases with free-text and controlled vocabulary terms; import into EndNote; screen titles and abstracts independently in pairs against the inclusion criteria; screen full texts in pairs with a third reviewer resolving disagreements; appraise risk of bias with the Cochrane tools; extract study, intervention and outcome data; summarise descriptively and by intervention components; build context-mechanism-outcome configurations in a restricted realist synthesis.",
+    "validity_conditions": [
+      "Two reviewers screen titles and abstracts independently",
+      "Full texts are screened by two reviewers, with a third resolving disagreements",
+      "Risk of bias is appraised with the Cochrane tools and no study is excluded on quality grounds"
+    ],
+    "limits": [
+      "It is often unclear whether a study uses creative or self-help bibliotherapy",
+      "Restricting inclusion to studies with a comparator excludes more holistic appraisals",
+      "Capacity prevents a full realist synthesis"
+    ]
+  },
+  "warrant": {
+    "gap_statement": "No comprehensive assessment of the evidence for creative bibliotherapy exists; the two earlier reviews cover behaviour and post-traumatic stress and neither describes mechanisms of change.",
+    "evidence": [
+      "Montgomery and Maunders, systematic review, 2015",
+      "Glavin and Montgomery, systematic review, 2017",
+      "Troscianko, Medical Humanities, 2018"
+    ]
+  }
+}

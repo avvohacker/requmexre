@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "expect": "valid",
+    "standpoint": "none",
+    "title": "i-MaCHeL: a cluster randomised trial of a preschool healthy-lifestyle programme",
+    "version": "0.1",
+    "date": "2026-11-20",
+    "id": "10.1371/journal.pone.0276843"
+  },
+  "question": {
+    "text": "The general aim of this study is to evaluate the efficacy of the 3-month i-MaCHeL programme, a web-based, theory-driven intervention, in changing weight-related behaviour in preschool child-parent dyads in Terengganu, Malaysia.",
+    "answer_type": "comparative",
+    "tertium_comparationis": "the between-group difference in BMI z-score change from baseline at 3 and 9 months",
+    "scope": "460 child-parent dyads from 12 preschools in Kuala Terengganu and Kuala Nerus, Terengganu, Malaysia; children aged 5 and 6; 3-month intervention, outcomes at 3 and 9 months post-baseline.",
+    "completion_criterion": "The question is answered when the between-group difference in BMI z-score change is estimated with a cluster-adjusted repeated-measures model and reported with its confidence interval."
+  },
+  "method": {
+    "approach": "Single-blind, two-group cluster randomised controlled trial; general linear model repeated measures with ANCOVA and intention-to-treat analysis.",
+    "sources": [
+      "460 child-parent dyads recruited from 12 preschools in Kuala Terengganu and Kuala Nerus",
+      "Anthropometric measurements, three-day food records and validated questionnaires collected at baseline, 3 and 9 months"
+    ],
+    "procedure": "Randomise 12 preschools 1:1 in six blocks; deliver 13 weekly online modules and teacher-led classroom sessions to the intervention arm; give the control arm general health newsletters; measure BMI z-score, diet, activity, screen time, quality of life and parental measures; analyse with repeated-measures ANCOVA adjusted for clustering, baseline values and covariates; impute missing data.",
+    "validity_conditions": [
+      "Randomisation is performed by an independent researcher at preschool level",
+      "The primary analysis adjusts for the clustering effect and baseline outcome values",
+      "Intention-to-treat is applied to all randomised dyads"
+    ]
+  },
+  "results": [
+    {
+      "claim": "The combination of classroom activities and the interactive web-based programme sustains child-parent engagement and changes weight-related behaviour more than the active control.",
+      "kind": "hypothesis",
+      "falsifier": "The between-group difference in BMI z-score change is indistinguishable from zero at 3 and 9 months after adjustment for clustering and baseline values.",
+      "evidence_needed": "Anthropometric measurements and questionnaire outcomes for both arms at baseline, 3 and 9 months."
+    }
+  ],
+  "warrant": {
+    "gap_statement": "Most preschool-based trials of weight-related behaviour change were conducted in high-income countries, and no study integrates classroom activities with a web-based programme for child-parent dyads in Malaysia.",
+    "evidence": [
+      "Adab et al., WAVES cluster randomised trial, BMJ, 2018",
+      "Rashid et al., i-MaCHeL protocol, PLOS ONE, 2022",
+      "Malaysian Dietary Guidelines for Children and Adolescents, 2013"
+    ]
+  }
+}
