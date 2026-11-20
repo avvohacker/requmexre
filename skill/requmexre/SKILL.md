@@ -66,10 +66,14 @@ sentence is a question, `objective` if it is written as an aim ("This study
 evaluates..."). Do not convert one into the other: funders ask for objectives as
 often as for questions, and R1 checks the text against the form declared.
 
-- `answer_type` decides what else is required. Comparative: name the
+- `answer_type` names the kind of answer: `descriptive`, `exploratory`,
+  `comparative`, `causal`, `evaluative`, `methodological`, `synthesis`,
+  `mechanistic`, `feasibility`, `validation` or `other`. Comparative requires the
   `tertium_comparationis`, the dimension on which the cases are compared.
-  Evaluative: name `criteria` and write the `operationalisation` that turns each
-  into something measurable.
+  Evaluative requires `criteria` and the `operationalisation` that turns each into
+  something measurable. Every other type carries neither. Use `synthesis` for a
+  map, review or meta-analysis, `mechanistic` for how or why something works, and
+  `other` only when none of the named types fits.
 - `scope` bounds the answer: population, setting, period, corpus.
 - `completion_criterion` says what would count as an answer — an estimate with an
   uncertainty, a typology that covers the variation, a comparison that holds. If

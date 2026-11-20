@@ -73,7 +73,7 @@
         "text": { "$ref": "#/$defs/text" },
         "form": { "enum": ["interrogative", "objective"] },
         "answer_type": {
-          "enum": ["descriptive", "exploratory", "comparative", "causal", "evaluative", "methodological"]
+          "enum": ["descriptive", "exploratory", "comparative", "causal", "evaluative", "methodological", "synthesis", "mechanistic", "feasibility", "validation", "other"]
         },
         "scope": { "$ref": "#/$defs/text" },
         "completion_criterion": { "$ref": "#/$defs/text" },
@@ -106,7 +106,7 @@
           "if": {
             "required": ["answer_type"],
             "properties": {
-              "answer_type": { "enum": ["descriptive", "exploratory", "causal", "methodological"] }
+              "answer_type": { "enum": ["descriptive", "exploratory", "causal", "methodological", "synthesis", "mechanistic", "feasibility", "validation", "other"] }
             }
           },
           "then": {

@@ -18,7 +18,8 @@
     "secondary": [
       {
         "text": "What mechanisms can be identified through which impacts are achieved, and in which contexts?",
-        "form": "interrogative"
+        "form": "interrogative",
+        "answer_type": "mechanistic"
       }
     ]
   },

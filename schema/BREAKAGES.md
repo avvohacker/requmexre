@@ -12,6 +12,7 @@ version records both revisions and what is still open.
 | v0.1 | first encoding | 1 of 3 passed; R1 on the trial, R5 on the map |
 | v0.2 | plural questions, declared form, explicit completion criterion (changes 1–3) | 3 of 3 passed, with results omitted where the plans have none |
 | v0.3 | `outcome` with `measure`, `output`, S7 and R5 updated (change 4) | 3 of 3 pass with the results included |
+| v0.3, second pass | five more answer types (change 5) | 3 of 3 pass; forest is `synthesis`, bibliotherapy secondary is `mechanistic` |
 
 ## Model gaps and encoding artefacts
 
@@ -21,7 +22,7 @@ version records both revisions and what is still open.
 | i-MaCHeL, falsifier | not noticed | artefact: a falsifier was written that the protocol does not state | resolved by change 4: the hypothesis is kept, the falsifier is the null result the design tests, and it is flagged as derived |
 | i-MaCHeL, criterion | model gap | model gap: no plan states one | fixed by `"none"` |
 | Forest, R5 | model gap: outputs rejected | artefact: `results` is optional, and the map's outputs were put there by choice. The missing slot for outputs was real | fixed by change 4: outputs have a kind, and the map also reports an outcome |
-| Forest, answer_type | model gap | model gap: an evidence map is not one of the six types | open (change 5) |
+| Forest, answer_type | model gap | model gap: an evidence map is not one of the six types | fixed by change 5: the map declares `synthesis` |
 | Bibliotherapy, PASS | "manufactured" | model gap: the completion criterion was required, so one was supplied | fixed by `"none"` |
 | Bibliotherapy, second question | model gap | model gap: one question slot | fixed by plural questions |
 | Bibliotherapy, funder | model gap | model gap: Wellcome is not in the enum | open (change 7) |
@@ -79,21 +80,20 @@ captured, so `funder` is omitted; `answer_type: comparative` fits this plan.
 ### Anticipatory forest use — passes
 
 Interrogative question, criterion `"none"`, sources that read naturally as
-sources, outputs that are outputs. Still missing: the evidence-map question is
-forced into `descriptive` (change 5).
+sources, outputs that are outputs. The evidence-map question now declares
+`synthesis` (change 5).
 
 ### Creative bibliotherapy — passes
 
-Both questions encoded; the mechanisms question carries no answer type because
-none of the six fits (change 5). Results: one outcome and one output. Still
-missing: the Wellcome Trust cannot be named in `funder` (change 7); the undeclared
-standpoint is recorded as `"none"` by us (change 8).
+Both questions encoded; the mechanisms question declares `mechanistic` (change
+5). Results: one outcome and one output. Still missing: the Wellcome Trust cannot
+be named in `funder` (change 7); the undeclared standpoint is recorded as
+`"none"` by us (change 8).
 
-## Still open (changes 5–11)
+## Still open (changes 6–11)
 
 | # | Breakage | Where | Seen in | Change |
 |---|---|---|---|---|
-| 5 | Answer types too narrow | S3 `answer_type` | forest, bibliotherapy | add `synthesis`, `mechanistic`, `feasibility`, `validation`, `other` |
 | 6 | `sources` has one semantics | S5 | i-MaCHeL vs forest | typed sources: `{kind: data \| literature \| participants \| corpus, description}` |
 | 7 | Funder list is closed | S2 | bibliotherapy | free string, or `other` plus `scheme` |
 | 8 | Standpoint is binary | S2, R8 | all three | `declared \| none \| undeclared` |
@@ -101,7 +101,7 @@ standpoint is recorded as `"none"` by us (change 8).
 | 10 | Registration, ethics, timeline have no home | S1 `additionalProperties` | all three | declare them out of scope, or allow `extensions` |
 | 11 | Absent limits look like no limits | S5 | i-MaCHeL | allow `"none"` as an explicit value |
 
-Changes 1–4 touched S3, S6, S7, R1, R2, R5, all fixtures, the template, the
+Changes 1–5 touched S3, S6, S7, R1, R2, R5, all fixtures, the template, the
 published plans, the skill, the README and the site.
 
 ## What held
@@ -119,9 +119,8 @@ published plans, the skill, the README and the site.
 
 ## Next
 
-Change 5 is the only remaining place where a real plan has to use the wrong
-category (an evidence map as `descriptive`, a mechanisms question with no answer
-type). Then 6–7 in one pass, then 8–11. The v0.4 mappings (Horizon, DFG, SNSF)
+With answer types widened, the next representational gap is `sources` (change
+6), then `funder` (change 7). Then 8–11. The v0.4 mappings (Horizon, DFG, SNSF)
 should follow, so they encode the current shape rather than the old one.
 
 ## Sources encoded

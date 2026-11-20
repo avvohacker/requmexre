@@ -12,7 +12,7 @@
     "primary": {
       "text": "What is the state of the evidence on anticipatory forest use behaviours in the context of policy introduction?",
       "form": "interrogative",
-      "answer_type": "descriptive",
+      "answer_type": "synthesis",
       "scope": "Global forests; policies at global, national or sub-national level that prompt anticipatory forest use behaviours; no date restriction; English-language articles only.",
       "completion_criterion": "none"
     }
