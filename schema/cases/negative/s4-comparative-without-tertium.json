@@ -7,11 +7,14 @@
     "version": "0.1",
     "date": "2026-11-20"
   },
-  "question": {
-    "text": "How does a four-day week affect overtime in small firms?",
-    "answer_type": "comparative",
-    "scope": "Small firms in Belgium with 10 to 49 employees, 2027 to 2029.",
-    "completion_criterion": "The question is answered when overtime hours per employee are estimated before and after adoption and the estimate is compared with non-adopting firms."
+  "questions": {
+    "primary": {
+      "text": "How does a four-day week affect overtime in small firms?",
+      "form": "interrogative",
+      "answer_type": "comparative",
+      "scope": "Small firms in Belgium with 10 to 49 employees, 2027 to 2029.",
+      "completion_criterion": "The question is answered when overtime hours per employee are estimated before and after adoption and the estimate is compared with non-adopting firms."
+    }
   },
   "method": {
     "approach": "Difference-in-differences on payroll records.",

@@ -177,7 +177,7 @@ $sources
 </main>
 <footer>
   <div class="wrap">
-    <p>requmexre v0.1 · 2026 · Licence: all rights reserved</p>
+    <p>requmexre v0.2 · 2026 · Licence: all rights reserved</p>
     <p>Built from <code>README.md</code>, <code>schema/RULES.md</code> and <code>SOURCES.md</code> by <code>site/build.py</code>.</p>
   </div>
 </footer>

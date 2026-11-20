@@ -8,11 +8,14 @@
     "date": "2026-11-20",
     "id": "10.1186/s13750-023-00307-0"
   },
-  "question": {
-    "text": "What is the state of the evidence on anticipatory forest use behaviours in the context of policy introduction?",
-    "answer_type": "descriptive",
-    "scope": "Global forests; policies at global, national or sub-national level that prompt anticipatory forest use behaviours; no date restriction; English-language articles only.",
-    "completion_criterion": "The question is answered when every included study is coded and the map reports the distribution of evidence by policy type, behaviour, country income level and forest biome."
+  "questions": {
+    "primary": {
+      "text": "What is the state of the evidence on anticipatory forest use behaviours in the context of policy introduction?",
+      "form": "interrogative",
+      "answer_type": "descriptive",
+      "scope": "Global forests; policies at global, national or sub-national level that prompt anticipatory forest use behaviours; no date restriction; English-language articles only.",
+      "completion_criterion": "none"
+    }
   },
   "method": {
     "approach": "Systematic map following CEE guidance and ROSES reporting standards, with two complementary search strategies and a population-intervention-outcome frame.",
@@ -33,18 +36,6 @@
       "No date range is applied"
     ]
   },
-  "results": [
-    {
-      "claim": "A narrative evidence map, a ROSES flow diagram and an online dataset of included studies.",
-      "kind": "deliverable",
-      "evidence_needed": "The coded dataset and the flow diagram produced by the screening and extraction process."
-    },
-    {
-      "claim": "An EviAtlas world map and heatmaps of policy type, income level, biome and anticipatory behaviour.",
-      "kind": "deliverable",
-      "evidence_needed": "The coded study attributes and locations, rendered with EviAtlas."
-    }
-  ],
   "warrant": {
     "gap_statement": "No systematic evidence synthesis has been conducted on anticipatory forest use behaviours, so their extent and sectoral scope are unknown.",
     "evidence": [

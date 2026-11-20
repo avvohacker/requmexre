@@ -28,7 +28,7 @@ proposal that are not the plan.
 
 | Field | Holds | Required |
 |---|---|---|
-| `question` | `text`, `answer_type`, `scope`, `completion_criterion`; `tertium_comparationis` for comparative, `criteria` and `operationalisation` for evaluative | yes |
+| `questions` | `primary` (`text`, `form`, `answer_type`, `scope`, `completion_criterion` or `none`; `tertium_comparationis` for comparative, `criteria` and `operationalisation` for evaluative) and an optional `secondary` list | yes |
 | `method` | `approach`, `sources`, `procedure`; `validity_conditions`, `limits` | yes |
 | `results` | list of `claim` + `kind`; `falsifier` and `evidence_needed` for hypotheses and expected findings | no |
 | `warrant` | `gap_statement`, `evidence` | yes |
@@ -50,19 +50,21 @@ Establish what is being asked and for whom.
 
 - Which funder and which call? FWO, PRIN and VUB are mapped in
   [`references/mappings.md`](references/mappings.md); Horizon, DFG and SNSF are
-  not mapped in v0.1 and should be handled by hand.
+  not mapped yet (roadmap v0.3) and should be handled by hand.
 - Is there a draft to convert, or is the plan new? If there is a draft, extract
   candidate sentences for each field before writing anything.
 - Is a standpoint declared? If the plan argues from normative premises — equity,
   sustainability, safety — the answer is `declared`; if it claims none, `none`.
-  Do not leave the question unanswered: `meta.standpoint` is required.
+  Do not leave the standpoint unanswered: `meta.standpoint` is required.
 
 Exit: a funder (or `none`), a source draft (or none), and `meta.standpoint`.
 
-### 2. Question
+### 2. Questions
 
-Write `question.text` as a question, not as an objective. "This project studies
-X" is an objective; "How does X vary with Y in Z?" is a question.
+Write `questions.primary.text`, then decide its `form`: `interrogative` if the
+sentence is a question, `objective` if it is written as an aim ("This study
+evaluates..."). Do not convert one into the other: funders ask for objectives as
+often as for questions, and R1 checks the text against the form declared.
 
 - `answer_type` decides what else is required. Comparative: name the
   `tertium_comparationis`, the dimension on which the cases are compared.
@@ -70,8 +72,11 @@ X" is an objective; "How does X vary with Y in Z?" is a question.
   into something measurable.
 - `scope` bounds the answer: population, setting, period, corpus.
 - `completion_criterion` says what would count as an answer — an estimate with an
-  uncertainty, a typology that covers the variation, a comparison that holds.
-  It must not restate the question (R2).
+  uncertainty, a typology that covers the variation, a comparison that holds. If
+  the plan states none, write `"none"`; do not invent one. When present, it must
+  not restate the question (R2).
+- `questions.secondary` holds the secondary questions and objectives: `text` and
+  `form` are enough, the rest is optional.
 
 Exit: a question that a reader could answer with evidence, and could recognise
 as answered.

@@ -4,7 +4,7 @@ A machine-readable model of a research plan written as **research question → m
 
 The name is the three slots: **RE**search **QU**estion + **ME**thodology + e**X**pected **RE**sults.
 
-**Version:** v0.1 · **Licence:** all rights reserved · **Sources:** [SOURCES.md](SOURCES.md)
+**Version:** v0.2 · **Licence:** all rights reserved · **Sources:** [SOURCES.md](SOURCES.md)
 
 ## What the funders ask
 
@@ -25,8 +25,10 @@ Five fields: three slots plus two guards.
 
 ```json
 {
-  "question":  { "text": "...", "answer_type": "comparative",
-                 "scope": "...", "completion_criterion": "..." },
+  "questions": { "primary": { "text": "...", "form": "interrogative",
+                              "answer_type": "comparative",
+                              "scope": "...", "completion_criterion": "..." },
+                 "secondary": [ { "text": "...", "form": "objective" } ] },
   "method":    { "approach": "...", "sources": ["..."], "procedure": "...",
                  "validity_conditions": ["..."], "limits": ["..."] },
   "results":   [ { "claim": "...", "kind": "hypothesis",
@@ -36,7 +38,8 @@ Five fields: three slots plus two guards.
 }
 ```
 
-- `question.completion_criterion`: what would count as an answer.
+- `questions.primary.completion_criterion`: what would count as an answer; `"none"` when the plan states none.
+- `questions.primary.form`: whether the text is written as an `interrogative` or an `objective`; R1 checks the text against it.
 - `method.validity_conditions` and `method.limits`: when the finding holds, and what it does not cover.
 - `results[].falsifier`: required for `hypothesis` and `expected_finding`, not for `deliverable`.
 - `warrant`: why the question is still open, with at least one dated or identifiable source.
@@ -80,10 +83,10 @@ Exit code 0 when every file behaves as declared (`meta.expect`). The skill runs 
 
 | Version | Content |
 |---|---|
-| v0.2 | Three published plans in `schema/published`; pilot report in [schema/BREAKAGES.md](schema/BREAKAGES.md); fixes pending |
+| v0.2 | Plural questions, declared form, explicit completion criterion; three published plans in `schema/published` and the pilot report in [schema/BREAKAGES.md](schema/BREAKAGES.md) |
 | v0.3 | Mappings for Horizon, DFG and SNSF in the skill |
 | v1.0 | Stable schema and citation |
 
 ## Cite
 
-> *requmexre*, v0.1, 2026.
+> *requmexre*, v0.2, 2026.

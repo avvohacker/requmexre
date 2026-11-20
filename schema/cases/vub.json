@@ -7,11 +7,14 @@
     "version": "0.1",
     "date": "2026-11-20"
   },
-  "question": {
-    "text": "How do doctoral candidates change their writing practices once generative language models enter supervision?",
-    "answer_type": "exploratory",
-    "scope": "Four Flemish universities; doctoral candidates in the humanities and social sciences in their first two years; 2026 to 2029.",
-    "completion_criterion": "The question is answered when a typology of writing practices, built from observed supervision meetings and successive drafts, accounts for the variation found across the four sites."
+  "questions": {
+    "primary": {
+      "text": "How do doctoral candidates change their writing practices once generative language models enter supervision?",
+      "form": "interrogative",
+      "answer_type": "exploratory",
+      "scope": "Four Flemish universities; doctoral candidates in the humanities and social sciences in their first two years; 2026 to 2029.",
+      "completion_criterion": "The question is answered when a typology of writing practices, built from observed supervision meetings and successive drafts, accounts for the variation found across the four sites."
+    }
   },
   "method": {
     "approach": "Multi-site ethnography of supervision, combined with a longitudinal corpus of drafts and their revision histories.",

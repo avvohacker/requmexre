@@ -7,11 +7,20 @@
     "date": "2026-11-20",
     "id": "10.1186/s13643-024-02482-8"
   },
-  "question": {
-    "text": "What are the impacts of school-based creative bibliotherapy interventions on child and adolescent mental health?",
-    "answer_type": "causal",
-    "scope": "Children and adolescents aged 5 to 16 attending mainstream schools; creative bibliotherapy interventions; any mental health or wellbeing outcome; cohort, non-randomised comparative and randomised studies with a comparator.",
-    "completion_criterion": "The question is answered when the included studies are mapped, their risk of bias appraised, and the range and strength of evidence for impact is reported by outcome."
+  "questions": {
+    "primary": {
+      "text": "What are the impacts of school-based creative bibliotherapy interventions on child and adolescent mental health?",
+      "form": "interrogative",
+      "answer_type": "causal",
+      "scope": "Children and adolescents aged 5 to 16 attending mainstream schools; creative bibliotherapy interventions; any mental health or wellbeing outcome; cohort, non-randomised comparative and randomised studies with a comparator.",
+      "completion_criterion": "none"
+    },
+    "secondary": [
+      {
+        "text": "What mechanisms can be identified through which impacts are achieved, and in which contexts?",
+        "form": "interrogative"
+      }
+    ]
   },
   "method": {
     "approach": "Systematic review with descriptive synthesis and intervention components analysis, followed by a restricted realist synthesis.",

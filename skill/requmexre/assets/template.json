@@ -7,12 +7,15 @@
     "version": "0.1",
     "date": "2026-11-20"
   },
-  "question": {
-    "text": "To what extent does the share of green space within 300 metres of home change self-reported walking among adults over 65 in Ghent?",
-    "answer_type": "comparative",
-    "tertium_comparationis": "minutes of self-reported walking per week, compared between residents above and below the local green-space median",
-    "scope": "Adults aged 65 and over in Ghent, 2026 to 2028, excluding residents of care homes.",
-    "completion_criterion": "The question is answered when weekly walking minutes are estimated against green-space share with a model that adjusts for age, income and street connectivity, and the uncertainty of the estimate is reported."
+  "questions": {
+    "primary": {
+      "text": "To what extent does the share of green space within 300 metres of home change self-reported walking among adults over 65 in Ghent?",
+      "form": "interrogative",
+      "answer_type": "comparative",
+      "tertium_comparationis": "minutes of self-reported walking per week, compared between residents above and below the local green-space median",
+      "scope": "Adults aged 65 and over in Ghent, 2026 to 2028, excluding residents of care homes.",
+      "completion_criterion": "The question is answered when weekly walking minutes are estimated against green-space share with a model that adjusts for age, income and street connectivity, and the uncertainty of the estimate is reported."
+    }
   },
   "method": {
     "approach": "Cross-sectional comparison of neighbourhoods above and below the local green-space median, with individual-level controls.",

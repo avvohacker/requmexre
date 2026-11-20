@@ -7,16 +7,19 @@
     "version": "0.1",
     "date": "2026-11-20"
   },
-  "question": {
-    "text": "To what extent do regional digital-health platforms reduce avoidable hospital admissions for patients with chronic conditions, and how is that reduction distributed across income groups?",
-    "answer_type": "evaluative",
-    "criteria": [
-      "the reduction in avoidable admissions per 1,000 chronic patients",
-      "the ratio of that reduction in the lowest income quintile to the highest"
-    ],
-    "operationalisation": "Avoidable admissions are the ambulatory-care-sensitive conditions set, counted per 1,000 registered chronic patients per year; equity is the ratio of the platform effect in the lowest income quintile to the effect in the highest, with the quintile assigned from the patient's exemption category.",
-    "scope": "Six Italian regions that activated a platform between 2019 and 2023; patients aged 18 and over with at least one chronic condition; 2016 to 2026.",
-    "completion_criterion": "The question is answered when a region-level effect on avoidable admissions is estimated against non-adopting regions and the equity ratio is reported with its confidence interval."
+  "questions": {
+    "primary": {
+      "text": "To what extent do regional digital-health platforms reduce avoidable hospital admissions for patients with chronic conditions, and how is that reduction distributed across income groups?",
+      "form": "interrogative",
+      "answer_type": "evaluative",
+      "criteria": [
+        "the reduction in avoidable admissions per 1,000 chronic patients",
+        "the ratio of that reduction in the lowest income quintile to the highest"
+      ],
+      "operationalisation": "Avoidable admissions are the ambulatory-care-sensitive conditions set, counted per 1,000 registered chronic patients per year; equity is the ratio of the platform effect in the lowest income quintile to the effect in the highest, with the quintile assigned from the patient's exemption category.",
+      "scope": "Six Italian regions that activated a platform between 2019 and 2023; patients aged 18 and over with at least one chronic condition; 2016 to 2026.",
+      "completion_criterion": "The question is answered when a region-level effect on avoidable admissions is estimated against non-adopting regions and the equity ratio is reported with its confidence interval."
+    }
   },
   "method": {
     "approach": "Staggered difference-in-differences on administrative hospital records, with event-study checks and a synthetic control for the earliest adopter.",

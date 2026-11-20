@@ -18,10 +18,10 @@ structural layer.
 
 | Code | Rule | Where |
 |---|---|---|
-| S1 | The document is a closed object with `meta`, `question`, `method` and `warrant` required; `results` and `standpoint` optional; no other keys. | root |
+| S1 | The document is a closed object with `meta`, `questions`, `method` and `warrant` required; `results` and `standpoint` optional; no other keys. | root |
 | S2 | `meta` is a closed object with `expect` and `standpoint` required. `standpoint` is `declared` or `none`; `expect` is `valid`, `S1`–`S10` or `R1`–`R8`; optional `funder`, `title`, `version`, `date`, `id`. | `$defs/meta` |
-| S3 | `question` requires `text`, `answer_type`, `scope`, `completion_criterion`; `answer_type` is one of descriptive, exploratory, comparative, causal, evaluative, methodological; no other keys beyond the conditional ones. | `$defs/question` |
-| S4 | A comparative question requires `tertium_comparationis`. An evaluative question requires `criteria` and `operationalisation`. A question of any other type carries none of the three. | `$defs/question/allOf` |
+| S3 | `questions` holds one `primary` question and optional `secondary` questions. Every question requires `text` and `form` (interrogative or objective); the primary also requires `answer_type`, `scope` and `completion_criterion`, which is a string or the word `none`. | `$defs/questions`, `$defs/question`, `$defs/primaryQuestion` |
+| S4 | A comparative question requires `tertium_comparationis`. An evaluative question requires `criteria` and `operationalisation`. A question of any other type carries none of the three. Applies to every question that declares an answer type. | `$defs/question/allOf` |
 | S5 | `method` requires `approach`, a non-empty `sources` list and `procedure`; `validity_conditions` and `limits` are optional lists of non-blank strings. | `$defs/method` |
 | S6 | `results`, when present, is a non-empty list of objects with `claim` and `kind` (hypothesis, expected_finding, deliverable); no other required keys. | `$defs/results`, `$defs/result` |
 | S7 | A `hypothesis` or an `expected_finding` requires `falsifier` and `evidence_needed`. A `deliverable` carries no `falsifier`: it is produced, not falsified. | `$defs/result/allOf` |
@@ -34,6 +34,19 @@ results section (DFG, SNSF). `standpoint` is optional because a plan may declare
 that it has none; `meta.standpoint` makes that declaration explicit rather than
 silent.
 
+### Why a form and why "none"
+
+Published plans state objectives at least as often as questions. Requiring an
+interrogative would fail them for a wording the funder asked for, so every
+question declares its `form` and R1 checks the text against that declaration.
+Secondary objectives are often short: they need only `text` and `form`, while the
+primary question also carries the answer type, the scope and the criterion.
+
+No published plan read for v0.2 states what would count as an answer. The
+criterion stays required so that the absence is recorded rather than hidden: a
+plan writes `"none"`, and R2 skips it. The alternative — leaving the field
+optional — makes "no criterion" and "not stated" indistinguishable.
+
 ## Layer 2 — semantic, R1–R8
 
 Implemented in `schema/validate.py` and run only when the structural layer is
@@ -41,9 +54,9 @@ clean, since every check below reads fields the schema guarantees.
 
 | Code | Rule | Fires when |
 |---|---|---|
-| R1 | The question is interrogative. | `question.text` neither ends with `?` nor opens with an interrogative word (what, how, why, whether, which, who, when, where, to/under/in/for what, does, do, did, is, are, was, were, can, could, should, would, will, may, might). |
-| R2 | The completion criterion does not restate the question. | the criterion and the question share 70 per cent or more of the criterion's content words. |
-| R3 | The gap statement does not restate the question. | the gap statement and the question share 70 per cent or more of the gap statement's content words. |
+| R1 | Each question matches its declared form. | the form is `interrogative` and the text neither ends with `?` nor opens with an interrogative word (what, how, why, whether, which, who, when, where, to/under/in/for what, does, do, did, is, are, was, were, can, could, should, would, will, may, might); or the form is `objective` and the text reads as a question. |
+| R2 | Each completion criterion does not restate its own question. | the criterion and its question share 70 per cent or more of the criterion's content words. `none` is skipped. |
+| R3 | The gap statement does not restate the primary question. | the gap statement and the primary question share 70 per cent or more of the gap statement's content words. |
 | R4 | Warrant evidence is dated or identifiable. | an entry in `warrant.evidence` carries no year (19xx/20xx) and no identifier (DOI, `10.xxxx/`, arXiv, ISBN, PMID, URL). |
 | R5 | Results make a claim about the world. | `results` is present and every entry has `kind` `deliverable`. Deliverables alone answer no question. |
 | R6 | A falsifier differs from the claim it tests. | a result's `falsifier` shares 70 per cent or more of its content words with the claim. |
@@ -90,7 +103,7 @@ The validator exits 0 when every file behaves as declared, 1 when one does not,
 - Whether the evidence listed under a claim is the evidence that claim needs.
 - Fit between a claim and its falsifier beyond lexical difference.
 - Funder compliance: section order, page and character limits, eligibility.
-- Language quality beyond the interrogative and overlap tests above.
+- Language quality beyond the form and overlap tests above.
 
 ## Extending
 

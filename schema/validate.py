@@ -34,8 +34,8 @@ TEMPLATE_PATH = ROOT / "skill" / "requmexre" / "assets" / "template.json"
 RULE_IDS = [*(f"S{i}" for i in range(1, 11)), *(f"R{i}" for i in range(1, 9))]
 
 SEMANTIC_RULES = {
-    "R1": "the question is interrogative",
-    "R2": "the completion criterion does not restate the question",
+    "R1": "each question matches its declared form",
+    "R2": "each completion criterion does not restate its question",
     "R3": "the gap statement does not restate the question",
     "R4": "each piece of warrant evidence is dated or identifiable",
     "R5": "results make a claim about the world, not only deliverables",
@@ -280,38 +280,60 @@ def _normalise(text):
 
 def check_semantics(doc):
     findings = []
-    question = doc.get("question", {})
+    questions = doc.get("questions", {}) or {}
+    primary = questions.get("primary", {}) or {}
+    secondary = questions.get("secondary") or []
     method = doc.get("method", {})
     meta = doc.get("meta", {})
 
-    question_text = question.get("text", "")
-    criterion = question.get("completion_criterion", "")
+    numbered = [("$.questions.primary", primary)]
+    numbered += [
+        (f"$.questions.secondary[{index}]", item)
+        for index, item in enumerate(secondary)
+    ]
+
+    # R1 — each question matches its declared form
+    for path, question in numbered:
+        text = str(question.get("text", "")).strip()
+        form = question.get("form")
+        reads_as_question = text.endswith("?") or bool(INTERROGATIVE.match(text))
+        if form == "interrogative" and not reads_as_question:
+            findings.append(
+                Violation(
+                    "R1",
+                    f"{path}.text",
+                    "declared interrogative but not written as a question: end with '?' "
+                    "or open with an interrogative word",
+                )
+            )
+        elif form == "objective" and reads_as_question:
+            findings.append(
+                Violation(
+                    "R1",
+                    f"{path}.text",
+                    "declared objective but written as a question",
+                )
+            )
+
+    # R2 — each completion criterion is not its own question again
+    for path, question in numbered:
+        criterion = question.get("completion_criterion")
+        if not criterion or str(criterion).strip().lower() == "none":
+            continue
+        ratio = overlap(criterion, question.get("text", ""))
+        if ratio >= PARAPHRASE:
+            findings.append(
+                Violation(
+                    "R2",
+                    f"{path}.completion_criterion",
+                    f"reuses {round(ratio * 100)} per cent of its question's content words; "
+                    "state what would count as an answer instead",
+                )
+            )
+
+    # R3 — the gap statement is not the primary question again
     gap = doc.get("warrant", {}).get("gap_statement", "")
-
-    # R1 — interrogative form
-    if not (question_text.strip().endswith("?") or INTERROGATIVE.match(question_text.strip())):
-        findings.append(
-            Violation(
-                "R1",
-                "$.question.text",
-                "not interrogative: end with '?' or open with an interrogative word",
-            )
-        )
-
-    # R2 — the completion criterion is not the question again
-    ratio = overlap(criterion, question_text)
-    if ratio >= PARAPHRASE:
-        findings.append(
-            Violation(
-                "R2",
-                "$.question.completion_criterion",
-                f"reuses {round(ratio * 100)} per cent of the question's content words; "
-                "state what would count as an answer instead",
-            )
-        )
-
-    # R3 — the gap statement is not the question again
-    ratio = overlap(gap, question_text)
+    ratio = overlap(gap, primary.get("text", ""))
     if ratio >= PARAPHRASE:
         findings.append(
             Violation(
@@ -482,7 +504,7 @@ def main(argv):
 
     width = max(len(display(target)) for target in targets)
     failures = 0
-    print("requmexre v0.1 — structural S1–S10, semantic R1–R8\n")
+    print("requmexre v0.2 — structural S1–S10, semantic R1–R8\n")
 
     for target in targets:
         ok, expect, findings, note = check_file(target, schema)
