@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://requmexre.org/schema/0.1/requmexre.schema.json",
+  "title": "requmexre — research plan",
+  "description": "A research plan as research question, methodology and expected results, with warrant and standpoint. Structural layer S1–S10; the semantic layer R1–R8 is implemented in validate.py.",
+  "$comment": "S1 — closed top level: meta, question, method and warrant are required; results and standpoint are optional",
+  "type": "object",
+  "required": ["meta", "question", "method", "warrant"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": { "$ref": "#/$defs/meta" },
+    "question": { "$ref": "#/$defs/question" },
+    "method": { "$ref": "#/$defs/method" },
+    "results": { "$ref": "#/$defs/results" },
+    "warrant": { "$ref": "#/$defs/warrant" },
+    "standpoint": { "$ref": "#/$defs/standpoint" }
+  },
+  "$defs": {
+    "text": {
+      "$comment": "S10 — every string carries at least one non-blank character",
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "textList": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/text" }
+    },
+    "meta": {
+      "$comment": "S2 — meta block: how the file expects to be judged, and whether a standpoint is declared",
+      "type": "object",
+      "required": ["expect", "standpoint"],
+      "additionalProperties": false,
+      "properties": {
+        "expect": {
+          "type": "string",
+          "pattern": "^(?:valid|S(?:[1-9]|10)|R[1-8])$"
+        },
+        "standpoint": { "enum": ["declared", "none"] },
+        "funder": { "enum": ["fwo", "prin", "vub", "horizon", "dfg", "snsf", "none"] },
+        "title": { "$ref": "#/$defs/text" },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+$"
+        },
+        "date": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "id": { "$ref": "#/$defs/text" }
+      }
+    },
+    "question": {
+      "$comment": "S3 — question object: text, answer type, scope and what would count as an answer",
+      "type": "object",
+      "required": ["text", "answer_type", "scope", "completion_criterion"],
+      "additionalProperties": false,
+      "properties": {
+        "text": { "$ref": "#/$defs/text" },
+        "answer_type": {
+          "enum": ["descriptive", "exploratory", "comparative", "causal", "evaluative", "methodological"]
+        },
+        "scope": { "$ref": "#/$defs/text" },
+        "completion_criterion": { "$ref": "#/$defs/text" },
+        "tertium_comparationis": { "$ref": "#/$defs/text" },
+        "criteria": { "$ref": "#/$defs/textList" },
+        "operationalisation": { "$ref": "#/$defs/text" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["answer_type"],
+            "properties": { "answer_type": { "const": "comparative" } }
+          },
+          "then": {
+            "$comment": "S4 — a comparative question names the dimension on which the cases are compared",
+            "required": ["tertium_comparationis"]
+          }
+        },
+        {
+          "if": {
+            "required": ["answer_type"],
+            "properties": { "answer_type": { "const": "evaluative" } }
+          },
+          "then": {
+            "$comment": "S4 — an evaluative question names its criteria and their operationalisation",
+            "required": ["criteria", "operationalisation"]
+          }
+        },
+        {
+          "if": {
+            "required": ["answer_type"],
+            "properties": {
+              "answer_type": { "enum": ["descriptive", "exploratory", "causal", "methodological"] }
+            }
+          },
+          "then": {
+            "$comment": "S4 — only comparative questions carry a tertium, only evaluative ones carry criteria",
+            "properties": {
+              "tertium_comparationis": false,
+              "criteria": false,
+              "operationalisation": false
+            }
+          }
+        }
+      ]
+    },
+    "method": {
+      "$comment": "S5 — method block: approach, sources and procedure, with the conditions and the limits of the finding",
+      "type": "object",
+      "required": ["approach", "sources", "procedure"],
+      "additionalProperties": false,
+      "properties": {
+        "approach": { "$ref": "#/$defs/text" },
+        "sources": {
+          "$ref": "#/$defs/textList",
+          "minItems": 1
+        },
+        "procedure": { "$ref": "#/$defs/text" },
+        "validity_conditions": { "$ref": "#/$defs/textList" },
+        "limits": { "$ref": "#/$defs/textList" }
+      }
+    },
+    "results": {
+      "$comment": "S6 — results block, when present, is a non-empty list of typed claims",
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/result" }
+    },
+    "result": {
+      "$comment": "S6 — every result states a claim and its kind",
+      "type": "object",
+      "required": ["claim", "kind"],
+      "additionalProperties": false,
+      "properties": {
+        "claim": { "$ref": "#/$defs/text" },
+        "kind": { "enum": ["hypothesis", "expected_finding", "deliverable"] },
+        "falsifier": { "$ref": "#/$defs/text" },
+        "evidence_needed": { "$ref": "#/$defs/text" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["kind"],
+            "properties": { "kind": { "enum": ["hypothesis", "expected_finding"] } }
+          },
+          "then": {
+            "$comment": "S7 — a hypothesis or an expected finding names its falsifier and the evidence it needs",
+            "required": ["falsifier", "evidence_needed"]
+          }
+        },
+        {
+          "if": {
+            "required": ["kind"],
+            "properties": { "kind": { "const": "deliverable" } }
+          },
+          "then": {
+            "$comment": "S7 — a deliverable is produced, not falsified: it carries no falsifier",
+            "properties": { "falsifier": false }
+          }
+        }
+      ]
+    },
+    "warrant": {
+      "$comment": "S8 — warrant block: a gap statement supported by at least one identifiable source",
+      "type": "object",
+      "required": ["gap_statement", "evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "gap_statement": { "$ref": "#/$defs/text" },
+        "evidence": {
+          "$ref": "#/$defs/textList",
+          "minItems": 1
+        }
+      }
+    },
+    "standpoint": {
+      "$comment": "S9 — standpoint block: normative premises and criteria, present only when meta.standpoint is declared",
+      "type": "object",
+      "required": ["normative_premises", "criteria"],
+      "additionalProperties": false,
+      "properties": {
+        "normative_premises": { "$ref": "#/$defs/textList" },
+        "criteria": { "$ref": "#/$defs/textList" }
+      }
+    }
+  }
+}

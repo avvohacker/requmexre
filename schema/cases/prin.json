@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "expect": "valid",
+    "standpoint": "declared",
+    "funder": "prin",
+    "title": "Digital-health platforms and equity in avoidable admissions",
+    "version": "0.1",
+    "date": "2026-11-20"
+  },
+  "question": {
+    "text": "To what extent do regional digital-health platforms reduce avoidable hospital admissions for patients with chronic conditions, and how is that reduction distributed across income groups?",
+    "answer_type": "evaluative",
+    "criteria": [
+      "the reduction in avoidable admissions per 1,000 chronic patients",
+      "the ratio of that reduction in the lowest income quintile to the highest"
+    ],
+    "operationalisation": "Avoidable admissions are the ambulatory-care-sensitive conditions set, counted per 1,000 registered chronic patients per year; equity is the ratio of the platform effect in the lowest income quintile to the effect in the highest, with the quintile assigned from the patient's exemption category.",
+    "scope": "Six Italian regions that activated a platform between 2019 and 2023; patients aged 18 and over with at least one chronic condition; 2016 to 2026.",
+    "completion_criterion": "The question is answered when a region-level effect on avoidable admissions is estimated against non-adopting regions and the equity ratio is reported with its confidence interval."
+  },
+  "method": {
+    "approach": "Staggered difference-in-differences on administrative hospital records, with event-study checks and a synthetic control for the earliest adopter.",
+    "sources": [
+      "Hospital discharge records, 2016-2026, Ministry of Health",
+      "Chronic-disease exemption registry, 2016-2026, regional health agencies",
+      "Platform activation dates and covered services, 2019-2023, regional health agencies"
+    ],
+    "procedure": "Define the six treated regions and the eligible control regions; aggregate discharges to region-year cells by condition set and income quintile; estimate the effect of activation with region and year fixed effects; inspect event-study leads for pre-trends; repeat the estimate for each quintile and report the ratio; run a synthetic control for the 2019 adopter as a robustness check.",
+    "validity_conditions": [
+      "Regions are compared before and after activation, with non-adopting regions as controls",
+      "Discharge coding stays stable across the period, checked on a fixed set of diagnoses",
+      "Income quintile is observed for every patient through the exemption category"
+    ],
+    "limits": [
+      "The design estimates the effect of activation, not of platform use intensity",
+      "Regions that activated before 2019 fall outside the comparison",
+      "Avoidable admissions measure access, not the clinical quality of ambulatory care",
+      "The equity ratio is sensitive to how patients without an exemption are assigned"
+    ]
+  },
+  "results": [
+    {
+      "claim": "Activation reduces avoidable admissions by between 3 and 6 per cent, and the reduction is smaller in the lowest income quintile than in the highest.",
+      "kind": "expected_finding",
+      "falsifier": "The estimated effect on avoidable admissions is indistinguishable from zero in every treated region, or the lowest quintile shows a reduction at least as large as the highest in all regions.",
+      "evidence_needed": "Region-year discharge counts by condition set and quintile for the full period, plus activation dates for all six regions."
+    },
+    {
+      "claim": "An open dataset of region-level avoidable-admission rates by condition set and income quintile, 2016-2026, with the code that builds it.",
+      "kind": "deliverable",
+      "evidence_needed": "The published dataset and its build script, deposited with the project's data package."
+    }
+  ],
+  "warrant": {
+    "gap_statement": "Evaluations of Italian digital-health platforms stop at single-region case studies and do not test whether the recorded reduction reaches low-income patients.",
+    "evidence": [
+      "Ministry of Health, hospital discharge records, 2024 release",
+      "MUR, PRIN 2026 evaluation guidelines, D.D. 2298 All. 3",
+      "OECD, Health at a Glance: Europe, 2024"
+    ]
+  },
+  "standpoint": {
+    "normative_premises": [
+      "Equal access to care for equal need is a condition of a legitimate regional health service",
+      "A reduction in admissions that accrues only to the better-off does not count as an improvement"
+    ],
+    "criteria": [
+      "the absolute reduction in avoidable admissions",
+      "the ratio between the lowest and the highest income quintile"
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "expect": "valid",
+    "standpoint": "none",
+    "funder": "none",
+    "title": "Green space and walking among older adults",
+    "version": "0.1",
+    "date": "2026-11-20"
+  },
+  "question": {
+    "text": "To what extent does the share of green space within 300 metres of home change self-reported walking among adults over 65 in Ghent?",
+    "answer_type": "comparative",
+    "tertium_comparationis": "minutes of self-reported walking per week, compared between residents above and below the local green-space median",
+    "scope": "Adults aged 65 and over in Ghent, 2026 to 2028, excluding residents of care homes.",
+    "completion_criterion": "The question is answered when weekly walking minutes are estimated against green-space share with a model that adjusts for age, income and street connectivity, and the uncertainty of the estimate is reported."
+  },
+  "method": {
+    "approach": "Cross-sectional comparison of neighbourhoods above and below the local green-space median, with individual-level controls.",
+    "sources": [
+      "Neighbourhood green-space inventory, City of Ghent, 2025",
+      "Health survey of residents aged 65 and over, 2026-2028",
+      "Street network data, 2025, for connectivity measures"
+    ],
+    "procedure": "Draw a stratified sample of 1,200 residents across 60 neighbourhoods; measure green-space share within 300 metres of each home; collect walking minutes with a seven-day diary; estimate walking minutes against green-space share with neighbourhood random effects and individual controls; check for selective residential sorting with length of residence.",
+    "validity_conditions": [
+      "Green-space share is measured on the same inventory for every neighbourhood",
+      "Walking is recorded in the same week of the year for all participants",
+      "Neighbourhoods above and below the median are similar in income and age structure"
+    ],
+    "limits": [
+      "The design is cross-sectional: it cannot separate green space from the people who choose to live near it",
+      "Self-reported walking overstates walking measured by accelerometry",
+      "Findings apply to a mid-sized European city, not to rural or metropolitan settings"
+    ]
+  },
+  "results": [
+    {
+      "claim": "Residents above the green-space median report more weekly walking minutes, and the difference is larger among residents with lower incomes.",
+      "kind": "expected_finding",
+      "falsifier": "Walking minutes do not differ between the two groups once age, income and connectivity are controlled, or the difference is smaller among lower-income residents.",
+      "evidence_needed": "Seven-day walking diaries, green-space share per home, and the control variables for every participant."
+    },
+    {
+      "claim": "A neighbourhood-level green-space and walking dataset, with the code that builds it.",
+      "kind": "deliverable",
+      "evidence_needed": "The dataset and its build script, deposited with the project's data package."
+    }
+  ],
+  "warrant": {
+    "gap_statement": "Local green-space inventories and health surveys are collected by different agencies, so the association between green-space share and walking has not been estimated for Ghent.",
+    "evidence": [
+      "City of Ghent, green-space inventory, 2025",
+      "Flemish health survey, 2023 report",
+      "WHO, Urban green spaces and health, 2016"
+    ]
+  }
+}

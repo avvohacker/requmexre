@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "expect": "valid",
+    "standpoint": "none",
+    "funder": "vub",
+    "title": "Generative models and doctoral writing practice",
+    "version": "0.1",
+    "date": "2026-11-20"
+  },
+  "question": {
+    "text": "How do doctoral candidates change their writing practices once generative language models enter supervision?",
+    "answer_type": "exploratory",
+    "scope": "Four Flemish universities; doctoral candidates in the humanities and social sciences in their first two years; 2026 to 2029.",
+    "completion_criterion": "The question is answered when a typology of writing practices, built from observed supervision meetings and successive drafts, accounts for the variation found across the four sites."
+  },
+  "method": {
+    "approach": "Multi-site ethnography of supervision, combined with a longitudinal corpus of drafts and their revision histories.",
+    "sources": [
+      "Observed supervision meetings, four universities, 2026-2029",
+      "Draft corpus with version histories, contributed by participating candidates",
+      "University policy documents on AI use in doctoral education, 2023-2026"
+    ],
+    "procedure": "Follow 24 candidates, six per university, for two years; observe four supervision meetings per candidate per year; collect every draft of one chapter with its version history; code revision operations and prompt-and-verify sequences; build the typology by thematic analysis; member-check the typology with participants in the third year.",
+    "validity_conditions": [
+      "Candidates are followed from before their first sustained use of a generative model",
+      "Drafts come from a single chapter per candidate, so revisions are comparable",
+      "Field notes and transcripts are coded by two researchers independently"
+    ],
+    "limits": [
+      "The sample covers humanities and social sciences only, where drafting is solitary and text-centred",
+      "Candidates who refuse to share drafts are absent from the corpus",
+      "Observed meetings may differ from unobserved ones"
+    ]
+  },
+  "results": [
+    {
+      "claim": "Candidates shift from sentence-level revision to prompt-and-verify cycles, and the shift is uneven across disciplines.",
+      "kind": "hypothesis",
+      "falsifier": "Drafts show no change in the mix of revision operations over the first two years, and meetings contain no prompt-and-verify sequences.",
+      "evidence_needed": "Paired drafts of the same chapter from two points in time, plus the transcripts of the meetings between them."
+    },
+    {
+      "claim": "A coding scheme for revision operations and prompt-and-verify sequences, with a codebook and worked examples.",
+      "kind": "deliverable",
+      "evidence_needed": "The codebook, the coded corpus and the worked examples, deposited with the project's data package."
+    }
+  ],
+  "warrant": {
+    "gap_statement": "Studies of generative models in doctoral writing rely on surveys of declared use, not on observed drafts or supervision talk.",
+    "evidence": [
+      "VUB, Central Doctoral Regulations, 2025",
+      "National survey of doctoral candidates, 2024",
+      "Review of university AI policies in Flanders, 2026"
+    ]
+  }
+}
