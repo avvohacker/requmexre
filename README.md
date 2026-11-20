@@ -63,7 +63,7 @@ Full rules: [schema/RULES.md](schema/RULES.md). Structural S1–S10 in JSON Sche
 ## Files
 
 ```
-README.md · VERSION_NOTES.md · V1.0_PLAN.md · SOURCES.md · LICENSE.md · AGENTS.md
+README.md · VERSION_NOTES.md · V1.0_PLAN.md · CITATION.cff · SOURCES.md · LICENSE.md · AGENTS.md
 schema/requmexre.schema.json   JSON Schema draft 2020-12
 schema/RULES.md                S1–S10, R1–R8
 schema/validate.py             two-layer validator
@@ -109,3 +109,7 @@ v0.5 is the current tree on `main`: it is not tagged and has no GitHub release.
 ## Cite
 
 > *requmexre*, v0.5, 2026.
+
+The machine-readable record is [CITATION.cff](CITATION.cff). There is no DOI:
+v0.5 is not tagged and not released, so the citation resolves through the
+repository and the Pages site.

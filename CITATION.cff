@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use requmexre, please cite it as below."
+title: requmexre
+abstract: "A machine-readable model of a research plan — research question, methodology and expected results — with a JSON Schema, a two-layer validator and section mappings for six funders."
+type: software
+authors:
+  - name: avvohacker
+repository-code: "https://github.com/avvohacker/requmexre"
+url: "https://avvohacker.github.io/requmexre/"
+version: "0.5"
+license-url: "https://github.com/avvohacker/requmexre/blob/main/LICENSE.md"
+keywords:
+  - research plan
+  - research question
+  - methodology
+  - expected results
+  - JSON Schema
+  - funder mappings
