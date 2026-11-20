@@ -50,8 +50,8 @@ would be tested and leave the section short; do not invent findings to fill it.
 | 2.1 Project's pathways towards impact | `results`, `standpoint` | Impact argued from expected findings and outcomes and from the declared criteria. If `meta.standpoint` is `none` or `undeclared`, do not invent a standpoint. |
 | 3.1 Work plan and resources | `method.procedure` | The procedure's sequence as work packages. Resources are not modelled. |
 
-Horizon also has 2.2 measures to maximise impact (dissemination, exploitation
-and communication), an optional 2.3 Summary, and 3.2 Capacity of participants and
+Horizon also has 2.2 Measures to maximise impact - Dissemination, exploitation
+and communication, an optional 2.3 Summary, and 3.2 Capacity of participants and
 consortium as a whole. Preliminary work and the applicant's own research are not
 model fields: do not invent them.
 
@@ -59,11 +59,11 @@ model fields: do not invent them.
 
 | Section | Fields | What to write |
 |---|---|---|
-| 1. State of the art and preliminary work | `warrant` | The gap and its dated evidence. Preliminary work and the applicant's own research are not modelled; do not invent them. |
+| 1 Starting Point — State of the art and preliminary work | `warrant` | The gap and its dated evidence. Preliminary work and the applicant's own research are not modelled; do not invent them. |
 | 2.2 Objectives | `questions.primary`, `questions.secondary` | The question or objective as written, its scope, and its criterion. DFG has no results section: if `results` is present, do not open one; use the claims only inside 2.2 or 2.3 where they serve the objectives or work programme. |
-| 2.3 Work programme incl. methods | `method` | Approach, sources, procedure, validity conditions, limits. |
+| 2.3 Work programme incl. proposed research methods | `method` | Approach, sources, procedure, validity conditions, limits. |
 
-DFG 2.1 is the anticipated duration; 2.4, 2.5, 3, 4 and 5 are not modelled.
+DFG 2.1 Anticipated total duration of the project, 2.4 Handling of research data, 2.5 Relevance of sex, gender and/or diversity in the research project, 3 Project- and subject-related list of publications, 4 Supplementary information on the research context and 5 Requested modules/funds are not modelled.
 There is no dedicated standpoint section: if `meta.standpoint` is `declared`, it
 belongs in 2.2 as part of the objectives; if it is `none` or `undeclared`, do
 not invent one.
@@ -72,13 +72,13 @@ not invent one.
 
 | Section | Fields | What to write |
 |---|---|---|
-| 1. Current state of research | `warrant` | The gap and its dated evidence. |
+| 1. Current state of research in the field | `warrant` | The gap and its dated evidence. |
 | 2. Current state of your own research | — | Own research is not a model field; do not invent it. |
-| 3. Detailed research plan | `questions`, `method`, `results` | Question or objective, method, and expected results inside section 3. |
+| 3. Detailed research plan | `questions`, `method` | Question or objective, approach, sources and procedure. The form also asks for investigations, data collection and team roles; the first two are in the method, the team is not modelled. |
 | 4. Schedule and milestones | `method.procedure` (partial) | The procedure's sequence; milestones and resources are not modelled. |
-| 5. Relevance and impact | `results` (as stated in section 3), `standpoint` | Impact from expected findings and outcomes and from the declared criteria. If `meta.standpoint` is `none` or `undeclared`, do not invent one. |
+| 5. Relevance and impact | `standpoint` | Impact from the plan's expected findings or outcomes, if present, and from the declared criteria. SNSF has no results section; do not open one. If `meta.standpoint` is `none` or `undeclared`, do not invent one. |
 
-SNSF also asks for ethics and budget; neither is modelled.
+SNSF has no results section: do not render one. It also asks for ethics and budget; neither is modelled.
 
 ## Rendering rules
 
@@ -108,11 +108,16 @@ The six funders are mapped. The model does not carry:
 
 - preliminary work and the applicant's own research (Horizon, DFG section 1,
   SNSF section 2);
-- Horizon 2.2 measures to maximise impact (dissemination, exploitation and
-  communication), optional 2.3 Summary, 3.2 Capacity, and the resources of 3.1;
-- DFG 2.1 duration, 2.4, 2.5, 3, 4, 5, and a standalone results section;
-- SNSF 4 milestones (only the procedure's sequence is mapped), ethics and
-  budget.
+- Horizon 2.2 Measures to maximise impact - Dissemination, exploitation and
+  communication, optional 2.3 Summary, 3.2 Capacity of participants and
+  consortium as a whole, and the resources of 3.1;
+- DFG 2.1 Anticipated total duration of the project, 2.4 Handling of research
+  data, 2.5 Relevance of sex, gender and/or diversity in the research project,
+  3 Project- and subject-related list of publications, 4 Supplementary
+  information on the research context, 5 Requested modules/funds, and a standalone
+  results section;
+- SNSF results (no section; do not render one), 4 milestones (only the
+  procedure's sequence is mapped), ethics and budget.
 
 A funder outside the six known values is `funder: "other"` with `scheme`; it
 has no table and is handled by hand.
