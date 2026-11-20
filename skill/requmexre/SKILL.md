@@ -173,7 +173,7 @@ content, keep the shape.
 ## Limits
 
 - Six funders are mapped: FWO, PRIN, VUB, Horizon, DFG and SNSF. The schema
-  is v0.5.
+  is v1.0.
 - A funder outside the six known values uses `funder: "other"` and `scheme`;
   there is no section table for it.
 - The validator checks form, not truth, not citations, not fit between a claim

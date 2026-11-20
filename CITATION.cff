@@ -7,7 +7,7 @@ authors:
   - name: avvohacker
 repository-code: "https://github.com/avvohacker/requmexre"
 url: "https://avvohacker.github.io/requmexre/"
-version: "0.5"
+version: "1.0.0"
 license-url: "https://github.com/avvohacker/requmexre/blob/main/LICENSE.md"
 keywords:
   - research plan

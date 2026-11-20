@@ -1,7 +1,8 @@
 # Section mappings
 
 How the five fields become the sections of an FWO, PRIN, VUB, Horizon, DFG or
-SNSF plan. The six tables are the v0.5 mappings; the schema is v0.5. Section
+SNSF plan. The six tables date from v0.5; the schema is v1.0 and neither changed
+at the freeze. Section
 names and numbers are taken from
 the documents cited in
 [`SOURCES.md`](../../../SOURCES.md); page and character limits are set by the call

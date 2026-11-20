@@ -4,7 +4,7 @@ A machine-readable model of a research plan written as **research question → m
 
 The name is the three slots: **RE**search **QU**estion + **ME**thodology + e**X**pected **RE**sults.
 
-**Version:** v0.5 · **Licence:** all rights reserved · **Sources:** [SOURCES.md](SOURCES.md)
+**Version:** v1.0 · **Licence:** all rights reserved · **Sources:** [SOURCES.md](SOURCES.md)
 
 ## What the funders ask
 
@@ -102,14 +102,14 @@ Exit code 0 when every pure plan is valid and every negative envelope reports it
 | v0.3 | Outcomes with a measure, and outputs, in `results`; answer types widened; pilot re-run in [schema/BREAKAGES.md](schema/BREAKAGES.md) |
 | v0.4 | Typed sources: `data`, `literature`, `participants`, `corpus` in `method.sources` |
 | v0.5 | Six-funder mappings: Horizon, DFG and SNSF added; schema v0.5 |
-| v1.0 | Stable schema and citation |
+| v1.0 | Schema frozen at 1.0.0 and a `CITATION.cff`; no tag or release |
 
-v0.5 is the current tree on `main`: it is not tagged and has no GitHub release.
+v1.0 is the current tree on `main`: it is not tagged and has no GitHub release.
 
 ## Cite
 
-> *requmexre*, v0.5, 2026.
+> *requmexre*, v1.0, 2026.
 
 The machine-readable record is [CITATION.cff](CITATION.cff). There is no DOI:
-v0.5 is not tagged and not released, so the citation resolves through the
+v1.0 is not tagged and not released, so the citation resolves through the
 repository and the Pages site.

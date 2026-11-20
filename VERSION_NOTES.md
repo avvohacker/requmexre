@@ -1,5 +1,33 @@
 # Version notes
 
+## v1.0 — 20 November 2026
+
+requmexre v1.0 freezes the v0.5 model: no field, rule, fixture or mapping
+changed. The diff of `schema/requmexre.schema.json`, `schema/RULES.md` and
+`schema/validate.py` against v0.5 (`e2ef265`) is empty apart from the version
+strings.
+
+v1.0 is the tree on `main`: it has no tag and no GitHub release.
+
+### Schema and validator
+
+- The `$id` moves to `/schema/1.0/requmexre.schema.json`.
+- S1–S10 and R1–R8 are unchanged; the validator banner reads v1.0.
+- Compatibility is unchanged from v0.5: same fields, same rules, same fixtures.
+
+### Citation
+
+- `CITATION.cff` at `version: "1.0.0"`, author `avvohacker`, licence all rights
+  reserved, no DOI.
+
+### Checks
+
+- `python3 validate.py`: 24/24 fixtures.
+- `python3 validate.py published/*.json`: 3/3 published plans.
+- Draft 2020-12 schema check: ok.
+- `cffconvert --validate`: ok.
+- `site/build.py`: ok.
+
 ## v0.5 — 20 November 2026
 
 requmexre v0.5 closes changes 1–11 and ships the Horizon, DFG and SNSF

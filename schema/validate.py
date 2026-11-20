@@ -505,7 +505,7 @@ def main(argv):
 
     width = max(len(display(target)) for target in targets)
     failures = 0
-    print("requmexre v0.5 — structural S1–S10, semantic R1–R8\n")
+    print("requmexre v1.0 — structural S1–S10, semantic R1–R8\n")
 
     for target in targets:
         ok, expect, findings, note = check_file(target, schema)

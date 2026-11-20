@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://requmexre.org/schema/0.5/requmexre.schema.json",
+  "$id": "https://requmexre.org/schema/1.0/requmexre.schema.json",
   "title": "requmexre — research plan",
-  "description": "A research plan as research questions, methodology and expected results, with warrant and standpoint. Structural layer S1–S10; the semantic layer R1–R8 is implemented in validate.py. v0.5: typed sources, declared standpoint, explicit limits, and a funder or explicit other scheme.",
+  "description": "A research plan as research questions, methodology and expected results, with warrant and standpoint. Structural layer S1–S10; the semantic layer R1–R8 is implemented in validate.py. v1.0: frozen model — no fields or rules added since v0.5.",
   "$comment": "S1 — closed top level: meta, questions, method and warrant are required; results and standpoint are optional",
   "type": "object",
   "required": ["meta", "questions", "method", "warrant"],
