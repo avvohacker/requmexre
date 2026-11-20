@@ -40,6 +40,18 @@
       "Capacity prevents a full realist synthesis"
     ]
   },
+  "results": [
+    {
+      "claim": "The range and strength of evidence for an impact of creative bibliotherapy on mental health and wellbeing, by outcome.",
+      "kind": "outcome",
+      "measure": "Descriptive synthesis of effect estimates and Cochrane risk-of-bias judgements across the included studies."
+    },
+    {
+      "claim": "A refined programme theory stated as context-mechanism-outcome configurations.",
+      "kind": "output",
+      "evidence_needed": "The included studies and the theoretical literature on mechanisms of change."
+    }
+  ],
   "warrant": {
     "gap_statement": "No comprehensive assessment of the evidence for creative bibliotherapy exists; the two earlier reviews cover behaviour and post-traumatic stress and neither describes mechanisms of change.",
     "evidence": [

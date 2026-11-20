@@ -36,6 +36,23 @@
       "No date range is applied"
     ]
   },
+  "results": [
+    {
+      "claim": "The distribution of included studies across policy types, anticipatory behaviours, country income levels and forest biomes.",
+      "kind": "outcome",
+      "measure": "Counts of included studies per category in the coded dataset, presented as heatmaps."
+    },
+    {
+      "claim": "A narrative evidence map, a ROSES flow diagram and an online dataset of included studies.",
+      "kind": "output",
+      "evidence_needed": "The coded dataset and the flow diagram produced by the screening and extraction process."
+    },
+    {
+      "claim": "An EviAtlas world map and heatmaps of policy type, income level, biome and anticipatory behaviour.",
+      "kind": "output",
+      "evidence_needed": "The coded study attributes and locations, rendered with EviAtlas."
+    }
+  ],
   "warrant": {
     "gap_statement": "No systematic evidence synthesis has been conducted on anticipatory forest use behaviours, so their extent and sectoral scope are unknown.",
     "evidence": [

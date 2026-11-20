@@ -30,7 +30,7 @@ proposal that are not the plan.
 |---|---|---|
 | `questions` | `primary` (`text`, `form`, `answer_type`, `scope`, `completion_criterion` or `none`; `tertium_comparationis` for comparative, `criteria` and `operationalisation` for evaluative) and an optional `secondary` list | yes |
 | `method` | `approach`, `sources`, `procedure`; `validity_conditions`, `limits` | yes |
-| `results` | list of `claim` + `kind`; `falsifier` and `evidence_needed` for hypotheses and expected findings | no |
+| `results` | list of `claim` + `kind` (hypothesis, expected_finding, outcome, output); `falsifier` and `evidence_needed` for claims, `measure` for outcomes | no |
 | `warrant` | `gap_statement`, `evidence` | yes |
 | `standpoint` | `normative_premises`, `criteria`; declared, or `meta.standpoint` set to `none` | no |
 
@@ -50,7 +50,7 @@ Establish what is being asked and for whom.
 
 - Which funder and which call? FWO, PRIN and VUB are mapped in
   [`references/mappings.md`](references/mappings.md); Horizon, DFG and SNSF are
-  not mapped yet (roadmap v0.3) and should be handled by hand.
+  not mapped yet (roadmap v0.4) and should be handled by hand.
 - Is there a draft to convert, or is the plan new? If there is a draft, extract
   candidate sentences for each field before writing anything.
 - Is a standpoint declared? If the plan argues from normative premises — equity,
@@ -101,13 +101,15 @@ could fail.
 
 Only if the funder asks for results, or if the plan needs them to be checkable.
 
-- `kind` is `hypothesis`, `expected_finding` or `deliverable`.
+- `kind` is `hypothesis`, `expected_finding`, `outcome` or `output`.
 - A hypothesis or an expected finding needs a `falsifier`: the observation that
   would show it false, stated as an observation, not as its negation (R6). It also
   needs `evidence_needed`: the data that would settle it.
-- A deliverable is produced, not falsified: no falsifier (S7).
-- At least one result must be a claim about the world; a list of deliverables
-  answers nothing (R5).
+- An outcome is a quantity the study will estimate: it needs a `measure` and
+  carries no falsifier (S7).
+- An output is produced, not tested: no falsifier and no measure (S7).
+- At least one result must be a claim or an outcome; a list of outputs answers
+  nothing (R5).
 
 Exit: every claim has an observation that could defeat it.
 

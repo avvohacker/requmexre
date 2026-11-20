@@ -38,7 +38,7 @@ SEMANTIC_RULES = {
     "R2": "each completion criterion does not restate its question",
     "R3": "the gap statement does not restate the question",
     "R4": "each piece of warrant evidence is dated or identifiable",
-    "R5": "results make a claim about the world, not only deliverables",
+    "R5": "results make a claim about the world, or measure something, not only outputs",
     "R6": "each falsifier differs from the claim it tests",
     "R7": "limits are not validity conditions",
     "R8": "the standpoint is declared or explicitly none, and the body agrees",
@@ -355,15 +355,15 @@ def check_semantics(doc):
                 )
             )
 
-    # R5 — results are not only deliverables
+    # R5 — results are not only outputs
     results = doc.get("results") or []
     kinds = [item.get("kind") for item in results if isinstance(item, dict)]
-    if results and kinds and all(kind == "deliverable" for kind in kinds):
+    if results and kinds and all(kind == "output" for kind in kinds):
         findings.append(
             Violation(
                 "R5",
                 "$.results",
-                "only deliverables: at least one result must be a hypothesis or an expected finding",
+                "only outputs: at least one result must be a claim (hypothesis or expected finding) or an outcome",
             )
         )
 
@@ -504,7 +504,7 @@ def main(argv):
 
     width = max(len(display(target)) for target in targets)
     failures = 0
-    print("requmexre v0.2 — structural S1–S10, semantic R1–R8\n")
+    print("requmexre v0.3 — structural S1–S10, semantic R1–R8\n")
 
     for target in targets:
         ok, expect, findings, note = check_file(target, schema)

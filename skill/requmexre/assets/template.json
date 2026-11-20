@@ -45,7 +45,7 @@
     },
     {
       "claim": "A neighbourhood-level green-space and walking dataset, with the code that builds it.",
-      "kind": "deliverable",
+      "kind": "output",
       "evidence_needed": "The dataset and its build script, deposited with the project's data package."
     }
   ],

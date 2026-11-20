@@ -18,3 +18,6 @@ jobs:
       - name: Run the two-layer validator over the fixtures
         working-directory: schema
         run: python3 validate.py
+      - name: Run the published plans
+        working-directory: schema
+        run: python3 validate.py published/*.json

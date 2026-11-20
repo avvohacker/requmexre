@@ -44,7 +44,7 @@
     },
     {
       "claim": "A coding scheme for revision operations and prompt-and-verify sequences, with a codebook and worked examples.",
-      "kind": "deliverable",
+      "kind": "output",
       "evidence_needed": "The codebook, the coded corpus and the worked examples, deposited with the project's data package."
     }
   ],

@@ -4,7 +4,7 @@ A machine-readable model of a research plan written as **research question → m
 
 The name is the three slots: **RE**search **QU**estion + **ME**thodology + e**X**pected **RE**sults.
 
-**Version:** v0.2 · **Licence:** all rights reserved · **Sources:** [SOURCES.md](SOURCES.md)
+**Version:** v0.3 · **Licence:** all rights reserved · **Sources:** [SOURCES.md](SOURCES.md)
 
 ## What the funders ask
 
@@ -32,7 +32,9 @@ Five fields: three slots plus two guards.
   "method":    { "approach": "...", "sources": ["..."], "procedure": "...",
                  "validity_conditions": ["..."], "limits": ["..."] },
   "results":   [ { "claim": "...", "kind": "hypothesis",
-                   "falsifier": "...", "evidence_needed": "..." } ],
+                   "falsifier": "...", "evidence_needed": "..." },
+                 { "claim": "...", "kind": "outcome", "measure": "..." },
+                 { "claim": "...", "kind": "output" } ],
   "warrant":   { "gap_statement": "...", "evidence": ["..."] },
   "standpoint":{ "normative_premises": ["..."], "criteria": ["..."] }
 }
@@ -41,7 +43,7 @@ Five fields: three slots plus two guards.
 - `questions.primary.completion_criterion`: what would count as an answer; `"none"` when the plan states none.
 - `questions.primary.form`: whether the text is written as an `interrogative` or an `objective`; R1 checks the text against it.
 - `method.validity_conditions` and `method.limits`: when the finding holds, and what it does not cover.
-- `results[].falsifier`: required for `hypothesis` and `expected_finding`, not for `deliverable`.
+- `results[].falsifier`: required for `hypothesis` and `expected_finding`; an `outcome` carries a `measure` instead, and an `output` carries neither.
 - `warrant`: why the question is still open, with at least one dated or identifiable source.
 - `standpoint`: the normative premises, declared or explicitly set to `"none"` in `meta`.
 
@@ -57,9 +59,11 @@ schema/requmexre.schema.json   JSON Schema draft 2020-12
 schema/RULES.md                S1–S10, R1–R8
 schema/validate.py             two-layer validator
 schema/cases/                  fwo, prin, vub, negative (fixtures)
-schema/published/               three published plans, encoded (v0.2 pilot)
+schema/published/               three published plans, encoded
 schema/BREAKAGES.md            where the model breaks on those plans
 skill/requmexre/               SKILL.md, references/mappings.md, assets/template.json
+site/build.py                  Pages build: README, RULES, SOURCES → one page
+.github/workflows/             validate.yml, pages.yml
 ```
 
 ## Use
@@ -69,6 +73,7 @@ cd schema
 python3 validate.py                                      # all fixtures
 python3 validate.py cases/prin.json                      # one file
 python3 validate.py ../skill/requmexre/assets/template.json
+python3 validate.py published/*.json                     # the published plans
 ```
 
 Exit code 0 when every file behaves as declared (`meta.expect`). The skill runs five phases — detect, question, method, results, guards — writes `plan.json`, validates it, and renders it into FWO, PRIN or VUB sections.
@@ -83,10 +88,11 @@ Exit code 0 when every file behaves as declared (`meta.expect`). The skill runs 
 
 | Version | Content |
 |---|---|
-| v0.2 | Plural questions, declared form, explicit completion criterion; three published plans in `schema/published` and the pilot report in [schema/BREAKAGES.md](schema/BREAKAGES.md) |
-| v0.3 | Mappings for Horizon, DFG and SNSF in the skill |
+| v0.2 | Plural questions, declared form, explicit completion criterion; three published plans in `schema/published` |
+| v0.3 | Outcomes with a measure, and outputs, in `results`; pilot re-run in [schema/BREAKAGES.md](schema/BREAKAGES.md) |
+| v0.4 | Mappings for Horizon, DFG and SNSF in the skill |
 | v1.0 | Stable schema and citation |
 
 ## Cite
 
-> *requmexre*, v0.2, 2026.
+> *requmexre*, v0.3, 2026.

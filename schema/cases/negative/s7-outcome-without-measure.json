@@ -1,6 +1,6 @@
 {
   "meta": {
-    "expect": "R5",
+    "expect": "S7",
     "standpoint": "none",
     "funder": "none",
     "title": "Overtime after a four-day week",
@@ -13,7 +13,7 @@
       "form": "interrogative",
       "answer_type": "descriptive",
       "scope": "Small firms in Belgium with 10 to 49 employees, 2027 to 2029.",
-      "completion_criterion": "The question is answered when overtime hours per employee are estimated before and after adoption and the estimate is compared with non-adopting firms."
+      "completion_criterion": "none"
     }
   },
   "method": {
@@ -31,14 +31,8 @@
   },
   "results": [
     {
-      "claim": "A monthly overtime series for adopting and non-adopting firms, with the matching code.",
-      "kind": "deliverable",
-      "evidence_needed": "Monthly payroll records for both groups, two years either side of adoption."
-    },
-    {
-      "claim": "A short methodological note on matching firms by sector and size.",
-      "kind": "deliverable",
-      "evidence_needed": "The matching procedure as implemented, with the diagnostics it produced."
+      "claim": "Overtime hours per employee after adoption.",
+      "kind": "outcome"
     }
   ],
   "warrant": {

@@ -44,6 +44,24 @@
       "Intention-to-treat is applied to all randomised dyads"
     ]
   },
+  "results": [
+    {
+      "claim": "The i-MaCHeL programme changes BMI z-score more than the active control at 3 and 9 months.",
+      "kind": "hypothesis",
+      "falsifier": "The between-group difference in BMI z-score change is indistinguishable from zero at 3 and 9 months after adjustment for clustering and baseline values.",
+      "evidence_needed": "Anthropometric measurements for both arms at baseline, 3 and 9 months."
+    },
+    {
+      "claim": "BMI z-score change from baseline at 3 and 9 months.",
+      "kind": "outcome",
+      "measure": "Weight and height measured at each time point and converted to BMI z-score; between-group difference estimated with the cluster-adjusted model."
+    },
+    {
+      "claim": "Dietary intake, physical activity, screen time, health-related quality of life and the parental measures at 3 and 9 months.",
+      "kind": "outcome",
+      "measure": "Three-day food records and validated questionnaires, scored per instrument and compared between arms."
+    }
+  ],
   "warrant": {
     "gap_statement": "Most preschool-based trials of weight-related behaviour change were conducted in high-income countries, and no study integrates classroom activities with a web-based programme for child-parent dyads in Malaysia.",
     "evidence": [

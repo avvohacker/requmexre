@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://requmexre.org/schema/0.2/requmexre.schema.json",
+  "$id": "https://requmexre.org/schema/0.3/requmexre.schema.json",
   "title": "requmexre — research plan",
-  "description": "A research plan as research questions, methodology and expected results, with warrant and standpoint. Structural layer S1–S10; the semantic layer R1–R8 is implemented in validate.py. v0.2: plural questions, a declared form, an explicit completion criterion.",
+  "description": "A research plan as research questions, methodology and expected results, with warrant and standpoint. Structural layer S1–S10; the semantic layer R1–R8 is implemented in validate.py. v0.3: outcomes with a measure, and outputs, alongside hypotheses and expected findings.",
   "$comment": "S1 — closed top level: meta, questions, method and warrant are required; results and standpoint are optional",
   "type": "object",
   "required": ["meta", "questions", "method", "warrant"],
@@ -146,7 +146,7 @@
       }
     },
     "results": {
-      "$comment": "S6 — results block, when present, is a non-empty list of typed claims",
+      "$comment": "S6 — results block, when present, is a non-empty list of typed results",
       "type": "array",
       "minItems": 1,
       "items": { "$ref": "#/$defs/result" }
@@ -158,8 +158,9 @@
       "additionalProperties": false,
       "properties": {
         "claim": { "$ref": "#/$defs/text" },
-        "kind": { "enum": ["hypothesis", "expected_finding", "deliverable"] },
+        "kind": { "enum": ["hypothesis", "expected_finding", "outcome", "output"] },
         "falsifier": { "$ref": "#/$defs/text" },
+        "measure": { "$ref": "#/$defs/text" },
         "evidence_needed": { "$ref": "#/$defs/text" }
       },
       "allOf": [
@@ -176,11 +177,22 @@
         {
           "if": {
             "required": ["kind"],
-            "properties": { "kind": { "const": "deliverable" } }
+            "properties": { "kind": { "const": "outcome" } }
           },
           "then": {
-            "$comment": "S7 — a deliverable is produced, not falsified: it carries no falsifier",
+            "$comment": "S7 — an outcome names the measure that produces it and carries no falsifier",
+            "required": ["measure"],
             "properties": { "falsifier": false }
+          }
+        },
+        {
+          "if": {
+            "required": ["kind"],
+            "properties": { "kind": { "const": "output" } }
+          },
+          "then": {
+            "$comment": "S7 — an output is produced, not measured or falsified: it carries neither a measure nor a falsifier",
+            "properties": { "falsifier": false, "measure": false }
           }
         }
       ]

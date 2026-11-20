@@ -32,7 +32,7 @@
   "results": [
     {
       "claim": "A monthly overtime series for adopting and non-adopting firms, with the matching code.",
-      "kind": "deliverable",
+      "kind": "output",
       "falsifier": "The series is not published within the project period.",
       "evidence_needed": "Monthly payroll records for both groups, two years either side of adoption."
     }

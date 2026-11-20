@@ -50,7 +50,7 @@
     },
     {
       "claim": "An open dataset of region-level avoidable-admission rates by condition set and income quintile, 2016-2026, with the code that builds it.",
-      "kind": "deliverable",
+      "kind": "output",
       "evidence_needed": "The published dataset and its build script, deposited with the project's data package."
     }
   ],

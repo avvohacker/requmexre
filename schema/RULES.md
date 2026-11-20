@@ -23,8 +23,8 @@ structural layer.
 | S3 | `questions` holds one `primary` question and optional `secondary` questions. Every question requires `text` and `form` (interrogative or objective); the primary also requires `answer_type`, `scope` and `completion_criterion`, which is a string or the word `none`. | `$defs/questions`, `$defs/question`, `$defs/primaryQuestion` |
 | S4 | A comparative question requires `tertium_comparationis`. An evaluative question requires `criteria` and `operationalisation`. A question of any other type carries none of the three. Applies to every question that declares an answer type. | `$defs/question/allOf` |
 | S5 | `method` requires `approach`, a non-empty `sources` list and `procedure`; `validity_conditions` and `limits` are optional lists of non-blank strings. | `$defs/method` |
-| S6 | `results`, when present, is a non-empty list of objects with `claim` and `kind` (hypothesis, expected_finding, deliverable); no other required keys. | `$defs/results`, `$defs/result` |
-| S7 | A `hypothesis` or an `expected_finding` requires `falsifier` and `evidence_needed`. A `deliverable` carries no `falsifier`: it is produced, not falsified. | `$defs/result/allOf` |
+| S6 | `results`, when present, is a non-empty list of objects with `claim` and `kind` (hypothesis, expected_finding, outcome, output); no other required keys. | `$defs/results`, `$defs/result` |
+| S7 | A `hypothesis` or an `expected_finding` requires `falsifier` and `evidence_needed`. An `outcome` requires `measure` and carries no falsifier. An `output` carries neither a measure nor a falsifier: it is produced, not tested. | `$defs/result/allOf` |
 | S8 | `warrant` requires `gap_statement` and a non-empty `evidence` list. | `$defs/warrant` |
 | S9 | `standpoint`, when present, requires `normative_premises` and `criteria`. Both are lists; whether they may be empty is a matter for R8, not the schema. | `$defs/standpoint` |
 | S10 | Every string holds at least one non-blank character. | `$defs/text`, used everywhere |
@@ -34,6 +34,13 @@ results section (DFG, SNSF). `standpoint` is optional because a plan may declare
 that it has none; `meta.standpoint` makes that declaration explicit rather than
 silent.
 
+A result is one of four kinds. A `hypothesis` or an `expected_finding` is a claim
+about the world: it carries a `falsifier` and the `evidence_needed`. An `outcome`
+is a quantity the study will estimate, and carries its `measure`. An `output` is
+a map, dataset, instrument or other artefact that is produced, and carries
+neither. R5 requires at least one claim or outcome, so a list of outputs alone
+still fails.
+
 ### Why a form and why "none"
 
 Published plans state objectives at least as often as questions. Requiring an
@@ -42,7 +49,7 @@ question declares its `form` and R1 checks the text against that declaration.
 Secondary objectives are often short: they need only `text` and `form`, while the
 primary question also carries the answer type, the scope and the criterion.
 
-No published plan read for v0.2 states what would count as an answer. The
+No published plan read for this pilot states what would count as an answer. The
 criterion stays required so that the absence is recorded rather than hidden: a
 plan writes `"none"`, and R2 skips it. The alternative — leaving the field
 optional — makes "no criterion" and "not stated" indistinguishable.
@@ -58,7 +65,7 @@ clean, since every check below reads fields the schema guarantees.
 | R2 | Each completion criterion does not restate its own question. | the criterion and its question share 70 per cent or more of the criterion's content words. `none` is skipped. |
 | R3 | The gap statement does not restate the primary question. | the gap statement and the primary question share 70 per cent or more of the gap statement's content words. |
 | R4 | Warrant evidence is dated or identifiable. | an entry in `warrant.evidence` carries no year (19xx/20xx) and no identifier (DOI, `10.xxxx/`, arXiv, ISBN, PMID, URL). |
-| R5 | Results make a claim about the world. | `results` is present and every entry has `kind` `deliverable`. Deliverables alone answer no question. |
+| R5 | Results make a claim about the world, or measure something. | `results` is present and every entry has `kind` `output`. Outputs alone answer no question. |
 | R6 | A falsifier differs from the claim it tests. | a result's `falsifier` shares 70 per cent or more of its content words with the claim. |
 | R7 | Limits are not validity conditions. | a limit shares 70 per cent or more of its content words with a validity condition, or the two lists repeat an entry. |
 | R8 | The standpoint is declared or explicitly none, and the body agrees. | `meta.standpoint` is `none` and a `standpoint` object is present; or it is `declared` and the object is missing, or either list is empty. |
