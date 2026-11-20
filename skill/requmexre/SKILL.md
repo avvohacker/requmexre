@@ -50,7 +50,9 @@ Establish what is being asked and for whom.
 
 - Which funder and which call? FWO, PRIN and VUB are mapped in
   [`references/mappings.md`](references/mappings.md); Horizon, DFG and SNSF are
-  not mapped yet (roadmap v0.5) and should be handled by hand.
+  roadmap v0.5 and should be handled by hand until their tables land. A funder
+  outside the known list is `meta.funder: "other"` with `meta.scheme` naming it,
+  and is also handled by hand.
 - Is there a draft to convert, or is the plan new? If there is a draft, extract
   candidate sentences for each field before writing anything.
 - Is a standpoint declared? If the plan argues from normative premises — equity,
@@ -169,6 +171,8 @@ content, keep the shape.
 ## Limits
 
 - Three funders are mapped; Horizon, DFG and SNSF are not (roadmap v0.5).
+- A funder outside the six known values uses `funder: "other"` and `scheme`;
+  there is no section table for it.
 - The validator checks form, not truth, not citations, not fit between a claim
   and its evidence.
 - Fixtures and the template are synthetic: structure from the funder documents,

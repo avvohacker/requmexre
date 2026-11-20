@@ -62,6 +62,9 @@ render them yet. Their sections are known — objectives, methodology, impact
 for Horizon; objectives, work programme, no results section for DFG; a single
 detailed research plan for SNSF — and mapping them is roadmap v0.5.
 
+A funder outside the six known values is `funder: "other"` with `scheme`; it
+has no table and is handled by hand.
+
 ## Gaps the mapping exposes
 
 - FWO and VUB have no results section: the schema's optional `results` is what

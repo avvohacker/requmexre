@@ -28,7 +28,7 @@ This version records those revisions and what is still open.
 | Sources, one semantics | not noticed | model gap: a database and a set of measurements were both plain strings | fixed by change 6: each source declares `data`, `literature`, `participants` or `corpus` |
 | Bibliotherapy, PASS | "manufactured" | model gap: the completion criterion was required, so one was supplied | fixed by `"none"` |
 | Bibliotherapy, second question | model gap | model gap: one question slot | fixed by plural questions |
-| Bibliotherapy, funder | model gap | model gap: Wellcome is not in the enum | open (change 7) |
+| Bibliotherapy, funder | model gap | model gap: Wellcome is not in the enum | fixed by change 7 (v0.5): `other` + `scheme` |
 | Standpoint `none` | not noticed | a declaration we made, not the plan's | open (change 8) |
 | `meta.expect` | model gap | fixture machinery inside the plan | open (change 9) |
 
@@ -94,15 +94,14 @@ outputs that are outputs. The evidence-map question declares `synthesis`
 ### Creative bibliotherapy — passes
 
 Both questions encoded; the mechanisms question declares `mechanistic` (change
-5), and the sources are `literature`. Results: one outcome and one output. Still
-missing: the Wellcome Trust cannot be named in `funder` (change 7); the undeclared
-standpoint is recorded as `"none"` by us (change 8).
+5), and the sources are `literature`. Results: one outcome and one output. The
+funder is `other` with `scheme: "Wellcome Trust"` (change 7). Still missing: the
+undeclared standpoint is recorded as `"none"` by us (change 8).
 
-## Still open (changes 7–11)
+## Still open (changes 8–11)
 
 | # | Breakage | Where | Seen in | Change |
 |---|---|---|---|---|
-| 7 | Funder list is closed | S2 | bibliotherapy | free string, or `other` plus `scheme` |
 | 8 | Standpoint is binary | S2, R8 | all three | `declared \| none \| undeclared` |
 | 9 | Fixture machinery sits inside the plan | S2 `meta.expect` | all three | move `expect` to a fixture envelope |
 | 10 | Registration, ethics, timeline have no home | S1 `additionalProperties` | all three | declare them out of scope, or allow `extensions` |
@@ -128,9 +127,9 @@ published plans, the skill, the README and the site.
 
 ## Next
 
-With sources typed, the next gap is `funder` (change 7), then 8–11. The v0.5
-mappings (Horizon, DFG, SNSF) should follow, so they encode the current shape
-rather than the old one.
+With sources typed and the funder list opened (change 7), the next gap is
+`standpoint` (change 8), then 9–11. The v0.5 mappings (Horizon, DFG, SNSF)
+should follow, so they encode the current shape rather than the old one.
 
 ## Sources encoded
 

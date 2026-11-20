@@ -37,7 +37,7 @@
       }
     },
     "meta": {
-      "$comment": "S2 — meta block: how the file expects to be judged, and whether a standpoint is declared",
+      "$comment": "S2 — meta block: fixture expectation, standpoint, funder and identity",
       "type": "object",
       "required": ["expect", "standpoint"],
       "additionalProperties": false,
@@ -47,7 +47,8 @@
           "pattern": "^(?:valid|S(?:[1-9]|10)|R[1-8])$"
         },
         "standpoint": { "enum": ["declared", "none"] },
-        "funder": { "enum": ["fwo", "prin", "vub", "horizon", "dfg", "snsf", "none"] },
+        "funder": { "enum": ["fwo", "prin", "vub", "horizon", "dfg", "snsf", "other", "none"] },
+        "scheme": { "$ref": "#/$defs/text" },
         "title": { "$ref": "#/$defs/text" },
         "version": {
           "type": "string",
@@ -58,7 +59,23 @@
           "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
         },
         "id": { "$ref": "#/$defs/text" }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["funder"],
+            "properties": { "funder": { "const": "other" } }
+          },
+          "then": {
+            "$comment": "S2 — an unknown funder is named by its scheme",
+            "required": ["scheme"]
+          },
+          "else": {
+            "$comment": "S2 — a scheme is meaningful only with funder other",
+            "properties": { "scheme": false }
+          }
+        }
+      ]
     },
     "questions": {
       "$comment": "S3 — questions block: one primary question and optional secondary questions",
