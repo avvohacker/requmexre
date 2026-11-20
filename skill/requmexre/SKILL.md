@@ -29,7 +29,7 @@ proposal that are not the plan.
 | Field | Holds | Required |
 |---|---|---|
 | `questions` | `primary` (`text`, `form`, `answer_type`, `scope`, `completion_criterion` or `none`; `tertium_comparationis` for comparative, `criteria` and `operationalisation` for evaluative) and an optional `secondary` list | yes |
-| `method` | `approach`, `sources`, `procedure`; `validity_conditions`, `limits` | yes |
+| `method` | `approach`, `sources`, `procedure`; `validity_conditions`, `limits` (list or `none`) | yes |
 | `results` | list of `claim` + `kind` (hypothesis, expected_finding, outcome, output); `falsifier` and `evidence_needed` for claims, `measure` for outcomes | no |
 | `warrant` | `gap_statement`, `evidence` | yes |
 | `standpoint` | `normative_premises`, `criteria`; declared, `none` or `undeclared` in `meta.standpoint` | no |
@@ -103,7 +103,8 @@ as answered.
 - `validity_conditions`: what has to hold for the finding to stand — matching,
   instrument stability, response rate, coding independence.
 - `limits`: what the design does not cover. A limit is not a condition (R7) and
-  not an apology.
+  not an apology. When the plan states no limits, write `"none"`; absence means
+  the field was not addressed.
 
 Exit: a method a competent stranger could execute, and a list of the ways it
 could fail.

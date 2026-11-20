@@ -157,7 +157,7 @@
       "$ref": "#/$defs/question"
     },
     "method": {
-      "$comment": "S5 — method block: approach, sources and procedure, with the conditions and the limits of the finding",
+      "$comment": "S5 — method block: approach, sources and procedure, with validity conditions and limits (a list or none)",
       "type": "object",
       "required": ["approach", "sources", "procedure"],
       "additionalProperties": false,
@@ -170,7 +170,11 @@
         },
         "procedure": { "$ref": "#/$defs/text" },
         "validity_conditions": { "$ref": "#/$defs/textList" },
-        "limits": { "$ref": "#/$defs/textList" }
+        "limits": {
+          "if": { "type": "string" },
+          "then": { "const": "none" },
+          "else": { "$ref": "#/$defs/textList" }
+        }
       }
     },
     "results": {

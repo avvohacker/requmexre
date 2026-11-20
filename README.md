@@ -51,7 +51,7 @@ Five fields: three slots plus two guards.
 - `questions.primary.completion_criterion`: what would count as an answer; `"none"` when the plan states none.
 - `questions.primary.form`: whether the text is written as an `interrogative` or an `objective`; R1 checks the text against it.
 - `method.sources[].kind`: `data`, `literature`, `participants` or `corpus`; the `description` says what exactly is used.
-- `method.validity_conditions` and `method.limits`: when the finding holds, and what it does not cover.
+- `method.validity_conditions` and `method.limits`: when the finding holds, and what it does not cover; `limits` is `"none"` when the plan states none.
 - `results[].falsifier`: required for `hypothesis` and `expected_finding`; an `outcome` carries a `measure` instead, and an `output` carries neither.
 - `warrant`: why the question is still open, with at least one dated or identifiable source.
 - `standpoint`: the normative premises and criteria; `meta.standpoint` says `declared`, `none` or `undeclared`.

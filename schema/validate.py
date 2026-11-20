@@ -40,7 +40,7 @@ SEMANTIC_RULES = {
     "R4": "each piece of warrant evidence is dated or identifiable",
     "R5": "results make a claim about the world, or measure something, not only outputs",
     "R6": "each falsifier differs from the claim it tests",
-    "R7": "limits are not validity conditions",
+    "R7": "limits are not validity conditions; the word none is skipped",
     "R8": "the standpoint is declared, explicitly none, or undeclared, and the body agrees",
 }
 
@@ -384,7 +384,9 @@ def check_semantics(doc):
 
     # R7 — limits and validity conditions are different things
     conditions = method.get("validity_conditions") or []
-    limits = method.get("limits") or []
+    limits = method.get("limits")
+    if not isinstance(limits, list):
+        limits = []
     for index, limit in enumerate(limits):
         for other, condition in enumerate(conditions):
             if _normalise(limit) == _normalise(condition) or overlap(limit, condition) >= PARAPHRASE:

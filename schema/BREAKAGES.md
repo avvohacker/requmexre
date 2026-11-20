@@ -23,6 +23,7 @@ This version records those revisions and what is still open.
 | i-MaCHeL, R1 | model gap: objectives rejected | model gap: the plan is written as an aim, as funders ask | fixed by `form` |
 | i-MaCHeL, falsifier | not noticed | artefact: a falsifier was written that the protocol does not state | resolved by change 4: the hypothesis is kept, the falsifier is the null result the design tests, and it is flagged as derived |
 | i-MaCHeL, criterion | model gap | model gap: no plan states one | fixed by `"none"` |
+| i-MaCHeL, limits | not noticed | model gap: absent limits and no limits were indistinguishable | fixed by change 11 (v0.5): `limits: "none"` |
 | Forest, R5 | model gap: outputs rejected | artefact: `results` is optional, and the map's outputs were put there by choice. The missing slot for outputs was real | fixed by change 4: outputs have a kind, and the map also reports an outcome |
 | Forest, answer_type | model gap | model gap: an evidence map is not one of the six types | fixed by change 5: the map declares `synthesis` |
 | Sources, one semantics | not noticed | model gap: a database and a set of measurements were both plain strings | fixed by change 6: each source declares `data`, `literature`, `participants` or `corpus` |
@@ -83,7 +84,8 @@ Objective declared as such, with a tertium taken from the primary comparison; tw
 secondary objectives encoded. Sources: `participants` (the dyads) and `data` (the
 measurements and records). Results: one hypothesis and two outcomes, with the
 outcome measures the protocol names. Still missing: the funding statement was not
-captured, so `funder` is omitted; `answer_type: comparative` fits this plan.
+captured, so `funder` is omitted; `answer_type: comparative` fits this plan. The
+protocol states no limits, so `limits` is `"none"` (change 11).
 
 ### Anticipatory forest use — passes
 
@@ -98,13 +100,12 @@ Both questions encoded; the mechanisms question declares `mechanistic` (change
 funder is `other` with `scheme: "Wellcome Trust"` (change 7), and the standpoint
 is `undeclared` (change 8).
 
-## Still open (changes 9–11)
+## Still open (changes 9–10)
 
 | # | Breakage | Where | Seen in | Change |
 |---|---|---|---|---|
 | 9 | Fixture machinery sits inside the plan | S2 `meta.expect` | all three | move `expect` to a fixture envelope |
 | 10 | Registration, ethics, timeline have no home | S1 `additionalProperties` | all three | declare them out of scope, or allow `extensions` |
-| 11 | Absent limits look like no limits | S5 | i-MaCHeL | allow `"none"` as an explicit value |
 
 Changes 1–6 touched S3, S5, S6, S7, R1, R2, R5, all fixtures, the template, the
 published plans, the skill, the README and the site.
@@ -115,8 +116,8 @@ published plans, the skill, the README and the site.
   three without invention.
 - `scope`: population, setting and period were always present.
 - `method.procedure`: long, but always there, and always in order.
-- `validity_conditions` and `limits` where the plan states them: R7 produced no
-  false positives.
+- `validity_conditions` and `limits` where the plan states them, including
+  i-MaCHeL's explicit `"none"`: R7 produced no false positives.
 - R4 (dated evidence), R5 (outputs only) and R6 (falsifier) produced no false
   positives on the three plans.
 - R1 checks the text against the declared form and produced no false positives.
@@ -126,10 +127,11 @@ published plans, the skill, the README and the site.
 
 ## Next
 
-With sources typed, the funder list opened (change 7) and the standpoint
-distinguished (change 8), the next gap is limits (change 11), then the fixture
-envelope (change 9) and scope (change 10). The v0.5 mappings (Horizon, DFG,
-SNSF) should follow, so they encode the current shape rather than the old one.
+With sources typed, the funder list opened (change 7), the standpoint
+distinguished (change 8) and limits made explicit (change 11), the next gap is
+the fixture envelope (change 9), then scope (change 10). The v0.5 mappings
+(Horizon, DFG, SNSF) should follow, so they encode the current shape rather than
+the old one.
 
 ## Sources encoded
 

@@ -52,6 +52,9 @@ would be tested and leave the section short; do not invent findings to fill it.
   `undeclared`, do not claim the plan has none: flag the silence to the author
   and, where the form requires positioning, ask for a declaration rather than
   inventing one.
+- `limits: "none"` is a declaration that the plan states no limits: do not
+  invent a limitation. If `limits` is absent, say the plan does not state limits
+  rather than claiming there are none.
 - Word and page limits are not in this file because they change with the call.
   Check the form, then cut — preferably from the state of the art, never from the
   falsifiers.

@@ -48,7 +48,8 @@
       "Randomisation is performed by an independent researcher at preschool level",
       "The primary analysis adjusts for the clustering effect and baseline outcome values",
       "Intention-to-treat is applied to all randomised dyads"
-    ]
+    ],
+    "limits": "none"
   },
   "results": [
     {
