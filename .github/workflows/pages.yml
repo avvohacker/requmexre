@@ -7,6 +7,7 @@ on:
       - README.md
       - SOURCES.md
       - schema/RULES.md
+      - schema/requmexre.schema.json
       - site/**
       - .github/workflows/pages.yml
   workflow_dispatch:

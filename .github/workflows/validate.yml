@@ -21,3 +21,19 @@ jobs:
       - name: Run the published plans
         working-directory: schema
         run: python3 validate.py published/*.json
+      - name: Check the schema against draft 2020-12
+        run: |
+          python3 -m pip install --quiet "jsonschema>=4"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from jsonschema import Draft202012Validator
+
+          schema = json.loads(Path("schema/requmexre.schema.json").read_text())
+          Draft202012Validator.check_schema(schema)
+          print("draft 2020-12 ok:", schema["$id"])
+          PY
+      - name: Validate CITATION.cff
+        run: |
+          python3 -m pip install --quiet cffconvert
+          cffconvert --validate -i CITATION.cff

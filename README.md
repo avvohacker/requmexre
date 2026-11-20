@@ -58,7 +58,7 @@ Five fields: three slots plus two guards.
 
 Conditional rules: a comparative question needs a `tertium_comparationis`; an evaluative question needs criteria and their operationalisation.
 
-Full rules: [schema/RULES.md](schema/RULES.md). Structural S1–S10 in JSON Schema; semantic R1–R8 in the validator.
+Full rules: [schema/RULES.md](schema/RULES.md). Structural S1–S10 in JSON Schema; semantic R1–R8 in the validator. The schema `$id` is `https://avvohacker.github.io/requmexre/schema/1.0/requmexre.schema.json`, and the Pages build publishes the file at that path.
 
 ## Files
 

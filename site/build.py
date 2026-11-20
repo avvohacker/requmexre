@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Build the requmexre GitHub Pages site.
 
-Renders README.md and schema/RULES.md into one static page at site/_out/index.html.
+Renders README.md and schema/RULES.md into one static page at site/_out/index.html
+and publishes the JSON Schema at the path its `$id` names.
 Relative links to repository files are rewritten: RULES.md becomes the on-page
 #rules section, everything else points at the file on GitHub.
 
@@ -10,6 +11,7 @@ Relative links to repository files are rewritten: RULES.md becomes the on-page
 
 from __future__ import annotations
 
+import json
 import re
 import sys
 from pathlib import Path
@@ -20,6 +22,8 @@ ROOT = SITE.parent
 OUT = SITE / "_out"
 REPO_URL = "https://github.com/avvohacker/requmexre"
 BLOB_URL = f"{REPO_URL}/blob/main"
+SITE_URL = "https://avvohacker.github.io/requmexre/"
+SCHEMA_PATH = ROOT / "schema" / "requmexre.schema.json"
 
 try:
     import markdown
@@ -233,6 +237,15 @@ def main() -> int:
     target = OUT / "index.html"
     target.write_text(page, encoding="utf-8")
     print(f"wrote {target} ({len(page):,} bytes)")
+
+    schema_text = SCHEMA_PATH.read_text(encoding="utf-8")
+    schema_id = json.loads(schema_text)["$id"]
+    if not schema_id.startswith(SITE_URL):
+        sys.exit(f"schema $id {schema_id} does not start with {SITE_URL}")
+    schema_target = OUT / schema_id[len(SITE_URL):]
+    schema_target.parent.mkdir(parents=True, exist_ok=True)
+    schema_target.write_text(schema_text, encoding="utf-8")
+    print(f"wrote {schema_target} ({len(schema_text):,} bytes)")
     return 0
 
 

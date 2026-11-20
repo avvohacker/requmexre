@@ -11,7 +11,7 @@ v1.0 is the tree on `main`: it has no tag and no GitHub release.
 
 ### Schema and validator
 
-- The `$id` moves to `/schema/1.0/requmexre.schema.json`.
+- The `$id` moves to `https://avvohacker.github.io/requmexre/schema/1.0/requmexre.schema.json`; the Pages build publishes the file at that path.
 - S1–S10 and R1–R8 are unchanged; the validator banner reads v1.0.
 - Compatibility is unchanged from v0.5: same fields, same rules, same fixtures.
 
