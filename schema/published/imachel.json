@@ -34,8 +34,14 @@
   "method": {
     "approach": "Single-blind, two-group cluster randomised controlled trial; general linear model repeated measures with ANCOVA and intention-to-treat analysis.",
     "sources": [
-      "460 child-parent dyads recruited from 12 preschools in Kuala Terengganu and Kuala Nerus",
-      "Anthropometric measurements, three-day food records and validated questionnaires collected at baseline, 3 and 9 months"
+      {
+        "kind": "participants",
+        "description": "460 child-parent dyads recruited from 12 preschools in Kuala Terengganu and Kuala Nerus"
+      },
+      {
+        "kind": "data",
+        "description": "Anthropometric measurements, three-day food records and validated questionnaires collected at baseline, 3 and 9 months"
+      }
     ],
     "procedure": "Randomise 12 preschools 1:1 in six blocks; deliver 13 weekly online modules and teacher-led classroom sessions to the intervention arm; give the control arm general health newsletters; measure BMI z-score, diet, activity, screen time, quality of life and parental measures; analyse with repeated-measures ANCOVA adjusted for clustering, baseline values and covariates; impute missing data.",
     "validity_conditions": [

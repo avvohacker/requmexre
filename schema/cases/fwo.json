@@ -20,9 +20,18 @@
   "method": {
     "approach": "Quasi-experimental: difference-in-differences on household time-use diaries, with matched comparison households that stay on five days.",
     "sources": [
-      "Belgian time-use survey, 2022 wave, national statistical office release",
-      "Household diaries collected in adopting organisations, 2028 and 2030",
-      "Administrative payroll records, 2026-2031, for working-time verification"
+      {
+        "kind": "data",
+        "description": "Belgian time-use survey, 2022 wave, national statistical office release"
+      },
+      {
+        "kind": "data",
+        "description": "Household diaries collected in adopting organisations, 2028 and 2030"
+      },
+      {
+        "kind": "data",
+        "description": "Administrative payroll records, 2026-2031, for working-time verification"
+      }
     ],
     "procedure": "Recruit 40 adopting and 40 matched non-adopting households; collect seven-day diaries from both partners in each wave; code hours into paid work, housework, care and leisure; estimate partner shares with household fixed effects; test for anticipation one quarter before adoption.",
     "validity_conditions": [

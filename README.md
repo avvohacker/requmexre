@@ -4,7 +4,7 @@ A machine-readable model of a research plan written as **research question → m
 
 The name is the three slots: **RE**search **QU**estion + **ME**thodology + e**X**pected **RE**sults.
 
-**Version:** v0.3 · **Licence:** all rights reserved · **Sources:** [SOURCES.md](SOURCES.md)
+**Version:** v0.4 · **Licence:** all rights reserved · **Sources:** [SOURCES.md](SOURCES.md)
 
 ## What the funders ask
 
@@ -29,8 +29,10 @@ Five fields: three slots plus two guards.
                               "answer_type": "comparative",
                               "scope": "...", "completion_criterion": "..." },
                  "secondary": [ { "text": "...", "form": "objective" } ] },
-  "method":    { "approach": "...", "sources": ["..."], "procedure": "...",
-                 "validity_conditions": ["..."], "limits": ["..."] },
+  "method":    { "approach": "...",
+                 "sources": [ { "kind": "literature", "description": "..." } ],
+                 "procedure": "...", "validity_conditions": ["..."],
+                 "limits": ["..."] },
   "results":   [ { "claim": "...", "kind": "hypothesis",
                    "falsifier": "...", "evidence_needed": "..." },
                  { "claim": "...", "kind": "outcome", "measure": "..." },
@@ -42,6 +44,7 @@ Five fields: three slots plus two guards.
 
 - `questions.primary.completion_criterion`: what would count as an answer; `"none"` when the plan states none.
 - `questions.primary.form`: whether the text is written as an `interrogative` or an `objective`; R1 checks the text against it.
+- `method.sources[].kind`: `data`, `literature`, `participants` or `corpus`; the `description` says what exactly is used.
 - `method.validity_conditions` and `method.limits`: when the finding holds, and what it does not cover.
 - `results[].falsifier`: required for `hypothesis` and `expected_finding`; an `outcome` carries a `measure` instead, and an `output` carries neither.
 - `warrant`: why the question is still open, with at least one dated or identifiable source.
@@ -89,10 +92,11 @@ Exit code 0 when every file behaves as declared (`meta.expect`). The skill runs 
 | Version | Content |
 |---|---|
 | v0.2 | Plural questions, declared form, explicit completion criterion; three published plans in `schema/published` |
-| v0.3 | Outcomes with a measure, and outputs, in `results`; pilot re-run in [schema/BREAKAGES.md](schema/BREAKAGES.md) |
-| v0.4 | Mappings for Horizon, DFG and SNSF in the skill |
+| v0.3 | Outcomes with a measure, and outputs, in `results`; answer types widened; pilot re-run in [schema/BREAKAGES.md](schema/BREAKAGES.md) |
+| v0.4 | Typed sources: `data`, `literature`, `participants`, `corpus` in `method.sources` |
+| v0.5 | Mappings for Horizon, DFG and SNSF in the skill |
 | v1.0 | Stable schema and citation |
 
 ## Cite
 
-> *requmexre*, v0.3, 2026.
+> *requmexre*, v0.4, 2026.

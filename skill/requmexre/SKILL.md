@@ -50,7 +50,7 @@ Establish what is being asked and for whom.
 
 - Which funder and which call? FWO, PRIN and VUB are mapped in
   [`references/mappings.md`](references/mappings.md); Horizon, DFG and SNSF are
-  not mapped yet (roadmap v0.4) and should be handled by hand.
+  not mapped yet (roadmap v0.5) and should be handled by hand.
 - Is there a draft to convert, or is the plan new? If there is a draft, extract
   candidate sentences for each field before writing anything.
 - Is a standpoint declared? If the plan argues from normative premises — equity,
@@ -89,8 +89,11 @@ as answered.
 
 - `approach`: the design in one sentence — experiment, difference-in-differences,
   ethnography, corpus study, proof.
-- `sources`: what the evidence comes from, each entry concrete enough to find
-  (archive, dataset, corpus, series of interviews).
+- `sources`: what the evidence comes from, as `{kind, description}`. `kind` is
+  `data` (datasets, records, measurements), `literature` (databases, citation
+  chasing, grey literature), `participants` (people, sites or organisations
+  recruited) or `corpus` (documents or texts analysed). The description says what
+  exactly is used, concretely enough to find it.
 - `procedure`: the steps, in the order they happen, with the sample and the
   analysis named.
 - `validity_conditions`: what has to hold for the finding to stand — matching,
@@ -165,7 +168,7 @@ content, keep the shape.
 
 ## Limits
 
-- Three funders are mapped; Horizon, DFG and SNSF are not (roadmap v0.4).
+- Three funders are mapped; Horizon, DFG and SNSF are not (roadmap v0.5).
 - The validator checks form, not truth, not citations, not fit between a claim
   and its evidence.
 - Fixtures and the template are synthetic: structure from the funder documents,

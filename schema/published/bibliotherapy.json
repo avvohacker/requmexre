@@ -26,8 +26,14 @@
   "method": {
     "approach": "Systematic review with descriptive synthesis and intervention components analysis, followed by a restricted realist synthesis.",
     "sources": [
-      "APA PsycINFO, Medline via Ovid, CINAHL, ERIC, Education Research Complete and Web of Science",
-      "Forward and backward citation searching in Scopus from the included articles"
+      {
+        "kind": "literature",
+        "description": "APA PsycINFO, Medline via Ovid, CINAHL, ERIC, Education Research Complete and Web of Science"
+      },
+      {
+        "kind": "literature",
+        "description": "Forward and backward citation searching in Scopus from the included articles"
+      }
     ],
     "procedure": "Search the six databases with free-text and controlled vocabulary terms; import into EndNote; screen titles and abstracts independently in pairs against the inclusion criteria; screen full texts in pairs with a third reviewer resolving disagreements; appraise risk of bias with the Cochrane tools; extract study, intervention and outcome data; summarise descriptively and by intervention components; build context-mechanism-outcome configurations in a restricted realist synthesis.",
     "validity_conditions": [

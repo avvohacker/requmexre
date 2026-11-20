@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://requmexre.org/schema/0.3/requmexre.schema.json",
+  "$id": "https://requmexre.org/schema/0.4/requmexre.schema.json",
   "title": "requmexre — research plan",
-  "description": "A research plan as research questions, methodology and expected results, with warrant and standpoint. Structural layer S1–S10; the semantic layer R1–R8 is implemented in validate.py. v0.3: outcomes with a measure, and outputs, alongside hypotheses and expected findings.",
+  "description": "A research plan as research questions, methodology and expected results, with warrant and standpoint. Structural layer S1–S10; the semantic layer R1–R8 is implemented in validate.py. v0.4: typed sources, each with a kind and a description.",
   "$comment": "S1 — closed top level: meta, questions, method and warrant are required; results and standpoint are optional",
   "type": "object",
   "required": ["meta", "questions", "method", "warrant"],
@@ -25,6 +25,16 @@
     "textList": {
       "type": "array",
       "items": { "$ref": "#/$defs/text" }
+    },
+    "source": {
+      "$comment": "S5 — a source says what kind of material it is and describes it concretely",
+      "type": "object",
+      "required": ["kind", "description"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "enum": ["data", "literature", "participants", "corpus"] },
+        "description": { "$ref": "#/$defs/text" }
+      }
     },
     "meta": {
       "$comment": "S2 — meta block: how the file expects to be judged, and whether a standpoint is declared",
@@ -137,8 +147,9 @@
       "properties": {
         "approach": { "$ref": "#/$defs/text" },
         "sources": {
-          "$ref": "#/$defs/textList",
-          "minItems": 1
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/source" }
         },
         "procedure": { "$ref": "#/$defs/text" },
         "validity_conditions": { "$ref": "#/$defs/textList" },

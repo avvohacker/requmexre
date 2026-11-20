@@ -60,7 +60,7 @@ Horizon Europe (Part B), DFG (project description 54.012) and SNSF (research
 plan) appear in the README table and in `SOURCES.md`, but the skill does not
 render them yet. Their sections are known — objectives, methodology, impact
 for Horizon; objectives, work programme, no results section for DFG; a single
-detailed research plan for SNSF — and mapping them is roadmap v0.4.
+detailed research plan for SNSF — and mapping them is roadmap v0.5.
 
 ## Gaps the mapping exposes
 

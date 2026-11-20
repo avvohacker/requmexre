@@ -24,9 +24,18 @@
   "method": {
     "approach": "Staggered difference-in-differences on administrative hospital records, with event-study checks and a synthetic control for the earliest adopter.",
     "sources": [
-      "Hospital discharge records, 2016-2026, Ministry of Health",
-      "Chronic-disease exemption registry, 2016-2026, regional health agencies",
-      "Platform activation dates and covered services, 2019-2023, regional health agencies"
+      {
+        "kind": "data",
+        "description": "Hospital discharge records, 2016-2026, Ministry of Health"
+      },
+      {
+        "kind": "data",
+        "description": "Chronic-disease exemption registry, 2016-2026, regional health agencies"
+      },
+      {
+        "kind": "data",
+        "description": "Platform activation dates and covered services, 2019-2023, regional health agencies"
+      }
     ],
     "procedure": "Define the six treated regions and the eligible control regions; aggregate discharges to region-year cells by condition set and income quintile; estimate the effect of activation with region and year fixed effects; inspect event-study leads for pre-trends; repeat the estimate for each quintile and report the ratio; run a synthetic control for the 2019 adopter as a robustness check.",
     "validity_conditions": [

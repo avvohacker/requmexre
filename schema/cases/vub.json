@@ -19,9 +19,18 @@
   "method": {
     "approach": "Multi-site ethnography of supervision, combined with a longitudinal corpus of drafts and their revision histories.",
     "sources": [
-      "Observed supervision meetings, four universities, 2026-2029",
-      "Draft corpus with version histories, contributed by participating candidates",
-      "University policy documents on AI use in doctoral education, 2023-2026"
+      {
+        "kind": "data",
+        "description": "Observed supervision meetings, four universities, 2026-2029"
+      },
+      {
+        "kind": "corpus",
+        "description": "Draft corpus with version histories, contributed by participating candidates"
+      },
+      {
+        "kind": "corpus",
+        "description": "University policy documents on AI use in doctoral education, 2023-2026"
+      }
     ],
     "procedure": "Follow 24 candidates, six per university, for two years; observe four supervision meetings per candidate per year; collect every draft of one chapter with its version history; code revision operations and prompt-and-verify sequences; build the typology by thematic analysis; member-check the typology with participants in the third year.",
     "validity_conditions": [

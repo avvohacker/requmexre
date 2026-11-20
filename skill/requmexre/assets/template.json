@@ -20,9 +20,18 @@
   "method": {
     "approach": "Cross-sectional comparison of neighbourhoods above and below the local green-space median, with individual-level controls.",
     "sources": [
-      "Neighbourhood green-space inventory, City of Ghent, 2025",
-      "Health survey of residents aged 65 and over, 2026-2028",
-      "Street network data, 2025, for connectivity measures"
+      {
+        "kind": "data",
+        "description": "Neighbourhood green-space inventory, City of Ghent, 2025"
+      },
+      {
+        "kind": "data",
+        "description": "Health survey of residents aged 65 and over, 2026-2028"
+      },
+      {
+        "kind": "data",
+        "description": "Street network data, 2025, for connectivity measures"
+      }
     ],
     "procedure": "Draw a stratified sample of 1,200 residents across 60 neighbourhoods; measure green-space share within 300 metres of each home; collect walking minutes with a seven-day diary; estimate walking minutes against green-space share with neighbourhood random effects and individual controls; check for selective residential sorting with length of residence.",
     "validity_conditions": [

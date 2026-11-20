@@ -20,9 +20,18 @@
   "method": {
     "approach": "Systematic map following CEE guidance and ROSES reporting standards, with two complementary search strategies and a population-intervention-outcome frame.",
     "sources": [
-      "Four bibliographic databases and two dissertation platforms, searched with a string tested before submission",
-      "Google Scholar and 67 organisational websites",
-      "Backward and forward citation chasing from a 24-article benchmark"
+      {
+        "kind": "literature",
+        "description": "Four bibliographic databases and two dissertation platforms, searched with a string tested before submission"
+      },
+      {
+        "kind": "literature",
+        "description": "Google Scholar and 67 organisational websites"
+      },
+      {
+        "kind": "literature",
+        "description": "Backward and forward citation chasing from a 24-article benchmark"
+      }
     ],
     "procedure": "Run the search string; deduplicate and screen titles and abstracts in Rayyan; double-screen a random 10 per cent until Cohen's kappa reaches 0.6; screen full texts against population, intervention and outcome criteria; code study, policy, behaviour and context variables; synthesise narratively with a ROSES flow diagram, an EviAtlas world map, heatmaps and an online dataset.",
     "validity_conditions": [

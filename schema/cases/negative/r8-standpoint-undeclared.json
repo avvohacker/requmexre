@@ -19,7 +19,10 @@
   "method": {
     "approach": "Difference-in-differences on payroll records.",
     "sources": [
-      "Payroll records, 2025-2029, social secretariats"
+      {
+        "kind": "data",
+        "description": "Payroll records, 2025-2029, social secretariats"
+      }
     ],
     "procedure": "Match adopting and non-adopting firms on sector and size; estimate overtime hours per employee; test for pre-trends.",
     "validity_conditions": [

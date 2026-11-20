@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "expect": "S4",
+    "standpoint": "none",
+    "funder": "none",
+    "title": "Evidence map with an invented comparison",
+    "version": "0.1",
+    "date": "2026-11-20"
+  },
+  "questions": {
+    "primary": {
+      "text": "What is the state of evidence on four-day weeks in Belgian firms?",
+      "form": "interrogative",
+      "answer_type": "synthesis",
+      "tertium_comparationis": "firm size",
+      "scope": "Belgian firms with 10 or more employees, 2010 to 2026.",
+      "completion_criterion": "none"
+    }
+  },
+  "method": {
+    "approach": "Systematic map.",
+    "sources": [
+      {
+        "kind": "literature",
+        "description": "Web of Science and Scopus, 2010-2026"
+      }
+    ],
+    "procedure": "Search, screen and code the included studies by design, sector and outcome."
+  },
+  "warrant": {
+    "gap_statement": "No synthesis covers Belgian firms after the 2021 working-time reform.",
+    "evidence": [
+      "Belgian payroll statistics, 2024 release"
+    ]
+  }
+}

@@ -1,9 +1,10 @@
 # Where the model breaks: three published plans
 
-v0.3 pilot. Three open-access research plans were encoded by hand against the
-schema, run, and re-encoded twice: once after review separated model gaps from
-encoding artefacts (v0.2), and once after result kinds were added (v0.3). This
-version records both revisions and what is still open.
+v0.4 pilot. Three open-access research plans were encoded by hand against the
+schema, run, and re-encoded three times: once after review separated model gaps
+from encoding artefacts (v0.2), once after result kinds were added (v0.3), and
+once after answer types were widened and sources typed (v0.3 second pass, v0.4).
+This version records those revisions and what is still open.
 
 ## Revision history
 
@@ -13,6 +14,7 @@ version records both revisions and what is still open.
 | v0.2 | plural questions, declared form, explicit completion criterion (changes 1–3) | 3 of 3 passed, with results omitted where the plans have none |
 | v0.3 | `outcome` with `measure`, `output`, S7 and R5 updated (change 4) | 3 of 3 pass with the results included |
 | v0.3, second pass | five more answer types (change 5) | 3 of 3 pass; forest is `synthesis`, bibliotherapy secondary is `mechanistic` |
+| v0.4 | typed sources, each with `kind` and `description` (change 6) | 3 of 3 pass; every source classified |
 
 ## Model gaps and encoding artefacts
 
@@ -23,6 +25,7 @@ version records both revisions and what is still open.
 | i-MaCHeL, criterion | model gap | model gap: no plan states one | fixed by `"none"` |
 | Forest, R5 | model gap: outputs rejected | artefact: `results` is optional, and the map's outputs were put there by choice. The missing slot for outputs was real | fixed by change 4: outputs have a kind, and the map also reports an outcome |
 | Forest, answer_type | model gap | model gap: an evidence map is not one of the six types | fixed by change 5: the map declares `synthesis` |
+| Sources, one semantics | not noticed | model gap: a database and a set of measurements were both plain strings | fixed by change 6: each source declares `data`, `literature`, `participants` or `corpus` |
 | Bibliotherapy, PASS | "manufactured" | model gap: the completion criterion was required, so one was supplied | fixed by `"none"` |
 | Bibliotherapy, second question | model gap | model gap: one question slot | fixed by plural questions |
 | Bibliotherapy, funder | model gap | model gap: Wellcome is not in the enum | open (change 7) |
@@ -34,7 +37,7 @@ gaps were real, but change 4 shows that some of them were also representational:
 the map's outputs and the trial's hypothesis only needed kinds that the schema did
 not have.
 
-## The three plans, after v0.3
+## The three plans, after v0.4
 
 | File | Plan | Type | Result |
 |---|---|---|---|
@@ -62,6 +65,8 @@ result kinds and still run green (`python3 validate.py`).
   evidence atlas).
 - The review reports one outcome (range and strength of evidence by outcome) and
   one output (the refined programme theory).
+- Each source now declares its kind: the trial's dyads are `participants` and its
+  measurements `data`; both reviews draw `literature`.
 - `deliverable` is now `output`. The two were synonyms; keeping both would have
   given the same artefact two names.
 - No field is supplied by the encoder beyond `meta` (ours by design), the
@@ -73,35 +78,35 @@ result kinds and still run green (`python3 validate.py`).
 ### i-MaCHeL — passes
 
 Objective declared as such, with a tertium taken from the primary comparison; two
-secondary objectives encoded. Results: one hypothesis and two outcomes, with the
+secondary objectives encoded. Sources: `participants` (the dyads) and `data` (the
+measurements and records). Results: one hypothesis and two outcomes, with the
 outcome measures the protocol names. Still missing: the funding statement was not
 captured, so `funder` is omitted; `answer_type: comparative` fits this plan.
 
 ### Anticipatory forest use — passes
 
-Interrogative question, criterion `"none"`, sources that read naturally as
-sources, outputs that are outputs. The evidence-map question now declares
-`synthesis` (change 5).
+Interrogative question, criterion `"none"`, sources typed as `literature`,
+outputs that are outputs. The evidence-map question declares `synthesis`
+(change 5).
 
 ### Creative bibliotherapy — passes
 
 Both questions encoded; the mechanisms question declares `mechanistic` (change
-5). Results: one outcome and one output. Still missing: the Wellcome Trust cannot
-be named in `funder` (change 7); the undeclared standpoint is recorded as
-`"none"` by us (change 8).
+5), and the sources are `literature`. Results: one outcome and one output. Still
+missing: the Wellcome Trust cannot be named in `funder` (change 7); the undeclared
+standpoint is recorded as `"none"` by us (change 8).
 
-## Still open (changes 6–11)
+## Still open (changes 7–11)
 
 | # | Breakage | Where | Seen in | Change |
 |---|---|---|---|---|
-| 6 | `sources` has one semantics | S5 | i-MaCHeL vs forest | typed sources: `{kind: data \| literature \| participants \| corpus, description}` |
 | 7 | Funder list is closed | S2 | bibliotherapy | free string, or `other` plus `scheme` |
 | 8 | Standpoint is binary | S2, R8 | all three | `declared \| none \| undeclared` |
 | 9 | Fixture machinery sits inside the plan | S2 `meta.expect` | all three | move `expect` to a fixture envelope |
 | 10 | Registration, ethics, timeline have no home | S1 `additionalProperties` | all three | declare them out of scope, or allow `extensions` |
 | 11 | Absent limits look like no limits | S5 | i-MaCHeL | allow `"none"` as an explicit value |
 
-Changes 1–5 touched S3, S6, S7, R1, R2, R5, all fixtures, the template, the
+Changes 1–6 touched S3, S5, S6, S7, R1, R2, R5, all fixtures, the template, the
 published plans, the skill, the README and the site.
 
 ## What held
@@ -116,12 +121,14 @@ published plans, the skill, the README and the site.
   positives on the three plans.
 - R1 checks the text against the declared form and produced no false positives.
 - The structural layer accepted all three encodings without a single S finding.
+- `sources`: every plan named its material; typing it required one decision per
+  entry, and no entry was ambiguous.
 
 ## Next
 
-With answer types widened, the next representational gap is `sources` (change
-6), then `funder` (change 7). Then 8–11. The v0.4 mappings (Horizon, DFG, SNSF)
-should follow, so they encode the current shape rather than the old one.
+With sources typed, the next gap is `funder` (change 7), then 8–11. The v0.5
+mappings (Horizon, DFG, SNSF) should follow, so they encode the current shape
+rather than the old one.
 
 ## Sources encoded
 
