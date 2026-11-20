@@ -32,7 +32,7 @@ proposal that are not the plan.
 | `method` | `approach`, `sources`, `procedure`; `validity_conditions`, `limits` | yes |
 | `results` | list of `claim` + `kind` (hypothesis, expected_finding, outcome, output); `falsifier` and `evidence_needed` for claims, `measure` for outcomes | no |
 | `warrant` | `gap_statement`, `evidence` | yes |
-| `standpoint` | `normative_premises`, `criteria`; declared, or `meta.standpoint` set to `none` | no |
+| `standpoint` | `normative_premises`, `criteria`; declared, `none` or `undeclared` in `meta.standpoint` | no |
 
 Structural rules S1–S10 and semantic rules R1–R8 are in
 [`schema/RULES.md`](../../schema/RULES.md). Read them before the first run: the
@@ -56,8 +56,10 @@ Establish what is being asked and for whom.
 - Is there a draft to convert, or is the plan new? If there is a draft, extract
   candidate sentences for each field before writing anything.
 - Is a standpoint declared? If the plan argues from normative premises — equity,
-  sustainability, safety — the answer is `declared`; if it claims none, `none`.
-  Do not leave the standpoint unanswered: `meta.standpoint` is required.
+  sustainability, safety — the answer is `declared`; if it says it has none,
+  `none`; if it says nothing, `undeclared`. Do not leave the standpoint
+  unanswered: `meta.standpoint` is required, and `undeclared` records silence
+  rather than inventing a position.
 
 Exit: a funder (or `none`), a source draft (or none), and `meta.standpoint`.
 
@@ -128,7 +130,8 @@ Exit: every claim has an observation that could defeat it.
   literature — not a summary of the field, and not the question again (R3).
 - `warrant.evidence`: at least one dated or identifiable source (R4).
 - `standpoint`: if declared, normative premises and the criteria that follow from
-  them; if none, the object is absent and `meta.standpoint` is `none` (R8).
+  them; if `none` or `undeclared`, the object is absent (R8). `none` says the
+  plan explicitly has no standpoint; `undeclared` says it does not address one.
 
 Exit: the plan says why the question is worth asking now, and from where it
 speaks.

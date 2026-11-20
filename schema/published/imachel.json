@@ -1,7 +1,7 @@
 {
   "meta": {
     "expect": "valid",
-    "standpoint": "none",
+    "standpoint": "undeclared",
     "title": "i-MaCHeL: a cluster randomised trial of a preschool healthy-lifestyle programme",
     "version": "0.1",
     "date": "2026-11-20",

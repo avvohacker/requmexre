@@ -1,7 +1,7 @@
 {
   "meta": {
     "expect": "valid",
-    "standpoint": "none",
+    "standpoint": "undeclared",
     "funder": "snsf",
     "title": "Evidence of anticipatory forest use behaviours under policy introduction: a systematic map protocol",
     "version": "0.1",

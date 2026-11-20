@@ -41,7 +41,7 @@ SEMANTIC_RULES = {
     "R5": "results make a claim about the world, or measure something, not only outputs",
     "R6": "each falsifier differs from the claim it tests",
     "R7": "limits are not validity conditions",
-    "R8": "the standpoint is declared or explicitly none, and the body agrees",
+    "R8": "the standpoint is declared, explicitly none, or undeclared, and the body agrees",
 }
 
 PARAPHRASE = 0.70
@@ -398,19 +398,19 @@ def check_semantics(doc):
                 )
                 break
 
-    # R8 — the declared standpoint and the body agree
+    # R8 — the standpoint declaration and the body agree
     standpoint = doc.get("standpoint")
-    declared = meta.get("standpoint")
-    if declared == "none":
+    declaration = meta.get("standpoint")
+    if declaration in ("none", "undeclared"):
         if standpoint is not None:
             findings.append(
                 Violation(
                     "R8",
                     "$.standpoint",
-                    "present while meta.standpoint is 'none'; remove it or declare the standpoint",
+                    f"present while meta.standpoint is '{declaration}'; remove it or declare the standpoint",
                 )
             )
-    elif declared == "declared":
+    elif declaration == "declared":
         if standpoint is None:
             findings.append(
                 Violation(

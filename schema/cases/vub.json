@@ -1,7 +1,7 @@
 {
   "meta": {
     "expect": "valid",
-    "standpoint": "none",
+    "standpoint": "undeclared",
     "funder": "vub",
     "title": "Generative models and doctoral writing practice",
     "version": "0.1",

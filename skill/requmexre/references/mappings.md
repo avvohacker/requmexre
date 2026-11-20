@@ -9,7 +9,7 @@ and are not reproduced here — read the current form before rendering.
 
 | Section | Fields | What to write |
 |---|---|---|
-| 1. Rationale and positioning | `warrant`, `standpoint` | The gap, with its dated evidence, and the position from which the question is asked. If `meta.standpoint` is `none`, say so in one sentence rather than leaving the section silent about it. |
+| 1. Rationale and positioning | `warrant`, `standpoint` | The gap, with its dated evidence, and the position from which the question is asked. If `meta.standpoint` is `none`, say so in one sentence. If it is `undeclared`, do not claim none: flag the silence and ask for a declaration where the form requires positioning. |
 | 2. Scientific research objectives | `questions.primary`, `questions.secondary`, `results` | The question or objective as written, then the secondary objectives, then what would count as an answer, then the expected outcomes. FWO has no separate results section, so expected outcomes belong here — as claims with their falsifiers in hand, rendered as expected results. |
 | 3. Research methodology and work plan | `method` | Approach, sources, procedure, then validity conditions and limits. The work plan is the procedure with its sequence made explicit. |
 
@@ -48,8 +48,10 @@ would be tested and leave the section short; do not invent findings to fill it.
 - The falsifier and `evidence_needed` are design aids: they stay in `plan.json`.
   A proposal states the claim and the method that would test it.
 - `standpoint` is rendered where the funder asks for rationale, impact or
-  positioning. If it is `none`, one sentence of declaration is enough; silence
-  reads as an undeclared premise.
+  positioning. If it is `none`, one sentence of declaration is enough. If it is
+  `undeclared`, do not claim the plan has none: flag the silence to the author
+  and, where the form requires positioning, ask for a declaration rather than
+  inventing one.
 - Word and page limits are not in this file because they change with the call.
   Check the form, then cut — preferably from the state of the art, never from the
   falsifiers.

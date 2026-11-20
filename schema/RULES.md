@@ -19,7 +19,7 @@ structural layer.
 | Code | Rule | Where |
 |---|---|---|
 | S1 | The document is a closed object with `meta`, `questions`, `method` and `warrant` required; `results` and `standpoint` optional; no other keys. | root |
-| S2 | `meta` is a closed object with `expect` and `standpoint` required. `standpoint` is `declared` or `none`; `expect` is `valid`, `S1`–`S10` or `R1`–`R8`; optional `funder` (`fwo`, `prin`, `vub`, `horizon`, `dfg`, `snsf`, `other` or `none`), `scheme` (required when `funder` is `other`, forbidden otherwise), `title`, `version`, `date`, `id`. | `$defs/meta` |
+| S2 | `meta` is a closed object with `expect` and `standpoint` required. `standpoint` is `declared`, `none` or `undeclared`; `expect` is `valid`, `S1`–`S10` or `R1`–`R8`; optional `funder` (`fwo`, `prin`, `vub`, `horizon`, `dfg`, `snsf`, `other` or `none`), `scheme` (required when `funder` is `other`, forbidden otherwise), `title`, `version`, `date`, `id`. | `$defs/meta` |
 | S3 | `questions` holds one `primary` question and optional `secondary` questions. Every question requires `text` and `form` (interrogative or objective); the primary also requires `answer_type`, `scope` and `completion_criterion`, which is a string or the word `none`. `answer_type` is one of `descriptive`, `exploratory`, `comparative`, `causal`, `evaluative`, `methodological`, `synthesis`, `mechanistic`, `feasibility`, `validation`, `other`. | `$defs/questions`, `$defs/question`, `$defs/primaryQuestion` |
 | S4 | A comparative question requires `tertium_comparationis`. An evaluative question requires `criteria` and `operationalisation`. A question of any other type carries none of the three. Applies to every question that declares an answer type. | `$defs/question/allOf` |
 | S5 | `method` requires `approach`, a non-empty `sources` list and `procedure`. Each source is an object with `kind` (`data`, `literature`, `participants`, `corpus`) and `description`. `validity_conditions` and `limits` are optional lists of non-blank strings. | `$defs/method`, `$defs/source` |
@@ -31,8 +31,8 @@ structural layer.
 
 `results` is optional because two of the six templates in the README have no
 results section (DFG, SNSF). `standpoint` is optional because a plan may declare
-that it has none; `meta.standpoint` makes that declaration explicit rather than
-silent.
+that it has none or may not address it; `meta.standpoint` distinguishes `none`
+from `undeclared` rather than leaving both silent.
 
 A result is one of four kinds. A `hypothesis` or an `expected_finding` is a claim
 about the world: it carries a `falsifier` and the `evidence_needed`. An `outcome`
@@ -68,7 +68,7 @@ clean, since every check below reads fields the schema guarantees.
 | R5 | Results make a claim about the world, or measure something. | `results` is present and every entry has `kind` `output`. Outputs alone answer no question. |
 | R6 | A falsifier differs from the claim it tests. | a result's `falsifier` shares 70 per cent or more of its content words with the claim. |
 | R7 | Limits are not validity conditions. | a limit shares 70 per cent or more of its content words with a validity condition, or the two lists repeat an entry. |
-| R8 | The standpoint is declared or explicitly none, and the body agrees. | `meta.standpoint` is `none` and a `standpoint` object is present; or it is `declared` and the object is missing, or either list is empty. |
+| R8 | The standpoint is declared, explicitly none, or undeclared, and the body agrees. | `meta.standpoint` is `none` or `undeclared` and a `standpoint` object is present; or it is `declared` and the object is missing, or either list is empty. |
 
 ### How the overlap tests work
 

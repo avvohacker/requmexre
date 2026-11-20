@@ -54,7 +54,7 @@ Five fields: three slots plus two guards.
 - `method.validity_conditions` and `method.limits`: when the finding holds, and what it does not cover.
 - `results[].falsifier`: required for `hypothesis` and `expected_finding`; an `outcome` carries a `measure` instead, and an `output` carries neither.
 - `warrant`: why the question is still open, with at least one dated or identifiable source.
-- `standpoint`: the normative premises, declared or explicitly set to `"none"` in `meta`.
+- `standpoint`: the normative premises and criteria; `meta.standpoint` says `declared`, `none` or `undeclared`.
 
 Conditional rules: a comparative question needs a `tertium_comparationis`; an evaluative question needs criteria and their operationalisation.
 

@@ -1,7 +1,7 @@
 {
   "meta": {
     "expect": "valid",
-    "standpoint": "none",
+    "standpoint": "undeclared",
     "funder": "other",
     "scheme": "Wellcome Trust",
     "title": "School-based creative bibliotherapy and child mental health: a systematic review and realist synthesis protocol",

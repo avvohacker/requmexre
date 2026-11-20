@@ -29,7 +29,7 @@ This version records those revisions and what is still open.
 | Bibliotherapy, PASS | "manufactured" | model gap: the completion criterion was required, so one was supplied | fixed by `"none"` |
 | Bibliotherapy, second question | model gap | model gap: one question slot | fixed by plural questions |
 | Bibliotherapy, funder | model gap | model gap: Wellcome is not in the enum | fixed by change 7 (v0.5): `other` + `scheme` |
-| Standpoint `none` | not noticed | a declaration we made, not the plan's | open (change 8) |
+| Standpoint `none` | not noticed | a declaration we made, not the plan's | fixed by change 8 (v0.5): `declared \| none \| undeclared` |
 | `meta.expect` | model gap | fixture machinery inside the plan | open (change 9) |
 
 Two of the first-round failures were encoding choices, not model gaps. The model
@@ -95,14 +95,13 @@ outputs that are outputs. The evidence-map question declares `synthesis`
 
 Both questions encoded; the mechanisms question declares `mechanistic` (change
 5), and the sources are `literature`. Results: one outcome and one output. The
-funder is `other` with `scheme: "Wellcome Trust"` (change 7). Still missing: the
-undeclared standpoint is recorded as `"none"` by us (change 8).
+funder is `other` with `scheme: "Wellcome Trust"` (change 7), and the standpoint
+is `undeclared` (change 8).
 
-## Still open (changes 8–11)
+## Still open (changes 9–11)
 
 | # | Breakage | Where | Seen in | Change |
 |---|---|---|---|---|
-| 8 | Standpoint is binary | S2, R8 | all three | `declared \| none \| undeclared` |
 | 9 | Fixture machinery sits inside the plan | S2 `meta.expect` | all three | move `expect` to a fixture envelope |
 | 10 | Registration, ethics, timeline have no home | S1 `additionalProperties` | all three | declare them out of scope, or allow `extensions` |
 | 11 | Absent limits look like no limits | S5 | i-MaCHeL | allow `"none"` as an explicit value |
@@ -127,9 +126,10 @@ published plans, the skill, the README and the site.
 
 ## Next
 
-With sources typed and the funder list opened (change 7), the next gap is
-`standpoint` (change 8), then 9–11. The v0.5 mappings (Horizon, DFG, SNSF)
-should follow, so they encode the current shape rather than the old one.
+With sources typed, the funder list opened (change 7) and the standpoint
+distinguished (change 8), the next gap is limits (change 11), then the fixture
+envelope (change 9) and scope (change 10). The v0.5 mappings (Horizon, DFG,
+SNSF) should follow, so they encode the current shape rather than the old one.
 
 ## Sources encoded
 
