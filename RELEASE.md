@@ -1,9 +1,12 @@
-# Release notes
+# Version notes
 
 ## v0.5 — 20 November 2026
 
 requmexre v0.5 closes changes 1–11 and ships the Horizon, DFG and SNSF
 mappings. The schema and its `$id` move to v0.5.
+
+v0.5 is the tree on `main`: it has no `v0.5` tag and no GitHub release. These
+notes record the version, not a published release.
 
 ### Schema and validator
 
