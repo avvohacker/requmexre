@@ -97,8 +97,7 @@ as answered.
   chasing, grey literature), `participants` (people, sites or organisations
   recruited) or `corpus` (documents or texts analysed). The description says what
   exactly is used, concretely enough to find it.
-- `procedure`: the steps, in the order they happen, with the sample and the
-  analysis named.
+- `procedure`: the steps, in the order they happen, with the sample and the analysis named. Order only: no dates, durations, work packages or roles.
 - `validity_conditions`: what has to hold for the finding to stand — matching,
   instrument stability, response rate, coding independence.
 - `limits`: what the design does not cover. A limit is not a condition (R7) and
@@ -169,6 +168,12 @@ where the funder asks for expected results; the test it implies is already in
 the method. [`references/fwo-example.md`](references/fwo-example.md) shows the
 three FWO sections with the falsifier left in the plan.
 
+The work plan is the procedure's steps in the order the procedure already gives
+them: number them if that helps, but do not add steps, dates, durations, work
+packages, milestones or roles. The model holds a logical order, not a timetable.
+If the call requires a timetable, build it from the call's own form and say so;
+do not derive it from `plan.json`.
+
 ## Files
 
 ```
@@ -196,5 +201,8 @@ if they drift, and nothing else in the repository is needed to validate a plan.
   and its evidence.
 - Fixtures and the template are synthetic: structure from the funder documents,
   content illustrative.
-- Registration, ethics and timeline are out of scope: keep them in the funder's
-  forms; there is no `extensions` field.
+- Registration and ethics are out of scope: keep them in the funder's forms;
+there is no `extensions` field.
+- Calendar time — dates, durations, work packages and milestones — is out of
+  scope too. The model carries the procedure's logical order; a timetable the
+  call requires belongs to the call's form, not to `plan.json`.

@@ -14,7 +14,7 @@ and are not reproduced here — read the current form before rendering.
 |---|---|---|
 | 1. Rationale and positioning | `warrant`, `standpoint` | The gap, with its dated evidence, and the position from which the question is asked. If `meta.standpoint` is `none`, say so in one sentence. If it is `undeclared`, do not claim none: flag the silence and ask for a declaration where the form requires positioning. |
 | 2. Scientific research objectives | `questions.primary`, `questions.secondary`, `results` | The question or objective as written, then the secondary objectives, then what would count as an answer, then the expected outcomes. FWO has no separate results section, so expected outcomes belong here. Render each claim as an expected result, never its falsifier: the falsifier stays in `plan.json` and the test it describes belongs in section 3. See [`fwo-example.md`](fwo-example.md). |
-| 3. Research methodology and work plan | `method` | Approach, sources, procedure, then validity conditions and limits. The work plan is the procedure with its sequence made explicit. |
+| 3. Research methodology and work plan | `method` | Approach, sources, procedure, then validity conditions and limits. The work plan is the procedure split into its steps and put in the order the procedure gives, each step saying what it draws on and what it produces. No dates, durations, work packages or milestones: those are not modelled — if the call requires a timetable, fill it from the form, not from the plan. See [`fwo-example.md`](fwo-example.md). |
 
 FWO asks for hypotheses and expected results inside the objectives. Do not open a
 results section of your own; the form's numbering is part of the assessment.
@@ -54,7 +54,7 @@ would be tested and leave the section short; do not invent findings to fill it.
 | 1.1 Objectives and ambition | `warrant`, `questions.primary`, `questions.secondary` | The gap with its dated evidence, then the question or objective as written with its scope and criterion. Ambition is the advance beyond the state of the art, not a promise. |
 | 1.2 Methodology | `method` | Approach, sources, procedure, validity conditions, limits. |
 | 2.1 Project's pathways towards impact | `results`, `standpoint` | Impact argued from expected findings and outcomes and from the declared criteria. If `meta.standpoint` is `none` or `undeclared`, do not invent a standpoint. |
-| 3.1 Work plan and resources | `method.procedure` | The procedure's sequence as work packages. Resources are not modelled. |
+| 3.1 Work plan and resources | `method.procedure` | The procedure's steps in order, as the work plan. Resources and work-package numbering are not modelled; see the sequence rule under Rendering rules. |
 
 Horizon also has 2.2 Measures to maximise impact - Dissemination, exploitation
 and communication, an optional 2.3 Summary, and 3.2 Capacity of participants and
@@ -94,6 +94,10 @@ SNSF has no results section: do not render one. It also asks for ethics and budg
 - Section order and numbering follow the funder, not the schema.
 - The falsifier and `evidence_needed` are design aids: they stay in `plan.json`.
   A proposal states the claim and the method that would test it.
+- The work plan renders the procedure's steps in the order `method.procedure`
+  already gives them. Do not add steps, dates, durations, work packages,
+  milestones or roles: the model holds the logical order, not a timetable. A
+  timetable the call requires is filled from the form, not from the plan.
 - `standpoint` is rendered where the funder asks for rationale, impact or
   positioning. If it is `none`, one sentence of declaration is enough. If it is
   `undeclared`, do not claim the plan has none: flag the silence to the author
@@ -102,8 +106,9 @@ SNSF has no results section: do not render one. It also asks for ethics and budg
 - `limits: "none"` is a declaration that the plan states no limits: do not
   invent a limitation. If `limits` is absent, say the plan does not state limits
   rather than claiming there are none.
-- Registration, ethics and timeline sit outside `plan.json`: render them from the
-  call's forms, not from requmexre, and do not invent an `extensions` field.
+- Registration, ethics and calendar time sit outside `plan.json`: render them
+  from the call's forms, not from requmexre, and do not invent an `extensions`
+  field. The procedure's order is not a calendar; see Rendering rules.
 - Word and page limits are not in this file because they change with the call.
   Check the form, then cut — preferably from the state of the art, never from the
   falsifiers.
@@ -112,6 +117,8 @@ SNSF has no results section: do not render one. It also asks for ethics and budg
 
 The six funders are mapped. The model does not carry:
 
+- calendar time: dates, durations, work packages, milestones and roles; only the
+  procedure's logical order is in the model;
 - preliminary work and the applicant's own research (Horizon, DFG section 1,
   SNSF section 2);
 - Horizon 2.2 Measures to maximise impact - Dissemination, exploitation and
