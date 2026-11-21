@@ -193,10 +193,9 @@ lacks a required field ends as blocked on that field, not as a passing plan.
 
 ## Validation gate
 
-Write the plan to `plan.json` with `"meta": {"standpoint": ...}` and run:
-
-Run these from the skill directory, with the plan's path; the validator travels
-with the skill, so no checkout of the repository is needed:
+Write the plan to `plan.json` with `"meta": {"standpoint": ...}`. Run the
+validator from the skill directory with the plan's path: it travels with the
+skill, so no checkout of the repository is needed.
 
 ```bash
 python3 scripts/validate.py /path/to/plan.json          # PASS/FAIL per file

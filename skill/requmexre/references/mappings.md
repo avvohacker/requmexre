@@ -2,11 +2,9 @@
 
 How the five fields become the sections of an FWO, PRIN, VUB, Horizon, DFG or
 SNSF plan. The six tables date from v0.5; the schema is v1.0 and neither changed
-at the freeze. Section
-names and numbers are taken from
-the documents cited in
-[`SOURCES.md`](../../../SOURCES.md); page and character limits are set by the call
-and are not reproduced here; `SKILL.md` gives the cut order.
+at the freeze. Section names and numbers are taken from the documents cited in
+[`SOURCES.md`](../../../SOURCES.md); page and character limits are set by the
+call and are not reproduced here; `SKILL.md` gives the cut order.
 
 The tables read in both directions: fields → sections when writing, sections →
 fields when reviewing. For a review, [`review.md`](review.md) gives the report
