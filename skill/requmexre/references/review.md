@@ -15,7 +15,7 @@ are in `RULES.md`; the section tables are in `mappings.md`.
 | `results` | one row per result | present / weak / missing | `R5`, `R6`, `S6`, `S7` | |
 | `warrant.gap_statement` | quoted | present / weak / missing | `R3`, `S8` | |
 | `warrant.evidence` | each string, verbatim | present / weak / missing | `R4`, `S8` | |
-| `standpoint` | quoted, or absent | present / weak / undeclared | `R8`, `S9` | |
+| `standpoint` | quoted, or absent | present / weak / declared none / undeclared | `R8`, `S9` | |
 
 There are three cases. `funder: other` with a `scheme` has no table but a named
 scheme. A plan with no funder at all, and no call to supply one, is recorded as
@@ -30,9 +30,11 @@ table fit: an unknown funder is a question for the author, not a default.
   quote the sentence that fails.
 - **missing** — no content at all. For a required field this blocks the review;
   do not fill it.
-- **declared none** — an explicit `"none"` in `completion_criterion` or `limits`.
-  It is a declaration, not a defect; `R2` and `R7` skip it. Report it as
-  declared, never as missing and never as present.
+- **declared none** — an explicit `"none"` in `completion_criterion` or
+  `limits`, or `meta.standpoint: none`. It is a declaration, not a defect; `R2`,
+  `R7` and `R8` accept it. Report it as declared, never as missing and never as
+  present. For the standpoint, `none` is a declaration of no normative
+  standpoint; `undeclared` is the silence that says nothing.
 - **undeclared** — `meta.standpoint` is `undeclared` and there is no standpoint
   object. It records silence, not neutrality: do not render an impact argument
   as if criteria existed, and do not call the plan neutral.

@@ -166,7 +166,10 @@ status words and the complete list of form defects are in
 2. **Extract — prose only.** Take candidate sentences for each field and quote
    them. Where a field has no sentence, leave it empty and mark it. If the draft
    is already a `plan.json`, skip this step and step 3: quote the fields as they
-   stand and do not retype them.
+   stand and do not retype them. A rendered proposal carries no `falsifier` and
+   no `evidence_needed` for its claims: the render leaves them in the plan on
+   purpose. Mark both missing and ask the author for the plan or for the two
+   statements; do not reconstruct them from the prose.
 3. **Type — prose only.** Give each extracted question its `form` from the
    sentence as written — `interrogative` or `objective` — never by rewriting it.
 4. **Copy and validate.** Copy the draft to `plan.review.json` and leave the
