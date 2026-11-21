@@ -71,6 +71,7 @@ schema/cases/                  fwo, prin, vub, negative (fixtures)
 schema/published/              three published plans, encoded
 tests/                         pytest suite: rules, fixtures, CLI
 schema/BREAKAGES.md            where the model breaks on those plans
+schema/NOTES.md                maintainer notes: rationale, fixtures, extending
 skill/requmexre/SKILL.md       the skill: five fields, five phases
 skill/requmexre/references/    mappings, RULES, FWO example, review report
 skill/requmexre/scripts/       bundled validator, identical to schema/validate.py
