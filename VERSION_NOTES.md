@@ -1,5 +1,16 @@
 # Version notes
 
+## Post-v1.0 correction — 21 November 2026
+
+S4 already required a comparative question to carry no `criteria` or
+`operationalisation` and an evaluative question to carry no
+`tertium_comparationis`; the schema did not enforce either prohibition.
+Commit `f5034db` adds the two missing `properties: false` constraints. No
+field, rule or `$id` changed: a plan that followed `schema/RULES.md` is
+unaffected, and a plan that mixed the fields is now rejected as S4 always
+said. The two negative fixtures and the question matrix pin the correction.
+Checks: 28/28 fixtures, 222 tests.
+
 ## v1.0 — 20 November 2026
 
 requmexre v1.0 freezes the v0.5 model: no field, rule, fixture or mapping
