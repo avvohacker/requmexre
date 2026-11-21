@@ -42,6 +42,12 @@
       "The design is cross-sectional: it cannot separate green space from the people who choose to live near it",
       "Self-reported walking overstates walking measured by accelerometry",
       "Findings apply to a mid-sized European city, not to rural or metropolitan settings"
+    ],
+    "risks": [
+      {
+        "risk": "Selective residential sorting could explain the association between green space and walking.",
+        "mitigation": "Adjust for length of residence and repeat the estimate in a move subsample."
+      }
     ]
   },
   "results": [

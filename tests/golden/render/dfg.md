@@ -20,4 +20,8 @@ Recruit 30 retrofitted and 30 matched blocks; install loggers in bedrooms and li
 
 Validity conditions: Retrofitted and comparison blocks are matched on construction year, orientation and rent level; Loggers are installed in the same rooms in every block; Tenants are surveyed in the summers before and after installation. Limits: Findings cover the three participating cities, not the German building stock; The design measures indoor temperature, not the use of cooling systems; Households that move during the study leave the sample.
 
+Risk: Attrition above 15 per cent per wave as households move or decline the follow-up survey. Mitigation: Oversample blocks by ten per cent and follow movers to their new address.
+
+Risk: Logger failure or tampering in a block leaves gaps in the temperature series. Mitigation: Install duplicate loggers in each block and replace failed units within two weeks.
+
 The procedure delivers: A block-level dataset of temperature series and a retrofit audit protocol.

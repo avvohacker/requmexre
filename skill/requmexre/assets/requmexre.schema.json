@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://avvohacker.github.io/requmexre/schema/1.0/requmexre.schema.json",
+  "$id": "https://avvohacker.github.io/requmexre/schema/1.1/requmexre.schema.json",
   "title": "requmexre — research plan",
-  "description": "A research plan as research questions, methodology and expected results, with warrant and standpoint. Structural layer S1–S10; the semantic layer R1–R8 is implemented in validate.py. v1.0: frozen model — no fields or rules added since v0.5.",
+  "description": "A research plan as research questions, methodology and expected results, with warrant and standpoint. Structural layer S1–S10; the semantic layer R1–R8 is implemented in validate.py. v1.1: adds optional method.risks to the v1.0 frozen model.",
   "$comment": "S1 — closed top level: meta, questions, method and warrant are required; results and standpoint are optional",
   "type": "object",
   "required": ["meta", "questions", "method", "warrant"],
@@ -158,7 +158,7 @@
       "$ref": "#/$defs/question"
     },
     "method": {
-      "$comment": "S5 — method block: approach, sources and procedure, with validity conditions and limits (a list or none)",
+      "$comment": "S5 — method block: approach, sources and procedure, with optional validity conditions, limits (a list or none) and risks",
       "type": "object",
       "required": ["approach", "sources", "procedure"],
       "additionalProperties": false,
@@ -175,7 +175,24 @@
           "if": { "type": "string" },
           "then": { "const": "none" },
           "else": { "$ref": "#/$defs/textList" }
-        }
+        },
+        "risks": { "$ref": "#/$defs/risks" }
+      }
+    },
+    "risks": {
+      "$comment": "S5 — optional risks block: a non-empty list of risks with their mitigation",
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/risk" }
+    },
+    "risk": {
+      "$comment": "S5 — every risk names what could go wrong and how it is mitigated",
+      "type": "object",
+      "required": ["risk", "mitigation"],
+      "additionalProperties": false,
+      "properties": {
+        "risk": { "$ref": "#/$defs/text" },
+        "mitigation": { "$ref": "#/$defs/text" }
       }
     },
     "results": {

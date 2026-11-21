@@ -1,5 +1,34 @@
 # Version notes
 
+## v1.1 — 21 November 2026
+
+requmexre v1.1 adds one optional field, `method.risks`. The v1.0 model is
+otherwise unchanged: no field or rule was removed, and a valid v1.0 plan
+remains valid without edits.
+
+### Schema and validator
+
+- The `$id` moves to `https://avvohacker.github.io/requmexre/schema/1.1/requmexre.schema.json`; the Pages build publishes the file at that path.
+- S5 extends `method` with an optional non-empty `risks` list. Each entry is a closed object with `risk` and `mitigation`, both non-blank strings. `limits` keeps its meaning: what the design does not cover.
+- S1–S10 and R1–R8 are otherwise unchanged; the validator banner reads v1.1.
+- The 1.0 schema remains published at its original `$id`, from `schema/archive/1.0/`. The archived file is the S4-corrected 1.0 schema, byte-identical to what the 1.0 URL served before this version.
+
+### Migration
+
+- No migration is required: `risks` is optional and no existing field changed. A v1.0 plan validates and renders as before.
+- To declare risks, add `method.risks` as a list of `{ "risk": "...", "mitigation": "..." }`; omit the field when the plan states none. Do not move risks into `limits`.
+- Plans without risks render exactly as before. Plans with risks render each risk and its mitigation in the method section, after the limits; sections that render only `method.procedure` do not duplicate them.
+
+### Fixtures and checks
+
+- The native DFG fixture carries two risks and its golden includes them; `s5-risk-without-mitigation.json` pins the missing-mitigation case; the structural matrix covers empty lists, blank text and extra keys.
+- Checks: 29/29 fixtures, 231 tests, and a Pages build that writes both `/schema/1.0/` and `/schema/1.1/`.
+
+### Citation
+
+- `CITATION.cff` at `version: "1.1.0"`, author `avvohacker`, licence all rights
+  reserved, no DOI. v1.1 is not tagged and has no GitHub release.
+
 ## Post-v1.0 correction — 21 November 2026
 
 S4 already required a comparative question to carry no `criteria` or

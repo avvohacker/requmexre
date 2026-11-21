@@ -109,6 +109,15 @@ STRUCTURAL_CASES = [
     (lambda p: p["method"]["sources"][0].update(kind="interview"), "S5"),
     (lambda p: p["method"].update(limits="many"), "S5"),
     (lambda p: p["method"].update(validity_conditions="observed twice"), "S5"),
+    (lambda p: p["method"].update(risks=[]), "S5"),
+    (lambda p: p["method"].update(risks=[{"risk": "Attrition"}]), "S5"),
+    (lambda p: p["method"].update(risks=[{"risk": " ", "mitigation": "Oversample"}]), "S10"),
+    (
+        lambda p: p["method"].update(
+            risks=[{"risk": "Attrition", "mitigation": "Oversample", "owner": "PI"}]
+        ),
+        "S5",
+    ),
     (lambda p: p.update(results=[]), "S6"),
     (lambda p: p["results"][0].pop("kind"), "S6"),
     (lambda p: p["results"][0].pop("falsifier"), "S7"),
@@ -141,6 +150,17 @@ def test_secondary_question_needs_only_text_and_form(v, schema, plan):
 def test_secondary_question_cannot_be_empty(v, schema, plan):
     plan["questions"]["secondary"] = []
     assert "S3" in codes(structural(v, schema, plan))
+
+
+def test_method_risks_are_optional_and_accepted(v, schema, plan):
+    plan["method"]["risks"] = [
+        {
+            "risk": "Attrition above 15 per cent per wave.",
+            "mitigation": "Oversample and follow movers.",
+        }
+    ]
+    assert structural(v, schema, plan) == []
+    assert semantic(v, plan) == []
 
 
 # --------------------------------------------------------------------------

@@ -46,6 +46,17 @@ fields; the remaining values are labels. The test matrix in
 `tests/test_questions.py` pins all eleven, so the vocabulary cannot drift
 silently.
 
+## Why risks are not limits
+
+FWO asks for potential scientific risks and contingency plans, Horizon for the
+challenges in the method and how they will be overcome, PRIN for risks and
+mitigation, and SNSF for risks and alternatives. `limits` answers a different
+question: what the design does not cover. A risk is something that could go
+wrong; its mitigation is the response. v1.1 adds an optional `method.risks`
+list of `{risk, mitigation}` so that the two are not conflated. The field is
+optional: a plan that states no risks is valid, and no risk is invented. The
+1.0 schema remains published from `schema/archive/1.0/` at its original `$id`.
+
 ## How the overlap tests work
 
 R2, R3, R6 and R7 compare word sets, not meanings. `content_words` lowercases,

@@ -32,6 +32,7 @@ def copy_inputs(tmp_path):
         target = tmp_path / name
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source, target)
+    shutil.copytree(ROOT / "schema" / "archive", tmp_path / "schema" / "archive")
     return tmp_path / "schema" / "requmexre.schema.json"
 
 
@@ -55,3 +56,25 @@ def test_build_exits_when_the_schema_id_is_outside_the_site(tmp_path):
     assert result.returncode == 1, result.stdout + result.stderr
     assert "does not start with" in result.stderr
     assert "https://example.org/schema/1.0/requmexre.schema.json" in result.stderr
+
+
+def test_build_publishes_the_current_and_archived_schemas(tmp_path):
+    copy_inputs(tmp_path)
+
+    result = run_build(tmp_path)
+
+    assert result.returncode == 0, result.stdout + result.stderr
+    cases = [
+        (
+            "schema/1.1/requmexre.schema.json",
+            "https://avvohacker.github.io/requmexre/schema/1.1/requmexre.schema.json",
+        ),
+        (
+            "schema/1.0/requmexre.schema.json",
+            "https://avvohacker.github.io/requmexre/schema/1.0/requmexre.schema.json",
+        ),
+    ]
+    for relative, expected in cases:
+        path = tmp_path / "site" / "_out" / relative
+        assert path.is_file(), relative
+        assert json.loads(path.read_text(encoding="utf-8"))["$id"] == expected

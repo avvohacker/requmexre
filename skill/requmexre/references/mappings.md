@@ -25,7 +25,7 @@ separate "project outline", and the table below covers sections 1–3 of the for
 |---|---|---|
 | 1. Rationale and positioning | `warrant`, `standpoint` | The gap, with its dated evidence, and the position from which the question is asked. If `meta.standpoint` is `none`, say so in one sentence. If it is `undeclared`, do not claim none: flag the silence and ask for a declaration where the form requires positioning. |
 | 2. Scientific research objectives | `questions.primary`, `questions.secondary`, `results` | The question or objective as written, then the secondary objectives, then what would count as an answer, then the expected outcomes. FWO has no separate results section, so expected outcomes belong here. Render each claim as an expected result; never its falsifier. See [`fwo-example.md`](fwo-example.md). |
-| 3. Research methodology and work plan | `method` | Approach, sources, procedure, then validity conditions and limits. The work plan is the procedure split into its steps and put in the order it gives, each step saying what it draws on and what it produces (see the sequence rule under Rendering rules). See [`fwo-example.md`](fwo-example.md). |
+| 3. Research methodology and work plan | `method` | Approach, sources, procedure, then validity conditions, limits and risks. The work plan is the procedure split into its steps and put in the order it gives, each step saying what it draws on and what it produces (see the sequence rule under Rendering rules). See [`fwo-example.md`](fwo-example.md). |
 
 FWO asks for hypotheses and expected results inside the objectives. Do not open a
 results section of your own; the form's numbering is part of the assessment.
@@ -40,7 +40,7 @@ Rendering rules).
 |---|---|---|
 | Contesto e stato dell'arte | `warrant` | The state of the art organised around the gap, not a literature review in chronological order. Each claim about the state of the art carries its source. |
 | Obiettivi | `questions.primary`, `questions.secondary` | The question or objective as written, its scope, and — for evaluative questions — the criteria and how they are operationalised. |
-| Metodologia e piano di lavoro | `method` | Approach, sources, procedure, validity conditions, limits. The procedure supplies the order; who does what and when come from the call, not from `plan.json`. |
+| Metodologia e piano di lavoro | `method` | Approach, sources, procedure, validity conditions, limits, risks. The procedure supplies the order; who does what and when come from the call, not from `plan.json`. |
 | Risultati attesi e impatto | `results`, `standpoint` | Expected findings as findings, outcomes as outcomes, outputs as outputs, and the impact argued from the declared criteria. Impact without criteria is a wish. |
 
 PRIN is in Italian. Render into Italian; the JSON keeps its own language, and
@@ -52,7 +52,7 @@ PRIN is in Italian. Render into Italian; the JSON keeps its own language, and
 |---|---|---|
 | Rationale and positioning within state-of-the-art literature | `warrant`, `standpoint` | The gap with its dated evidence, and the position from which the question is asked. If `meta.standpoint` is `none`, say so in one sentence; if `undeclared`, do not claim none. |
 | Research objectives/questions | `questions.primary`, `questions.secondary` | The question or objective as written, its scope and what would count as an answer. |
-| Methodology and work plan | `method` | Approach, sources, procedure, validity conditions, limits. Outputs close the work plan. |
+| Methodology and work plan | `method` | Approach, sources, procedure, validity conditions, limits, risks. Outputs close the work plan. |
 | Hypothesis, to be confirmed later | `results` | The hypothesis as a hypothesis. The regulations say it is "to be confirmed or not at a later stage": do not write it as a finding. |
 
 VUB asks for a hypothesis rather than results. If `results` is absent, say what
@@ -65,7 +65,7 @@ known, the composition of the advisory committee; neither is modelled.
 | Section | Fields | What to write |
 |---|---|---|
 | 1.1 Objectives and ambition | `warrant`, `questions.primary`, `questions.secondary` | The gap with its dated evidence, then the question or objective as written with its scope and criterion. Ambition is the advance beyond the state of the art, not a promise. |
-| 1.2 Methodology | `method` | Approach, sources, procedure, validity conditions, limits. |
+| 1.2 Methodology | `method` | Approach, sources, procedure, validity conditions, limits, risks. |
 | 2.1 Project's pathways towards impact | `results`, `standpoint` | Impact argued from expected findings and outcomes and from the declared criteria. If `meta.standpoint` is `none` or `undeclared`, do not invent a standpoint. |
 | 3.1 Work plan and resources | `method.procedure` | The procedure's steps in order, as the work plan. Resources and work-package numbering are not modelled; see the sequence rule under Rendering rules. Outputs close 3.1. |
 
@@ -80,7 +80,7 @@ model fields: do not invent them.
 |---|---|---|
 | 1 Starting Point — State of the art and preliminary work | `warrant` | The gap and its dated evidence. Preliminary work and the applicant's own research are not modelled; do not invent them. |
 | 2.2 Objectives | `questions.primary`, `questions.secondary`, `standpoint` | The question or objective as written, its scope, and its criterion. DFG has no results section: if `results` is present, do not open one; use the claims only inside 2.2 or 2.3 where they serve the objectives or work programme. |
-| 2.3 Work programme incl. proposed research methods | `method` | Approach, sources, procedure, validity conditions, limits. Outputs close the work programme. |
+| 2.3 Work programme incl. proposed research methods | `method` | Approach, sources, procedure, validity conditions, limits, risks. Outputs close the work programme. |
 
 DFG 2.1 Anticipated total duration of the project, 2.4 Handling of research data, 2.5 Relevance of sex, gender and/or diversity in the research project, 3 Project- and subject-related list of publications, 4 Supplementary information on the research context and 5 Requested modules/funds are not modelled.
 There is no dedicated standpoint section: if `meta.standpoint` is `declared`, it
@@ -93,7 +93,7 @@ not invent one.
 |---|---|---|
 | 1. Current state of research in the field | `warrant` | The gap and its dated evidence. |
 | 2. Current state of your own research | — | Own research is not a model field; do not invent it. |
-| 3. Detailed research plan | `questions.primary`, `questions.secondary`, `method` | Question or objective, approach, sources and procedure. The form also asks for investigations, data collection and team roles; the first two are in the method, the team is not modelled. Outputs close the detailed research plan. |
+| 3. Detailed research plan | `questions.primary`, `questions.secondary`, `method` | Question or objective, approach, sources, procedure, risks. The form also asks for investigations, data collection and team roles; the first two are in the method, the team is not modelled. Outputs close the detailed research plan. |
 | 4. Schedule and milestones | `method.procedure` (partial) | The procedure's sequence; milestones and resources are not modelled. |
 | 5. Relevance and impact | `standpoint` | Impact from the plan's expected findings or outcomes, if present, and from the declared criteria. SNSF has no results section; do not open one. If `meta.standpoint` is `none` or `undeclared`, do not invent one. |
 
@@ -142,6 +142,9 @@ SNSF has no results section: do not render one. It also asks for ethics and budg
 - `limits: "none"` is a declaration that the plan states no limits: do not
   invent a limitation. If `limits` is absent, say the plan does not state limits
   rather than claiming there are none.
+- `risks` is rendered with its mitigation in the method section, after the
+  limits: each entry says what could go wrong and how it is addressed. Never
+  render a risk as a limit, and never invent a mitigation.
 - **Outside the plan.** Registration, ethics and calendar time sit outside `plan.json`: render them
   from the call's forms, not from requmexre, and do not invent an `extensions`
   field. The procedure's order is not a calendar; see Rendering rules.

@@ -47,6 +47,16 @@
       "Findings cover the three participating cities, not the German building stock",
       "The design measures indoor temperature, not the use of cooling systems",
       "Households that move during the study leave the sample"
+    ],
+    "risks": [
+      {
+        "risk": "Attrition above 15 per cent per wave as households move or decline the follow-up survey.",
+        "mitigation": "Oversample blocks by ten per cent and follow movers to their new address."
+      },
+      {
+        "risk": "Logger failure or tampering in a block leaves gaps in the temperature series.",
+        "mitigation": "Install duplicate loggers in each block and replace failed units within two weeks."
+      }
     ]
   },
   "results": [

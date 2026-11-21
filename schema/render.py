@@ -40,7 +40,7 @@ MAPPINGS_PATH = HERE / "mappings.json"
 if not MAPPINGS_PATH.exists():
     MAPPINGS_PATH = HERE.parent / "assets" / "mappings.json"
 
-VERSION = "1.0"
+VERSION = "1.1"
 
 MODEL_FIELDS = (
     "warrant",
@@ -65,6 +65,9 @@ PHRASES = {
         "limits": "Limits",
         "limits_none": "The plan declares no limits.",
         "limits_absent": "The plan does not state limits.",
+        "risks": "Risks and mitigation",
+        "risk": "Risk",
+        "mitigation": "Mitigation",
         "premises": "Normative premises",
         "standpoint_none": "The plan declares no normative standpoint.",
         "standpoint_undeclared": "The plan does not declare a standpoint.",
@@ -95,6 +98,9 @@ PHRASES = {
         "limits": "Limiti",
         "limits_none": "Il piano dichiara l'assenza di limiti.",
         "limits_absent": "Il piano non indica limiti.",
+        "risks": "Rischi e mitigazione",
+        "risk": "Rischio",
+        "mitigation": "Mitigazione",
         "premises": "Premesse normative",
         "standpoint_none": "Il piano dichiara l'assenza di una prospettiva normativa.",
         "standpoint_undeclared": "Il piano non dichiara una prospettiva normativa.",
@@ -259,6 +265,18 @@ def _sources(sources, phrases):
     return _listed(phrases["sources"], items)
 
 
+def _risks(risks, phrases):
+    paragraphs = []
+    for item in risks or []:
+        risk = str(item.get("risk", "")).strip()
+        mitigation = str(item.get("mitigation", "")).strip()
+        if risk and mitigation:
+            paragraphs.append(
+                _end(f"{phrases['risk']}: {risk} {phrases['mitigation']}: {mitigation}")
+            )
+    return paragraphs
+
+
 def _method(method, phrases):
     first = [_end(method.get("approach", ""))]
     sources = _sources(method.get("sources"), phrases)
@@ -280,6 +298,7 @@ def _method(method, phrases):
     else:
         last.append(phrases["limits_absent"])
     paragraphs.append(" ".join(part for part in last if part))
+    paragraphs.extend(_risks(method.get("risks"), phrases))
     return [paragraph for paragraph in paragraphs if paragraph]
 
 

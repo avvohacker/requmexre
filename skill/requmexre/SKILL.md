@@ -30,7 +30,7 @@ proposal that are not the plan.
 | Field | Required |
 |---|---|
 | `questions` | `primary` with `text`, `form`, `answer_type`, `scope`, `completion_criterion`; optional `secondary` |
-| `method` | `approach`, `sources`, `procedure`; optional `validity_conditions`, `limits` |
+| `method` | `approach`, `sources`, `procedure`; optional `validity_conditions`, `limits`, `risks` |
 | `results` | optional; `claim` + `kind`, with `falsifier` and `evidence_needed` for claims, `measure` for outcomes |
 | `warrant` | `gap_statement`, `evidence` |
 | `standpoint` | optional; `normative_premises`, `criteria`, declared in `meta.standpoint` |
@@ -112,6 +112,9 @@ as answered.
 - `limits`: what the design does not cover. A limit is not a condition (R7) and
   not an apology. When the plan states no limits, write `"none"`; absence means
   the field was not addressed.
+- `risks`: what could go wrong and the mitigation. A risk is not a limit, and a
+  mitigation is not an apology. Each entry has `risk` and `mitigation`. If the
+  plan states no risks, omit the field; do not invent one.
 
 Exit: a method a competent stranger could execute, and a list of the ways it
 could fail.
@@ -251,7 +254,7 @@ plan.
 ## Limits
 
 - Six funders are mapped: FWO, PRIN, VUB, Horizon, DFG and SNSF. The schema
-  is v1.0.
+  is v1.1.
 - A funder outside the six known values uses `funder: "other"` and `scheme`;
   there is no section table for it.
 - Fixtures and the template are synthetic: structure from the funder documents,

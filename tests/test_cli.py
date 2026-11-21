@@ -36,7 +36,7 @@ def write(tmp_path, name, document):
 def test_fixtures_run_checks_the_fixtures_and_the_template():
     result = run("--fixtures")
     assert result.returncode == 0, result.stdout + result.stderr
-    assert "requmexre v1.0" in result.stdout
+    assert "requmexre v1.1" in result.stdout
     assert "not your plan" in result.stdout
     assert "files behave as declared" in result.stdout
     assert "No plan of yours was checked" in result.stdout
@@ -124,7 +124,7 @@ def test_several_files_are_reported_one_per_line():
 def test_version_exits_zero():
     result = run("--version")
     assert result.returncode == 0
-    assert result.stdout.strip() == "requmexre v1.0"
+    assert result.stdout.strip() == "requmexre v1.1"
     assert result.stderr == ""
 
 
@@ -148,7 +148,7 @@ def test_json_report_is_parseable_and_complete():
     assert result.returncode == 0
     report = json.loads(result.stdout)
     assert report["tool"] == "requmexre"
-    assert report["version"] == "1.0"
+    assert report["version"] == "1.1"
     assert report["scope"] == "fixtures"
     assert report["ok"] is True
     assert report["failed"] == 0
@@ -200,7 +200,7 @@ def test_json_report_on_unreadable_json_exits_one(tmp_path):
 
 def test_json_flag_does_not_print_the_banner():
     result = run("--json", CASES / "fwo.json")
-    assert "requmexre v1.0 — structural" not in result.stdout
+    assert "requmexre v1.1 — structural" not in result.stdout
 
 
 def test_json_scope_is_files_for_explicit_targets():

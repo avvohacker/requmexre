@@ -24,6 +24,7 @@ REPO_URL = "https://github.com/avvohacker/requmexre"
 BLOB_URL = f"{REPO_URL}/blob/main"
 SITE_URL = "https://avvohacker.github.io/requmexre/"
 SCHEMA_PATH = ROOT / "schema" / "requmexre.schema.json"
+ARCHIVE = SCHEMA_PATH.parent / "archive"
 
 try:
     import markdown
@@ -181,7 +182,7 @@ $sources
 </main>
 <footer>
   <div class="wrap">
-    <p>requmexre v1.0 · 2026 · Licence: all rights reserved</p>
+    <p>requmexre v1.1 · 2026 · Licence: all rights reserved</p>
     <p>Built from <code>README.md</code>, <code>schema/RULES.md</code> and <code>SOURCES.md</code> by <code>site/build.py</code>.</p>
   </div>
 </footer>
@@ -246,6 +247,16 @@ def main() -> int:
     schema_target.parent.mkdir(parents=True, exist_ok=True)
     schema_target.write_text(schema_text, encoding="utf-8")
     print(f"wrote {schema_target} ({len(schema_text):,} bytes)")
+
+    for legacy in sorted(ARCHIVE.glob("*/requmexre.schema.json")):
+        legacy_text = legacy.read_text(encoding="utf-8")
+        legacy_id = json.loads(legacy_text)["$id"]
+        if not legacy_id.startswith(SITE_URL):
+            sys.exit(f"legacy schema $id {legacy_id} does not start with {SITE_URL}")
+        legacy_target = OUT / legacy_id[len(SITE_URL):]
+        legacy_target.parent.mkdir(parents=True, exist_ok=True)
+        legacy_target.write_text(legacy_text, encoding="utf-8")
+        print(f"wrote {legacy_target} ({len(legacy_text):,} bytes)")
     return 0
 
 
