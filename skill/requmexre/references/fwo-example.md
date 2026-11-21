@@ -8,6 +8,7 @@ short as the argument allows, and a real draft is cut to the call's own limit.
 
 ## The plan, in brief
 
+- Funder: `fwo` — this is what makes the table below the right one.
 - Question: does a four-day week reduce overtime hours in small firms?
 - Method: difference-in-differences on payroll records, 2025–2029.
 - Expected finding: overtime falls after adoption, more where pay is unchanged.

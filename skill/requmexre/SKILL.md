@@ -52,6 +52,10 @@ Establish what is being asked and for whom.
   in [`references/mappings.md`](references/mappings.md). A funder outside the
   six is `meta.funder: "other"` with `meta.scheme` naming it, and is handled by
   hand.
+- Record the answer in `meta.funder`: `fwo`, `prin`, `vub`, `horizon`, `dfg`,
+  `snsf`, or `other` with `meta.scheme`. Use `none` only when no funder is
+  involved. A plan you will render into a funder's sections must name that
+  funder; the field is how the render knows which table to use.
 - Is there a draft to convert, or is the plan new? If there is a draft, extract
   candidate sentences for each field before writing anything.
 - What length does the call allow, in its own units (pages or characters, per
@@ -64,8 +68,8 @@ Establish what is being asked and for whom.
   unanswered: `meta.standpoint` is required, and `undeclared` records silence
   rather than inventing a position.
 
-Exit: a funder (or `none`), a source draft (or none), `meta.standpoint`, and the
-length limit or a note that it is unknown.
+Exit: a funder (or `none`) recorded in `meta.funder`, a source draft (or none),
+`meta.standpoint`, and the length limit or a note that it is unknown.
 
 ### 2. Questions
 
@@ -164,6 +168,12 @@ you remain responsible for the content.
 Map fields onto the funder's sections — never paste JSON into a proposal, and
 never rename a section. The tables, the section names and the caveats for each
 funder are in [`references/mappings.md`](references/mappings.md).
+
+Before rendering, check `meta.funder`. If it is `none` or absent and the
+sections you are about to write belong to a funder, stop: set the field to that
+funder (or `other` with `meta.scheme`), revalidate, and render only then. The
+tables are not a generic template; they are that funder's sections, and a plan
+that does not name the funder has not chosen one.
 
 Falsifiers and `evidence_needed` stay in `plan.json`: they are there to test the
 plan, not to be submitted. Never render a falsifier, not even as "this would be

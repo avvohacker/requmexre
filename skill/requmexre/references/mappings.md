@@ -25,6 +25,9 @@ produced, not inferred, and section 2 asks what the study expects to find. Rende
 outputs in section 3, once, at the end of the work plan, as what the procedure
 delivers — not as an outcome and not as a finding.
 
+Use this table only when `meta.funder` is `fwo`. If it still says `none`, the
+plan has not chosen a funder: set the field and revalidate before rendering.
+
 ## PRIN — progetto di ricerca
 
 | Section | Fields | What to write |
@@ -89,6 +92,11 @@ SNSF has no results section: do not render one. It also asks for ethics and budg
 
 ## Rendering rules
 
+- A table applies only to a plan whose `meta.funder` names that funder (`other`
+  with `meta.scheme` is matched by hand). `none`, or an absent field, means the
+  plan is funder-agnostic: no table applies. Set the field to the call's funder
+  and revalidate before rendering. The validator does not check this — a plan
+  without a funder is valid — so the check is the renderer's.
 - Prose only. No JSON, no field names, no rule codes in the rendered text.
 - Keep the declared `form`: an objective stays an objective in the proposal, an
   interrogative stays a question. Do not rewrite one as the other.
