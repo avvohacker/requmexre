@@ -34,17 +34,24 @@ An `output` is not an expected result: render it in section 3, once, at the end
 of the work plan, as what the procedure delivers (see the output rule under
 Rendering rules).
 
-## PRIN — progetto di ricerca
+## PRIN — scientific proposal
+
+The form's SECTION C has one scientific proposal; its detailed description is
+divided into blocks a., b. and c. The form gives the letters with long criteria,
+not short headings; the headings below are short descriptions.
 
 | Section | Fields | What to write |
 |---|---|---|
-| Contesto e stato dell'arte | `warrant` | The state of the art organised around the gap, not a literature review in chronological order. Each claim about the state of the art carries its source. |
-| Obiettivi | `questions.primary`, `questions.secondary` | The question or objective as written, its scope, and — for evaluative questions — the criteria and how they are operationalised. |
-| Metodologia e piano di lavoro | `method` | Approach, sources, procedure, validity conditions, limits, risks. The procedure supplies the order; who does what and when come from the call, not from `plan.json`. |
-| Risultati attesi e impatto | `results`, `standpoint` | Expected findings as findings, outcomes as outcomes, outputs as outputs, and the impact argued from the declared criteria. Impact without criteria is a wish. |
+| a. Objectives, state of the art, methodology and risks | `warrant`, `questions.primary`, `questions.secondary`, `method` | The gap with its dated evidence, then the objective or question as written with scope and criteria, then approach, sources, procedure, validity conditions, limits and risks. |
+| b. Pathways to results and expected impacts | `results`, `standpoint` | Expected findings as findings, outcomes as outcomes, outputs as outputs, and the impact argued from the declared criteria. Impact without criteria is a wish. |
+| c. Organization, work plan and resources | — | Organization, operational work plan, team roles, timeframes, resources, budget and management are not modelled; draft this block from the call. |
 
-PRIN is in Italian. Render into Italian; the JSON keeps its own language, and
-`meta.funder` is `prin`.
+The form's impact pathways and measures to maximise impact are not model fields;
+draft them from the call.
+
+PRIN's form is in English. Render into English; the JSON keeps its own language,
+and `meta.funder` is `prin`. The Italian evaluation guidelines are used for the
+content criteria, not for the section names.
 
 ## VUB — doctoral research plan
 

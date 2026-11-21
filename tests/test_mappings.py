@@ -91,7 +91,7 @@ def test_a_section_without_fields_says_why(mapping):
 def test_each_funder_uses_a_language_the_renderer_has(mapping):
     for funder in mapping["funders"]:
         assert funder["language"] in render.PHRASES
-    assert funders(mapping)["prin"]["language"] == "it"
+    assert funders(mapping)["prin"]["language"] == "en"
 
 
 def markdown_rows(text):

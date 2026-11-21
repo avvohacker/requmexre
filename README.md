@@ -15,15 +15,16 @@ The name is the three slots: **RE**search **QU**estion + **ME**thodology + e**X*
 | Horizon Europe — Part B | 1.1 Objectives and ambition | 1.2 Methodology; 3.1 Work plan and resources | 2. Impact | [form](https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/temp-form/af/af_he-ria-ia_en.pdf) |
 | DFG — project description | 2.2 Objectives | 2.3 Work programme incl. proposed research methods | **no section** | [template](https://www.dfg.de/resource/blob/168328/54-012-en.pdf) |
 | SNSF — research plan | 3. Detailed research plan | inside 3 | **no section** | [requirements](https://www.snf.ch/en/257qx6wxjo72ODHy/page/funding/documents-downloads/regulations-requirements-for-the-research-plan) |
-| PRIN — progetto di ricerca | Obiettivi | Metodologia e piano di lavoro | Risultati attesi e impatto | [guidelines](https://www.mur.gov.it/sites/default/files/2026-05/D.D.%202298%20All.%203%20Linee%20Guida%20di%20valutazione.pdf) |
+| PRIN — scientific proposal | a. Objectives | a. Methodology and risks | b. Results and expected impacts | [form](http://prin.mur.gov.it/Attachments/getAttachment?key=oLjLA8JnI6imQjuJ7hMr4A==) |
 
-Question and method appear in all six. Results appear in four — FWO (inside the objectives), VUB (inside Scientific research goals, as hypotheses and partial results), Horizon, PRIN — and have no section in DFG and SNSF. The schema therefore does not require a results block; when one is present, R5 still requires a claim or an outcome, never outputs alone.
+Question and method appear in all six. Results appear in four — FWO (inside the objectives), VUB (inside Scientific research goals, as hypotheses and partial results), Horizon, PRIN (block b) — and have no section in DFG and SNSF. The schema therefore does not require a results block; when one is present, R5 still requires a claim or an outcome, never outputs alone.
 
 Structural notes:
 
 - Horizon Part B also has 2.2 Measures to maximise impact - Dissemination, exploitation and communication, an optional 2.3 Summary, 3.1 Work plan and resources, and 3.2 Capacity of participants and consortium as a whole. 3.1 renders the procedure's sequence; resources and 3.2 are not modelled.
 - DFG section 1 is Starting Point (State of the art and preliminary work); 2.1 is “Anticipated total duration of the project”, not the state of the art.
 - The SNSF plan has five sections: 1 current state of research in the field, 2 current state of your own research, 3 detailed research plan, 4 schedule and milestones, 5 relevance and impact.
+- PRIN's SECTION C has blocks a., b. and c. Block b also asks for impact pathways and measures to maximise impact; those are not modelled. Block c (organization, operational work plan, team, timeframes, resources and budget) is not modelled; draft it from the call.
 
 ## The model
 

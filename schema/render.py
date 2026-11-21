@@ -3,9 +3,10 @@
 
 The six section tables are data, not code: mappings.json maps each funder's
 sections to fields of the plan. This file turns that mapping into Markdown. It
-copies the plan's prose and never rewrites it, never translates it (PRIN's
-section names and connectives are Italian; the plan's own wording is kept) and
-never renders a falsifier, `evidence_needed` or an output as an expected result.
+copies the plan's prose and never rewrites it or translates it; section names
+and connectives come from the funder's table, while the plan's own wording is
+kept, and it never renders a falsifier, `evidence_needed` or an output as an
+expected result.
 
 A plan must name one of the six funders. `none`, an absent funder and `other`
 have no table: the first two are funder-agnostic, the third is rendered by hand

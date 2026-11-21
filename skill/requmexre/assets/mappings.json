@@ -23,24 +23,21 @@
     },
     {
       "id": "prin",
-      "language": "it",
+      "language": "en",
       "sections": [
         {
-          "name": "Contesto e stato dell'arte",
-          "fields": ["warrant"]
+          "name": "a. Objectives, state of the art, methodology and risks",
+          "fields": ["warrant", "questions.primary", "questions.secondary", "method"]
         },
         {
-          "name": "Obiettivi",
-          "fields": ["questions.primary", "questions.secondary"]
-        },
-        {
-          "name": "Metodologia e piano di lavoro",
-          "fields": ["method"]
-        },
-        {
-          "name": "Risultati attesi e impatto",
+          "name": "b. Pathways to results and expected impacts",
           "fields": ["results", "standpoint"],
           "delivers": true
+        },
+        {
+          "name": "c. Organization, work plan and resources",
+          "fields": [],
+          "outside_model": "Organization, operational work plan, team roles, timeframes, resources and budget are not modelled: draft this block from the call."
         }
       ]
     },
