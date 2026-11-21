@@ -157,10 +157,12 @@ status words and the complete list of form defects are in
 [`references/review.md`](references/review.md).
 
 1. **Locate.** Which funder and call, which sections the draft has, whether it
-   is prose or a `plan.json`, and the length limit. Record `meta.funder` as in
-   Detect; a draft written for FWO is `fwo` even if the field is absent. If the
-   limit is unavailable, say so: the review can end without it, marked as not
-   cut to the call.
+   is prose or a `plan.json`, and the length limit. Record `meta.funder` when the
+   draft or the call supplies one; a draft written for FWO is `fwo` even if the
+   field is absent. If neither supplies it, record the funder as unknown: review
+   by field, leave the Section column empty, and do not assign a funder to make a
+   table fit. If the limit is unavailable, say so: the review can end without it,
+   marked as not cut to the call.
 2. **Extract — prose only.** Take candidate sentences for each field and quote
    them. Where a field has no sentence, leave it empty and mark it. If the draft
    is already a `plan.json`, skip this step and step 3: quote the fields as they

@@ -17,8 +17,11 @@ are in `RULES.md`; the section tables are in `mappings.md`.
 | `warrant.evidence` | each string, verbatim | present / weak / missing | `R4`, `S8` | |
 | `standpoint` | quoted, or absent | present / weak / undeclared | `R8`, `S9` | |
 
-With `funder: other` or no funder there is no table: leave the Section column
-empty, review by field, and say the sections were not mapped.
+There are three cases. `funder: other` with a `scheme` has no table but a named
+scheme. A plan with no funder at all, and no call to supply one, is recorded as
+**funder unknown**. In both cases leave the Section column empty, review by
+field, and say the sections were not mapped. Never assign a funder to make a
+table fit: an unknown funder is a question for the author, not a default.
 
 ### Status words
 
