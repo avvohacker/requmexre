@@ -14,7 +14,10 @@ fields when reviewing. A section with no field behind it — preliminary work,
 ethics, budget, timetable — is outside the model: report it as such, do not
 invent a field for it.
 
-## FWO — project outline (PhD fellowship, fundamental research)
+## FWO — application form (PhD fellowship, fundamental research)
+
+The document is the application form cited in `SOURCES.md`; this corpus has no
+separate "project outline", and the table below covers sections 1–3 of the form.
 
 | Section | Fields | What to write |
 |---|---|---|
