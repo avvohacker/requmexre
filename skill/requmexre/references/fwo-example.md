@@ -14,11 +14,15 @@ short as the argument allows, and a real draft is cut to the call's own limit.
 - Expected finding: overtime falls after adoption, more where pay is unchanged.
 - Output: a cleaned firm-level panel of overtime hours, with its build code.
 - Gap: payroll records and working-time surveys are held by different agencies.
+- Evidence: `Social secretariats, payroll records, 2025`; `Flemish working-time
+  survey, 2023`.
 - Standpoint: none.
 
 The finding's falsifier — "overtime stays within one standard error of its
 pre-adoption level" — is not in the render. It stays in `plan.json`, where it
-tests the claim; section 3 says which comparison would produce the evidence.
+tests the claim; section 3 says which comparison would produce the evidence. The
+two evidence strings appear verbatim in the parenthesis of section 1, and no
+separate reference list is opened because the FWO form has none.
 
 ## 1. Rationale and positioning
 

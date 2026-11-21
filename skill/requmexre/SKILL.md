@@ -137,7 +137,10 @@ Exit: every claim has an observation that could defeat it.
 
 - `warrant.gap_statement`: what is missing, contradictory or untested in the
   literature — not a summary of the field, and not the question again (R3).
-- `warrant.evidence`: at least one dated or identifiable source (R4).
+- `warrant.evidence`: at least one dated or identifiable source (R4). Write each
+  entry as the citation itself — who produced it, what it is, when, plus a DOI,
+  URL, ISBN or PMID when it has one — not as a note about a source. The string is
+  rendered as written.
 - `standpoint`: if declared, normative premises and the criteria that follow from
   them; if `none` or `undeclared`, the object is absent (R8). `none` says the
   plan explicitly has no standpoint; `undeclared` says it does not address one.
@@ -234,6 +237,16 @@ not need; method detail a competent stranger would not need to reproduce the
 design. Never cut the question, the completion criterion, the claim of an
 expected result, or the gap statement. Never pad: a short draft under the limit
 stays short.
+
+Evidence is cited, not described. Each `warrant.evidence` string is a citation
+and is rendered verbatim in parentheses at the sentence it supports, several
+entries separated by semicolons: (City of Ghent, green-space inventory, 2025;
+WHO, Urban green spaces and health, 2016). Do not shorten it, reorder its parts
+or turn it into a number: the plan has no bibliography and no numeric style. Add
+a separate reference list only when the call has a references section, and then
+list the same strings unchanged, in the order they first appear. An entry that
+supports no sentence is not rendered: remove it from the plan rather than cite
+it decoratively.
 
 ## Files
 

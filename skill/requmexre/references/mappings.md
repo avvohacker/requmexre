@@ -21,7 +21,7 @@ separate "project outline", and the table below covers sections 1–3 of the for
 
 | Section | Fields | What to write |
 |---|---|---|
-| 1. Rationale and positioning | `warrant`, `standpoint` | The gap, with its dated evidence, and the position from which the question is asked. If `meta.standpoint` is `none`, say so in one sentence. If it is `undeclared`, do not claim none: flag the silence and ask for a declaration where the form requires positioning. |
+| 1. Rationale and positioning | `warrant`, `standpoint` | The gap, with its dated evidence — each string cited verbatim in parentheses — and the position from which the question is asked. If `meta.standpoint` is `none`, say so in one sentence. If it is `undeclared`, do not claim none: flag the silence and ask for a declaration where the form requires positioning. |
 | 2. Scientific research objectives | `questions.primary`, `questions.secondary`, `results` | The question or objective as written, then the secondary objectives, then what would count as an answer, then the expected outcomes. FWO has no separate results section, so expected outcomes belong here. Render each claim as an expected result, never its falsifier: the falsifier stays in `plan.json` and the test it describes belongs in section 3. See [`fwo-example.md`](fwo-example.md). |
 | 3. Research methodology and work plan | `method` | Approach, sources, procedure, then validity conditions and limits. The work plan is the procedure split into its steps and put in the order the procedure gives, each step saying what it draws on and what it produces. No dates, durations, work packages or milestones: those are not modelled — if the call requires a timetable, fill it from the form, not from the plan. See [`fwo-example.md`](fwo-example.md). |
 
@@ -111,6 +111,10 @@ SNSF has no results section: do not render one. It also asks for ethics and budg
 - Section order and numbering follow the funder, not the schema.
 - The falsifier and `evidence_needed` are design aids: they stay in `plan.json`.
   A proposal states the claim and the method that would test it.
+- Evidence strings are citations. Render each one verbatim, in parentheses, at
+  the sentence it supports, separated by semicolons; do not abbreviate, reorder
+  or number them. Open a reference list only when the call has one, and then
+  reuse the same strings unchanged, in order of first appearance.
 - The work plan renders the procedure's steps in the order `method.procedure`
   already gives them. Do not add steps, dates, durations, work packages,
   milestones or roles: the model holds the logical order, not a timetable. A
