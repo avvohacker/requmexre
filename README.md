@@ -68,7 +68,7 @@ schema/requmexre.schema.json   JSON Schema draft 2020-12
 schema/RULES.md                S1–S10, R1–R8
 schema/validate.py             two-layer validator
 schema/cases/                  fwo, prin, vub, negative (fixtures)
-schema/published/              three published plans, encoded
+schema/published/              three pilot encodings (convenience sample)
 tests/                         pytest suite: rules, fixtures, CLI
 schema/BREAKAGES.md            where the model breaks on those plans
 schema/NOTES.md                maintainer notes: rationale, fixtures, extending
@@ -80,6 +80,12 @@ site/build.py                  Pages build: README, RULES, SOURCES → one page
 .github/workflows/             validate.yml, pages.yml
 ```
 
+The three files in `schema/published/` are a convenience sample of open-access
+protocols, chosen to stress the model — an aim-form objective, a secondary
+mechanistic question, outputs and an outcome, a funder outside the enum. They
+are not a representative corpus, and no user selected them; the protocols belong
+to their publishers, the encodings to this project.
+
 ## Use
 
 ```bash
@@ -87,7 +93,7 @@ cd schema
 python3 validate.py --fixtures                           # built-in corpus, not your plan
 python3 validate.py cases/prin.json                      # one file
 python3 validate.py ../skill/requmexre/assets/template.json
-python3 validate.py published/*.json                     # the published plans
+python3 validate.py published/*.json                     # the pilot encodings
 python3 validate.py --help                               # usage and exit codes
 python3 validate.py --version                            # requmexre v1.0
 python3 validate.py --json cases/prin.json               # one machine-readable report
@@ -95,7 +101,7 @@ python3 validate.py --json cases/prin.json               # one machine-readable 
 
 The pytest suite runs from the repository root: `python3 -m pytest -q`.
 
-Exit code 0 when every pure plan is valid and every negative envelope reports its expected rule, 1 when one does not, 2 on bad usage. A run with neither a file nor `--fixtures` exits 2, so the built-in corpus can never be mistaken for a check of your plan. `--json` writes one object with `ok`, `total`, `passed`, `failed` and a `files` list, each entry carrying `path`, `ok`, `expected`, `findings` (`rule`, `path`, `message`) and `note`. Negative fixtures wrap the plan as `{ "expect": ..., "plan": ... }`; positive plans, the template and the published plans are pure. The skill runs five phases — detect, question, method, results, guards — writes `plan.json`, validates it, and renders it into the six funder sections.
+Exit code 0 when every pure plan is valid and every negative envelope reports its expected rule, 1 when one does not, 2 on bad usage. A run with neither a file nor `--fixtures` exits 2, so the built-in corpus can never be mistaken for a check of your plan. `--json` writes one object with `ok`, `total`, `passed`, `failed` and a `files` list, each entry carrying `path`, `ok`, `expected`, `findings` (`rule`, `path`, `message`) and `note`. Negative fixtures wrap the plan as `{ "expect": ..., "plan": ... }`; positive plans, the template and the pilot encodings are pure. The skill runs five phases — detect, question, method, results, guards — writes `plan.json`, validates it, and renders it into the six funder sections.
 
 ## Limits
 
@@ -108,7 +114,7 @@ Exit code 0 when every pure plan is valid and every negative envelope reports it
 
 | Version | Content |
 |---|---|
-| v0.2 | Plural questions, declared form, explicit completion criterion; three published plans in `schema/published` |
+| v0.2 | Plural questions, declared form, explicit completion criterion; three pilot encodings in `schema/published` |
 | v0.3 | Outcomes with a measure, and outputs, in `results`; answer types widened; pilot re-run in [schema/BREAKAGES.md](schema/BREAKAGES.md) |
 | v0.4 | Typed sources: `data`, `literature`, `participants`, `corpus` in `method.sources` |
 | v0.5 | Six-funder mappings: Horizon, DFG and SNSF added; schema v0.5 |

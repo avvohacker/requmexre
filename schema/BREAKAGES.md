@@ -1,10 +1,13 @@
-# Where the model breaks: three published plans
+# Where the model breaks: three pilot encodings
 
-v0.4 pilot. Three open-access research plans were encoded by hand against the
-schema, run, and re-encoded three times: once after review separated model gaps
-from encoding artefacts (v0.2), once after result kinds were added (v0.3), and
-once after answer types were widened and sources typed (v0.3 second pass, v0.4).
-This version records those revisions and what is still open.
+v0.4 pilot. The three plans are a convenience sample of open-access protocols,
+chosen to stress the model — an aim-form objective, a secondary mechanistic
+question, outputs and an outcome, a funder outside the enum. They are not a
+representative corpus, and no user selected them. They were encoded by hand
+against the schema, run, and re-encoded three times: once after review separated
+model gaps from encoding artefacts (v0.2), once after result kinds were added
+(v0.3), and once after answer types were widened and sources typed (v0.3 second
+pass, v0.4). This version records those revisions and what is still open.
 
 ## Revision history
 
@@ -41,9 +44,9 @@ gaps were real, but change 4 shows that some of them were also representational:
 the map's outputs and the trial's hypothesis only needed kinds that the schema did
 not have.
 
-## The three plans, after v0.5
+## The three pilot encodings, after v0.5
 
-| File | Plan | Type | Result |
+| File | Source protocol | Type | Result |
 |---|---|---|---|
 | `published/imachel.json` | i-MaCHeL, preschool healthy-lifestyle trial | cluster RCT protocol | **PASS** |
 | `published/forest-anticipation.json` | Anticipatory forest use behaviours under policy introduction | systematic map protocol | **PASS** |
@@ -61,7 +64,7 @@ intentionally have no `results`.
 
 ## What changed in the encodings
 
-- `results` is present in all three plans. none of it is supplied text: each claim
+- `results` is present in all three encodings. none of it is supplied text: each claim
   paraphrases a sentence in the document, and each kind is one the document
   supports.
 - The trial keeps its hypothesis, with the null result of its primary analysis as
@@ -109,7 +112,7 @@ Nothing from the pilot remains open. Changes 1–11 and the six-funder mappings
 are closed in v0.5; v1.0 changes nothing.
 
 Changes 1–6 touched S3, S5, S6, S7, R1, R2, R5, all fixtures, the template, the
-published plans, the skill, the README and the site.
+pilot encodings, the skill, the README and the site.
 
 ## What held
 
@@ -120,7 +123,7 @@ published plans, the skill, the README and the site.
 - `validity_conditions` and `limits` where the plan states them, including
   i-MaCHeL's explicit `"none"`: R7 produced no false positives.
 - R4 (dated evidence), R5 (outputs only) and R6 (falsifier) produced no false
-  positives on the three plans.
+  positives on the three encodings.
 - R1 checks the text against the declared form and produced no false positives.
 - The structural layer accepted all three encodings without a single S finding.
 - `sources`: every plan named its material; typing it required one decision per
@@ -145,5 +148,6 @@ adds the citation record. No change is pending before v1.1.
   adolescent mental health: a systematic review and realist synthesis protocol.
   *Systematic Reviews*. 2024;13:86. doi:10.1186/s13643-024-02482-8
 
-All three are open access; the encodings paraphrase them and reproduce no
-substantial portion. They remain the property of their publishers.
+All three protocols are open access; the encodings paraphrase them and reproduce
+no substantial portion. The selection and encoding are this project's; the
+protocols remain the property of their publishers.
