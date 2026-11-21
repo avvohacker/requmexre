@@ -9,13 +9,18 @@ are in `RULES.md`; the section tables are in `mappings.md`.
 
 | Field | The draft says | Status | Rule | Section |
 |---|---|---|---|---|
+| `meta.funder` | the value, or absent; the call if it is known | mapped / other / unknown | `S2` | the funder's sections, or — |
 | `questions.primary` | quoted | present / weak / missing | `R1`, `S3` | the section the table assigns |
 | `questions.primary.completion_criterion` | quoted, or `none` | present / weak / declared none | `R2`, `S3` | as above |
-| `method` | quoted or summarised per subfield | present / weak / missing | `R7`, `S5` | |
+| `method` | quoted or summarised per subfield, limits excepted | present / weak / missing | `S5` | |
+| `method.limits` | list, or `none` | present / weak / declared none | `R7`, `S5` | |
 | `results` | one row per result | present / weak / missing | `R5`, `R6`, `S6`, `S7` | |
 | `warrant.gap_statement` | quoted | present / weak / missing | `R3`, `S8` | |
 | `warrant.evidence` | each string, verbatim | present / weak / missing | `R4`, `S8` | |
 | `standpoint` | quoted, or absent | present / weak / declared none / undeclared | `R8`, `S9` | |
+
+The funder row has plan-level statuses: **mapped** (one of the six), **other**
+(with a `scheme`) and **unknown** (neither the plan nor the call names one).
 
 There are three cases. `funder: other` with a `scheme` has no table but a named
 scheme. A plan with no funder at all, and no call to supply one, is recorded as
