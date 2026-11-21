@@ -11,13 +11,13 @@ The name is the three slots: **RE**search **QU**estion + **ME**thodology + e**X*
 | Template | Question / objective | Method | Results | Document |
 |---|---|---|---|---|
 | FWO — application form | 2. Scientific research objectives | 3. Research methodology and work plan | inside 2: expected outcomes | [form](https://www.fwo.be/media/qi1jlhea/application-form-for-a-phd-fellowship-fundamental-research.pdf) |
-| VUB — research plan | Research objectives/questions | Methodology and work plan | Hypothesis, to be confirmed later | [regulations](https://www.vub.be/sites/default/files/2025-02/2025_Reglementen_Centraal_Doctoraatsreglement_EN.pdf) |
+| VUB — research plan | Scientific research goals | Research methodology and work plan | inside goals: hypotheses and partial results | [template](https://www.vub.be/sites/default/files/2025-04/2025_Benodigde_documenten_Template_Research_Plan_PhD_EN.docx) |
 | Horizon Europe — Part B | 1.1 Objectives and ambition | 1.2 Methodology; 3.1 Work plan and resources | 2. Impact | [form](https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/temp-form/af/af_he-ria-ia_en.pdf) |
 | DFG — project description | 2.2 Objectives | 2.3 Work programme incl. proposed research methods | **no section** | [template](https://www.dfg.de/resource/blob/168328/54-012-en.pdf) |
 | SNSF — research plan | 3. Detailed research plan | inside 3 | **no section** | [requirements](https://www.snf.ch/en/257qx6wxjo72ODHy/page/funding/documents-downloads/regulations-requirements-for-the-research-plan) |
 | PRIN — progetto di ricerca | Obiettivi | Metodologia e piano di lavoro | Risultati attesi e impatto | [guidelines](https://www.mur.gov.it/sites/default/files/2026-05/D.D.%202298%20All.%203%20Linee%20Guida%20di%20valutazione.pdf) |
 
-Question and method appear in all six. Results appear in four — FWO (inside the objectives), VUB (as a hypothesis), Horizon, PRIN — and have no section in DFG and SNSF. The schema therefore does not require a results block; when one is present, R5 still requires a claim or an outcome, never outputs alone.
+Question and method appear in all six. Results appear in four — FWO (inside the objectives), VUB (inside Scientific research goals, as hypotheses and partial results), Horizon, PRIN — and have no section in DFG and SNSF. The schema therefore does not require a results block; when one is present, R5 still requires a claim or an outcome, never outputs alone.
 
 Structural notes:
 

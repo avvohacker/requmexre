@@ -48,17 +48,25 @@ PRIN is in Italian. Render into Italian; the JSON keeps its own language, and
 
 ## VUB — doctoral research plan
 
+The template's sections are Abstract; Rationale and positioning with regard to
+the state-of-the-art; Scientific research goals; Research methodology and work
+plan; PhD advisory committee; Publication strategy; Ethics; Doctoral training
+programme. The table covers the three model sections; the rest is written by
+hand.
+
 | Section | Fields | What to write |
 |---|---|---|
-| Rationale and positioning within state-of-the-art literature | `warrant`, `standpoint` | The gap with its dated evidence, and the position from which the question is asked. If `meta.standpoint` is `none`, say so in one sentence; if `undeclared`, do not claim none. |
-| Research objectives/questions | `questions.primary`, `questions.secondary` | The question or objective as written, its scope and what would count as an answer. |
-| Methodology and work plan | `method` | Approach, sources, procedure, validity conditions, limits, risks. Outputs close the work plan. |
-| Hypothesis, to be confirmed later | `results` | The hypothesis as a hypothesis. The regulations say it is "to be confirmed or not at a later stage": do not write it as a finding. |
+| Rationale and positioning with regard to the state-of-the-art | `warrant` | The gap with its dated evidence, and the scientific position of the project. |
+| Scientific research goals | `questions.primary`, `questions.secondary`, `results` | The question or objective as written, its scope and what would count as an answer, then the hypothesis and the (partial) results. |
+| Research methodology and work plan | `method` | Approach, sources, procedure, validity conditions, limits, risks. Outputs close the work plan. |
 
-VUB asks for a hypothesis rather than results. If `results` is absent, say what
-would be tested and leave the section short; do not invent findings to fill it.
-The research plan also opens with an abstract (at most 250 words) and, if already
-known, the composition of the advisory committee; neither is modelled.
+VUB asks for objectives and/or hypotheses and the (partial) results inside
+Scientific research goals. Do not open a separate results or hypothesis section.
+`standpoint` is not a VUB section: if `meta.standpoint` is `declared`, it is not
+rendered here; keep it as a model guard and write positioning by hand only where
+the call asks for it. The template also has an Abstract (including "Anticipated
+Results and Impact"), an advisory committee, a publication strategy, ethics and
+doctoral training; none of them is modelled.
 
 ## Horizon Europe — Part B (RIA/IA)
 

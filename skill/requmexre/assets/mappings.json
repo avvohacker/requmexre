@@ -49,23 +49,22 @@
       "language": "en",
       "sections": [
         {
-          "name": "Rationale and positioning within state-of-the-art literature",
-          "fields": ["warrant", "standpoint"]
+          "name": "Rationale and positioning with regard to the state-of-the-art",
+          "fields": ["warrant"]
         },
         {
-          "name": "Research objectives/questions",
-          "fields": ["questions.primary", "questions.secondary"]
+          "name": "Scientific research goals",
+          "fields": ["questions.primary", "questions.secondary", "results"]
         },
         {
-          "name": "Methodology and work plan",
+          "name": "Research methodology and work plan",
           "fields": ["method"],
           "delivers": true
-        },
-        {
-          "name": "Hypothesis, to be confirmed later",
-          "fields": ["results"]
         }
-      ]
+      ],
+      "absent": {
+        "standpoint": "VUB does not ask for a normative standpoint; if one is declared, write it by hand only where the call asks for positioning."
+      }
     },
     {
       "id": "horizon",
