@@ -152,36 +152,41 @@ speaks.
 
 A review runs the same five fields read backwards. Do not rewrite the draft into
 the skill's voice and do not fill a field the draft does not have: a review
-reports what is missing, and the author supplies it.
+reports what is missing, and the author supplies it. The report template, the
+status words and the complete list of form defects are in
+[`references/review.md`](references/review.md).
 
 1. **Locate.** Which funder and call, which sections the draft has, whether it
    is prose or a `plan.json`, and the length limit. Record `meta.funder` as in
-   Detect; a draft written for FWO is `fwo` even if the field is absent.
-2. **Extract.** Take candidate sentences for each field and quote them. Where a
-   field has no sentence, leave it empty and mark it: do not paraphrase one into
-   existence. The question, the completion criterion and the gap are the three
-   most often missing.
-3. **Type.** Give each extracted question its `form` from the sentence as
-   written — `interrogative` or `objective` — never by rewriting it.
-4. **Validate.** Write `plan.json` and run `scripts/validate.py`. Every finding
-   names a rule and a path; map it back to the draft's sentence and to the
-   section the table assigns it.
-5. **Report.** One table: field, what the draft says (quoted), status (present,
-   weak, missing), the rule if one fired, and the section affected. Below it,
-   the five checks the validator cannot make: the claim matches the evidence
-   offered; the criterion could actually be met; the falsifier is observable;
-   the gap is dated and specific; every section of the call has a field behind
-   it. Read `references/mappings.md` in reverse for the last one: a section with
-   no field — preliminary work, ethics, budget, timetable — is outside the
-   model and is reported as such.
-6. **Propose, then fix.** Return the report first. Change the plan only for
-   defects of form — a criterion that repeats its question, a falsifier that
-   repeats its claim, a limit that is a condition — and only with the author's
-   agreement. Defects of content stay with the author, each with the question
-   that would settle it.
+   Detect; a draft written for FWO is `fwo` even if the field is absent. If the
+   limit is unavailable, say so: the review can end without it, marked as not
+   cut to the call.
+2. **Extract — prose only.** Take candidate sentences for each field and quote
+   them. Where a field has no sentence, leave it empty and mark it. If the draft
+   is already a `plan.json`, skip this step and step 3: quote the fields as they
+   stand and do not retype them.
+3. **Type — prose only.** Give each extracted question its `form` from the
+   sentence as written — `interrogative` or `objective` — never by rewriting it.
+4. **Copy and validate.** Copy the draft to `plan.review.json` and leave the
+   author's file untouched; never edit the original. Validate the copy with
+   `scripts/validate.py`. Every finding names a rule and a path; map it back to
+   the draft's sentence and to the section the table assigns it.
+5. **Report.** Use the template and the status words in
+   `references/review.md`: one row per field or result, with the quoted text, the
+   status, the rule if one fired and the section affected. Below it, the five
+   checks with their outcome — pass, fail with the sentence that fails, not
+   applicable, or not verifiable with the reason. Read `references/mappings.md`
+   in reverse for coverage: a section with no field is `outside model`.
+6. **Propose, then fix.** Return the report first. On the copy only, and with
+   the author's agreement, repair the form defects listed in
+   `references/review.md`: mechanical fixes such as an unambiguous `form`, an
+   extraneous key or a duplicated limit. Content defects — a criterion, a
+   citation, a falsifier, a declaration — go back to the author with the
+   question that would settle them.
 
-Exit: a `plan.json` that passes validation, a report of what still needs the
-author, and a list of sections the draft cannot fill from the five fields.
+Exit: a review report, a copy that passes validation where the draft supplies
+enough to pass, and the named content only the author can provide. A draft that
+lacks a required field ends as blocked on that field, not as a passing plan.
 
 ## Validation gate
 
@@ -255,6 +260,7 @@ SKILL.md                       this file
 references/mappings.md         section mappings for the six funders
 references/RULES.md            S1–S10, R1–R8
 references/fwo-example.md      a minimal FWO render, claim without falsifier
+references/review.md           review report, statuses, form defects
 scripts/validate.py            the two-layer validator, no dependencies
 assets/template.json           a complete valid plan to copy and adapt
 assets/requmexre.schema.json   the schema it validates against

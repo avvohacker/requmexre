@@ -12,7 +12,8 @@ the final cut, and never guess one; `SKILL.md` gives the cut order.
 The tables read in both directions: fields → sections when writing, sections →
 fields when reviewing. A section with no field behind it — preliminary work,
 ethics, budget, timetable — is outside the model: report it as such, do not
-invent a field for it.
+invent a field for it. For a review, [`review.md`](review.md) gives the report
+template, the status words and the complete list of form defects.
 
 ## FWO — application form (PhD fellowship, fundamental research)
 

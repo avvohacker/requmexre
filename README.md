@@ -72,7 +72,7 @@ schema/published/              three published plans, encoded
 tests/                         pytest suite: rules, fixtures, CLI
 schema/BREAKAGES.md            where the model breaks on those plans
 skill/requmexre/SKILL.md       the skill: five fields, five phases
-skill/requmexre/references/    mappings for six funders, RULES, FWO example
+skill/requmexre/references/    mappings, RULES, FWO example, review report
 skill/requmexre/scripts/       bundled validator, identical to schema/validate.py
 skill/requmexre/assets/        template and schema, identical to schema/
 site/build.py                  Pages build: README, RULES, SOURCES → one page
