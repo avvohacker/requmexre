@@ -119,9 +119,11 @@ SNSF has no results section: do not render one. It also asks for ethics and budg
   measured as counts presented in heatmaps, an output that is the heatmap — the
   section that receives the outcome says what the map will show, and the work
   plan lists the artefact once. Do not restate the artefact as an expected
-  result. Where the procedure itself names the deliverables, render the
-  procedure without that clause: the artefacts belong to the closing sentence,
-  not to the steps.
+  result. Where the procedure names the artefacts it produces, drop the names,
+  not the step that produces them: "synthesise narratively with a flow diagram
+  and a dataset" becomes "synthesise narratively". A step that produces the
+  output stays: "build context-mechanism-outcome configurations in a realist
+  synthesis" is method, and the refined programme theory is the output.
 - `standpoint` is rendered where the funder asks for rationale, impact or
   positioning. If it is `none`, one sentence of declaration is enough. If it is
   `undeclared`, do not claim the plan has none: flag the silence to the author
