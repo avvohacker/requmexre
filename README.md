@@ -17,7 +17,7 @@ The name is the three slots: **RE**search **QU**estion + **ME**thodology + e**X*
 | SNSF — research plan | 3. Detailed research plan | inside 3 | **no section** | [requirements](https://www.snf.ch/en/257qx6wxjo72ODHy/page/funding/documents-downloads/regulations-requirements-for-the-research-plan) |
 | PRIN — progetto di ricerca | Obiettivi | Metodologia e piano di lavoro | Risultati attesi e impatto | [guidelines](https://www.mur.gov.it/sites/default/files/2026-05/D.D.%202298%20All.%203%20Linee%20Guida%20di%20valutazione.pdf) |
 
-Question and method appear in all six. Results appear in four — FWO (inside the objectives), VUB (as a hypothesis), Horizon, PRIN — and have no section in DFG and SNSF. The schema therefore treats results as optional.
+Question and method appear in all six. Results appear in four — FWO (inside the objectives), VUB (as a hypothesis), Horizon, PRIN — and have no section in DFG and SNSF. The schema therefore does not require a results block; when one is present, R5 still requires a claim or an outcome, never outputs alone.
 
 Structural notes:
 
@@ -69,7 +69,7 @@ schema/RULES.md                S1–S10, R1–R8
 schema/validate.py             two-layer validator
 schema/render.py               renders a plan into a funder's sections
 schema/mappings.json           the six section tables, machine-readable
-schema/cases/                  fwo, prin, vub, negative (fixtures)
+schema/cases/                  fwo, prin, vub, dfg, horizon, negative (fixtures)
 schema/published/              three pilot encodings (convenience sample)
 tests/                         pytest suite: rules, fixtures, CLI, render goldens
 schema/BREAKAGES.md            where the model breaks on those plans

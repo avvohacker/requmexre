@@ -1,21 +1,23 @@
-# Four-day weeks and the division of unpaid labour in dual-earner households
+# Passive cooling and summer heat in social housing
 
 ## 1 Starting Point — State of the art and preliminary work
 
-Belgian time-use evidence stops at 2022 and predates the current wave of four-day-week pilots, so no study estimates the reallocation of unpaid hours within households after adoption (Belgian time-use survey, 2022 wave, national statistical office release; OECD, Working time and the four-day week: evidence from pilots, 2023; FWO application form for a PhD fellowship, 2026).
+German building-stock models estimate energy savings from retrofit programmes but do not measure whether passive cooling lowers summer indoor temperatures in occupied social housing (German Environment Agency, indoor heat and health in social housing, 2024; Federal Institute for Research on Building, Urban Affairs and Spatial Development, retrofit monitor, 2023; DFG, project description template 54.012, 2026).
 
 ## 2.2 Objectives
 
-To what extent does a four-day working week change the division of unpaid labour between partners in dual-earner households in Belgium? The comparison is made on: the share of unpaid household and care hours performed by each partner, before and after the transition. Scope: Dual-earner households in Belgium with at least one child under 12, in organisations that adopt a four-day week between 2027 and 2031. What would count as an answer: The question is answered when the change in each partner's share of unpaid hours is estimated with a difference-in-differences design and the estimate is distinguishable from zero at conventional confidence.
+How does passive cooling change summer indoor temperatures and tenants' heat-related symptoms in social-housing blocks? Scope: Social-housing blocks in three German cities, 2027 to 2030, with at least 20 rented dwellings per block. What would count as an answer: The question is answered when peak indoor temperatures and reported symptoms are compared between retrofitted blocks and matched non-retrofitted blocks, before and after installation, with the uncertainty of both estimates reported.
+
+Secondary questions and objectives: Identify which building and household characteristics predict the largest reduction in indoor temperature.
 
 The plan declares no normative standpoint.
 
 ## 2.3 Work programme incl. proposed research methods
 
-Quasi-experimental: difference-in-differences on household time-use diaries, with matched comparison households that stay on five days. Sources: Belgian time-use survey, 2022 wave, national statistical office release (data); Household diaries collected in adopting organisations, 2028 and 2030 (data); Administrative payroll records, 2026-2031, for working-time verification (data).
+Quasi-experimental comparison of retrofitted and matched non-retrofitted blocks, with measurements before and after installation. Sources: Indoor temperature loggers in 60 social-housing blocks, three German cities, 2027-2030 (data); Tenant health survey before and after each summer, 2027-2030 (data); Building registers with construction year, orientation and rent level, 2026 (data).
 
-Recruit 40 adopting and 40 matched non-adopting households; collect seven-day diaries from both partners in each wave; code hours into paid work, housework, care and leisure; estimate partner shares with household fixed effects; test for anticipation one quarter before adoption.
+Recruit 30 retrofitted and 30 matched blocks; install loggers in bedrooms and living rooms; collect readings at 15-minute intervals across two summers; survey tenants before and after each summer; estimate the difference in peak indoor temperature and symptom prevalence between retrofitted and matched blocks; test for pre-installation differences in the first summer.
 
-Validity conditions: Households are observed before and after the transition with the same diary instrument; Comparison households are matched on sector, household composition and earnings; Attrition stays below 15 per cent per wave. Limits: Findings describe dual-earner households with young children, not single-parent or childless households; The design cannot separate the four-day week from concurrent changes in organisational workload; Diary self-reports undercount short care episodes.
+Validity conditions: Retrofitted and comparison blocks are matched on construction year, orientation and rent level; Loggers are installed in the same rooms in every block; Tenants are surveyed in the summers before and after installation. Limits: Findings cover the three participating cities, not the German building stock; The design measures indoor temperature, not the use of cooling systems; Households that move during the study leave the sample.
 
-The procedure delivers: A coding manual and a harmonised diary instrument that later Belgian time-use studies can reuse.
+The procedure delivers: A block-level dataset of temperature series and a retrofit audit protocol.

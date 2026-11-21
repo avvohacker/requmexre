@@ -27,8 +27,8 @@ CASES = [
     ("fwo", "schema/cases/fwo.json", None),
     ("prin", "schema/cases/prin.json", None),
     ("vub", "schema/cases/vub.json", None),
-    ("horizon", "schema/cases/fwo.json", "horizon"),
-    ("dfg", "schema/cases/fwo.json", "dfg"),
+    ("horizon", "schema/cases/horizon.json", None),
+    ("dfg", "schema/cases/dfg.json", None),
     ("snsf", "schema/cases/fwo.json", "snsf"),
 ]
 
@@ -111,9 +111,23 @@ def test_the_cli_refuses_a_plan_the_validator_rejects(tmp_path):
 
 
 def test_dfg_reports_results_as_a_coverage_gap():
-    plan = load_case("schema/cases/fwo.json", "dfg")
+    plan = load_case("schema/cases/dfg.json", None)
 
     gaps = dict(render.coverage_gaps(plan))
 
     assert "results" in gaps
     assert "no results section" in gaps["results"]
+
+
+def test_cli_warns_on_a_dfg_plan_that_carries_results():
+    result = subprocess.run(
+        [sys.executable, str(RENDER), str(ROOT / "schema" / "cases" / "dfg.json")],
+        capture_output=True,
+        text=True,
+        cwd=ROOT,
+    )
+
+    assert result.returncode == 0, result.stderr
+    assert result.stdout == golden("dfg")
+    assert "warning: results has no section for dfg" in result.stderr
+    assert "DFG has no results section" in result.stderr

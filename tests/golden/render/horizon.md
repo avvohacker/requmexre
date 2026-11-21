@@ -1,27 +1,31 @@
-# Four-day weeks and the division of unpaid labour in dual-earner households
+# Reserved procurement lots and small-supplier survival
 
 ## 1.1 Objectives and ambition
 
-Belgian time-use evidence stops at 2022 and predates the current wave of four-day-week pilots, so no study estimates the reallocation of unpaid hours within households after adoption (Belgian time-use survey, 2022 wave, national statistical office release; OECD, Working time and the four-day week: evidence from pilots, 2023; FWO application form for a PhD fellowship, 2026).
+Evaluations of reserved procurement measure participation in tenders, not the survival of awarded suppliers, so the trade-off between continuity and price is unknown (National procurement register, contract awards 2022-2029, 2026 release; Business register, enterprise survival 2021-2031, 2026 release; OECD, public procurement and small suppliers, 2023).
 
-To what extent does a four-day working week change the division of unpaid labour between partners in dual-earner households in Belgium? The comparison is made on: the share of unpaid household and care hours performed by each partner, before and after the transition. Scope: Dual-earner households in Belgium with at least one child under 12, in organisations that adopt a four-day week between 2027 and 2031. What would count as an answer: The question is answered when the change in each partner's share of unpaid hours is estimated with a difference-in-differences design and the estimate is distinguishable from zero at conventional confidence.
+To what extent do reserved public-procurement lots improve the survival of small suppliers without reducing the value for money of the contracts? Criteria: the two-year survival rate of small suppliers awarded reserved lots; the awarded price relative to the contracting authority's estimate. Operationalisation: Survival is read from the business register at 24 months; value for money is the awarded price divided by the contracting authority's estimate, compared within lots matched on sector, region and contract size. Scope: Public contracts awarded in Germany between 2022 and 2029, in five procurement categories, with suppliers of fewer than 50 employees. What would count as an answer: The question is answered when the survival difference and the price ratio are estimated for reserved and comparable open lots, with confidence intervals reported together.
+
+Secondary questions and objectives: Assess whether the survival effect differs between service and works contracts.
 
 ## 1.2 Methodology
 
-Quasi-experimental: difference-in-differences on household time-use diaries, with matched comparison households that stay on five days. Sources: Belgian time-use survey, 2022 wave, national statistical office release (data); Household diaries collected in adopting organisations, 2028 and 2030 (data); Administrative payroll records, 2026-2031, for working-time verification (data).
+Difference-in-differences around lot award, pairing reserved lots with comparable open lots. Sources: National procurement register, contract awards 2022-2029, 2026 release (data); Business register, enterprise survival 2021-2031, 2026 release (data); Contracting authorities' cost estimates for each lot, 2022-2029 (data).
 
-Recruit 40 adopting and 40 matched non-adopting households; collect seven-day diaries from both partners in each wave; code hours into paid work, housework, care and leisure; estimate partner shares with household fixed effects; test for anticipation one quarter before adoption.
+Select reserved lots for small suppliers and open lots in five procurement categories; match each reserved lot to an open lot on sector, region and contract size; read supplier survival at 24 months from the business register; compute the awarded price divided by the authority's estimate for every lot; estimate the survival difference and the price ratio with lot-pair fixed effects; report both estimates with confidence intervals and repeat them separately for service and works contracts.
 
-Validity conditions: Households are observed before and after the transition with the same diary instrument; Comparison households are matched on sector, household composition and earnings; Attrition stays below 15 per cent per wave. Limits: Findings describe dual-earner households with young children, not single-parent or childless households; The design cannot separate the four-day week from concurrent changes in organisational workload; Diary self-reports undercount short care episodes.
+Validity conditions: Reserved and open lots are matched on sector, region and contract size; Survival is measured from the same business register for every supplier; Award rules and cost-estimate practice are stable across the period. Limits: The design observes awarded contracts, not firms that never bid; Price ratios reflect the authority's estimate, not the market price; Service and works contracts are pooled in the main estimate.
 
 ## 2.1 Project's pathways towards impact
 
-Expected finding: Partners in adopting households converge in their share of unpaid hours, with the larger change coming from the partner who previously did less.
+Expected finding: Reserved lots raise the two-year survival of small suppliers by five to eight percentage points, at a price premium of two to four per cent.
 
-The plan declares no normative standpoint.
+Outcome: The difference in two-year survival between reserved and matched open lots, by sector and contract size. Measured as: Business-register survival flags at 24 months, compared within matched lot pairs.
+
+Normative premises: Public money may be used to keep capable small suppliers in the market; A price premium is justified only if it buys survival rather than delaying exit. Criteria: the survival gain among small suppliers; the price premium paid for reserved lots.
 
 ## 3.1 Work plan and resources
 
-Recruit 40 adopting and 40 matched non-adopting households; collect seven-day diaries from both partners in each wave; code hours into paid work, housework, care and leisure; estimate partner shares with household fixed effects; test for anticipation one quarter before adoption.
+Select reserved lots for small suppliers and open lots in five procurement categories; match each reserved lot to an open lot on sector, region and contract size; read supplier survival at 24 months from the business register; compute the awarded price divided by the authority's estimate for every lot; estimate the survival difference and the price ratio with lot-pair fixed effects; report both estimates with confidence intervals and repeat them separately for service and works contracts.
 
-The procedure delivers: A coding manual and a harmonised diary instrument that later Belgian time-use studies can reuse.
+The procedure delivers: A matched dataset of reserved and open lots with supplier survival flags and price ratios.
