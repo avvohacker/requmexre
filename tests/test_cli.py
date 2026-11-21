@@ -33,12 +33,36 @@ def write(tmp_path, name, document):
     return path
 
 
-def test_default_run_checks_the_fixtures_and_the_template():
-    result = run()
+def test_fixtures_run_checks_the_fixtures_and_the_template():
+    result = run("--fixtures")
     assert result.returncode == 0, result.stdout + result.stderr
     assert "requmexre v1.0" in result.stdout
+    assert "not your plan" in result.stdout
     assert "files behave as declared" in result.stdout
+    assert "No plan of yours was checked" in result.stdout
     assert "skill/requmexre/assets/template.json" in result.stdout
+
+
+def test_no_arguments_refuses_to_run_the_corpus():
+    result = run()
+    assert result.returncode == 2
+    assert result.stdout == ""
+    assert "no plan given" in result.stderr
+    assert "--fixtures" in result.stderr
+
+
+def test_no_arguments_with_json_returns_an_error_object():
+    result = run("--json")
+    assert result.returncode == 2
+    report = json.loads(result.stdout)
+    assert report["ok"] is False
+    assert "no plan given" in report["error"]
+
+
+def test_fixtures_refuses_file_arguments():
+    result = run("--fixtures", CASES / "fwo.json")
+    assert result.returncode == 2
+    assert "--fixtures takes no file arguments" in result.stderr
 
 
 def test_single_valid_file_passes():
@@ -120,11 +144,12 @@ def test_unknown_option_exits_two():
 
 
 def test_json_report_is_parseable_and_complete():
-    result = run("--json")
+    result = run("--json", "--fixtures")
     assert result.returncode == 0
     report = json.loads(result.stdout)
     assert report["tool"] == "requmexre"
     assert report["version"] == "1.0"
+    assert report["scope"] == "fixtures"
     assert report["ok"] is True
     assert report["failed"] == 0
     assert report["passed"] == report["total"] == len(report["files"])
@@ -176,3 +201,8 @@ def test_json_report_on_unreadable_json_exits_one(tmp_path):
 def test_json_flag_does_not_print_the_banner():
     result = run("--json", CASES / "fwo.json")
     assert "requmexre v1.0 — structural" not in result.stdout
+
+
+def test_json_scope_is_files_for_explicit_targets():
+    result = run("--json", CASES / "fwo.json")
+    assert json.loads(result.stdout)["scope"] == "files"

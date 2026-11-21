@@ -10,10 +10,13 @@ Layer 2, semantic (R1–R8): reads the document's own words. It runs only when t
 structural layer is clean.
 
 Usage
-    python3 validate.py                             # every fixture + skill template
+    python3 validate.py --fixtures                  # the built-in corpus, not a plan
     python3 validate.py cases/prin.json             # one file
-    python3 validate.py --json                     # one machine-readable report
+    python3 validate.py --json plan.json            # one machine-readable report
     python3 validate.py --version
+
+A run with neither a file nor --fixtures exits 2: the corpus run is not a check
+of the caller's plan, so it has to be asked for.
 
 Exit status is 0 when every pure plan is valid and every negative envelope
 reports its expected rule, 1 when one does not, 2 when there is nothing to check
@@ -30,9 +33,16 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
+# The validator ships twice: canonical in schema/ and bundled in
+# skill/requmexre/scripts/ for an installed skill. The fallbacks let the same
+# bytes find the schema and template in either layout.
 SCHEMA_PATH = HERE / "requmexre.schema.json"
+if not SCHEMA_PATH.exists():
+    SCHEMA_PATH = ROOT / "assets" / "requmexre.schema.json"
 CASES_DIR = HERE / "cases"
 TEMPLATE_PATH = ROOT / "skill" / "requmexre" / "assets" / "template.json"
+if not TEMPLATE_PATH.exists():
+    TEMPLATE_PATH = ROOT / "assets" / "template.json"
 
 VERSION = "1.0"
 
@@ -508,7 +518,12 @@ def build_parser():
         "files",
         nargs="*",
         metavar="FILE",
-        help="plans or negative envelopes; default: every fixture and the skill template",
+        help="plans or negative envelopes; required unless --fixtures is given",
+    )
+    parser.add_argument(
+        "--fixtures",
+        action="store_true",
+        help="check the built-in fixture corpus and the skill template, not a plan of yours",
     )
     parser.add_argument(
         "--json",
@@ -521,7 +536,7 @@ def build_parser():
     return parser
 
 
-def build_report(results):
+def build_report(results, scope):
     files = []
     for target, ok, expect, findings, note in results:
         files.append(
@@ -540,6 +555,7 @@ def build_report(results):
     return {
         "tool": "requmexre",
         "version": VERSION,
+        "scope": scope,
         "ok": failed == 0,
         "total": len(files),
         "passed": len(files) - failed,
@@ -548,8 +564,32 @@ def build_report(results):
     }
 
 
+def refuse(message, as_json):
+    if as_json:
+        print(
+            json.dumps(
+                {"tool": "requmexre", "version": VERSION, "ok": False, "error": message},
+                ensure_ascii=False,
+            )
+        )
+    print(message, file=sys.stderr)
+    return 2
+
+
 def main(argv):
     args = build_parser().parse_args(argv)
+
+    if args.fixtures and args.files:
+        return refuse(
+            "--fixtures takes no file arguments; pass either a file or --fixtures",
+            args.json,
+        )
+    if not args.fixtures and not args.files:
+        return refuse(
+            "no plan given. Pass a file to validate, or --fixtures for the built-in "
+            "corpus (that run does not check your plan).",
+            args.json,
+        )
 
     try:
         schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
@@ -558,19 +598,23 @@ def main(argv):
         return 2
     audit_keywords(schema)
 
-    targets = [Path(argument) for argument in args.files] or default_targets()
+    targets = default_targets() if args.fixtures else [Path(argument) for argument in args.files]
     if not targets:
-        print("no files to check", file=sys.stderr)
+        print("no fixtures to check", file=sys.stderr)
         return 2
 
     results = [(target, *check_file(target, schema)) for target in targets]
     failures = sum(1 for _, ok, *_ in results if not ok)
 
     if args.json:
-        print(json.dumps(build_report(results), ensure_ascii=False, indent=2))
+        scope = "fixtures" if args.fixtures else "files"
+        print(json.dumps(build_report(results, scope), ensure_ascii=False, indent=2))
     else:
         width = max(len(display(target)) for target in targets)
-        print(f"requmexre v{VERSION} — structural S1–S10, semantic R1–R8\n")
+        if args.fixtures:
+            print(f"requmexre v{VERSION} — built-in fixtures and skill template, not your plan\n")
+        else:
+            print(f"requmexre v{VERSION} — structural S1–S10, semantic R1–R8\n")
         for target, ok, expect, findings, note in results:
             label = "PASS" if ok else "FAIL"
             expected = expect if expect else "—"
@@ -583,6 +627,8 @@ def main(argv):
             print(f"{total - failures} of {total} files behave as declared; {failures} do not.")
         else:
             print(f"{total} of {total} files behave as declared.")
+        if args.fixtures:
+            print("No plan of yours was checked: pass a file to validate one.")
 
     return 1 if failures else 0
 

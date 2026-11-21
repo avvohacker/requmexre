@@ -35,7 +35,7 @@ proposal that are not the plan.
 | `standpoint` | `normative_premises`, `criteria`; declared, `none` or `undeclared` in `meta.standpoint` | no |
 
 Structural rules S1–S10 and semantic rules R1–R8 are in
-[`schema/RULES.md`](../../schema/RULES.md). Read them before the first run: the
+[`references/RULES.md`](references/RULES.md). Read them before the first run: the
 validator will refuse a plan that breaks them, and the rules are what the five
 fields mean.
 
@@ -140,10 +140,12 @@ speaks.
 
 Write the plan to `plan.json` with `"meta": {"standpoint": ...}` and run:
 
+Run these from the skill directory, with the plan's path; the validator travels
+with the skill, so no checkout of the repository is needed:
+
 ```bash
-cd schema
-python3 validate.py ../plan.json          # PASS/FAIL per file
-python3 validate.py --json ../plan.json   # same verdict as one JSON object
+python3 scripts/validate.py /path/to/plan.json          # PASS/FAIL per file
+python3 scripts/validate.py --json /path/to/plan.json   # same verdict, as JSON
 ```
 
 `--json` carries `ok`, `total`, `passed`, `failed` and one entry per file with
@@ -166,13 +168,18 @@ that would produce the evidence, and the gap that makes it worth producing.
 ## Files
 
 ```
-SKILL.md                     this file
-references/mappings.md       section mappings for the six funders
-assets/template.json         a complete valid plan to copy and adapt
+SKILL.md                       this file
+references/mappings.md         section mappings for the six funders
+references/RULES.md            S1–S10, R1–R8
+scripts/validate.py            the two-layer validator, no dependencies
+assets/template.json           a complete valid plan to copy and adapt
+assets/requmexre.schema.json   the schema it validates against
 ```
 
 The template is a valid plan, not a form with blanks: copy it, replace the
-content, keep the shape.
+content, keep the shape. The validator, schema and rules under `scripts/` and
+`references/` are byte-identical to the repository's `schema/` copies; CI fails
+if they drift, and nothing else in the repository is needed to validate a plan.
 
 ## Limits
 

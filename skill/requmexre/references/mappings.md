@@ -19,6 +19,11 @@ and are not reproduced here — read the current form before rendering.
 FWO asks for hypotheses and expected results inside the objectives. Do not open a
 results section of your own; the form's numbering is part of the assessment.
 
+An `output` is not an expected result: a dataset, instrument or piece of code is
+produced, not inferred, and section 2 asks what the study expects to find. Render
+outputs in section 3, once, at the end of the work plan, as what the procedure
+delivers — not as an outcome and not as a finding.
+
 ## PRIN — progetto di ricerca
 
 | Section | Fields | What to write |

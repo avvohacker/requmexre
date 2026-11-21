@@ -17,7 +17,7 @@ jobs:
           python-version: "3.12"
       - name: Run the two-layer validator over the fixtures
         working-directory: schema
-        run: python3 validate.py
+        run: python3 validate.py --fixtures
       - name: Run the published plans
         working-directory: schema
         run: python3 validate.py published/*.json
