@@ -69,6 +69,7 @@ schema/RULES.md                S1–S10, R1–R8
 schema/validate.py             two-layer validator
 schema/cases/                  fwo, prin, vub, negative (fixtures)
 schema/published/               three published plans, encoded
+tests/                         pytest suite: rules, fixtures, CLI
 schema/BREAKAGES.md            where the model breaks on those plans
 skill/requmexre/               SKILL.md, references/mappings.md, assets/template.json
 site/build.py                  Pages build: README, RULES, SOURCES → one page
@@ -84,6 +85,8 @@ python3 validate.py cases/prin.json                      # one file
 python3 validate.py ../skill/requmexre/assets/template.json
 python3 validate.py published/*.json                     # the published plans
 ```
+
+The pytest suite runs from the repository root: `python3 -m pytest -q`.
 
 Exit code 0 when every pure plan is valid and every negative envelope reports its expected rule. Negative fixtures wrap the plan as `{ "expect": ..., "plan": ... }`; positive plans, the template and the published plans are pure. The skill runs five phases — detect, question, method, results, guards — writes `plan.json`, validates it, and renders it into the six funder sections.
 

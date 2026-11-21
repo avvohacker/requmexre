@@ -21,6 +21,14 @@ jobs:
       - name: Run the published plans
         working-directory: schema
         run: python3 validate.py published/*.json
+      - name: Run the test suite
+        run: |
+          python3 -m pip install --quiet pytest
+          python3 -m pytest -q
+      - name: Build the site and check the schema $id
+        run: |
+          python3 -m pip install --quiet markdown==3.7
+          python3 site/build.py
       - name: Check the schema against draft 2020-12
         run: |
           python3 -m pip install --quiet "jsonschema>=4"
