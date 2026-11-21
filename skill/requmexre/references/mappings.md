@@ -38,7 +38,7 @@ delivers — not as an outcome and not as a finding.
 |---|---|---|
 | Contesto e stato dell'arte | `warrant` | The state of the art organised around the gap, not a literature review in chronological order. Each claim about the state of the art carries its source. |
 | Obiettivi | `questions.primary`, `questions.secondary` | The question or objective as written, its scope, and — for evaluative questions — the criteria and how they are operationalised. |
-| Metodologia e piano di lavoro | `method` | Approach, sources, procedure, validity conditions, limits. The work plan states who does what and when; the procedure supplies the order. |
+| Metodologia e piano di lavoro | `method` | Approach, sources, procedure, validity conditions, limits. The procedure supplies the order; who does what and when come from the call, not from `plan.json`. |
 | Risultati attesi e impatto | `results`, `standpoint` | Expected findings as findings, outcomes as outcomes, outputs as outputs, and the impact argued from the declared criteria. Impact without criteria is a wish. |
 
 PRIN is in Italian. Render into Italian; the JSON keeps its own language, and
