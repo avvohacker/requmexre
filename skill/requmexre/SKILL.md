@@ -142,8 +142,12 @@ Write the plan to `plan.json` with `"meta": {"standpoint": ...}` and run:
 
 ```bash
 cd schema
-python3 validate.py ../plan.json
+python3 validate.py ../plan.json          # PASS/FAIL per file
+python3 validate.py --json ../plan.json   # same verdict as one JSON object
 ```
+
+`--json` carries `ok`, `total`, `passed`, `failed` and one entry per file with
+`path`, `ok`, `expected`, `findings` (`rule`, `path`, `message`) and `note`.
 
 Then fix every finding and run again. Do not render a plan that does not exit 0.
 The validator checks form, not truth: a clean file can still be a bad plan, and

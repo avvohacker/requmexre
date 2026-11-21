@@ -90,3 +90,89 @@ def test_several_files_are_reported_one_per_line():
     assert result.returncode == 0
     assert result.stdout.count("PASS") == 3
     assert "3 of 3 files behave as declared" in result.stdout
+
+
+# --------------------------------------------------------------------------
+# Flags: --help, --version, --json
+# --------------------------------------------------------------------------
+
+
+def test_version_exits_zero():
+    result = run("--version")
+    assert result.returncode == 0
+    assert result.stdout.strip() == "requmexre v1.0"
+    assert result.stderr == ""
+
+
+def test_help_exits_zero_and_documents_the_flags():
+    result = run("--help")
+    assert result.returncode == 0
+    assert "usage:" in result.stdout
+    assert "--json" in result.stdout
+    assert "--version" in result.stdout
+    assert "Exit status" in result.stdout
+
+
+def test_unknown_option_exits_two():
+    result = run("--nope")
+    assert result.returncode == 2
+    assert "unrecognized arguments" in result.stderr
+
+
+def test_json_report_is_parseable_and_complete():
+    result = run("--json")
+    assert result.returncode == 0
+    report = json.loads(result.stdout)
+    assert report["tool"] == "requmexre"
+    assert report["version"] == "1.0"
+    assert report["ok"] is True
+    assert report["failed"] == 0
+    assert report["passed"] == report["total"] == len(report["files"])
+    assert report["total"] >= 24
+    for entry in report["files"]:
+        assert {"path", "ok", "expected", "findings", "note"} <= set(entry)
+
+
+def test_json_report_carries_the_rule_and_path_of_a_finding():
+    result = run("--json", CASES / "negative" / "r1-statement-as-question.json")
+    assert result.returncode == 0
+    entry = json.loads(result.stdout)["files"][0]
+    assert entry["expected"] == "R1"
+    assert any(
+        finding["rule"] == "R1" and finding["path"].startswith("$.questions")
+        for finding in entry["findings"]
+    )
+
+
+def test_json_report_on_a_mismatch_exits_one(tmp_path, plan):
+    path = write(tmp_path, "mismatch.json", {"expect": "R4", "plan": plan})
+    result = run("--json", path)
+    assert result.returncode == 1
+    report = json.loads(result.stdout)
+    assert report["ok"] is False
+    assert report["failed"] == 1
+    assert report["files"][0]["expected"] == "R4"
+    assert report["files"][0]["findings"] == []
+
+
+def test_json_report_on_a_missing_file_exits_one(tmp_path):
+    result = run("--json", tmp_path / "absent.json")
+    assert result.returncode == 1
+    entry = json.loads(result.stdout)["files"][0]
+    assert entry["ok"] is False
+    assert entry["expected"] is None
+    assert entry["note"] == "file not found"
+
+
+def test_json_report_on_unreadable_json_exits_one(tmp_path):
+    path = tmp_path / "broken.json"
+    path.write_text("{not json", encoding="utf-8")
+    result = run("--json", path)
+    assert result.returncode == 1
+    entry = json.loads(result.stdout)["files"][0]
+    assert entry["note"].startswith("not readable as JSON")
+
+
+def test_json_flag_does_not_print_the_banner():
+    result = run("--json", CASES / "fwo.json")
+    assert "requmexre v1.0 — structural" not in result.stdout

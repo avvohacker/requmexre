@@ -84,11 +84,14 @@ python3 validate.py                                      # all fixtures
 python3 validate.py cases/prin.json                      # one file
 python3 validate.py ../skill/requmexre/assets/template.json
 python3 validate.py published/*.json                     # the published plans
+python3 validate.py --help                               # usage and exit codes
+python3 validate.py --version                            # requmexre v1.0
+python3 validate.py --json                               # one machine-readable report
 ```
 
 The pytest suite runs from the repository root: `python3 -m pytest -q`.
 
-Exit code 0 when every pure plan is valid and every negative envelope reports its expected rule. Negative fixtures wrap the plan as `{ "expect": ..., "plan": ... }`; positive plans, the template and the published plans are pure. The skill runs five phases — detect, question, method, results, guards — writes `plan.json`, validates it, and renders it into the six funder sections.
+Exit code 0 when every pure plan is valid and every negative envelope reports its expected rule, 1 when one does not, 2 on bad usage. `--json` writes one object with `ok`, `total`, `passed`, `failed` and a `files` list, each entry carrying `path`, `ok`, `expected`, `findings` (`rule`, `path`, `message`) and `note`. Negative fixtures wrap the plan as `{ "expect": ..., "plan": ... }`; positive plans, the template and the published plans are pure. The skill runs five phases — detect, question, method, results, guards — writes `plan.json`, validates it, and renders it into the six funder sections.
 
 ## Limits
 

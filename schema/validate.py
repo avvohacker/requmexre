@@ -12,14 +12,17 @@ structural layer is clean.
 Usage
     python3 validate.py                             # every fixture + skill template
     python3 validate.py cases/prin.json             # one file
-    python3 validate.py ../skill/requmexre/assets/template.json
+    python3 validate.py --json                     # one machine-readable report
+    python3 validate.py --version
 
 Exit status is 0 when every pure plan is valid and every negative envelope
-reports its expected rule, 1 when one does not, 2 when there is nothing to check.
+reports its expected rule, 1 when one does not, 2 when there is nothing to check
+or the arguments are not understood.
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import sys
@@ -30,6 +33,8 @@ ROOT = HERE.parent
 SCHEMA_PATH = HERE / "requmexre.schema.json"
 CASES_DIR = HERE / "cases"
 TEMPLATE_PATH = ROOT / "skill" / "requmexre" / "assets" / "template.json"
+
+VERSION = "1.0"
 
 RULE_IDS = [*(f"S{i}" for i in range(1, 11)), *(f"R{i}" for i in range(1, 9))]
 
@@ -490,7 +495,62 @@ def check_file(path, schema):
     return ok, expect, findings, note
 
 
+def build_parser():
+    parser = argparse.ArgumentParser(
+        prog="validate.py",
+        description="Validate requmexre plans: structural S1–S10, then semantic R1–R8.",
+        epilog=(
+            "Exit status: 0 every file behaves as declared; 1 one does not; "
+            "2 nothing to check or bad usage."
+        ),
+    )
+    parser.add_argument(
+        "files",
+        nargs="*",
+        metavar="FILE",
+        help="plans or negative envelopes; default: every fixture and the skill template",
+    )
+    parser.add_argument(
+        "--json",
+        action="store_true",
+        help="write one JSON report to stdout, for an agent rather than a reader",
+    )
+    parser.add_argument(
+        "--version", action="version", version=f"requmexre v{VERSION}"
+    )
+    return parser
+
+
+def build_report(results):
+    files = []
+    for target, ok, expect, findings, note in results:
+        files.append(
+            {
+                "path": display(target),
+                "ok": ok,
+                "expected": expect,
+                "findings": [
+                    {"rule": finding.rule, "path": finding.path, "message": finding.message}
+                    for finding in findings
+                ],
+                "note": note,
+            }
+        )
+    failed = sum(1 for item in files if not item["ok"])
+    return {
+        "tool": "requmexre",
+        "version": VERSION,
+        "ok": failed == 0,
+        "total": len(files),
+        "passed": len(files) - failed,
+        "failed": failed,
+        "files": files,
+    }
+
+
 def main(argv):
+    args = build_parser().parse_args(argv)
+
     try:
         schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as error:
@@ -498,32 +558,33 @@ def main(argv):
         return 2
     audit_keywords(schema)
 
-    targets = [Path(argument) for argument in argv] or default_targets()
+    targets = [Path(argument) for argument in args.files] or default_targets()
     if not targets:
         print("no files to check", file=sys.stderr)
         return 2
 
-    width = max(len(display(target)) for target in targets)
-    failures = 0
-    print("requmexre v1.0 — structural S1–S10, semantic R1–R8\n")
+    results = [(target, *check_file(target, schema)) for target in targets]
+    failures = sum(1 for _, ok, *_ in results if not ok)
 
-    for target in targets:
-        ok, expect, findings, note = check_file(target, schema)
-        if not ok:
-            failures += 1
-        label = "PASS" if ok else "FAIL"
-        expected = expect if expect else "—"
-        print(f"{label}  {display(target):<{width}}  expected {expected:<6}  {note}")
-        for finding in findings:
-            print(f"      {finding}")
+    if args.json:
+        print(json.dumps(build_report(results), ensure_ascii=False, indent=2))
+    else:
+        width = max(len(display(target)) for target in targets)
+        print(f"requmexre v{VERSION} — structural S1–S10, semantic R1–R8\n")
+        for target, ok, expect, findings, note in results:
+            label = "PASS" if ok else "FAIL"
+            expected = expect if expect else "—"
+            print(f"{label}  {display(target):<{width}}  expected {expected:<6}  {note}")
+            for finding in findings:
+                print(f"      {finding}")
+        print()
+        total = len(targets)
+        if failures:
+            print(f"{total - failures} of {total} files behave as declared; {failures} do not.")
+        else:
+            print(f"{total} of {total} files behave as declared.")
 
-    print()
-    total = len(targets)
-    if failures:
-        print(f"{total - failures} of {total} files behave as declared; {failures} do not.")
-        return 1
-    print(f"{total} of {total} files behave as declared.")
-    return 0
+    return 1 if failures else 0
 
 
 if __name__ == "__main__":
