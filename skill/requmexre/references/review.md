@@ -44,6 +44,9 @@ an unknown funder is a question for the author, not a default.
   (preliminary work, own research, ethics, budget, timetable). Report it; do not
   invent a field.
 
+A **coverage gap** is not a status of a field: it belongs to check 5, with the
+field path.
+
 ### The five checks
 
 A check that cannot be run is reported as **not verifiable** with the reason,
@@ -68,10 +71,11 @@ never as a pass.
    fields: list the sections with a field behind them and those without; the
    second list is `outside model`. Fields → sections: for every field present in
    the plan, and for each result kind separately, name the section that receives
-   it. A field no table receives is a **coverage gap**: report its path, say the
-   renderer must place it or leave it out, and never open a section the funder
-   does not have. A funder outside the six has no table at all, so every field is
-   a coverage gap there and is rendered by hand.
+   it. A field that a funder's table does not name is a **coverage gap**: report
+   its path, say the renderer must place it or leave it out, and never open a
+   section the funder does not have. A funder outside the six has no table at
+   all: its fields are unsectioned by design, rendered by hand, and are not a
+   coverage gap in a table that does not exist.
 
 ## Form defects
 

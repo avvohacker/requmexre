@@ -178,8 +178,8 @@ status words and the complete list of form defects are in
    `references/review.md`: one row per field or result, with the quoted text, the
    status, the rule if one fired and the section affected. Below it, the five
    checks with their outcome — pass, fail with the sentence that fails, not
-   applicable, or not verifiable with the reason. Read `references/mappings.md`
-   in reverse for coverage.
+   applicable, not verifiable with the reason, or a coverage gap with its field
+   path. Read `references/mappings.md` in both directions for coverage.
 6. **Propose, then fix.** Return the report first. On the copy only, and with
    the author's agreement, repair the form defects listed in
    `references/review.md`: mechanical fixes such as an unambiguous `form`, an
@@ -202,8 +202,9 @@ python3 scripts/validate.py /path/to/plan.json          # PASS/FAIL per file
 python3 scripts/validate.py --json /path/to/plan.json   # same verdict, as JSON
 ```
 
-`--json` carries `ok`, `total`, `passed`, `failed` and one entry per file with
-`path`, `ok`, `expected`, `findings` (`rule`, `path`, `message`) and `note`.
+`--json` carries `tool`, `version`, `scope` (`fixtures` or `files`), `ok`,
+`total`, `passed`, `failed` and one entry per file with `path`, `ok`, `expected`,
+`findings` (`rule`, `path`, `message`) and `note`.
 
 Then fix every finding and run again. Do not render a plan that does not exit 0.
 The validator checks form, not truth: a clean file can still be a bad plan, and

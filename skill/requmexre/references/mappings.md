@@ -112,11 +112,12 @@ SNSF has no results section: do not render one. It also asks for ethics and budg
   already gives them. Do not add steps, dates, durations, work packages,
   milestones or roles: the model holds the logical order, not a timetable. A
   timetable the call requires is filled from the form, not from the plan.
-- An `output` is a deliverable, not a finding. Render it once, at the end of the
-  funder's method or work-plan section, as what the procedure delivers; never
-  open a results section for it. PRIN receives outputs in its results section,
-  as outputs. Where an outcome and an output share an artefact — an outcome
-  measured as counts presented in heatmaps, an output that is the heatmap — the
+- An `output` is a deliverable, not a finding. Render it once, as what the
+  procedure delivers, in the section the table assigns: at the end of the method
+  or work plan, or in PRIN's results section, as outputs. Never open a results
+  section for it elsewhere. Where an outcome and an output share an artefact —
+  an outcome measured as counts presented in heatmaps, an output that is the
+  heatmap — the
   section that receives the outcome says what the map will show, and the work
   plan lists the artefact once. Do not restate the artefact as an expected
   result. Where the procedure names the artefacts it produces, drop the names,

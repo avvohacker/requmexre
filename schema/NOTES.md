@@ -20,13 +20,13 @@ still fails.
 
 ## Why a form and why "none"
 
-Published plans state objectives at least as often as questions. Requiring an
+Published research plans state objectives at least as often as questions. Requiring an
 interrogative would fail them for a wording the funder asked for, so every
 question declares its `form` and R1 checks the text against that declaration.
 Secondary objectives are often short: they need only `text` and `form`, while the
 primary question also carries the answer type, the scope and the criterion.
 
-No published plan read for this pilot states what would count as an answer. The
+No research plan read for this pilot states what would count as an answer. The
 criterion stays required so that the absence is recorded rather than hidden: a
 plan writes `"none"`, and R2 skips it. The alternative — leaving the field
 optional — makes "no criterion" and "not stated" indistinguishable.
