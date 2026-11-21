@@ -31,6 +31,21 @@ criterion stays required so that the absence is recorded rather than hidden: a
 plan writes `"none"`, and R2 skips it. The alternative — leaving the field
 optional — makes "no criterion" and "not stated" indistinguishable.
 
+## Why the answer types are a vocabulary, not a gate
+
+The funder documents ask for objectives or questions, not for an answer type:
+the VUB research plan lists `Research objectives/questions`; FWO asks for the
+scientific objectives and, where applicable, the research hypotheses and
+expected outcomes; Horizon asks whether the objectives are measurable and
+verifiable; PRIN asks for measurable objectives and any key scientific
+hypotheses or research questions; DFG and SNSF name the objectives without
+prescribing a classification. The eleven `answer_type` values are therefore the
+model's vocabulary, not a funder requirement. Only `comparative` and
+`evaluative` impose a structural obligation, and each forbids the other's
+fields; the remaining values are labels. The test matrix in
+`tests/test_questions.py` pins all eleven, so the vocabulary cannot drift
+silently.
+
 ## How the overlap tests work
 
 R2, R3, R6 and R7 compare word sets, not meanings. `content_words` lowercases,

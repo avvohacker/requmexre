@@ -56,7 +56,7 @@ Five fields: three slots plus two guards.
 - `warrant`: why the question is still open, with at least one dated or identifiable source.
 - `standpoint`: the normative premises and criteria; `meta.standpoint` says `declared`, `none` or `undeclared`.
 
-Conditional rules: a comparative question needs a `tertium_comparationis`; an evaluative question needs criteria and their operationalisation.
+Conditional rules: a comparative question needs a `tertium_comparationis` and carries no evaluative fields; an evaluative question needs criteria and their operationalisation and carries no tertium.
 
 Full rules: [schema/RULES.md](schema/RULES.md). Structural S1–S10 in JSON Schema; semantic R1–R8 in the validator. The schema `$id` is `https://avvohacker.github.io/requmexre/schema/1.0/requmexre.schema.json`, and the Pages build publishes the file at that path.
 

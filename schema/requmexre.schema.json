@@ -111,8 +111,12 @@
             "properties": { "answer_type": { "const": "comparative" } }
           },
           "then": {
-            "$comment": "S4 — a comparative question names the dimension on which the cases are compared",
-            "required": ["tertium_comparationis"]
+            "$comment": "S4 — a comparative question names the dimension on which the cases are compared and carries no evaluative criteria",
+            "required": ["tertium_comparationis"],
+            "properties": {
+              "criteria": false,
+              "operationalisation": false
+            }
           }
         },
         {
@@ -121,8 +125,9 @@
             "properties": { "answer_type": { "const": "evaluative" } }
           },
           "then": {
-            "$comment": "S4 — an evaluative question names its criteria and their operationalisation",
-            "required": ["criteria", "operationalisation"]
+            "$comment": "S4 — an evaluative question names its criteria and their operationalisation and carries no tertium",
+            "required": ["criteria", "operationalisation"],
+            "properties": { "tertium_comparationis": false }
           }
         },
         {

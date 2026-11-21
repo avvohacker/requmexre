@@ -1,0 +1,43 @@
+{
+  "expect": "S4",
+  "plan": {
+    "meta": {
+      "standpoint": "none",
+      "funder": "none",
+      "title": "Evaluation question with a comparison dimension",
+      "version": "0.1",
+      "date": "2026-11-20"
+    },
+    "questions": {
+      "primary": {
+        "text": "How does peer review change the revision behaviour of doctoral candidates?",
+        "form": "interrogative",
+        "answer_type": "evaluative",
+        "criteria": [
+          "the speed of revision",
+          "the stability of the revision"
+        ],
+        "operationalisation": "Speed is days from feedback to resubmission; stability is the share of revisions that survive a second review unchanged.",
+        "tertium_comparationis": "revision behaviour before and after feedback",
+        "scope": "Doctoral candidates in four Belgian universities, 2026 to 2029.",
+        "completion_criterion": "none"
+      }
+    },
+    "method": {
+      "approach": "Comparative case study with interviews and document analysis.",
+      "sources": [
+        {
+          "kind": "corpus",
+          "description": "Programme documents and review reports, 2024-2026"
+        }
+      ],
+      "procedure": "Code the review reports and interviews for the mechanism linking feedback to revision."
+    },
+    "warrant": {
+      "gap_statement": "Studies of peer review report satisfaction but not the mechanism by which feedback changes revision behaviour.",
+      "evidence": [
+        "Studies in Higher Education, 2023 review"
+      ]
+    }
+  }
+}
