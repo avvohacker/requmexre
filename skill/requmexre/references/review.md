@@ -64,8 +64,15 @@ never as a pass.
 4. **Gap dated and specific.** Every evidence entry carries a year or an
    identifier (`R4`). The gap names what is missing and which studies leave it
    open; "little is known" without an object fails.
-5. **Section coverage.** Read `mappings.md` in reverse. List the sections with a
-   field behind them and those without. The second list is `outside model`.
+5. **Section coverage.** Read `mappings.md` in both directions. Sections →
+   fields: list the sections with a field behind them and those without; the
+   second list is `outside model`. Fields → sections: for every field present in
+   the plan, and for each result kind separately, name the section that receives
+   it. A field no table receives is a **coverage gap**: report its path, say the
+   renderer must place it or leave it out, and never open a section the funder
+   does not have. An `output` under SNSF is the case to watch: the table gives it
+   no section, and `results` under a funder with no results section has the same
+   problem.
 
 ## Form defects
 
