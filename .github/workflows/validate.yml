@@ -18,7 +18,7 @@ jobs:
       - name: Run the two-layer validator over the fixtures
         working-directory: schema
         run: python3 validate.py --fixtures
-      - name: Run the published plans
+      - name: Run the pilot encodings
         working-directory: schema
         run: python3 validate.py published/*.json
       - name: Run the test suite

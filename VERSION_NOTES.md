@@ -23,7 +23,7 @@ v1.0 is the tree on `main`: it has no tag and no GitHub release.
 ### Checks
 
 - `python3 validate.py`: 24/24 fixtures.
-- `python3 validate.py published/*.json`: 3/3 published plans.
+- `python3 validate.py published/*.json`: 3/3 pilot encodings.
 - Draft 2020-12 schema check: ok.
 - `cffconvert --validate`: ok.
 - `site/build.py`: ok.
@@ -44,7 +44,7 @@ notes record the version, not a published release.
 - Registration, ethics and timelines are out of scope; there is no `extensions`
   field.
 - Negative fixtures use the `{ "expect": ..., "plan": ... }` envelope. Positive
-  plans, the template and the three published plans remain pure plans.
+  plans, the template and the three pilot encodings remain pure plans.
 - S1–S10 and R1–R8 keep their numbering; the new S1 negative checks the closed
   root.
 
@@ -58,7 +58,7 @@ notes record the version, not a published release.
 ### Checks
 
 - `python3 validate.py`: 24/24 fixtures.
-- `python3 validate.py published/*.json`: 3/3 published plans.
+- `python3 validate.py published/*.json`: 3/3 pilot encodings.
 - Draft 2020-12 schema check: ok.
 - `site/build.py`: ok.
 - CI: validate #23 and pages #17 completed successfully on 178f18d.

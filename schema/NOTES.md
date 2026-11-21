@@ -64,7 +64,7 @@ meaningful exit code:
   rule cleanly.
 
 The envelope is `{ "expect": "R7", "plan": { ... } }`. Positive fixtures, the
-template and the published plans are pure plans, with no `expect`.
+template and the pilot encodings are pure plans, with no `expect`.
 
 The validator exits 0 when every plan is valid and every negative envelope
 reports its expected rule, 1 when one does not, 2 when there is nothing to
