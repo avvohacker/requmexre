@@ -1,4 +1,4 @@
-Copyright (c) 2026 The requmexre authors
+Copyright (c) 2026 Daniele Allega
 
 All rights reserved.
 
