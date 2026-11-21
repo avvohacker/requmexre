@@ -3,8 +3,8 @@
 One plan, three sections, to show the shape of the prose the mapping produces.
 The plan below is invented and short, with the same five fields as
 `assets/template.json`; the sections are those of the FWO project outline. Section names and numbering are
-the funder's; word and page limits belong to the call, so read the form before
-cutting.
+the funder's. No page or character limit is assumed here: the example is as
+short as the argument allows, and a real draft is cut to the call's own limit.
 
 ## The plan, in brief
 

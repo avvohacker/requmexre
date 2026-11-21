@@ -6,7 +6,8 @@ at the freeze. Section
 names and numbers are taken from
 the documents cited in
 [`SOURCES.md`](../../../SOURCES.md); page and character limits are set by the call
-and are not reproduced here — read the current form before rendering.
+and are not reproduced here. Take them from the form or from the author before
+the final cut, and never guess one; `SKILL.md` gives the cut order.
 
 ## FWO — project outline (PhD fellowship, fundamental research)
 
@@ -110,8 +111,11 @@ SNSF has no results section: do not render one. It also asks for ethics and budg
   from the call's forms, not from requmexre, and do not invent an `extensions`
   field. The procedure's order is not a calendar; see Rendering rules.
 - Word and page limits are not in this file because they change with the call.
-  Check the form, then cut — preferably from the state of the art, never from the
-  falsifiers.
+  Get the limit from the form or from the author, cut to it in the call's own
+  units, and say so when no limit was available. Cut examples and enumerations
+  first; keep the question, the completion criterion, the claim of an expected
+  result and the gap statement. Never pad a draft that is already shorter than
+  the limit.
 
 ## What is not modelled
 

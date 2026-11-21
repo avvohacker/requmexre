@@ -54,13 +54,18 @@ Establish what is being asked and for whom.
   hand.
 - Is there a draft to convert, or is the plan new? If there is a draft, extract
   candidate sentences for each field before writing anything.
+- What length does the call allow, in its own units (pages or characters, per
+  section)? Take it from the form or from the author. If neither is at hand, say
+  the limit is unknown and do not guess one; the draft can still be written, but
+  it cannot be called cut to the call.
 - Is a standpoint declared? If the plan argues from normative premises — equity,
   sustainability, safety — the answer is `declared`; if it says it has none,
   `none`; if it says nothing, `undeclared`. Do not leave the standpoint
   unanswered: `meta.standpoint` is required, and `undeclared` records silence
   rather than inventing a position.
 
-Exit: a funder (or `none`), a source draft (or none), and `meta.standpoint`.
+Exit: a funder (or `none`), a source draft (or none), `meta.standpoint`, and the
+length limit or a note that it is unknown.
 
 ### 2. Questions
 
@@ -174,6 +179,16 @@ packages, milestones or roles. The model holds a logical order, not a timetable.
 If the call requires a timetable, build it from the call's own form and say so;
 do not derive it from `plan.json`.
 
+Length is an input, not a guess. Cut the draft to the page or character limit
+the call sets, in the units the call uses. If the limit is not available, ask
+for the form or the figure and leave the draft marked as unchecked against the
+call. Cut in this order: examples and long enumerations from the state of the
+art; definitions restated in the method; secondary objectives the question does
+not need; method detail a competent stranger would not need to reproduce the
+design. Never cut the question, the completion criterion, the claim of an
+expected result, or the gap statement. Never pad: a short draft under the limit
+stays short.
+
 ## Files
 
 ```
@@ -206,3 +221,6 @@ there is no `extensions` field.
 - Calendar time — dates, durations, work packages and milestones — is out of
   scope too. The model carries the procedure's logical order; a timetable the
   call requires belongs to the call's form, not to `plan.json`.
+- Page and character limits are not modelled: they belong to the call. The
+  render is cut to the limit the author supplies; without one, say the draft was
+  not checked against the call.
