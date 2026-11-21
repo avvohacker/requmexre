@@ -9,6 +9,11 @@ the documents cited in
 and are not reproduced here. Take them from the form or from the author before
 the final cut, and never guess one; `SKILL.md` gives the cut order.
 
+The tables read in both directions: fields → sections when writing, sections →
+fields when reviewing. A section with no field behind it — preliminary work,
+ethics, budget, timetable — is outside the model: report it as such, do not
+invent a field for it.
+
 ## FWO — project outline (PhD fellowship, fundamental research)
 
 | Section | Fields | What to write |

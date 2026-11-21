@@ -18,7 +18,8 @@ asks for.
   has to state a question, a method and results.
 - Reviewing a draft: the validator names the empty slots and the circular ones —
   a question that is a statement, a criterion that repeats the question, a
-  falsifier that repeats the claim.
+  falsifier that repeats the claim. The review path is
+  [below](#reviewing-a-draft).
 - Reformatting a plan written for one funder into the sections of another.
 
 Not for: budgets, CVs, ethics annexes, letters of support, or the parts of a
@@ -143,6 +144,41 @@ Exit: every claim has an observation that could defeat it.
 
 Exit: the plan says why the question is worth asking now, and from where it
 speaks.
+
+## Reviewing a draft
+
+A review runs the same five fields read backwards. Do not rewrite the draft into
+the skill's voice and do not fill a field the draft does not have: a review
+reports what is missing, and the author supplies it.
+
+1. **Locate.** Which funder and call, which sections the draft has, whether it
+   is prose or a `plan.json`, and the length limit. Record `meta.funder` as in
+   Detect; a draft written for FWO is `fwo` even if the field is absent.
+2. **Extract.** Take candidate sentences for each field and quote them. Where a
+   field has no sentence, leave it empty and mark it: do not paraphrase one into
+   existence. The question, the completion criterion and the gap are the three
+   most often missing.
+3. **Type.** Give each extracted question its `form` from the sentence as
+   written — `interrogative` or `objective` — never by rewriting it.
+4. **Validate.** Write `plan.json` and run `scripts/validate.py`. Every finding
+   names a rule and a path; map it back to the draft's sentence and to the
+   section the table assigns it.
+5. **Report.** One table: field, what the draft says (quoted), status (present,
+   weak, missing), the rule if one fired, and the section affected. Below it,
+   the five checks the validator cannot make: the claim matches the evidence
+   offered; the criterion could actually be met; the falsifier is observable;
+   the gap is dated and specific; every section of the call has a field behind
+   it. Read `references/mappings.md` in reverse for the last one: a section with
+   no field — preliminary work, ethics, budget, timetable — is outside the
+   model and is reported as such.
+6. **Propose, then fix.** Return the report first. Change the plan only for
+   defects of form — a criterion that repeats its question, a falsifier that
+   repeats its claim, a limit that is a condition — and only with the author's
+   agreement. Defects of content stay with the author, each with the question
+   that would settle it.
+
+Exit: a `plan.json` that passes validation, a report of what still needs the
+author, and a list of sections the draft cannot fill from the five fields.
 
 ## Validation gate
 
