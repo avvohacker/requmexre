@@ -24,10 +24,9 @@ separate "project outline", and the table below covers sections 1–3 of the for
 FWO asks for hypotheses and expected results inside the objectives. Do not open a
 results section of your own; the form's numbering is part of the assessment.
 
-An `output` is not an expected result: a dataset, instrument or piece of code is
-produced, not inferred, and section 2 asks what the study expects to find. Render
-outputs in section 3, once, at the end of the work plan, as what the procedure
-delivers — not as an outcome and not as a finding.
+An `output` is not an expected result: render it in section 3, once, at the end
+of the work plan, as what the procedure delivers (see the output rule under
+Rendering rules).
 
 ## PRIN — progetto di ricerca
 
@@ -46,7 +45,7 @@ PRIN is in Italian. Render into Italian; the JSON keeps its own language, and
 | Section | Fields | What to write |
 |---|---|---|
 | Research objectives/questions | `questions.primary`, `questions.secondary` | The question or objective as written, its scope and what would count as an answer. |
-| Methodology and work plan | `method` | Approach, sources, procedure, validity conditions, limits. |
+| Methodology and work plan | `method` | Approach, sources, procedure, validity conditions, limits. Outputs close the work plan. |
 | Hypothesis, to be confirmed later | `results` | The hypothesis as a hypothesis. The regulations say it is "to be confirmed or not at a later stage": do not write it as a finding. |
 
 VUB asks for a hypothesis rather than results. If `results` is absent, say what
@@ -59,7 +58,7 @@ would be tested and leave the section short; do not invent findings to fill it.
 | 1.1 Objectives and ambition | `warrant`, `questions.primary`, `questions.secondary` | The gap with its dated evidence, then the question or objective as written with its scope and criterion. Ambition is the advance beyond the state of the art, not a promise. |
 | 1.2 Methodology | `method` | Approach, sources, procedure, validity conditions, limits. |
 | 2.1 Project's pathways towards impact | `results`, `standpoint` | Impact argued from expected findings and outcomes and from the declared criteria. If `meta.standpoint` is `none` or `undeclared`, do not invent a standpoint. |
-| 3.1 Work plan and resources | `method.procedure` | The procedure's steps in order, as the work plan. Resources and work-package numbering are not modelled; see the sequence rule under Rendering rules. |
+| 3.1 Work plan and resources | `method.procedure` | The procedure's steps in order, as the work plan. Resources and work-package numbering are not modelled; see the sequence rule under Rendering rules. Outputs close 3.1. |
 
 Horizon also has 2.2 Measures to maximise impact - Dissemination, exploitation
 and communication, an optional 2.3 Summary, and 3.2 Capacity of participants and
@@ -72,7 +71,7 @@ model fields: do not invent them.
 |---|---|---|
 | 1 Starting Point — State of the art and preliminary work | `warrant` | The gap and its dated evidence. Preliminary work and the applicant's own research are not modelled; do not invent them. |
 | 2.2 Objectives | `questions.primary`, `questions.secondary` | The question or objective as written, its scope, and its criterion. DFG has no results section: if `results` is present, do not open one; use the claims only inside 2.2 or 2.3 where they serve the objectives or work programme. |
-| 2.3 Work programme incl. proposed research methods | `method` | Approach, sources, procedure, validity conditions, limits. |
+| 2.3 Work programme incl. proposed research methods | `method` | Approach, sources, procedure, validity conditions, limits. Outputs close the work programme. |
 
 DFG 2.1 Anticipated total duration of the project, 2.4 Handling of research data, 2.5 Relevance of sex, gender and/or diversity in the research project, 3 Project- and subject-related list of publications, 4 Supplementary information on the research context and 5 Requested modules/funds are not modelled.
 There is no dedicated standpoint section: if `meta.standpoint` is `declared`, it
@@ -85,7 +84,7 @@ not invent one.
 |---|---|---|
 | 1. Current state of research in the field | `warrant` | The gap and its dated evidence. |
 | 2. Current state of your own research | — | Own research is not a model field; do not invent it. |
-| 3. Detailed research plan | `questions`, `method` | Question or objective, approach, sources and procedure. The form also asks for investigations, data collection and team roles; the first two are in the method, the team is not modelled. |
+| 3. Detailed research plan | `questions`, `method` | Question or objective, approach, sources and procedure. The form also asks for investigations, data collection and team roles; the first two are in the method, the team is not modelled. Outputs close the detailed research plan. |
 | 4. Schedule and milestones | `method.procedure` (partial) | The procedure's sequence; milestones and resources are not modelled. |
 | 5. Relevance and impact | `standpoint` | Impact from the plan's expected findings or outcomes, if present, and from the declared criteria. SNSF has no results section; do not open one. If `meta.standpoint` is `none` or `undeclared`, do not invent one. |
 
@@ -113,6 +112,10 @@ SNSF has no results section: do not render one. It also asks for ethics and budg
   already gives them. Do not add steps, dates, durations, work packages,
   milestones or roles: the model holds the logical order, not a timetable. A
   timetable the call requires is filled from the form, not from the plan.
+- An `output` is a deliverable, not a finding. Render it once, at the end of the
+  funder's method or work-plan section, as what the procedure delivers; never
+  open a results section for it. PRIN receives outputs in its results section,
+  as outputs.
 - `standpoint` is rendered where the funder asks for rationale, impact or
   positioning. If it is `none`, one sentence of declaration is enough. If it is
   `undeclared`, do not claim the plan has none: flag the silence to the author

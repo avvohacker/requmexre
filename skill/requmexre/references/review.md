@@ -70,9 +70,8 @@ never as a pass.
    the plan, and for each result kind separately, name the section that receives
    it. A field no table receives is a **coverage gap**: report its path, say the
    renderer must place it or leave it out, and never open a section the funder
-   does not have. An `output` under SNSF is the case to watch: the table gives it
-   no section, and `results` under a funder with no results section has the same
-   problem.
+   does not have. A funder outside the six has no table at all, so every field is
+   a coverage gap there and is rendered by hand.
 
 ## Form defects
 
