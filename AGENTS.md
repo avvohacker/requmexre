@@ -23,3 +23,17 @@ Some calls cannot be skipped: a validator, a build or a test whose output decide
 the next edit must still run. If it is slow, run it in a subagent and keep
 working on independent steps; collect the result before the dependent edit. The
 rule is to avoid idle round trips, not to skip checks.
+
+## Strategic decisions belong to the user
+
+The user is the decision-maker on anything strategic: fields and rules of the
+model, the funder mappings, the corpus, public documentation, release naming and
+scope, and any cleanup that removes or renames a document. Do not settle such a
+choice inside an implementation, a commit or a silent cleanup. State the options,
+the consequence of each and your recommendation; order them by impact; label
+which ones need a decision; then wait for the user's choice before acting.
+Routine work that follows an existing convention does not need this gate.
+
+Keep the user informed at every checkpoint: what changed, what it affects, what
+remains open, and which decision comes next. Never bury a strategic choice in a
+list of follow-ups as if it were already settled.
