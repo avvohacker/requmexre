@@ -13,7 +13,7 @@ and are not reproduced here — read the current form before rendering.
 | Section | Fields | What to write |
 |---|---|---|
 | 1. Rationale and positioning | `warrant`, `standpoint` | The gap, with its dated evidence, and the position from which the question is asked. If `meta.standpoint` is `none`, say so in one sentence. If it is `undeclared`, do not claim none: flag the silence and ask for a declaration where the form requires positioning. |
-| 2. Scientific research objectives | `questions.primary`, `questions.secondary`, `results` | The question or objective as written, then the secondary objectives, then what would count as an answer, then the expected outcomes. FWO has no separate results section, so expected outcomes belong here — as claims with their falsifiers in hand, rendered as expected results. |
+| 2. Scientific research objectives | `questions.primary`, `questions.secondary`, `results` | The question or objective as written, then the secondary objectives, then what would count as an answer, then the expected outcomes. FWO has no separate results section, so expected outcomes belong here. Render each claim as an expected result, never its falsifier: the falsifier stays in `plan.json` and the test it describes belongs in section 3. See [`fwo-example.md`](fwo-example.md). |
 | 3. Research methodology and work plan | `method` | Approach, sources, procedure, then validity conditions and limits. The work plan is the procedure with its sequence made explicit. |
 
 FWO asks for hypotheses and expected results inside the objectives. Do not open a

@@ -162,8 +162,12 @@ never rename a section. The tables, the section names and the caveats for each
 funder are in [`references/mappings.md`](references/mappings.md).
 
 Falsifiers and `evidence_needed` stay in `plan.json`: they are there to test the
-plan, not to be submitted. What goes into the proposal is the claim, the method
-that would produce the evidence, and the gap that makes it worth producing.
+plan, not to be submitted. Never render a falsifier, not even as "this would be
+falsified if…": what goes into the proposal is the claim, the method that would
+produce the evidence, and the gap that makes it worth producing. The claim goes
+where the funder asks for expected results; the test it implies is already in
+the method. [`references/fwo-example.md`](references/fwo-example.md) shows the
+three FWO sections with the falsifier left in the plan.
 
 ## Files
 
@@ -171,6 +175,7 @@ that would produce the evidence, and the gap that makes it worth producing.
 SKILL.md                       this file
 references/mappings.md         section mappings for the six funders
 references/RULES.md            S1–S10, R1–R8
+references/fwo-example.md      a minimal FWO render, claim without falsifier
 scripts/validate.py            the two-layer validator, no dependencies
 assets/template.json           a complete valid plan to copy and adapt
 assets/requmexre.schema.json   the schema it validates against
