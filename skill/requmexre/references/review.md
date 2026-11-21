@@ -45,7 +45,8 @@ never as a pass.
 1. **Claim and evidence.** For each hypothesis or expected finding, point to the
    `evidence_needed` entry and the procedure step that produces it. For each
    outcome, point to its `measure` and the step that computes it. If either
-   cannot be named, the check fails.
+   cannot be named, the check fails. For an `output` the check is **not
+   applicable**: an output is not a claim and carries no `measure`.
 2. **Criterion reachable.** Name the quantity, comparison or typology the
    completion criterion requires, and the step that produces it. With
    `"none"`, record `declared none`: not checkable, not a defect.
