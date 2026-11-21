@@ -218,6 +218,13 @@ funder are in [`references/mappings.md`](references/mappings.md); its rendering
 rules are the single source for the funder gate, falsifiers, the work plan,
 citations and the sections outside the plan, and are not repeated here.
 
+[`scripts/render.py`](scripts/render.py) applies the table: `python3
+scripts/render.py plan.json` writes the draft to stdout, `--out draft.md` to a
+file. It refuses a plan without a funder or with `funder: "other"`, and warns on
+stderr when a field present in the plan has no section in that funder's table.
+The draft copies the plan's wording; it is a draft to edit, not a finished
+proposal.
+
 Length is an input, not a guess. Cut the draft to the page or character limit
 the call sets, in the units the call uses. If the limit is not available, ask
 for the form or the figure and leave the draft marked as unchecked against the
@@ -235,10 +242,11 @@ verbatim.
 ## Files
 
 The template at `assets/template.json` is a valid plan, not a form with blanks:
-copy it, replace the content, keep the shape. The validator, schema and rules
-travel in `scripts/`, `assets/` and `references/`, byte-identical to the
-repository's `schema/` copies; CI fails if they drift, and nothing else in the
-repository is needed to validate a plan.
+copy it, replace the content, keep the shape. The validator, renderer, schema,
+template, rules and section tables travel in `scripts/`, `assets/` and
+`references/`, byte-identical to the repository's `schema/` copies; CI fails if
+they drift, and nothing else in the repository is needed to validate or render a
+plan.
 
 ## Limits
 

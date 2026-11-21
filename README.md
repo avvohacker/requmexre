@@ -67,9 +67,11 @@ README.md · VERSION_NOTES.md · CITATION.cff · SOURCES.md · LICENSE.md · AGE
 schema/requmexre.schema.json   JSON Schema draft 2020-12
 schema/RULES.md                S1–S10, R1–R8
 schema/validate.py             two-layer validator
+schema/render.py               renders a plan into a funder's sections
+schema/mappings.json           the six section tables, machine-readable
 schema/cases/                  fwo, prin, vub, negative (fixtures)
 schema/published/              three pilot encodings (convenience sample)
-tests/                         pytest suite: rules, fixtures, CLI
+tests/                         pytest suite: rules, fixtures, CLI, render goldens
 schema/BREAKAGES.md            where the model breaks on those plans
 schema/NOTES.md                maintainer notes: rationale, fixtures, extending
 skill/requmexre/SKILL.md       the skill: five fields, five phases
@@ -97,9 +99,13 @@ python3 validate.py published/*.json                     # the pilot encodings
 python3 validate.py --help                               # usage and exit codes
 python3 validate.py --version                            # requmexre v1.0
 python3 validate.py --json cases/prin.json               # one machine-readable report
+python3 render.py cases/prin.json                        # draft in PRIN's sections
+python3 render.py cases/fwo.json --out draft.md          # to a file
 ```
 
 The pytest suite runs from the repository root: `python3 -m pytest -q`.
+
+The renderer exits 0 on a draft, 1 when the validator rejects the plan, and 2 when the plan names no funder or one with no table.
 
 Exit code 0 when every pure plan is valid and every negative envelope reports its expected rule, 1 when one does not, 2 on bad usage. A run with neither a file nor `--fixtures` exits 2, so the built-in corpus can never be mistaken for a check of your plan. `--json` writes one object with `tool`, `version`, `scope` (`fixtures` or `files`), `ok`, `total`, `passed`, `failed` and a `files` list, each entry carrying `path`, `ok`, `expected`, `findings` (`rule`, `path`, `message`) and `note`. Negative fixtures wrap the plan as `{ "expect": ..., "plan": ... }`; positive plans, the template and the pilot encodings are pure. The skill runs five phases — detect, question, method, results, guards — writes `plan.json`, validates it, and renders it into the six funder sections.
 

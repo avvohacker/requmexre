@@ -1,0 +1,147 @@
+{
+  "version": "1.0",
+  "note": "Machine-readable form of the six section tables in skill/requmexre/references/mappings.md. The Markdown is the human-readable copy; tests/test_mappings.py fails when the two disagree.",
+  "funders": [
+    {
+      "id": "fwo",
+      "language": "en",
+      "sections": [
+        {
+          "name": "1. Rationale and positioning",
+          "fields": ["warrant", "standpoint"]
+        },
+        {
+          "name": "2. Scientific research objectives",
+          "fields": ["questions.primary", "questions.secondary", "results"]
+        },
+        {
+          "name": "3. Research methodology and work plan",
+          "fields": ["method"],
+          "delivers": true
+        }
+      ]
+    },
+    {
+      "id": "prin",
+      "language": "it",
+      "sections": [
+        {
+          "name": "Contesto e stato dell'arte",
+          "fields": ["warrant"]
+        },
+        {
+          "name": "Obiettivi",
+          "fields": ["questions.primary", "questions.secondary"]
+        },
+        {
+          "name": "Metodologia e piano di lavoro",
+          "fields": ["method"]
+        },
+        {
+          "name": "Risultati attesi e impatto",
+          "fields": ["results", "standpoint"],
+          "delivers": true
+        }
+      ]
+    },
+    {
+      "id": "vub",
+      "language": "en",
+      "sections": [
+        {
+          "name": "Rationale and positioning within state-of-the-art literature",
+          "fields": ["warrant", "standpoint"]
+        },
+        {
+          "name": "Research objectives/questions",
+          "fields": ["questions.primary", "questions.secondary"]
+        },
+        {
+          "name": "Methodology and work plan",
+          "fields": ["method"],
+          "delivers": true
+        },
+        {
+          "name": "Hypothesis, to be confirmed later",
+          "fields": ["results"]
+        }
+      ]
+    },
+    {
+      "id": "horizon",
+      "language": "en",
+      "sections": [
+        {
+          "name": "1.1 Objectives and ambition",
+          "fields": ["warrant", "questions.primary", "questions.secondary"]
+        },
+        {
+          "name": "1.2 Methodology",
+          "fields": ["method"]
+        },
+        {
+          "name": "2.1 Project's pathways towards impact",
+          "fields": ["results", "standpoint"]
+        },
+        {
+          "name": "3.1 Work plan and resources",
+          "fields": ["method.procedure"],
+          "delivers": true
+        }
+      ]
+    },
+    {
+      "id": "dfg",
+      "language": "en",
+      "sections": [
+        {
+          "name": "1 Starting Point — State of the art and preliminary work",
+          "fields": ["warrant"]
+        },
+        {
+          "name": "2.2 Objectives",
+          "fields": ["questions.primary", "questions.secondary", "standpoint"]
+        },
+        {
+          "name": "2.3 Work programme incl. proposed research methods",
+          "fields": ["method"],
+          "delivers": true
+        }
+      ],
+      "absent": {
+        "results": "DFG has no results section; a claim is used inside 2.2 or 2.3 where it serves the objectives or the work programme, by hand."
+      }
+    },
+    {
+      "id": "snsf",
+      "language": "en",
+      "sections": [
+        {
+          "name": "1. Current state of research in the field",
+          "fields": ["warrant"]
+        },
+        {
+          "name": "2. Current state of your own research",
+          "fields": [],
+          "outside_model": "Own research is not a model field: draft this section from the call."
+        },
+        {
+          "name": "3. Detailed research plan",
+          "fields": ["questions.primary", "questions.secondary", "method"],
+          "delivers": true
+        },
+        {
+          "name": "4. Schedule and milestones",
+          "fields": ["method.procedure"]
+        },
+        {
+          "name": "5. Relevance and impact",
+          "fields": ["standpoint"]
+        }
+      ],
+      "absent": {
+        "results": "SNSF has no results section; do not open one."
+      }
+    }
+  ]
+}

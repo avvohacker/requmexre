@@ -22,7 +22,9 @@ TEMPLATE = SKILL / "assets" / "template.json"
 
 BUNDLED = [
     (ROOT / "schema" / "validate.py", SKILL / "scripts" / "validate.py"),
+    (ROOT / "schema" / "render.py", SKILL / "scripts" / "render.py"),
     (ROOT / "schema" / "requmexre.schema.json", SKILL / "assets" / "requmexre.schema.json"),
+    (ROOT / "schema" / "mappings.json", SKILL / "assets" / "mappings.json"),
     (ROOT / "schema" / "RULES.md", SKILL / "references" / "RULES.md"),
 ]
 
@@ -109,3 +111,21 @@ def test_installed_skill_can_run_its_bundled_fixtures(tmp_path):
 
     assert result.returncode == 0, result.stdout + result.stderr
     assert "1 of 1 files behave as declared" in result.stdout
+
+
+def test_installed_skill_renders_without_the_repository(tmp_path):
+    skill = install(tmp_path)
+    plan = json.loads(write_plan(skill, "plan.json").read_text(encoding="utf-8"))
+    plan["meta"]["funder"] = "fwo"
+    (skill / "plan.json").write_text(json.dumps(plan), encoding="utf-8")
+
+    result = subprocess.run(
+        [sys.executable, str(skill / "scripts" / "render.py"), "plan.json"],
+        capture_output=True,
+        text=True,
+        cwd=skill,
+    )
+
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert "## 1. Rationale and positioning" in result.stdout
+    assert "## 3. Research methodology and work plan" in result.stdout

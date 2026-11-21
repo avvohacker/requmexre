@@ -10,6 +10,12 @@ fields when reviewing. For a review, [`review.md`](review.md) gives the report
 template, the status words, the outside-model rule and the complete list of form
 defects.
 
+The same six tables are data in [`../assets/mappings.json`](../assets/mappings.json),
+which [`../scripts/render.py`](../scripts/render.py) reads; the test suite fails
+when the Markdown and the data disagree. The renderer copies the plan's prose and
+does not translate it. A section the table gives no field is emitted as a
+placeholder for the author, not filled.
+
 ## FWO — application form (PhD fellowship, fundamental research)
 
 The document is the application form cited in `SOURCES.md`; this corpus has no
@@ -44,12 +50,15 @@ PRIN is in Italian. Render into Italian; the JSON keeps its own language, and
 
 | Section | Fields | What to write |
 |---|---|---|
+| Rationale and positioning within state-of-the-art literature | `warrant`, `standpoint` | The gap with its dated evidence, and the position from which the question is asked. If `meta.standpoint` is `none`, say so in one sentence; if `undeclared`, do not claim none. |
 | Research objectives/questions | `questions.primary`, `questions.secondary` | The question or objective as written, its scope and what would count as an answer. |
 | Methodology and work plan | `method` | Approach, sources, procedure, validity conditions, limits. Outputs close the work plan. |
 | Hypothesis, to be confirmed later | `results` | The hypothesis as a hypothesis. The regulations say it is "to be confirmed or not at a later stage": do not write it as a finding. |
 
 VUB asks for a hypothesis rather than results. If `results` is absent, say what
 would be tested and leave the section short; do not invent findings to fill it.
+The research plan also opens with an abstract (at most 250 words) and, if already
+known, the composition of the advisory committee; neither is modelled.
 
 ## Horizon Europe — Part B (RIA/IA)
 
@@ -70,7 +79,7 @@ model fields: do not invent them.
 | Section | Fields | What to write |
 |---|---|---|
 | 1 Starting Point — State of the art and preliminary work | `warrant` | The gap and its dated evidence. Preliminary work and the applicant's own research are not modelled; do not invent them. |
-| 2.2 Objectives | `questions.primary`, `questions.secondary` | The question or objective as written, its scope, and its criterion. DFG has no results section: if `results` is present, do not open one; use the claims only inside 2.2 or 2.3 where they serve the objectives or work programme. |
+| 2.2 Objectives | `questions.primary`, `questions.secondary`, `standpoint` | The question or objective as written, its scope, and its criterion. DFG has no results section: if `results` is present, do not open one; use the claims only inside 2.2 or 2.3 where they serve the objectives or work programme. |
 | 2.3 Work programme incl. proposed research methods | `method` | Approach, sources, procedure, validity conditions, limits. Outputs close the work programme. |
 
 DFG 2.1 Anticipated total duration of the project, 2.4 Handling of research data, 2.5 Relevance of sex, gender and/or diversity in the research project, 3 Project- and subject-related list of publications, 4 Supplementary information on the research context and 5 Requested modules/funds are not modelled.
@@ -84,7 +93,7 @@ not invent one.
 |---|---|---|
 | 1. Current state of research in the field | `warrant` | The gap and its dated evidence. |
 | 2. Current state of your own research | — | Own research is not a model field; do not invent it. |
-| 3. Detailed research plan | `questions`, `method` | Question or objective, approach, sources and procedure. The form also asks for investigations, data collection and team roles; the first two are in the method, the team is not modelled. Outputs close the detailed research plan. |
+| 3. Detailed research plan | `questions.primary`, `questions.secondary`, `method` | Question or objective, approach, sources and procedure. The form also asks for investigations, data collection and team roles; the first two are in the method, the team is not modelled. Outputs close the detailed research plan. |
 | 4. Schedule and milestones | `method.procedure` (partial) | The procedure's sequence; milestones and resources are not modelled. |
 | 5. Relevance and impact | `standpoint` | Impact from the plan's expected findings or outcomes, if present, and from the declared criteria. SNSF has no results section; do not open one. If `meta.standpoint` is `none` or `undeclared`, do not invent one. |
 
