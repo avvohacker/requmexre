@@ -9,13 +9,13 @@ are in `RULES.md`; the section tables are in `mappings.md`.
 
 | Field | The draft says | Status | Rule | Section |
 |---|---|---|---|---|
-| `questions.primary` | quoted | present / weak / missing | `R1` if it fired, else — | the section the table assigns |
-| `questions.primary.completion_criterion` | quoted, or `none` | present / weak / declared none | `R2` | as above |
-| `method` | quoted or summarised per subfield | present / weak / missing | `R7`, `R8` as they fire | |
-| `results` | one row per result | present / weak / missing | `R5`, `R6`, `S7` | |
-| `warrant.gap_statement` | quoted | present / weak / missing | `R3` | |
-| `warrant.evidence` | each string, verbatim | present / weak / missing | `R4` | |
-| `standpoint` | quoted, or absent | present / weak / undeclared | `R8` | |
+| `questions.primary` | quoted | present / weak / missing | `R1`, `S3` | the section the table assigns |
+| `questions.primary.completion_criterion` | quoted, or `none` | present / weak / declared none | `R2`, `S3` | as above |
+| `method` | quoted or summarised per subfield | present / weak / missing | `R7`, `S5` | |
+| `results` | one row per result | present / weak / missing | `R5`, `R6`, `S6`, `S7` | |
+| `warrant.gap_statement` | quoted | present / weak / missing | `R3`, `S8` | |
+| `warrant.evidence` | each string, verbatim | present / weak / missing | `R4`, `S8` | |
+| `standpoint` | quoted, or absent | present / weak / undeclared | `R8`, `S9` | |
 
 With `funder: other` or no funder there is no table: leave the Section column
 empty, review by field, and say the sections were not mapped.
