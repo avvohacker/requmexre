@@ -42,6 +42,17 @@ def relative_links(source: Path) -> list[str]:
     return targets
 
 
+def missing_links(source: Path) -> list[str]:
+    """Return the relative targets of source that do not resolve to a file."""
+
+    missing = []
+    for target in relative_links(source):
+        path = (source.parent / unquote(target.split("#", 1)[0])).resolve()
+        if not path.exists():
+            missing.append(target)
+    return missing
+
+
 CASES = [
     pytest.param(source, target, id=f"{source.relative_to(ROOT)} -> {target}")
     for source in markdown_files()
@@ -49,7 +60,24 @@ CASES = [
 ]
 
 
+def test_relative_links_are_collected() -> None:
+    assert markdown_files(), "no Markdown files found"
+    assert CASES, "no relative Markdown links found"
+
+
 @pytest.mark.parametrize("source,target", CASES)
 def test_relative_link_resolves(source: Path, target: str) -> None:
-    path = (source.parent / unquote(target.split("#", 1)[0])).resolve()
-    assert path.exists(), f"{source.relative_to(ROOT)} links to missing {target}"
+    assert target not in missing_links(source), (
+        f"{source.relative_to(ROOT)} links to missing {target}"
+    )
+
+
+def test_broken_relative_link_is_reported(tmp_path: Path) -> None:
+    source = tmp_path / "draft.md"
+    (tmp_path / "present.md").write_text("ok\n", encoding="utf-8")
+    source.write_text(
+        "[good](present.md)\n[broken](missing.md)\n",
+        encoding="utf-8",
+    )
+
+    assert missing_links(source) == ["missing.md"]
