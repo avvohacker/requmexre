@@ -1,8 +1,7 @@
 # Section mappings
 
 How the five fields become the sections of an FWO, PRIN, VUB, Horizon, DFG or
-SNSF plan. The six tables date from v0.5; the schema is v1.0 and neither changed
-at the freeze. Section names and numbers are taken from the documents cited in
+SNSF plan. Section names and numbers are taken from the documents cited in
 [`SOURCES.md`](../../../SOURCES.md); page and character limits are set by the
 call and are not reproduced here; `SKILL.md` gives the cut order.
 
@@ -128,35 +127,3 @@ SNSF has no results section: do not render one. It also asks for ethics and budg
 - Word and page limits change with the call: cut to the limit the author
   supplies, in the call's own units, and say so when none was available.
   `SKILL.md` gives the cut order and the no-padding rule.
-
-## What is not modelled
-
-The six funders are mapped. The model does not carry:
-
-- calendar time: dates, durations, work packages, milestones and roles; only the
-  procedure's logical order is in the model;
-- preliminary work and the applicant's own research (Horizon, DFG section 1,
-  SNSF section 2);
-- Horizon 2.2 Measures to maximise impact - Dissemination, exploitation and
-  communication, optional 2.3 Summary, 3.2 Capacity of participants and
-  consortium as a whole, and the resources of 3.1;
-- DFG 2.1 Anticipated total duration of the project, 2.4 Handling of research
-  data, 2.5 Relevance of sex, gender and/or diversity in the research project,
-  3 Project- and subject-related list of publications, 4 Supplementary
-  information on the research context, 5 Requested modules/funds, and a standalone
-  results section;
-- SNSF results (no section; do not render one), 4 milestones (only the
-  procedure's sequence is mapped), ethics and budget.
-
-A funder outside the six known values is `funder: "other"` with `scheme`; it
-has no table and is handled by hand.
-
-## Gaps the mapping exposes
-
-- FWO and VUB have no results section: the schema's optional `results` is what
-  makes one plan serve both.
-- VUB calls results a hypothesis to be confirmed; DFG and SNSF give them no
-  separate section. A model that required results would exclude three of the six
-  templates.
-- PRIN, Horizon and SNSF ask for impact, which is why `standpoint` carries
-  criteria rather than a free-text justification.

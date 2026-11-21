@@ -10,13 +10,10 @@ short as the argument allows, and a real draft is cut to the call's own limit.
 
 - Funder: `fwo` — this is what makes the table below the right one.
 - Question: does a four-day week reduce overtime hours in small firms?
-- Method: difference-in-differences on payroll records, 2025–2029.
 - Expected finding: overtime falls after adoption, more where pay is unchanged.
 - Output: a cleaned firm-level panel of overtime hours, with its build code.
-- Gap: payroll records and working-time surveys are held by different agencies.
 - Evidence: `Social secretariats, payroll records, 2025`; `Flemish working-time
   survey, 2023`.
-- Standpoint: none.
 
 The finding's falsifier — "overtime stays within one standard error of its
 pre-adoption level" — is not in the render. It stays in `plan.json`, where it

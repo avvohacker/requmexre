@@ -20,13 +20,10 @@ are in `RULES.md`; the section tables are in `mappings.md`.
 | `standpoint` | quoted, or absent | present / weak / declared none / undeclared | `R8`, `S9` | |
 
 The funder row has plan-level statuses: **mapped** (one of the six), **other**
-(with a `scheme`) and **unknown** (neither the plan nor the call names one).
-
-There are three cases. `funder: other` with a `scheme` has no table but a named
-scheme. A plan with no funder at all, and no call to supply one, is recorded as
-**funder unknown**. In both cases leave the Section column empty, review by
-field, and say the sections were not mapped. Never assign a funder to make a
-table fit: an unknown funder is a question for the author, not a default.
+(with a `scheme`, no table) and **unknown** (neither the plan nor the call names
+one). For `other` and unknown, leave the Section column empty, review by field
+and say the sections were not mapped. Never assign a funder to make a table fit:
+an unknown funder is a question for the author, not a default.
 
 ### Status words
 
@@ -72,27 +69,28 @@ never as a pass.
 
 ## Form defects
 
-Every rule is a defect of form. What differs is who can supply the fix: a review
-may repair mechanical defects on its copy, with the author's agreement; content
-defects go back to the author with the question that would settle them.
+Every rule is a defect of form; the defect each code names is in `RULES.md`.
+What differs is who can supply the fix: a review may repair mechanical defects
+on its copy, with the author's agreement; content defects go back to the author
+with the question that would settle them.
 
-| Rule | Defect | Who fixes it |
-|---|---|---|
-| S1 | Closed root; a required block missing, or an unknown key present | Missing block: author. Unknown key: review, with agreement |
-| S2 | `meta` closed; `standpoint` missing or outside its three values; `scheme` present without `funder: other`, or missing with it | The declaration is the author's; a misplaced `scheme` is mechanical |
-| S3 | A question missing `text` or `form`; the primary missing `answer_type`, `scope` or `completion_criterion` | Author |
-| S4 | Comparative without `tertium`; evaluative without `criteria` or `operationalisation`; any other type carrying one of them | Missing: author. Extraneous: review, with agreement |
-| S5 | `method` missing `approach`, `sources` or `procedure`; a source with the wrong `kind`; `limits` a string other than `none` | Missing content: author. Wrong `kind`: author decides the material |
-| S6 | `results` empty; a result missing `claim` or `kind` | Author, or remove the optional block with agreement |
-| S7 | Hypothesis or expected finding without `falsifier` or `evidence_needed`; outcome without `measure` or with a falsifier; output with either | Author decides whether to reclassify or supply; reclassification is mechanical |
-| S8 | `warrant` missing `gap_statement`, or `evidence` empty | Author |
-| S9 | `standpoint` missing `normative_premises` or `criteria` | Author |
-| S10 | A string blank or only whitespace | Review deletes it if optional; author if required |
-| R1 | The text does not match the declared `form` | Review may flip `form` when the text is unambiguous; otherwise author |
-| R2 | The completion criterion restates its question | Author: the criterion is content |
-| R3 | The gap statement restates the question | Author |
-| R4 | An evidence entry has no year and no identifier | Author: only the author has the source |
-| R5 | Every result is an `output` | Author |
-| R6 | The falsifier restates the claim | Author |
-| R7 | A limit restates a validity condition | Review moves or deletes a duplicate, with agreement; otherwise author |
-| R8 | `meta.standpoint` and the standpoint body disagree | Author: declaration or removal is a decision |
+| Rule | Who fixes it |
+|---|---|
+| S1 | Missing block: author. Unknown key: review, with agreement |
+| S2 | Declaration: author. Misplaced `scheme`: mechanical |
+| S3 | Author |
+| S4 | Missing: author. Extraneous: review, with agreement |
+| S5 | Missing content: author. Wrong `kind`: author decides the material |
+| S6 | Author, or remove the optional block with agreement |
+| S7 | Author decides; reclassification is mechanical |
+| S8 | Author |
+| S9 | Author |
+| S10 | Optional: review deletes. Required: author |
+| R1 | Unambiguous form: review. Otherwise author |
+| R2 | Author: the criterion is content |
+| R3 | Author |
+| R4 | Author: only the author has the source |
+| R5 | Author |
+| R6 | Author |
+| R7 | Duplicate: review moves or deletes it, with agreement. Otherwise author |
+| R8 | Author: declaration or removal is a decision |

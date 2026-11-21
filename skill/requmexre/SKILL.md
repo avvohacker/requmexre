@@ -27,13 +27,13 @@ proposal that are not the plan.
 
 ## The five fields
 
-| Field | Holds | Required |
-|---|---|---|
-| `questions` | `primary` (`text`, `form`, `answer_type`, `scope`, `completion_criterion` or `none`; `tertium_comparationis` for comparative, `criteria` and `operationalisation` for evaluative) and an optional `secondary` list | yes |
-| `method` | `approach`, `sources`, `procedure`; `validity_conditions`, `limits` (list or `none`) | yes |
-| `results` | list of `claim` + `kind` (hypothesis, expected_finding, outcome, output); `falsifier` and `evidence_needed` for claims, `measure` for outcomes | no |
-| `warrant` | `gap_statement`, `evidence` | yes |
-| `standpoint` | `normative_premises`, `criteria`; declared, `none` or `undeclared` in `meta.standpoint` | no |
+| Field | Required |
+|---|---|
+| `questions` | `primary` with `text`, `form`, `answer_type`, `scope`, `completion_criterion`; optional `secondary` |
+| `method` | `approach`, `sources`, `procedure`; optional `validity_conditions`, `limits` |
+| `results` | optional; `claim` + `kind`, with `falsifier` and `evidence_needed` for claims, `measure` for outcomes |
+| `warrant` | `gap_statement`, `evidence` |
+| `standpoint` | optional; `normative_premises`, `criteria`, declared in `meta.standpoint` |
 
 Structural rules S1–S10 and semantic rules R1–R8 are in
 [`references/RULES.md`](references/RULES.md). Read them before the first run: the
@@ -233,21 +233,11 @@ verbatim.
 
 ## Files
 
-```
-SKILL.md                       this file
-references/mappings.md         section mappings for the six funders
-references/RULES.md            S1–S10, R1–R8
-references/fwo-example.md      a minimal FWO render, claim without falsifier
-references/review.md           review report, statuses, form defects
-scripts/validate.py            the two-layer validator, no dependencies
-assets/template.json           a complete valid plan to copy and adapt
-assets/requmexre.schema.json   the schema it validates against
-```
-
-The template is a valid plan, not a form with blanks: copy it, replace the
-content, keep the shape. The validator, schema and rules under `scripts/` and
-`references/` are byte-identical to the repository's `schema/` copies; CI fails
-if they drift, and nothing else in the repository is needed to validate a plan.
+The template at `assets/template.json` is a valid plan, not a form with blanks:
+copy it, replace the content, keep the shape. The validator, schema and rules
+travel in `scripts/`, `assets/` and `references/`, byte-identical to the
+repository's `schema/` copies; CI fails if they drift, and nothing else in the
+repository is needed to validate a plan.
 
 ## Limits
 
