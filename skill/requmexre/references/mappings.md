@@ -6,14 +6,12 @@ at the freeze. Section
 names and numbers are taken from
 the documents cited in
 [`SOURCES.md`](../../../SOURCES.md); page and character limits are set by the call
-and are not reproduced here. Take them from the form or from the author before
-the final cut, and never guess one; `SKILL.md` gives the cut order.
+and are not reproduced here; `SKILL.md` gives the cut order.
 
 The tables read in both directions: fields → sections when writing, sections →
-fields when reviewing. A section with no field behind it — preliminary work,
-ethics, budget, timetable — is outside the model: report it as such, do not
-invent a field for it. For a review, [`review.md`](review.md) gives the report
-template, the status words and the complete list of form defects.
+fields when reviewing. For a review, [`review.md`](review.md) gives the report
+template, the status words, the outside-model rule and the complete list of form
+defects.
 
 ## FWO — application form (PhD fellowship, fundamental research)
 
@@ -22,9 +20,9 @@ separate "project outline", and the table below covers sections 1–3 of the for
 
 | Section | Fields | What to write |
 |---|---|---|
-| 1. Rationale and positioning | `warrant`, `standpoint` | The gap, with its dated evidence — each string cited verbatim in parentheses — and the position from which the question is asked. If `meta.standpoint` is `none`, say so in one sentence. If it is `undeclared`, do not claim none: flag the silence and ask for a declaration where the form requires positioning. |
-| 2. Scientific research objectives | `questions.primary`, `questions.secondary`, `results` | The question or objective as written, then the secondary objectives, then what would count as an answer, then the expected outcomes. FWO has no separate results section, so expected outcomes belong here. Render each claim as an expected result, never its falsifier: the falsifier stays in `plan.json` and the test it describes belongs in section 3. See [`fwo-example.md`](fwo-example.md). |
-| 3. Research methodology and work plan | `method` | Approach, sources, procedure, then validity conditions and limits. The work plan is the procedure split into its steps and put in the order the procedure gives, each step saying what it draws on and what it produces. No dates, durations, work packages or milestones: those are not modelled — if the call requires a timetable, fill it from the form, not from the plan. See [`fwo-example.md`](fwo-example.md). |
+| 1. Rationale and positioning | `warrant`, `standpoint` | The gap, with its dated evidence, and the position from which the question is asked. If `meta.standpoint` is `none`, say so in one sentence. If it is `undeclared`, do not claim none: flag the silence and ask for a declaration where the form requires positioning. |
+| 2. Scientific research objectives | `questions.primary`, `questions.secondary`, `results` | The question or objective as written, then the secondary objectives, then what would count as an answer, then the expected outcomes. FWO has no separate results section, so expected outcomes belong here. Render each claim as an expected result; never its falsifier. See [`fwo-example.md`](fwo-example.md). |
+| 3. Research methodology and work plan | `method` | Approach, sources, procedure, then validity conditions and limits. The work plan is the procedure split into its steps and put in the order it gives, each step saying what it draws on and what it produces (see the sequence rule under Rendering rules). See [`fwo-example.md`](fwo-example.md). |
 
 FWO asks for hypotheses and expected results inside the objectives. Do not open a
 results section of your own; the form's numbering is part of the assessment.
@@ -33,9 +31,6 @@ An `output` is not an expected result: a dataset, instrument or piece of code is
 produced, not inferred, and section 2 asks what the study expects to find. Render
 outputs in section 3, once, at the end of the work plan, as what the procedure
 delivers — not as an outcome and not as a finding.
-
-Use this table only when `meta.funder` is `fwo`. If it still says `none`, the
-plan has not chosen a funder: set the field and revalidate before rendering.
 
 ## PRIN — progetto di ricerca
 
@@ -55,7 +50,7 @@ PRIN is in Italian. Render into Italian; the JSON keeps its own language, and
 |---|---|---|
 | Research objectives/questions | `questions.primary`, `questions.secondary` | The question or objective as written, its scope and what would count as an answer. |
 | Methodology and work plan | `method` | Approach, sources, procedure, validity conditions, limits. |
-| Hypothesis, to be confirmed later | `results` | The hypothesis as a hypothesis. The regulations say it is "to be confirmed or not at a later stage": do not write it as a finding, and keep the falsifier out of the section — it belongs in `plan.json`. |
+| Hypothesis, to be confirmed later | `results` | The hypothesis as a hypothesis. The regulations say it is "to be confirmed or not at a later stage": do not write it as a finding. |
 
 VUB asks for a hypothesis rather than results. If `results` is absent, say what
 would be tested and leave the section short; do not invent findings to fill it.
@@ -101,7 +96,7 @@ SNSF has no results section: do not render one. It also asks for ethics and budg
 
 ## Rendering rules
 
-- A table applies only to a plan whose `meta.funder` names that funder (`other`
+- **Funder gate.** A table applies only to a plan whose `meta.funder` names that funder (`other`
   with `meta.scheme` is matched by hand). `none`, or an absent field, means the
   plan is funder-agnostic: no table applies. Set the field to the call's funder
   and revalidate before rendering. The validator does not check this — a plan
@@ -110,7 +105,8 @@ SNSF has no results section: do not render one. It also asks for ethics and budg
 - Keep the declared `form`: an objective stays an objective in the proposal, an
   interrogative stays a question. Do not rewrite one as the other.
 - Section order and numbering follow the funder, not the schema.
-- The falsifier and `evidence_needed` are design aids: they stay in `plan.json`.
+- The falsifier and `evidence_needed` are design aids: they stay in `plan.json`,
+  and a falsifier is never rendered, not even as "this would be falsified if…".
   A proposal states the claim and the method that would test it.
 - Evidence strings are citations. Render each one verbatim, in parentheses, at
   the sentence it supports, separated by semicolons; do not abbreviate, reorder
@@ -128,15 +124,12 @@ SNSF has no results section: do not render one. It also asks for ethics and budg
 - `limits: "none"` is a declaration that the plan states no limits: do not
   invent a limitation. If `limits` is absent, say the plan does not state limits
   rather than claiming there are none.
-- Registration, ethics and calendar time sit outside `plan.json`: render them
+- **Outside the plan.** Registration, ethics and calendar time sit outside `plan.json`: render them
   from the call's forms, not from requmexre, and do not invent an `extensions`
   field. The procedure's order is not a calendar; see Rendering rules.
-- Word and page limits are not in this file because they change with the call.
-  Get the limit from the form or from the author, cut to it in the call's own
-  units, and say so when no limit was available. Cut examples and enumerations
-  first; keep the question, the completion criterion, the claim of an expected
-  result and the gap statement. Never pad a draft that is already shorter than
-  the limit.
+- Word and page limits change with the call: cut to the limit the author
+  supplies, in the call's own units, and say so when none was available.
+  `SKILL.md` gives the cut order and the no-padding rule.
 
 ## What is not modelled
 

@@ -60,9 +60,8 @@ Establish what is being asked and for whom.
 - Is there a draft to convert, or is the plan new? If there is a draft, extract
   candidate sentences for each field before writing anything.
 - What length does the call allow, in its own units (pages or characters, per
-  section)? Take it from the form or from the author. If neither is at hand, say
-  the limit is unknown and do not guess one; the draft can still be written, but
-  it cannot be called cut to the call.
+  section)? Take it from the form or the author; if neither is at hand, say it is
+  unknown and do not guess.
 - Is a standpoint declared? If the plan argues from normative premises — equity,
   sustainability, safety — the answer is `declared`; if it says it has none,
   `none`; if it says nothing, `undeclared`. Do not leave the standpoint
@@ -139,8 +138,7 @@ Exit: every claim has an observation that could defeat it.
   literature — not a summary of the field, and not the question again (R3).
 - `warrant.evidence`: at least one dated or identifiable source (R4). Write each
   entry as the citation itself — who produced it, what it is, when, plus a DOI,
-  URL, ISBN or PMID when it has one — not as a note about a source. The string is
-  rendered as written.
+  URL, ISBN or PMID when it has one — not as a note about a source.
 - `standpoint`: if declared, normative premises and the criteria that follow from
   them; if `none` or `undeclared`, the object is absent (R8). `none` says the
   plan explicitly has no standpoint; `undeclared` says it does not address one.
@@ -181,7 +179,7 @@ status words and the complete list of form defects are in
    status, the rule if one fired and the section affected. Below it, the five
    checks with their outcome — pass, fail with the sentence that fails, not
    applicable, or not verifiable with the reason. Read `references/mappings.md`
-   in reverse for coverage: a section with no field is `outside model`.
+   in reverse for coverage.
 6. **Propose, then fix.** Return the report first. On the copy only, and with
    the author's agreement, repair the form defects listed in
    `references/review.md`: mechanical fixes such as an unambiguous `form`, an
@@ -216,27 +214,9 @@ you remain responsible for the content.
 
 Map fields onto the funder's sections — never paste JSON into a proposal, and
 never rename a section. The tables, the section names and the caveats for each
-funder are in [`references/mappings.md`](references/mappings.md).
-
-Before rendering, check `meta.funder`. If it is `none` or absent and the
-sections you are about to write belong to a funder, stop: set the field to that
-funder (or `other` with `meta.scheme`), revalidate, and render only then. The
-tables are not a generic template; they are that funder's sections, and a plan
-that does not name the funder has not chosen one.
-
-Falsifiers and `evidence_needed` stay in `plan.json`: they are there to test the
-plan, not to be submitted. Never render a falsifier, not even as "this would be
-falsified if…": what goes into the proposal is the claim, the method that would
-produce the evidence, and the gap that makes it worth producing. The claim goes
-where the funder asks for expected results; the test it implies is already in
-the method. [`references/fwo-example.md`](references/fwo-example.md) shows the
-three FWO sections with the falsifier left in the plan.
-
-The work plan is the procedure's steps in the order the procedure already gives
-them: number them if that helps, but do not add steps, dates, durations, work
-packages, milestones or roles. The model holds a logical order, not a timetable.
-If the call requires a timetable, build it from the call's own form and say so;
-do not derive it from `plan.json`.
+funder are in [`references/mappings.md`](references/mappings.md); its rendering
+rules are the single source for the funder gate, falsifiers, the work plan,
+citations and the sections outside the plan, and are not repeated here.
 
 Length is an input, not a guess. Cut the draft to the page or character limit
 the call sets, in the units the call uses. If the limit is not available, ask
@@ -248,15 +228,9 @@ design. Never cut the question, the completion criterion, the claim of an
 expected result, or the gap statement. Never pad: a short draft under the limit
 stays short.
 
-Evidence is cited, not described. Each `warrant.evidence` string is a citation
-and is rendered verbatim in parentheses at the sentence it supports, several
-entries separated by semicolons: (City of Ghent, green-space inventory, 2025;
-WHO, Urban green spaces and health, 2016). Do not shorten it, reorder its parts
-or turn it into a number: the plan has no bibliography and no numeric style. Add
-a separate reference list only when the call has a references section, and then
-list the same strings unchanged, in the order they first appear. An entry that
-supports no sentence is not rendered: remove it from the plan rather than cite
-it decoratively.
+[`references/fwo-example.md`](references/fwo-example.md) shows the result: a
+claim without its falsifier, its test in the method, and the evidence cited
+verbatim.
 
 ## Files
 
@@ -282,15 +256,9 @@ if they drift, and nothing else in the repository is needed to validate a plan.
   is v1.0.
 - A funder outside the six known values uses `funder: "other"` and `scheme`;
   there is no section table for it.
-- The validator checks form, not truth, not citations, not fit between a claim
-  and its evidence.
 - Fixtures and the template are synthetic: structure from the funder documents,
   content illustrative.
-- Registration and ethics are out of scope: keep them in the funder's forms;
-there is no `extensions` field.
-- Calendar time — dates, durations, work packages and milestones — is out of
-  scope too. The model carries the procedure's logical order; a timetable the
-  call requires belongs to the call's form, not to `plan.json`.
-- Page and character limits are not modelled: they belong to the call. The
-  render is cut to the limit the author supplies; without one, say the draft was
-  not checked against the call.
+- Registration, ethics and calendar time — dates, durations, work packages,
+  milestones — are outside the plan: see the rendering rules in
+  `references/mappings.md`. Page and character limits are not modelled either;
+  the length rule above says how to cut.
