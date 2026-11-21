@@ -63,7 +63,7 @@ Full rules: [schema/RULES.md](schema/RULES.md). Structural S1–S10 in JSON Sche
 ## Files
 
 ```
-README.md · VERSION_NOTES.md · V1.0_PLAN.md · CITATION.cff · SOURCES.md · LICENSE.md · AGENTS.md
+README.md · VERSION_NOTES.md · CITATION.cff · SOURCES.md · LICENSE.md · AGENTS.md
 schema/requmexre.schema.json   JSON Schema draft 2020-12
 schema/RULES.md                S1–S10, R1–R8
 schema/validate.py             two-layer validator
