@@ -7,13 +7,13 @@ reason rather than by accident.
 ## Why results is required and standpoint is optional
 
 `results` is required by default because it is one of the three slots the model
-exists to state. The only exemptions are plans whose `meta.funder` is exactly
-`dfg` or `snsf`: those two forms have no results section, and requiring a block
-there would make a faithful plan invent one. A plan without `meta.funder` is not
-exempt; neither is a plan for another funder. `standpoint` remains optional
-because a plan may declare that it has none or may not address it;
-`meta.standpoint` distinguishes `none` from `undeclared` rather than leaving
-both silent.
+exists to state. The only exemptions are documents whose `meta.funder` is
+exactly `dfg` or `snsf`: those two forms have no results section, and requiring a
+block there would make a faithful document invent one. A document without
+`meta.funder` is not exempt; neither is a document for another funder.
+`standpoint` remains optional because a document may declare that it has none or
+may not address it; `meta.standpoint` distinguishes `none` from `undeclared`
+rather than leaving both silent.
 
 A result is one of four kinds. A `hypothesis` or an `expected_finding` is a claim
 about the world: it carries a `falsifier` and the `evidence_needed`. An `outcome`
@@ -49,6 +49,22 @@ model's vocabulary, not a funder requirement. Only `comparative` and
 fields; the remaining values are labels. The test matrix in
 `tests/test_questions.py` pins all eleven, so the vocabulary cannot drift
 silently.
+
+## Why the generic profile is not a seventh funder
+
+The six tables are transcriptions of named forms. A document outside them may
+still use the three headings the model exists for, so the renderer needs a
+fallback: the generic profile, with Research Question, Methodology and Expected
+Results. It is a scaffold, not a claim about a funder's form. `meta.funder:
+none` selects it for a document with no funder; `other` with `meta.scheme`
+selects it for a funder outside the six and emits a warning, because the
+headings are the model's, not that funder's. An absent `meta.funder` is refused:
+`none` is an explicit choice, not a default.
+
+A form that renames or merges the three sections needs its own table. Adding one
+is data, not code: a new entry in `mappings.json`, the matching Markdown table,
+and the test suite's table check. The generic profile is not a substitute for
+that work.
 
 ## Why risks are not limits
 
@@ -111,3 +127,8 @@ A semantic rule: add the check to `check_semantics`, add its code to `RULE_IDS`
 and to the `_rule_of` pattern when it is a new code, add a negative fixture, and
 run the validator. Keep R codes for checks that need the text; anything a JSON
 Schema can express belongs in S.
+
+A funder table: add the entry to `schema/mappings.json`, the matching table to
+`skill/requmexre/references/mappings.md`, and run `tests/test_mappings.py`. The
+generic profile is for documents whose form uses the three model headings; it is
+not the place to approximate a funder whose headings differ.

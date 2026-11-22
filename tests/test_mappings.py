@@ -122,4 +122,36 @@ def test_markdown_tables_match_the_data(mapping):
         for funder in mapping["funders"]
         for section in funder["sections"]
     ]
+    expected += [
+        (section["name"], section["fields"])
+        for section in mapping["generic"]["sections"]
+    ]
     assert markdown_rows(DOC.read_text(encoding="utf-8")) == expected
+
+
+def test_generic_profile_places_every_model_field(mapping):
+    generic = mapping["generic"]
+    mapped = mapped_fields(generic)
+
+    assert MODEL_FIELDS <= mapped
+    assert not generic.get("absent")
+
+
+def test_generic_sections_have_the_three_roles(mapping):
+    roles = [section.get("role") for section in mapping["generic"]["sections"]]
+
+    assert roles == ["question", "method", "results"]
+
+
+def test_generic_outputs_are_delivered_in_exactly_one_section(mapping):
+    delivering = [
+        section["name"]
+        for section in mapping["generic"]["sections"]
+        if section.get("delivers")
+    ]
+
+    assert len(delivering) == 1
+
+
+def test_the_generic_profile_uses_a_language_the_renderer_has(mapping):
+    assert mapping["generic"]["language"] in render.PHRASES

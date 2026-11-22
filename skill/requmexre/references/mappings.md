@@ -1,19 +1,22 @@
 # Section mappings
 
-How the five fields become the sections of an FWO, PRIN, VUB, Horizon, DFG or
-SNSF plan. Section names and numbers are taken from the documents cited in
-[`SOURCES.md`](../../../SOURCES.md); where a form does not number its headings,
-the numbers here are editorial. Page and character limits are set by the call and
-are not reproduced here; `SKILL.md` gives the cut order.
+How the five fields become the sections of a document: the six funder tables
+below, then the generic profile for any other document that uses Research
+Question, Methodology and Expected Results. Section names and numbers are taken
+from the documents cited in [`SOURCES.md`](../../../SOURCES.md); where a form does
+not number its headings, the numbers here are editorial. Page and character
+limits are set by the call and are not reproduced here; `SKILL.md` gives the cut
+order.
 
 The tables read in both directions: fields → sections when writing, sections →
 fields when reviewing. For a review, [`review.md`](review.md) gives the report
 template, the status words, the outside-model rule and the complete list of form
 defects.
 
-The same six tables are data in [`../assets/mappings.json`](../assets/mappings.json),
-which [`../scripts/render.py`](../scripts/render.py) reads; the test suite fails
-when the Markdown and the data disagree. The renderer copies the plan's prose and
+The six funder tables and the generic profile are data in
+[`../assets/mappings.json`](../assets/mappings.json), which
+[`../scripts/render.py`](../scripts/render.py) reads; the test suite fails when
+the Markdown and the data disagree. The renderer copies the document's prose and
 does not translate it. A section the table gives no field is emitted as a
 placeholder for the author, not filled.
 
@@ -125,17 +128,42 @@ not invent one.
 
 SNSF has no results section: do not render one. Section 2 reports results obtained so far, not expected results. The budget is submitted through the SNSF portal and is not modelled; animal-welfare requirements, where applicable, are not a separate section. `standpoint` is not the relevance and impact section: if it is declared, use its criteria only where the call asks for them; it is not an impact narrative.
 
+## Generic — any document with Research Question, Methodology, Expected Results
+
+`meta.funder: none` — a document with no funder — and `meta.funder: other` with
+`meta.scheme` — a funder outside the six — render through the generic profile.
+It is not a seventh funder and does not claim to be a funder's form: it uses the
+three headings by their model names. Check them against the call, and rename
+them by hand where the form differs. The gap and the standpoint sit inside
+Research Question; outputs close Methodology, so an output is never presented as
+an expected result.
+
+| Section | Fields | What to write |
+|---|---|---|
+| Research Question | `questions.primary`, `questions.secondary`, `warrant`, `standpoint` | The question or objective as written, its scope and completion criterion, then the secondary questions, the gap with its dated evidence, and the standpoint where one is declared. |
+| Methodology | `method` | Approach, sources, procedure, validity conditions, limits and risks. Outputs close the section. |
+| Expected Results | `results` | Expected findings as findings, outcomes as outcomes, and outputs only as what the procedure delivers. Never render a falsifier or `evidence_needed`. |
+
+Where the document uses the same three sections under other names — a
+translation, or a house style — pass `--heading-question`, `--heading-method`
+and `--heading-results` to the renderer; the JSON field names stay the same.
+The override applies to the generic profile only. A form that merges or adds
+sections still needs a table: add it to `assets/mappings.json` and to this file
+rather than renaming the generic headings. The generic profile is a fallback,
+not a substitute for the funder's form.
+
 ## Rendering rules
 
-- **Funder gate.** A table applies only to a plan whose `meta.funder` names that funder (`other`
-  with `meta.scheme` is matched by hand). `none`, or an absent field, means the
-  plan is funder-agnostic: no table applies. Set the field to the call's funder
-  and revalidate before rendering. The validator does not check this — a plan
-  without a funder is valid — so the check is the renderer's.
+- **Profile gate.** `meta.funder` selects the table: a named funder uses its own,
+  `none` and `other` (with `meta.scheme`) use the generic profile. An absent
+  field is refused, not treated as `none`: the author must say whether the
+  document has no funder or which funder it is. Set the field to the call's
+  funder and revalidate before rendering. The validator does not check this — a
+  document without a funder is valid — so the check is the renderer's.
 - Prose only. No JSON, no field names, no rule codes in the rendered text.
 - Keep the declared `form`: an objective stays an objective in the proposal, an
   interrogative stays a question. Do not rewrite one as the other.
-- Section order and numbering follow the funder, not the schema.
+- Section order and numbering follow the profile, not the schema.
 - The falsifier and `evidence_needed` are design aids: they stay in `plan.json`,
   and a falsifier is never rendered, not even as "this would be falsified if…".
   A proposal states the claim and the method that would test it.
@@ -172,9 +200,10 @@ SNSF has no results section: do not render one. Section 2 reports results obtain
 - `risks` is rendered with its mitigation in the method section, after the
   limits: each entry says what could go wrong and how it is addressed. Never
   render a risk as a limit, and never invent a mitigation.
-- **Outside the plan.** Registration, ethics and calendar time sit outside `plan.json`: render them
-  from the call's forms, not from requmexre, and do not invent an `extensions`
-  field. The procedure's order is not a calendar; see Rendering rules.
+- **Outside the document.** Registration, ethics and calendar time sit outside
+  `plan.json`: render them from the call's forms, not from requmexre, and do not
+  invent an `extensions` field. The procedure's order is not a calendar; see
+  Rendering rules.
 - Word and page limits change with the call: cut to the limit the author
   supplies, in the call's own units, and say so when none was available.
   `SKILL.md` gives the cut order and the no-padding rule.

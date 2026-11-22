@@ -12,10 +12,12 @@ reports what is missing, and the author supplies it.
 1. **Locate.** Which funder and call, which sections the draft has, whether it
    is prose or a `plan.json`, and the length limit. Record `meta.funder` when the
    draft or the call supplies one; a draft written for FWO is `fwo` even if the
-   field is absent. If neither supplies it, record the funder as unknown: review
-   by field, leave the Section column empty, and do not assign a funder to make a
-   table fit. If the limit is unavailable, say so: the review can end without it,
-   marked as not cut to the call.
+   field is absent. A document with no funder is `none` and uses the generic
+   profile; a funder outside the six is `other` with a scheme. If neither
+   supplies a funder and the document is not explicitly unfunded, record the
+   funder as unknown: review by field, leave the Section column empty, and do
+   not assign a funder to make a table fit. If the limit is unavailable, say so:
+   the review can end without it, marked as not cut to the call.
 2. **Extract — prose only.** Take candidate sentences for each field and quote
    them. Where a field has no sentence, leave it empty and mark it. If the draft
    is already a `plan.json`, skip this step and step 3: quote the fields as they
@@ -25,10 +27,11 @@ reports what is missing, and the author supplies it.
    statements; do not reconstruct them from the prose.
 3. **Type — prose only.** Give each extracted question its `form` from the
    sentence as written — `interrogative` or `objective` — never by rewriting it.
-4. **Copy and validate.** Copy the draft to `plan.review.json` and leave the
-   author's file untouched; never edit the original. Validate the copy with
-   `scripts/validate.py`. Every finding names a rule and a path; map it back to
-   the draft's sentence and to the section the table assigns it.
+4. **Copy, validate and check citations.** Copy the draft to `plan.review.json`
+   and leave the author's file untouched; never edit the original. Validate the
+   copy with `scripts/validate.py`, then run
+   `scripts/verify_citations.py` on it. Every finding names a rule and a path;
+   map it back to the draft's sentence and to the section the table assigns it.
 5. **Report.** Use the template and the status words below: one row per field or
    result, with the quoted text, the status, the rule if one fired and the
    section affected. Below it, the five checks with their outcome — pass, fail
@@ -51,7 +54,7 @@ lacks a required field ends as blocked on that field, not as a passing plan.
 
 | Field | The draft says | Status | Rule | Section |
 |---|---|---|---|---|
-| `meta.funder` | the value, or absent; the call if it is known | mapped / other / unknown | `S2` | the funder's sections, or — |
+| `meta.funder` | the value, or absent; the call if it is known | mapped / generic / unknown | `S2` | the selected table, or — |
 | `questions.primary` | quoted | present / weak / missing | `R1`, `S3` | the section the table assigns |
 | `questions.primary.completion_criterion` | quoted, or `none` | present / weak / declared none | `R2`, `S3` | as above |
 | `method` | quoted or summarised per subfield, limits excepted | present / weak / missing | `S5` | |
@@ -61,11 +64,13 @@ lacks a required field ends as blocked on that field, not as a passing plan.
 | `warrant.evidence` | each string, verbatim | present / weak / missing | `R4`, `S8` | |
 | `standpoint` | quoted, or absent | present / weak / declared none / undeclared | `R8`, `S9` | |
 
-The funder row has plan-level statuses: **mapped** (one of the six), **other**
-(with a `scheme`, no table) and **unknown** (neither the plan nor the call names
-one). For `other` and unknown, leave the Section column empty, review by field
-and say the sections were not mapped. Never assign a funder to make a table fit:
-an unknown funder is a question for the author, not a default.
+The funder row has document-level statuses: **mapped** (one of the six),
+**generic** (`none`, or `other` with a `scheme`) and **unknown** (neither the
+document nor the call names one). For generic, use the three headings and say
+that they are the model's, not the call's; for unknown, leave the Section column
+empty, review by field and say the sections were not mapped. Never assign a
+funder to make a table fit: an unknown funder is a question for the author, not
+a default.
 
 ### Status words
 
@@ -82,7 +87,7 @@ an unknown funder is a question for the author, not a default.
   standpoint; `undeclared` is the silence that says nothing.
 - **undeclared** — `meta.standpoint` is `undeclared` and there is no standpoint
   object. It records silence, not neutrality: do not render an impact argument
-  as if criteria existed, and do not call the plan neutral.
+  as if criteria existed, and do not call the document neutral.
 - **outside model** — a section of the call with no field behind it
   (preliminary work, own research, impact pathways and measures, ethics, budget,
   timetable). Report it; do not invent a field.
@@ -107,18 +112,24 @@ never as a pass.
    procedure can produce: point to the source and the step. If it names
    something the design cannot observe, the check fails. No falsifier and no
    hypothesis or expected finding means the check is not applicable.
-4. **Gap dated and specific.** Every evidence entry carries a year or an
-   identifier (`R4`). The gap names what is missing and which studies leave it
-   open; "little is known" without an object fails.
+4. **Gap dated, specific and sourced.** Every evidence entry carries a year or
+   an identifier (`R4`). The gap names what is missing and which studies leave
+   it open; "little is known" without an object fails. Run
+   `scripts/verify_citations.py` on the copy: a `not_found` or `mismatch` fails
+   the check; `no_identifier`, `unreachable` and a paywalled full text are
+   reported as **not verifiable** with the reason, never as a pass. The checker
+   confirms the source's metadata, not the claim it is cited for; read the
+   abstract, and say when the full text was not read.
 5. **Section coverage.** Read `mappings.md` in both directions. Sections →
    fields: list the sections with a field behind them and those without; the
    second list is `outside model`. Fields → sections: for every field present in
-   the plan, and for each result kind separately, name the section that receives
-   it. A field that a funder's table does not name is a **coverage gap**: report
-   its path, say the renderer must place it or leave it out, and never open a
-   section the funder does not have. A funder outside the six has no table at
-   all: its fields are unsectioned by design, rendered by hand, and are not a
-   coverage gap in a table that does not exist.
+   the document, and for each result kind separately, name the section that
+   receives it. A field that a funder's table does not name is a **coverage
+   gap**: report its path, say the renderer must place it or leave it out, and
+   never open a section the funder does not have. A document outside the six
+   uses the generic profile, which places all five fields; it is not a coverage
+   gap. A form whose headings rename or merge the three sections needs its own
+   table, and saying so is not a gap in the model.
 
 ## Form defects
 

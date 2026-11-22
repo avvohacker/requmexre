@@ -10,15 +10,15 @@ Layer 2, semantic (R1–R8): reads the document's own words. It runs only when t
 structural layer is clean.
 
 Usage
-    python3 validate.py --fixtures                  # the built-in corpus, not a plan
+    python3 validate.py --fixtures                  # the built-in corpus, not a document
     python3 validate.py cases/prin.json             # one file
     python3 validate.py --json plan.json            # one machine-readable report
     python3 validate.py --version
 
 A run with neither a file nor --fixtures exits 2: the corpus run is not a check
-of the caller's plan, so it has to be asked for.
+of the caller's document, so it has to be asked for.
 
-Exit status is 0 when every pure plan is valid and every negative envelope
+Exit status is 0 when every pure document is valid and every negative envelope
 reports its expected rule, 1 when one does not, 2 when there is nothing to check
 or the arguments are not understood.
 """
@@ -497,7 +497,7 @@ def check_file(path, schema):
 def build_parser():
     parser = argparse.ArgumentParser(
         prog="validate.py",
-        description="Validate requmexre plans: structural S1–S10, then semantic R1–R8.",
+        description="Validate requmexre documents: structural S1–S10, then semantic R1–R8.",
         epilog=(
             "Exit status: 0 every file behaves as declared; 1 one does not; "
             "2 nothing to check or bad usage."
@@ -507,12 +507,12 @@ def build_parser():
         "files",
         nargs="*",
         metavar="FILE",
-        help="plans or negative envelopes; required unless --fixtures is given",
+        help="documents or negative envelopes; required unless --fixtures is given",
     )
     parser.add_argument(
         "--fixtures",
         action="store_true",
-        help="check the built-in fixture corpus and the skill template, not a plan of yours",
+        help="check the built-in fixture corpus and the skill template, not a document of yours",
     )
     parser.add_argument(
         "--json",
@@ -575,8 +575,8 @@ def main(argv):
         )
     if not args.fixtures and not args.files:
         return refuse(
-            "no plan given. Pass a file to validate, or --fixtures for the built-in "
-            "corpus (that run does not check your plan).",
+            "no document given. Pass a file to validate, or --fixtures for the "
+            "built-in corpus (that run does not check your document).",
             args.json,
         )
 
@@ -601,7 +601,7 @@ def main(argv):
     else:
         width = max(len(display(target)) for target in targets)
         if args.fixtures:
-            print(f"requmexre v{VERSION} — built-in fixtures and skill template, not your plan\n")
+            print(f"requmexre v{VERSION} — built-in fixtures and skill template, not your document\n")
         else:
             print(f"requmexre v{VERSION} — structural S1–S10, semantic R1–R8\n")
         for target, ok, expect, findings, note in results:
@@ -617,7 +617,7 @@ def main(argv):
         else:
             print(f"{total} of {total} files behave as declared.")
         if args.fixtures:
-            print("No plan of yours was checked: pass a file to validate one.")
+            print("No document of yours was checked: pass a file to validate one.")
 
     return 1 if failures else 0
 

@@ -74,19 +74,107 @@ def test_cli_writes_the_same_draft_as_the_library():
     assert result.stderr == ""
 
 
-def test_a_plan_without_a_funder_is_refused():
+def test_a_document_without_a_funder_is_refused():
     plan = json.loads(TEMPLATE.read_text(encoding="utf-8"))
+    plan["meta"].pop("funder")
 
     with pytest.raises(render.RenderError, match="no funder"):
         render.render_plan(plan)
 
 
-def test_other_is_refused_because_it_has_no_table():
+def test_none_renders_the_generic_profile():
+    plan = json.loads(TEMPLATE.read_text(encoding="utf-8"))
+
+    draft = render.render_plan(plan)
+
+    assert draft.index("## Research Question") < draft.index("## Methodology")
+    assert draft.index("## Methodology") < draft.index("## Expected Results")
+    assert "Local green-space inventories and health surveys" in draft
+    assert plan["method"]["procedure"] in draft
+    assert plan["results"][0]["claim"] in draft
+    assert render.coverage_gaps(plan) == []
+
+
+def test_other_renders_the_generic_profile():
     plan = json.loads(TEMPLATE.read_text(encoding="utf-8"))
     plan["meta"].update(funder="other", scheme="ERC Starting Grant")
 
-    with pytest.raises(render.RenderError, match="has no section table"):
-        render.render_plan(plan)
+    draft = render.render_plan(plan)
+
+    assert "## Research Question" in draft
+    assert "## Methodology" in draft
+    assert "## Expected Results" in draft
+
+
+def test_heading_overrides_rename_the_generic_sections():
+    plan = json.loads(TEMPLATE.read_text(encoding="utf-8"))
+
+    draft = render.render_plan(
+        plan,
+        headings={
+            "question": "Domanda di ricerca",
+            "method": "Metodologia",
+            "results": "Risultati attesi",
+        },
+    )
+
+    assert "## Domanda di ricerca" in draft
+    assert "## Metodologia" in draft
+    assert "## Risultati attesi" in draft
+    assert "## Research Question" not in draft
+
+
+def test_heading_overrides_are_refused_for_a_mapped_funder():
+    plan = json.loads(TEMPLATE.read_text(encoding="utf-8"))
+    plan["meta"]["funder"] = "fwo"
+
+    with pytest.raises(render.RenderError, match="generic profile only"):
+        render.render_plan(plan, headings={"question": "Domanda di ricerca"})
+
+
+def test_cli_passes_heading_overrides(tmp_path):
+    plan = json.loads(TEMPLATE.read_text(encoding="utf-8"))
+    path = tmp_path / "plan.json"
+    path.write_text(json.dumps(plan), encoding="utf-8")
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(RENDER),
+            str(path),
+            "--heading-question",
+            "Domanda di ricerca",
+            "--heading-method",
+            "Metodologia",
+            "--heading-results",
+            "Risultati attesi",
+        ],
+        capture_output=True,
+        text=True,
+        cwd=ROOT,
+    )
+
+    assert result.returncode == 0, result.stderr
+    assert "## Domanda di ricerca" in result.stdout
+    assert "## Risultati attesi" in result.stdout
+
+
+def test_cli_warns_when_other_uses_the_generic_profile(tmp_path):
+    plan = json.loads(TEMPLATE.read_text(encoding="utf-8"))
+    plan["meta"].update(funder="other", scheme="ERC Starting Grant")
+    path = tmp_path / "plan.json"
+    path.write_text(json.dumps(plan), encoding="utf-8")
+
+    result = subprocess.run(
+        [sys.executable, str(RENDER), str(path)],
+        capture_output=True,
+        text=True,
+        cwd=ROOT,
+    )
+
+    assert result.returncode == 0, result.stderr
+    assert "## Research Question" in result.stdout
+    assert "warning: generic profile for ERC Starting Grant" in result.stderr
 
 
 def test_the_cli_refuses_a_plan_the_validator_rejects(tmp_path):
@@ -148,7 +236,7 @@ def test_no_results_exemption_renders_without_a_results_block(funder, source, se
     draft = render.render_plan(plan)
 
     assert section in draft
-    assert "The plan states no results." not in draft
+    assert "The document states no results." not in draft
     assert render.coverage_gaps(plan) == []
 
     result = subprocess.run(

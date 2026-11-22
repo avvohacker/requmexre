@@ -37,9 +37,9 @@ def test_fixtures_run_checks_the_fixtures_and_the_template():
     result = run("--fixtures")
     assert result.returncode == 0, result.stdout + result.stderr
     assert "requmexre v1.2" in result.stdout
-    assert "not your plan" in result.stdout
+    assert "not your document" in result.stdout
     assert "files behave as declared" in result.stdout
-    assert "No plan of yours was checked" in result.stdout
+    assert "No document of yours was checked" in result.stdout
     assert "skill/requmexre/assets/template.json" in result.stdout
 
 
@@ -47,7 +47,7 @@ def test_no_arguments_refuses_to_run_the_corpus():
     result = run()
     assert result.returncode == 2
     assert result.stdout == ""
-    assert "no plan given" in result.stderr
+    assert "no document given" in result.stderr
     assert "--fixtures" in result.stderr
 
 
@@ -56,7 +56,7 @@ def test_no_arguments_with_json_returns_an_error_object():
     assert result.returncode == 2
     report = json.loads(result.stdout)
     assert report["ok"] is False
-    assert "no plan given" in report["error"]
+    assert "no document given" in report["error"]
 
 
 def test_fixtures_refuses_file_arguments():

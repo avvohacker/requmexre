@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://avvohacker.github.io/requmexre/schema/1.2/requmexre.schema.json",
-  "title": "requmexre — research plan",
-  "description": "A research plan as research questions, methodology and expected results, with warrant and standpoint. Structural layer S1–S10; the semantic layer R1–R8 is implemented in validate.py. v1.2: requires results except for DFG and SNSF; v1.1 added optional method.risks to the v1.0 frozen model.",
+  "title": "requmexre — research question, methodology, expected results",
+  "description": "A document whose argument is a research question, a methodology and expected results, with warrant and standpoint. The six funder profiles are section tables; any other document that uses the three headings renders through the generic profile. Structural layer S1–S10; the semantic layer R1–R8 is implemented in validate.py. v1.2: requires results except for DFG and SNSF; v1.1 added optional method.risks to the v1.0 frozen model.",
   "$comment": "S1 — closed top level: meta, questions, method and warrant are required; results is required unless meta.funder is dfg or snsf; standpoint is optional",
   "type": "object",
   "required": ["meta", "questions", "method", "warrant"],

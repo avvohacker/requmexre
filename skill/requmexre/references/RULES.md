@@ -1,10 +1,10 @@
 # Rules
 
-Two layers, because two kinds of failure. A plan can be well-formed and still say
-nothing: a question that is a statement in disguise, a completion criterion that
-repeats the question, a falsifier that repeats the claim. The first kind is
-structural and lives in `requmexre.schema.json`; the second needs the words
-themselves and lives in `validate.py`.
+Two layers, because two kinds of failure. A document can be well-formed and
+still say nothing: a question that is a statement in disguise, a completion
+criterion that repeats the question, a falsifier that repeats the claim. The
+first kind is structural and lives in `requmexre.schema.json`; the second needs
+the words themselves and lives in `validate.py`.
 
 Rule codes are stable: a finding always names one. Rationale, the fixture
 envelope, the overlap tests and the steps for adding a rule are in the
@@ -48,8 +48,11 @@ since every check below reads fields the schema guarantees.
 
 ## What neither layer checks
 
-- Truth, plausibility or originality of the plan.
-- Whether a citation exists, or says what the plan says it says.
+- Truth, plausibility or originality of the document.
+- Whether a citation exists, or says what the document says it says. The
+  separate `verify_citations.py` resolves an identifier and compares title,
+  year and author; it cannot read a paywalled full text or decide whether the
+  source supports a specific claim.
 - Whether the evidence listed under a claim is the evidence that claim needs.
 - Fit between a claim and its falsifier beyond lexical difference.
 - Funder compliance: section order, page and character limits, eligibility.

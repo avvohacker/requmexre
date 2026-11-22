@@ -13,6 +13,19 @@ results section. A plan without `meta.funder` is not exempt.
 - S2–S5, S7–S10 and R1–R8 are unchanged. R5 still runs whenever results are present.
 - The 1.1 schema remains published at its original `$id`, from `schema/archive/1.1/`; the 1.0 schema remains published from `schema/archive/1.0/`.
 
+### Generic profile
+
+- The model is no longer limited to the six funders. `meta.funder: none` (a document with no funder) and `other` with `meta.scheme` (a funder outside the six) render through a generic profile with the headings **Research Question**, **Methodology** and **Expected Results**. The warrant and standpoint sit inside the question; outputs close the method.
+- The six funders keep their own tables. The generic profile is not a seventh funder and does not claim to be a funder's form: it uses the model's headings, and the renderer warns when it is used for `other`.
+- An absent `meta.funder` is still refused by the renderer. `none` is an explicit choice, not a default.
+- `schema/mappings.json` carries the generic table; the Markdown copy is in `references/mappings.md`.
+
+### Citation verification
+
+- New `schema/verify_citations.py`, bundled as `scripts/verify_citations.py`, checks every `warrant.evidence` entry. It extracts a DOI, PMID, arXiv ID, ISBN or URL, resolves the record through OpenAlex, Crossref, PubMed, arXiv, Open Library or the URL itself, and compares the citation's title, year and author with the record.
+- It reports open-access status and, when an abstract is available, a lexical overlap with the gap statement. It never reads a paywalled full text and never treats metadata agreement as proof that the source supports a claim.
+- `--offline` extracts identifiers without a request; `--strict` also fails an entry with no identifier or an unreachable source. No API key is required; `REQMEXRE_CONTACT_EMAIL` and `NCBI_API_KEY` are optional.
+
 ### Migration
 
 - Add a `results` list to every plan whose `meta.funder` is not `dfg` or `snsf`; a plan without a funder needs one too.
@@ -23,7 +36,7 @@ results section. A plan without `meta.funder` is not exempt.
 
 - New positive fixtures `dfg-no-results.json` and `snsf-no-results.json` pin the exemption; `negative/s6-missing-results.json` pins the default requirement.
 - The renderer still reports results carried by DFG or SNSF as a coverage gap, because those forms have no section for them.
-- Checks: 32/32 fixtures, 249 tests, and a Pages build that writes `/schema/1.0/`, `/schema/1.1/` and `/schema/1.2/`.
+- Checks: the fixture corpus, the pytest suite, and a Pages build that writes `/schema/1.0/`, `/schema/1.1/` and `/schema/1.2/`.
 
 ### Citation
 

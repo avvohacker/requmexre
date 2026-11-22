@@ -10,7 +10,7 @@ How does passive cooling change summer indoor temperatures and tenants' heat-rel
 
 Secondary questions and objectives: Identify which building and household characteristics predict the largest reduction in indoor temperature.
 
-The plan declares no normative standpoint.
+The document declares no normative standpoint.
 
 ## 2.3 Work programme incl. proposed research methods
 

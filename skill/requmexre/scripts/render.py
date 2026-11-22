@@ -1,25 +1,27 @@
 #!/usr/bin/env python3
-"""requmexre — render a plan into the sections of a funder.
+"""requmexre — render a document into its sections.
 
-The six section tables are data, not code: mappings.json maps each funder's
-sections to fields of the plan. This file turns that mapping into Markdown. It
-copies the plan's prose and never rewrites it or translates it; section names
-and connectives come from the funder's table, while the plan's own wording is
-kept, and it never renders a falsifier, `evidence_needed` or an output as an
-expected result.
+The six funder tables and the generic three-section profile are data, not code:
+mappings.json maps sections to fields. This file turns that mapping into
+Markdown. It copies the document's prose and never rewrites or translates it;
+section names and connectives come from the profile, while the document's own
+wording is kept, and it never renders a falsifier, `evidence_needed` or an
+output as an expected result.
 
-A plan must name one of the six funders. `none`, an absent funder and `other`
-have no table: the first two are funder-agnostic, the third is rendered by hand
-from the call's own form.
+`meta.funder` selects the profile: one of the six named funders, `none` for a
+document with no funder, or `other` with `meta.scheme`. `none` and `other` use
+the generic profile — Research Question, Methodology, Expected Results. An
+absent funder is refused: it is not the same as an explicit `none`.
 
 Usage
     python3 render.py plan.json                 # the draft, to stdout
     python3 render.py plan.json --out draft.md  # the draft, to a file
     python3 render.py --version
 
-The renderer refuses a plan the validator rejects (exit 1), exits 2 on bad usage
-or on a funder with no table, and warns on stderr when a field present in the
-plan has no section in that funder's table.
+The renderer refuses a document the validator rejects (exit 1), exits 2 on bad
+usage or on an absent funder, and warns on stderr when a field present in the
+document has no section in the selected table, or when the generic profile is
+used for a named funder.
 
     python3 render.py cases/prin.json
 """
@@ -64,15 +66,15 @@ PHRASES = {
         "sources": "Sources",
         "validity": "Validity conditions",
         "limits": "Limits",
-        "limits_none": "The plan declares no limits.",
-        "limits_absent": "The plan does not state limits.",
+        "limits_none": "The document declares no limits.",
+        "limits_absent": "The document does not state limits.",
         "risks": "Risks and mitigation",
         "risk": "Risk",
         "mitigation": "Mitigation",
         "premises": "Normative premises",
-        "standpoint_none": "The plan declares no normative standpoint.",
-        "standpoint_undeclared": "The plan does not declare a standpoint.",
-        "no_results": "The plan states no results.",
+        "standpoint_none": "The document declares no normative standpoint.",
+        "standpoint_undeclared": "The document does not declare a standpoint.",
+        "no_results": "The document states no results.",
         "outputs": "The procedure delivers",
         "measure": "Measured as",
         "kinds": {
@@ -97,15 +99,15 @@ PHRASES = {
         "sources": "Fonti",
         "validity": "Condizioni di validità",
         "limits": "Limiti",
-        "limits_none": "Il piano dichiara l'assenza di limiti.",
-        "limits_absent": "Il piano non indica limiti.",
+        "limits_none": "Il documento dichiara l'assenza di limiti.",
+        "limits_absent": "Il documento non indica limiti.",
         "risks": "Rischi e mitigazione",
         "risk": "Rischio",
         "mitigation": "Mitigazione",
         "premises": "Premesse normative",
-        "standpoint_none": "Il piano dichiara l'assenza di una prospettiva normativa.",
-        "standpoint_undeclared": "Il piano non dichiara una prospettiva normativa.",
-        "no_results": "Il piano non indica risultati.",
+        "standpoint_none": "Il documento dichiara l'assenza di una prospettiva normativa.",
+        "standpoint_undeclared": "Il documento non dichiara una prospettiva normativa.",
+        "no_results": "Il documento non indica risultati.",
         "outputs": "La procedura produce",
         "measure": "Misurato come",
         "kinds": {
@@ -124,7 +126,7 @@ PHRASES = {
 
 
 class RenderError(Exception):
-    """A plan or a mapping that cannot be rendered."""
+    """A document or a mapping that cannot be rendered."""
 
 
 # --------------------------------------------------------------------------
@@ -142,41 +144,50 @@ def load_mappings(path=None):
     funders = data.get("funders")
     if not isinstance(funders, list) or not funders:
         raise RenderError(f"{path} has no funders")
+    generic = data.get("generic")
+    if not isinstance(generic, dict):
+        raise RenderError(f"{path} has no generic profile")
 
+    _check_table(generic, path, "generic")
     seen = set()
     for funder in funders:
         funder_id = funder.get("id")
         if not funder_id or funder_id in seen:
             raise RenderError(f"{path}: missing or duplicate funder id {funder_id!r}")
         seen.add(funder_id)
-        if funder.get("language") not in PHRASES:
-            raise RenderError(f"{path}: {funder_id} has no known language")
-        delivered = 0
-        for section in funder.get("sections") or []:
-            if not section.get("name"):
-                raise RenderError(f"{path}: {funder_id} has a section without a name")
-            for field in section.get("fields") or []:
-                if field not in MODEL_FIELDS:
-                    raise RenderError(
-                        f"{path}: {funder_id} maps unknown field {field!r}"
-                    )
-            if section.get("delivers"):
-                delivered += 1
-        if delivered > 1:
-            raise RenderError(f"{path}: {funder_id} delivers outputs in more than one section")
-        for field in funder.get("absent") or {}:
-            if field not in MODEL_FIELDS:
-                raise RenderError(f"{path}: {funder_id} declares unknown field {field!r}")
+        _check_table(funder, path, funder_id)
     return data
 
 
-def funder_of(data, funder_id):
+def _check_table(table, path, label):
+    if table.get("language") not in PHRASES:
+        raise RenderError(f"{path}: {label} has no known language")
+    delivered = 0
+    for section in table.get("sections") or []:
+        if not section.get("name"):
+            raise RenderError(f"{path}: {label} has a section without a name")
+        for field in section.get("fields") or []:
+            if field not in MODEL_FIELDS:
+                raise RenderError(f"{path}: {label} maps unknown field {field!r}")
+        if section.get("delivers"):
+            delivered += 1
+    if delivered > 1:
+        raise RenderError(f"{path}: {label} delivers outputs in more than one section")
+    for field in table.get("absent") or {}:
+        if field not in MODEL_FIELDS:
+            raise RenderError(f"{path}: {label} declares unknown field {field!r}")
+
+
+def funder_of(data, profile_id):
+    if profile_id == "generic":
+        return data["generic"]
     for funder in data["funders"]:
-        if funder["id"] == funder_id:
+        if funder["id"] == profile_id:
             return funder
     raise RenderError(
-        f"{funder_id!r} has no section table; the six mapped funders are "
+        f"{profile_id!r} has no section table; the mapped funders are "
         + ", ".join(entry["id"] for entry in data["funders"])
+        + "; `none` and `other` use the generic profile"
     )
 
 
@@ -335,21 +346,17 @@ def _outputs(results, phrases):
 # --------------------------------------------------------------------------
 
 
-def _funder_id(plan):
+def _profile_id(plan):
     meta = plan.get("meta") or {}
+    if "funder" not in meta:
+        raise RenderError(
+            "no funder or profile: set meta.funder to fwo, prin, vub, horizon, "
+            "dfg or snsf; use `none` for a document with no funder, or `other` "
+            "with meta.scheme for another funder"
+        )
     funder_id = meta.get("funder")
-    if not funder_id or funder_id == "none":
-        raise RenderError(
-            "no funder: set meta.funder to fwo, prin, vub, horizon, dfg or snsf "
-            "before rendering; a funder-agnostic plan has no section table"
-        )
-    if funder_id == "other":
-        scheme = meta.get("scheme")
-        named = f" ({scheme})" if scheme else ""
-        raise RenderError(
-            f"funder 'other'{named} has no section table: render by hand from "
-            "the call's own form"
-        )
+    if funder_id in ("none", "other"):
+        return "generic"
     return funder_id
 
 
@@ -390,35 +397,43 @@ def _section_body(section, plan, phrases):
     return [block for block in blocks if block]
 
 
-def render_plan(plan, mappings=None):
-    """Return the Markdown draft for a plan that names one of the six funders."""
+def render_plan(plan, mappings=None, headings=None):
+    """Return the Markdown draft for a document and its selected profile."""
     data = mappings if mappings is not None else load_mappings()
-    funder_id = _funder_id(plan)
-    funder = funder_of(data, funder_id)
-    phrases = PHRASES[funder["language"]]
+    profile = funder_of(data, _profile_id(plan))
+    phrases = PHRASES[profile["language"]]
+
+    if headings and profile["id"] != "generic":
+        raise RenderError(
+            "heading overrides apply to the generic profile only; a funder's "
+            "section names are the form's, not the model's"
+        )
 
     for name in ("questions", "method", "warrant"):
         if name not in plan:
-            raise RenderError(f"plan has no {name!r}; validate it before rendering")
+            raise RenderError(f"document has no {name!r}; validate it before rendering")
 
     parts = []
     title = (plan.get("meta") or {}).get("title")
     if title:
         parts.append(f"# {title}")
 
-    for section in funder["sections"]:
+    for section in profile["sections"]:
         body = _section_body(section, plan, phrases)
-        parts.append("\n\n".join([f"## {section['name']}", *body]))
+        name = section["name"]
+        if headings and section.get("role") in headings:
+            name = headings[section["role"]]
+        parts.append("\n\n".join([f"## {name}", *body]))
 
     return "\n\n".join(parts) + "\n"
 
 
 def coverage_gaps(plan, mappings=None):
-    """Fields present in the plan that this funder's table does not place."""
+    """Fields present in the document that the selected table does not place."""
     data = mappings if mappings is not None else load_mappings()
-    funder = funder_of(data, _funder_id(plan))
-    mapped = {field for section in funder["sections"] for field in section.get("fields") or []}
-    absent = funder.get("absent") or {}
+    profile = funder_of(data, _profile_id(plan))
+    mapped = {field for section in profile["sections"] for field in section.get("fields") or []}
+    absent = profile.get("absent") or {}
 
     gaps = []
     if plan.get("results") and "results" not in mapped:
@@ -444,16 +459,34 @@ def plan_findings(plan):
 def build_parser():
     parser = argparse.ArgumentParser(
         prog="render.py",
-        description="Render a requmexre plan into the sections of one of six funders.",
+        description=(
+            "Render a requmexre document into a funder's sections or the generic "
+            "three-section profile."
+        ),
         epilog=(
-            "Exit status: 0 rendered; 1 the validator rejects the plan; "
-            "2 no plan, bad usage, or a funder with no table."
+            "Exit status: 0 rendered; 1 the validator rejects the document; "
+            "2 no document, bad usage, or an absent funder."
         ),
     )
-    parser.add_argument("file", nargs="?", metavar="PLAN", help="a validated plan.json")
+    parser.add_argument("file", nargs="?", metavar="DOCUMENT", help="a validated plan.json")
     parser.add_argument("--out", metavar="PATH", help="write the draft to PATH")
     parser.add_argument(
         "--mappings", metavar="PATH", help="read the section tables from PATH"
+    )
+    parser.add_argument(
+        "--heading-question",
+        metavar="TEXT",
+        help="generic profile only: rename the Research Question heading",
+    )
+    parser.add_argument(
+        "--heading-method",
+        metavar="TEXT",
+        help="generic profile only: rename the Methodology heading",
+    )
+    parser.add_argument(
+        "--heading-results",
+        metavar="TEXT",
+        help="generic profile only: rename the Expected Results heading",
     )
     parser.add_argument("--version", action="version", version=f"requmexre render v{VERSION}")
     return parser
@@ -467,7 +500,7 @@ def refuse(message, as_json=False):
 def main(argv):
     args = build_parser().parse_args(argv)
     if not args.file:
-        return refuse("no plan given. Pass a plan.json to render.")
+        return refuse("no document given. Pass a plan.json to render.")
     try:
         plan = json.loads(Path(args.file).read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as error:
@@ -482,10 +515,28 @@ def main(argv):
 
     try:
         data = load_mappings(args.mappings)
-        text = render_plan(plan, data)
+        profile = funder_of(data, _profile_id(plan))
+        headings = {
+            role: value
+            for role, value in (
+                ("question", args.heading_question),
+                ("method", args.heading_method),
+                ("results", args.heading_results),
+            )
+            if value
+        }
+        text = render_plan(plan, data, headings)
         gaps = coverage_gaps(plan, data)
     except RenderError as error:
         return refuse(str(error))
+
+    if profile["id"] == "generic" and plan["meta"].get("funder") == "other":
+        scheme = plan["meta"].get("scheme") or "the funder"
+        print(
+            f"warning: generic profile for {scheme}: the headings are the model's, "
+            "not that form's; check them against the call",
+            file=sys.stderr,
+        )
 
     for field, reason in gaps:
         suffix = f": {reason}" if reason else ""

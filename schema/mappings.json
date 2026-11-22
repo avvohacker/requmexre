@@ -1,6 +1,28 @@
 {
-  "version": "1.0",
-  "note": "Machine-readable form of the six section tables in skill/requmexre/references/mappings.md. The Markdown is the human-readable copy; tests/test_mappings.py fails when the two disagree.",
+  "version": "1.1",
+  "note": "Machine-readable form of the six funder tables and the generic profile in skill/requmexre/references/mappings.md. The Markdown is the human-readable copy; tests/test_mappings.py fails when the two disagree.",
+  "generic": {
+    "id": "generic",
+    "language": "en",
+    "sections": [
+      {
+        "role": "question",
+        "name": "Research Question",
+        "fields": ["questions.primary", "questions.secondary", "warrant", "standpoint"]
+      },
+      {
+        "role": "method",
+        "name": "Methodology",
+        "fields": ["method"],
+        "delivers": true
+      },
+      {
+        "role": "results",
+        "name": "Expected Results",
+        "fields": ["results"]
+      }
+    ]
+  },
   "funders": [
     {
       "id": "fwo",

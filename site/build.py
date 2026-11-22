@@ -152,7 +152,7 @@ PAGE = Template("""<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>requmexre — research question, methodology, expected results</title>
-<meta name="description" content="requmexre: a machine-readable model of a research plan as research question, methodology and expected results. JSON Schema, two-layer validator and funder mappings.">
+<meta name="description" content="requmexre: a machine-readable model of a research document as research question, methodology and expected results. JSON Schema, two-layer validator, citation checker, funder mappings and a generic three-section profile.">
 <meta name="theme-color" content="#fcfbf7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#15140f" media="(prefers-color-scheme: dark)">
 <style>$css</style>

@@ -4,7 +4,7 @@
 
 Belgian time-use evidence stops at 2022 and predates the current wave of four-day-week pilots, so no study estimates the reallocation of unpaid hours within households after adoption (Belgian time-use survey, 2022 wave, national statistical office release; OECD, Working time and the four-day week: evidence from pilots, 2023; FWO application form for a PhD fellowship, 2026).
 
-The plan declares no normative standpoint.
+The document declares no normative standpoint.
 
 ## 2. Scientific research objectives
 
