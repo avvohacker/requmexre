@@ -53,13 +53,14 @@ Establish what is being asked and for whom.
 
 - Which funder and which call? FWO, PRIN, VUB, Horizon, DFG and SNSF have
   section tables in [`references/mappings.md`](references/mappings.md). A funder
-  outside the six is `meta.funder: "other"` with `meta.scheme` naming it; it
-  uses the generic profile.
-- Record the answer in `meta.funder`: `fwo`, `prin`, `vub`, `horizon`, `dfg`,
-  `snsf`, `other` with `meta.scheme`, or `none` for a document with no funder.
-  A document you will render into a funder's sections must name that funder;
-  `none` and `other` render through the generic three-section profile. The field
-  is how the renderer knows which table to use; an absent field is refused.
+  outside the six is `meta.funder: "other"` with `meta.scheme` naming it; a
+  document with no funder may leave `meta.funder` absent. Both use the generic
+  profile, which is the default.
+- Record the funder in `meta.funder` when it is known: `fwo`, `prin`, `vub`,
+  `horizon`, `dfg`, `snsf`, `other` with `meta.scheme`, or `none` for a document
+  explicitly without a funder. A document you will render into a named funder's
+  sections must name that funder; absence, `none` and `other` use the generic
+  three-section profile.
 - Is there a draft to convert, or is the document new? If there is a draft,
   extract candidate sentences for each field before writing anything.
 - What length does the call allow, in its own units (pages or characters, per
@@ -71,8 +72,9 @@ Establish what is being asked and for whom.
   unanswered: `meta.standpoint` is required, and `undeclared` records silence
   rather than inventing a position.
 
-Exit: a funder (or `none`) recorded in `meta.funder`, a source draft (or none),
-`meta.standpoint`, and the length limit or a note that it is unknown.
+Exit: the funder recorded in `meta.funder`, or `none`, or an explicit note that
+the document has no funder and uses the generic profile; a source draft (or
+none), `meta.standpoint`, and the length limit or a note that it is unknown.
 
 ### 2. Questions
 
@@ -214,10 +216,10 @@ sections outside the document, and are not repeated here.
 
 [`scripts/render.py`](scripts/render.py) applies the table: `python3
 scripts/render.py plan.json` writes the draft to stdout, `--out draft.md` to a
-file. It refuses a document with no `meta.funder`; `none` and `other` render
-through the generic profile (Research Question, Methodology, Expected Results),
-and `other` carries a warning that those headings are the model's, not the
-form's. It warns on stderr when a field present in the document has no section
+file. A document with no `meta.funder` renders through the generic profile by
+default; `none` and `other` do the same (Research Question, Methodology,
+Expected Results), and `other` carries a warning that those headings are the
+model's, not the form's. It warns on stderr when a field present in the document has no section
 in the selected table. For a generic document whose three headings are
 translated or named differently, pass `--heading-question`, `--heading-method`
 and `--heading-results`; the JSON fields stay the same, and the override applies
@@ -254,10 +256,12 @@ are for execution, not wholesale reading.
 
 - Six funders have section tables: FWO, PRIN, VUB, Horizon, DFG and SNSF. The
   schema is v1.2. Any other document that uses Research Question, Methodology
-  and Expected Results renders through the generic profile; a form that renames
-  or merges those sections needs its own table.
-- A funder outside the six uses `funder: "other"` and `scheme`; it gets the
-  generic headings, not the funder's own. Check them against the call.
+  and Expected Results — including one with no `meta.funder` — renders through
+  the generic profile; a form that renames or merges those sections needs its
+  own table.
+- A funder outside the six may use `funder: "other"` and `scheme` to name it; an
+  absent field, `none`, and `other` get the generic headings, not a named
+  funder's own. Check them against the call.
 - The citation checker resolves metadata from OpenAlex, Crossref, PubMed, arXiv,
   Open Library or the URL. It cannot read a paywalled full text or decide
   whether a source supports a specific claim; it reports that limit rather than

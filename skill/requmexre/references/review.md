@@ -12,11 +12,12 @@ reports what is missing, and the author supplies it.
 1. **Locate.** Which funder and call, which sections the draft has, whether it
    is prose or a `plan.json`, and the length limit. Record `meta.funder` when the
    draft or the call supplies one; a draft written for FWO is `fwo` even if the
-   field is absent. A document with no funder is `none` and uses the generic
-   profile; a funder outside the six is `other` with a scheme. If neither
-   supplies a funder and the document is not explicitly unfunded, record the
-   funder as unknown: review by field, leave the Section column empty, and do
-   not assign a funder to make a table fit. If the limit is unavailable, say so:
+   field is absent. A document explicitly without a funder is `none`; a funder
+   outside the six is `other` with a scheme. If neither supplies a funder and the
+   document is not explicitly unfunded, record the funder as unknown: it still
+   renders through the generic profile by default, but review by field, leave
+   the Section column empty, and do not assign a funder to make a table fit. If
+   the limit is unavailable, say so:
    the review can end without it, marked as not cut to the call.
 2. **Extract — prose only.** Take candidate sentences for each field and quote
    them. Where a field has no sentence, leave it empty and mark it. If the draft
@@ -65,12 +66,12 @@ lacks a required field ends as blocked on that field, not as a passing plan.
 | `standpoint` | quoted, or absent | present / weak / declared none / undeclared | `R8`, `S9` | |
 
 The funder row has document-level statuses: **mapped** (one of the six),
-**generic** (`none`, or `other` with a `scheme`) and **unknown** (neither the
-document nor the call names one). For generic, use the three headings and say
-that they are the model's, not the call's; for unknown, leave the Section column
-empty, review by field and say the sections were not mapped. Never assign a
-funder to make a table fit: an unknown funder is a question for the author, not
-a default.
+**generic** (absent, `none`, or `other` with a `scheme`) and **unknown** (neither
+the document nor the call names one). For generic, use the three headings and
+say that they are the model's, not the call's; for unknown, leave the Section
+column empty, review by field and say the sections were not mapped. Never assign
+a funder to make a table fit: an unknown funder is a question for the author,
+not a value to invent.
 
 ### Status words
 
@@ -126,10 +127,10 @@ never as a pass.
    the document, and for each result kind separately, name the section that
    receives it. A field that a funder's table does not name is a **coverage
    gap**: report its path, say the renderer must place it or leave it out, and
-   never open a section the funder does not have. A document outside the six
-   uses the generic profile, which places all five fields; it is not a coverage
-   gap. A form whose headings rename or merge the three sections needs its own
-   table, and saying so is not a gap in the model.
+   never open a section the funder does not have. A document outside the six,
+   or with no `meta.funder`, uses the generic profile, which places all five
+   fields; it is not a coverage gap. A form whose headings rename or merge the
+   three sections needs its own table, and saying so is not a gap in the model.
 
 ## Form defects
 

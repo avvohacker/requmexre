@@ -17,7 +17,7 @@ results section. A plan without `meta.funder` is not exempt.
 
 - The model is no longer limited to the six funders. `meta.funder: none` (a document with no funder) and `other` with `meta.scheme` (a funder outside the six) render through a generic profile with the headings **Research Question**, **Methodology** and **Expected Results**. The warrant and standpoint sit inside the question; outputs close the method.
 - The six funders keep their own tables. The generic profile is not a seventh funder and does not claim to be a funder's form: it uses the model's headings, and the renderer warns when it is used for `other`.
-- An absent `meta.funder` is still refused by the renderer. `none` is an explicit choice, not a default.
+- An absent `meta.funder` now uses the generic profile by default; `none` remains an explicit choice, and `other` with `meta.scheme` names a funder outside the six.
 - `schema/mappings.json` carries the generic table; the Markdown copy is in `references/mappings.md`.
 
 ### Citation verification

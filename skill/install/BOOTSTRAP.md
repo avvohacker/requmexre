@@ -3,7 +3,8 @@
 A self-extracting skill package for a document whose argument is a research
 question, a methodology and expected results, with a warrant and a standpoint.
 FWO, PRIN, VUB, Horizon, DFG and SNSF have section tables; any other document
-that uses the three headings renders through the generic profile.
+that uses the three headings — including one with no `meta.funder` — renders
+through the generic profile.
 
 ## First step
 

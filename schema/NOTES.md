@@ -54,12 +54,13 @@ silently.
 
 The six tables are transcriptions of named forms. A document outside them may
 still use the three headings the model exists for, so the renderer needs a
-fallback: the generic profile, with Research Question, Methodology and Expected
+default: the generic profile, with Research Question, Methodology and Expected
 Results. It is a scaffold, not a claim about a funder's form. `meta.funder:
-none` selects it for a document with no funder; `other` with `meta.scheme`
-selects it for a funder outside the six and emits a warning, because the
-headings are the model's, not that funder's. An absent `meta.funder` is refused:
-`none` is an explicit choice, not a default.
+none` selects it for a document explicitly without a funder; `other` with
+`meta.scheme` selects it for a funder outside the six and emits a warning,
+because the headings are the model's, not that funder's. An absent `meta.funder`
+selects it too: the generic profile is the default, not a value the author must
+supply.
 
 A form that renames or merges the three sections needs its own table. Adding one
 is data, not code: a new entry in `mappings.json`, the matching Markdown table,

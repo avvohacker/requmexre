@@ -9,9 +9,10 @@ wording is kept, and it never renders a falsifier, `evidence_needed` or an
 output as an expected result.
 
 `meta.funder` selects the profile: one of the six named funders, `none` for a
-document with no funder, or `other` with `meta.scheme`. `none` and `other` use
-the generic profile — Research Question, Methodology, Expected Results. An
-absent funder is refused: it is not the same as an explicit `none`.
+document explicitly without a funder, or `other` with `meta.scheme`. `none`,
+`other` and an absent field use the generic profile — Research Question,
+Methodology, Expected Results. The generic profile is the default, not a value
+the author must supply.
 
 Usage
     python3 render.py plan.json                 # the draft, to stdout
@@ -19,9 +20,8 @@ Usage
     python3 render.py --version
 
 The renderer refuses a document the validator rejects (exit 1), exits 2 on bad
-usage or on an absent funder, and warns on stderr when a field present in the
-document has no section in the selected table, or when the generic profile is
-used for a named funder.
+usage, and warns on stderr when a field present in the document has no section
+in the selected table, or when the generic profile is used for a named funder.
 
     python3 render.py cases/prin.json
 """
@@ -187,7 +187,7 @@ def funder_of(data, profile_id):
     raise RenderError(
         f"{profile_id!r} has no section table; the mapped funders are "
         + ", ".join(entry["id"] for entry in data["funders"])
-        + "; `none` and `other` use the generic profile"
+        + "; `none`, `other` and an absent field use the generic profile"
     )
 
 
@@ -348,14 +348,8 @@ def _outputs(results, phrases):
 
 def _profile_id(plan):
     meta = plan.get("meta") or {}
-    if "funder" not in meta:
-        raise RenderError(
-            "no funder or profile: set meta.funder to fwo, prin, vub, horizon, "
-            "dfg or snsf; use `none` for a document with no funder, or `other` "
-            "with meta.scheme for another funder"
-        )
     funder_id = meta.get("funder")
-    if funder_id in ("none", "other"):
+    if funder_id is None or funder_id in ("none", "other"):
         return "generic"
     return funder_id
 
@@ -465,7 +459,7 @@ def build_parser():
         ),
         epilog=(
             "Exit status: 0 rendered; 1 the validator rejects the document; "
-            "2 no document, bad usage, or an absent funder."
+            "2 no document or bad usage."
         ),
     )
     parser.add_argument("file", nargs="?", metavar="DOCUMENT", help="a validated plan.json")
@@ -541,7 +535,7 @@ def main(argv):
     for field, reason in gaps:
         suffix = f": {reason}" if reason else ""
         print(
-            f"warning: {field} has no section for {plan['meta']['funder']}{suffix}",
+            f"warning: {field} has no section for {plan['meta'].get('funder', 'none')}{suffix}",
             file=sys.stderr,
         )
 

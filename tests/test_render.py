@@ -74,12 +74,16 @@ def test_cli_writes_the_same_draft_as_the_library():
     assert result.stderr == ""
 
 
-def test_a_document_without_a_funder_is_refused():
+def test_a_document_without_a_funder_uses_the_generic_profile():
     plan = json.loads(TEMPLATE.read_text(encoding="utf-8"))
     plan["meta"].pop("funder")
 
-    with pytest.raises(render.RenderError, match="no funder"):
-        render.render_plan(plan)
+    draft = render.render_plan(plan)
+
+    assert "## Research Question" in draft
+    assert "## Methodology" in draft
+    assert "## Expected Results" in draft
+    assert render.coverage_gaps(plan) == []
 
 
 def test_none_renders_the_generic_profile():
@@ -130,6 +134,26 @@ def test_heading_overrides_are_refused_for_a_mapped_funder():
 
     with pytest.raises(render.RenderError, match="generic profile only"):
         render.render_plan(plan, headings={"question": "Domanda di ricerca"})
+
+
+def test_cli_renders_a_document_without_a_funder(tmp_path):
+    plan = json.loads(TEMPLATE.read_text(encoding="utf-8"))
+    plan["meta"].pop("funder")
+    path = tmp_path / "plan.json"
+    path.write_text(json.dumps(plan), encoding="utf-8")
+
+    result = subprocess.run(
+        [sys.executable, str(RENDER), str(path)],
+        capture_output=True,
+        text=True,
+        cwd=ROOT,
+    )
+
+    assert result.returncode == 0, result.stderr
+    assert "## Research Question" in result.stdout
+    assert "## Methodology" in result.stdout
+    assert "## Expected Results" in result.stdout
+    assert result.stderr == ""
 
 
 def test_cli_passes_heading_overrides(tmp_path):

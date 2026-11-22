@@ -130,13 +130,14 @@ SNSF has no results section: do not render one. Section 2 reports results obtain
 
 ## Generic — any document with Research Question, Methodology, Expected Results
 
-`meta.funder: none` — a document with no funder — and `meta.funder: other` with
-`meta.scheme` — a funder outside the six — render through the generic profile.
-It is not a seventh funder and does not claim to be a funder's form: it uses the
-three headings by their model names. Check them against the call, and rename
-them by hand where the form differs. The gap and the standpoint sit inside
-Research Question; outputs close Methodology, so an output is never presented as
-an expected result.
+`meta.funder: none` — a document explicitly without a funder — and
+`meta.funder: other` with `meta.scheme` — a funder outside the six — render
+through the generic profile. A document with no `meta.funder` at all uses the
+same profile by default. It is not a seventh funder and does not claim to be a
+funder's form: it uses the three headings by their model names. Check them
+against the call, and rename them by hand where the form differs. The gap and
+the standpoint sit inside Research Question; outputs close Methodology, so an
+output is never presented as an expected result.
 
 | Section | Fields | What to write |
 |---|---|---|
@@ -149,17 +150,16 @@ translation, or a house style — pass `--heading-question`, `--heading-method`
 and `--heading-results` to the renderer; the JSON field names stay the same.
 The override applies to the generic profile only. A form that merges or adds
 sections still needs a table: add it to `assets/mappings.json` and to this file
-rather than renaming the generic headings. The generic profile is a fallback,
-not a substitute for the funder's form.
+rather than renaming the generic headings. The generic profile is the default
+for a document without a named funder, not a substitute for the funder's form.
 
 ## Rendering rules
 
-- **Profile gate.** `meta.funder` selects the table: a named funder uses its own,
-  `none` and `other` (with `meta.scheme`) use the generic profile. An absent
-  field is refused, not treated as `none`: the author must say whether the
-  document has no funder or which funder it is. Set the field to the call's
-  funder and revalidate before rendering. The validator does not check this — a
-  document without a funder is valid — so the check is the renderer's.
+- **Profile gate.** `meta.funder` selects the table: a named funder uses its own;
+  an absent field, `none`, and `other` (with `meta.scheme`) use the generic
+  profile. Absence is the default, not an error: the document may simply have no
+  funder. Set the field when a named funder's form is required, and revalidate
+  before rendering into that form.
 - Prose only. No JSON, no field names, no rule codes in the rendered text.
 - Keep the declared `form`: an objective stays an objective in the proposal, an
   interrogative stays a question. Do not rewrite one as the other.

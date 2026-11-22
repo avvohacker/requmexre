@@ -19,7 +19,7 @@ The name is the three slots: **RE**search **QU**estion + **ME**thodology + e**X*
 
 Question and method appear in all six. Results appear in four — FWO (inside the objectives), VUB (inside Scientific research goals, as hypotheses and partial results), Horizon, PRIN (block b) — and have no section in DFG and SNSF. The schema therefore requires `results` by default, but exempts a document whose `meta.funder` is exactly `dfg` or `snsf`; a document with no funder is not exempt. When results are present, R5 still requires a claim or an outcome, never outputs alone.
 
-The six are pre-mapped, not the model's boundary. A document whose `meta.funder` is `none`, or `other` with a `scheme`, renders through the generic profile — **Research Question**, **Methodology**, **Expected Results** — with the warrant and standpoint inside the question and outputs closing the method. A form whose headings rename or merge those three needs its own table; the generic profile does not pretend to be that form.
+The six are pre-mapped, not the model's boundary. A document with no `meta.funder`, `meta.funder: none`, or `other` with a `scheme` renders through the generic profile — **Research Question**, **Methodology**, **Expected Results** — with the warrant and standpoint inside the question and outputs closing the method. A form whose headings rename or merge those three needs its own table; the generic profile does not pretend to be that form.
 
 Structural notes:
 
@@ -86,7 +86,7 @@ skill/requmexre/SKILL.md       the skill: five fields, six phases
 skill/requmexre/references/    mappings, RULES, FWO example, review report
 skill/requmexre/scripts/       bundled validator, renderer and citation checker, identical to schema/
 skill/requmexre/assets/        template and schema, identical to schema/
-skill/install/                 bootstrap loader and checksum-pinned bundle for the account skill
+skill/install/                 bootstrap loader, bundle builder and checksum-pinned bundle
 site/build.py                  Pages build: README, RULES, SOURCES → one page
 .github/workflows/             validate.yml, pages.yml
 ```
@@ -110,7 +110,7 @@ python3 validate.py --version                            # requmexre v1.2
 python3 validate.py --json cases/prin.json               # one machine-readable report
 python3 render.py cases/prin.json                        # draft in PRIN's sections
 python3 render.py cases/fwo.json --out draft.md          # to a file
-python3 render.py ../skill/requmexre/assets/template.json # generic profile (funder none)
+python3 render.py ../skill/requmexre/assets/template.json # generic profile (funder none or absent)
 python3 render.py plan.json --heading-question "Domanda di ricerca" \
   --heading-method "Metodologia" --heading-results "Risultati attesi"
 python3 verify_citations.py cases/prin.json              # source metadata check
@@ -121,7 +121,7 @@ The account skill is installed as the visible schema plus `scripts/requmexre.py`
 
 The pytest suite runs from the repository root: `python3 -m pytest -q`. The citation checker uses OpenAlex, Crossref, PubMed, arXiv, Open Library and the URL itself; no API key is required, and `--offline` extracts identifiers without a request. `REQMEXRE_CONTACT_EMAIL` and `NCBI_API_KEY` are optional.
 
-The renderer exits 0 on a draft, 1 when the validator rejects the document, and 2 when the document names no funder or an unknown profile.
+The renderer exits 0 on a draft, 1 when the validator rejects the document, and 2 on bad usage or an unknown profile.
 
 Exit code 0 when every pure plan is valid and every negative envelope reports its expected rule, 1 when one does not, 2 on bad usage. A run with neither a file nor `--fixtures` exits 2, so the built-in corpus can never be mistaken for a check of your plan. `--json` writes one object with `tool`, `version`, `scope` (`fixtures` or `files`), `ok`, `total`, `passed`, `failed` and a `files` list, each entry carrying `path`, `ok`, `expected`, `findings` (`rule`, `path`, `message`) and `note`. Negative fixtures wrap the plan as `{ "expect": ..., "plan": ... }`; positive plans, the template and the pilot encodings are pure. The skill runs six phases — detect, question, method, results, guards, citations — writes `plan.json`, validates it, checks its cited sources, and renders it into a funder's sections or the generic three-section profile.
 
@@ -129,7 +129,7 @@ Exit code 0 when every pure plan is valid and every negative envelope reports it
 
 - Fixtures are synthetic: structure taken from the documents above, content illustrative.
 - The validator checks form, not truth. `verify_citations.py` checks that a cited source exists and that its title, year and author agree with the citation; it cannot read a paywalled full text or decide whether the source supports a specific claim. The gap-to-abstract overlap is a signal, not a verdict.
-- Six funders are pre-mapped; a document outside them that uses the three headings renders through the generic profile. A form that renames or merges those sections needs its own table.
+- Six funders are pre-mapped; a document outside them, or with no `meta.funder`, that uses the three headings renders through the generic profile. A form that renames or merges those sections needs its own table.
 - The three slots are an administrative form, not a theory of method. The schema formalises the document, not the research.
 - Registration numbers, ethics approvals and calendar timelines are out of scope: they belong to the funder's submission forms, not to the plan, and the procedure's order is not a timetable. There is no `extensions` field.
 
