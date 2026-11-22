@@ -123,7 +123,7 @@ not invent one.
 | 4. Schedule and milestones | `method.procedure` (partial) | The procedure's sequence; milestones and resources are not modelled. |
 | 5. Relevance and impact | — | Relevance and impact is outside the model: scientific relevance; expected impacts for the discipline and academic learning as a whole (research and education/teaching); publication forms. Expected results and `standpoint` are not substitutes. |
 
-SNSF has no results section: do not render one. Section 2 reports results obtained so far, not expected results. Budget is submitted through the SNSF portal; ethics and animal-welfare requirements sit outside the research-plan sections and are not modelled. `standpoint` is not the relevance and impact section: if it is declared, use its criteria only where the call asks for them; it is not an impact narrative.
+SNSF has no results section: do not render one. Section 2 reports results obtained so far, not expected results. The budget is submitted through the SNSF portal and is not modelled; animal-welfare requirements, where applicable, are not a separate section. `standpoint` is not the relevance and impact section: if it is declared, use its criteria only where the call asks for them; it is not an impact narrative.
 
 ## Rendering rules
 
