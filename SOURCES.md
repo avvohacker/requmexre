@@ -107,20 +107,54 @@ the terms in general research-design and proposal-writing practice; they do not
 define requmexre, and none is normative for the schema. Links checked 22 November
 2026.
 
+### What the three terms mean
+
+- **Research question.** The uncertainty the study proposes to reduce, arising
+  from a gap or problem. It is not a topic, a method or a hypothesis: a hypothesis
+  is one possible answer, and an objective is an operational statement of what the
+  study will do. A good question is answerable and bounded; the common criteria are
+  FINER (feasible, interesting, novel, ethical, relevant) and, in clinical research,
+  PICOT. The model's `questions.primary` carries the text, form, answer type, scope
+  and completion criterion; `questions.secondary` carries the rest.
+- **Methodology.** The justified design for producing an answer, not a list of
+  techniques. Creswell separates the research approach (methodology), the research
+  design within it, and the methods of data collection, analysis and interpretation;
+  the proposal guides add sources, procedure, validity conditions, limits and risks.
+  The model's `method` holds the approach, sources and procedure; the optional
+  conditions, limits and risks make the design defensible.
+- **Expected results.** The results the study anticipates and can state, not the
+  longer-term impact it hopes to have. A claim (hypothesis or expected finding) is
+  testable and carries a falsifier and the evidence needed; an outcome is a quantity
+  with a measure; an output is a produced artefact. Logic-model guidance groups
+  outputs, outcomes and impact as “intended results” but distinguishes direct
+  products, changes and long-term impact; the model keeps outputs and outcomes,
+  adds testable claims, and leaves impact outside. “Expected” does not mean guaranteed, and forms call these
+  anticipated findings, intended outcomes or expected contribution. The model's
+  `results` holds claims, outcomes and outputs; impact stays outside.
+
+The model's five content blocks formalise this division: question and warrant,
+method, results, standpoint. The sources do not agree on one vocabulary, which is
+why the schema has `form`, result kinds and section mappings rather than a fixed
+prose template.
+
+### Guides
+
 | Source | What it explains | Link |
 |---|---|---|
 | University of Salford, *Writing your research proposal* | **Key research questions**, **Methodology** and **Expected results**: the last asks what kinds of results the project hopes to achieve, not what they will be. | [Page](https://www.salford.ac.uk/postgraduate-research/guidance-on-writing-a-research-proposal) |
 | University of Guelph Library, *Key Components of a Research Proposal* | **Research question or hypothesis**, **Proposed methodology** and **Anticipated findings**: expected results are tied to the hypothesis and to what would prove or disprove it. | [Page](https://guides.lib.uoguelph.ca/c.php?g=723880&p=5212060) |
 | University of Johannesburg Library, *Proposal Writing* | **Hypotheses or Research Questions**, **Method** and **Expected Results**: notes that expected results are not required in parts of the social sciences and humanities. | [Page](https://uj.ac.za.libguides.com/scienceresearch/proposalwriting) |
 | University of Portsmouth Library, *Writing a research proposal* | **Research question, aim, and objectives**, **Methodology** and **Intended outcomes** (under Key considerations): methodology follows the question, and predicted outcomes may differ from actual results. | [Page](https://library.port.ac.uk/academic-support/writing-for-assignments/writing-a-research-proposal) |
-| University of Sydney, *How to write a research proposal* | **Aims and objectives**, **Proposed methodology** and **Expected research contribution**; expected outcomes appear in the synopsis, while the contribution section explains why the question matters. | [Page](https://www.sydney.edu.au/study/help/advice/how-to-write-a-research-proposal.html) |
+| P. Farrugia, B.A. Petrisor, F. Farrokhyar and M. Bhandari, “Research questions, hypotheses and objectives,” *Canadian Journal of Surgery* 53(4), 2010 | Defines the research question as arising from a knowledge deficit, separates it from the hypothesis and the objective, and gives the FINER and PICOT criteria. | [Article](https://pmc.ncbi.nlm.nih.gov/articles/PMC2912019) |
 | University of Sheffield, *How to write a research proposal* | Research question(s), **Research design and methods** and **Implications and contributions to knowledge**: explicitly distinguishes implications from stating the specific results expected. | [Page](https://sheffield.ac.uk/study-skills/research/methods/proposal) |
+| J.W. Creswell and J.D. Creswell, *Research Design: Qualitative, Quantitative, and Mixed Methods Approaches*, ch. 1 | Defines methodologies as research approaches spanning philosophical assumptions, research designs and specific methods; distinguishes methodology, design and method. | [Chapter](https://cmn-cdn-001.sagepub.com/books/titles/270550/att_sb1_126756.pdf) |
+| W.K. Kellogg Foundation, *Logic Model Development Guide* (2004) | Defines intended results as outputs, outcomes and impact; outputs are direct products, outcomes are changes in participants, and impact is longer-term system change. | [Page](https://wkkf.issuelab.org/resource/logic-model-development-guide.html) |
 
 The vocabulary varies: Salford and Johannesburg say **Expected results**, Guelph
-says **Anticipated findings**, Portsmouth says **Intended outcomes**, and Sydney
-folds expected outcomes into the synopsis and contribution. That variation is why
-the model uses one field, `results`, and why a form's heading is mapped rather than
-renamed.
+says **Anticipated findings**, Portsmouth says **Intended outcomes**, and the
+logic-model literature separates **outputs**, **outcomes** and **impact**. That
+variation is why the model uses one field, `results`, with result kinds, and why a
+form's heading is mapped rather than renamed.
 
 ## Note on method
 
