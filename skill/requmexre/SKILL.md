@@ -154,42 +154,9 @@ speaks.
 
 A review runs the same five fields read backwards. Do not rewrite the draft into
 the skill's voice and do not fill a field the draft does not have: a review
-reports what is missing, and the author supplies it. The report template, the
-status words and the complete list of form defects are in
-[`references/review.md`](references/review.md).
-
-1. **Locate.** Which funder and call, which sections the draft has, whether it
-   is prose or a `plan.json`, and the length limit. Record `meta.funder` when the
-   draft or the call supplies one; a draft written for FWO is `fwo` even if the
-   field is absent. If neither supplies it, record the funder as unknown: review
-   by field, leave the Section column empty, and do not assign a funder to make a
-   table fit. If the limit is unavailable, say so: the review can end without it,
-   marked as not cut to the call.
-2. **Extract — prose only.** Take candidate sentences for each field and quote
-   them. Where a field has no sentence, leave it empty and mark it. If the draft
-   is already a `plan.json`, skip this step and step 3: quote the fields as they
-   stand and do not retype them. A rendered proposal carries no `falsifier` and
-   no `evidence_needed` for its claims: the render leaves them in the plan on
-   purpose. Mark both missing and ask the author for the plan or for the two
-   statements; do not reconstruct them from the prose.
-3. **Type — prose only.** Give each extracted question its `form` from the
-   sentence as written — `interrogative` or `objective` — never by rewriting it.
-4. **Copy and validate.** Copy the draft to `plan.review.json` and leave the
-   author's file untouched; never edit the original. Validate the copy with
-   `scripts/validate.py`. Every finding names a rule and a path; map it back to
-   the draft's sentence and to the section the table assigns it.
-5. **Report.** Use the template and the status words in
-   `references/review.md`: one row per field or result, with the quoted text, the
-   status, the rule if one fired and the section affected. Below it, the five
-   checks with their outcome — pass, fail with the sentence that fails, not
-   applicable, not verifiable with the reason, or a coverage gap with its field
-   path. Read `references/mappings.md` in both directions for coverage.
-6. **Propose, then fix.** Return the report first. On the copy only, and with
-   the author's agreement, repair the form defects listed in
-   `references/review.md`: mechanical fixes such as an unambiguous `form`, an
-   extraneous key or a duplicated limit. Content defects — a criterion, a
-   citation, a falsifier, a declaration — go back to the author with the
-   question that would settle them.
+reports what is missing, and the author supplies it. Load
+[`references/review.md`](references/review.md) only for a review; it owns the
+procedure, report template, status words, five checks and form defects.
 
 Exit: a review report, a copy that passes validation where the draft supplies
 enough to pass, and the named content only the author can provide. A draft that
@@ -250,7 +217,9 @@ copy it, replace the content, keep the shape. The validator, renderer, schema,
 template, rules and section tables travel in `scripts/`, `assets/` and
 `references/`, byte-identical to the repository's `schema/` copies; CI fails if
 they drift, and nothing else in the repository is needed to validate or render a
-plan.
+plan. Read `references/RULES.md` before the first validation, `mappings.md`
+before rendering, and `review.md` only for a review; do not load every reference
+at the start. Scripts and assets are for execution, not wholesale reading.
 
 ## Limits
 
