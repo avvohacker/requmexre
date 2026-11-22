@@ -6,8 +6,8 @@ Accessed 20–22 November 2026. Each entry states what the document is used for.
 
 | Document | What it establishes | Link |
 |---|---|---|
-| FWO, application form for a PhD fellowship (fundamental research) | Sections: 1 Rationale and positioning; 2 Scientific research objectives (hypotheses, expected results); 3 Research methodology and work plan. The document mapped as FWO in `skill/requmexre/references/mappings.md`; no separate "project outline" is used. | [PDF](https://www.fwo.be/media/qi1jlhea/application-form-for-a-phd-fellowship-fundamental-research.pdf) |
-| VUB, Central Doctoral Regulations (EN, 2025) | The doctoral research plan components: rationale and positioning, research objectives/questions, methodology and work plan. No results section. | [PDF](https://www.vub.be/sites/default/files/2025-02/2025_Reglementen_Centraal_Doctoraatsreglement_EN.pdf) |
+| FWO, application form for a PhD fellowship (fundamental research) | Project outline headings: “Rationale and positioning with respect to the state of the art”; “Scientific research objectives” (hypotheses, expected outcomes); “Research methodology and work plan”; “References”. The mapping uses this outline; no separate outline document is used. | [PDF](https://www.fwo.be/media/qi1jlhea/application-form-for-a-phd-fellowship-fundamental-research.pdf) |
+| VUB, Central Doctoral Regulations (EN, 2026 version; in force 1 March 2025) | Research plan components: Abstract (max. 250 words); Rationale and positioning within state-of-the-art literature; Research objectives/questions; Methodology and work plan. No results component in the central list; the template in the next row places (partial) results inside “Scientific research goals”. | [PDF](https://www.vub.be/sites/default/files/2026-03/2026_Reglementen_Centraal_Doctoraatsreglement_EN.pdf) |
 | VUB, Research Plan template (EN, 2025-04) | Exact sections: Abstract; Rationale and positioning with regard to the state-of-the-art; Scientific research goals; Research methodology and work plan; PhD advisory committee; Publication strategy; Ethics; Doctoral training programme. Objectives, hypotheses and (partial) results sit inside Scientific research goals. | [DOCX](https://www.vub.be/sites/default/files/2025-04/2025_Benodigde_documenten_Template_Research_Plan_PhD_EN.docx) |
 | European Commission, Horizon Europe proposal template (RIA/IA), Part B | 1.1 Objectives and ambition; 1.2 Methodology; 2 Impact (2.1 Project's pathways towards impact, 2.2 Measures to maximise impact - Dissemination, exploitation and communication, 2.3 optional Summary); 3.1 Work plan and resources; 3.2 Capacity of participants and consortium as a whole | [PDF](https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/temp-form/af/af_he-ria-ia_en.pdf) |
 | DFG, project description template 54.012 (09/26) | 1 Starting Point (State of the art and preliminary work); 2.1 Anticipated total duration of the project; 2.2 Objectives; 2.3 Work programme incl. proposed research methods; 2.4 Handling of research data; 2.5 Relevance of sex, gender and/or diversity in the research project; 3 Project- and subject-related list of publications; 4 Supplementary information on the research context; 5 Requested modules/funds. No results section | [PDF](https://www.dfg.de/resource/blob/168328/54-012-en.pdf) |
@@ -22,27 +22,39 @@ Impact is not one of the three slots. The model has no impact field: `results` a
 working definition is:
 
 > Impact is a change, effect or benefit — positive or negative, intended or
-> unintended — that research contributes to produce beyond its results, in a
-> specified domain (scientific, economic, social, cultural, environmental,
+> unintended — that research contributes to produce beyond its direct outputs,
+> in a specified domain (scientific, economic, social, cultural, environmental,
 > policy), through a pathway of use, adoption or valorisation. It is expected
 > ex ante and realised ex post; it is a contribution, not necessarily a sole
 > attribution.
 
 The definition is deliberately minimal because the sources differ: REF defines
-impact beyond academia and excludes academic impact; UKRI/ESRC includes academic
-impact; Horizon separates results, outcomes and impacts; PRIN separates the
-excellence criterion from the impact criterion; SNSF includes scientific
-relevance and broader impact.
+impact beyond academia; UKRI/ESRC includes academic impact; Horizon separates
+results, outcomes and impacts; PRIN separates the excellence criterion from the
+impact criterion; SNSF asks for scientific relevance and expected impacts for
+the discipline and academic learning (research and education/teaching).
 
 | Source | What it establishes | Link |
 |---|---|---|
-| REF 2021, *Guidance on results* | Impact as an effect on, change or benefit to the economy, society, culture, public policy or services, health, the environment or quality of life, beyond academia; academic impact excluded. | [Page](https://2021.ref.ac.uk/guidance-on-results/guidance-on-ref-2021-results/index.html) |
-| UKRI/ESRC, *Defining impact* | Impact as the demonstrable contribution of excellent research to society and the economy; academic, economic and societal impact; instrumental, conceptual and capacity-building impact. | [Page](https://www.ukri.org/councils/esrc/impact-toolkit-for-economic-and-social-sciences/defining-impact) |
-| Penfield, Baker, Scoble and Wykes, *Assessment, evaluations, and definitions of research impact: A review* (2014) | Definitions vary; outputs, outcomes and impacts are distinct but often confused; attribution is difficult. | [Article](https://academic.oup.com/rev/article/23/1/21/2889056) |
-| Belcher and Palenberg, *Outcomes and Impacts of Development Interventions* (2018) | Outcome and impact are often separated only by timing or degree; those distinctions are unstable and need clearer definitions. | [Article](https://journals.sagepub.com/doi/10.1177/1098214018765698) |
-| Reed et al., *Evaluating impact from research: A methodological framework* (2021) | Impact as demonstrable or perceptible benefits causally linked to research; significance and reach; research may be a necessary or sufficient cause. | [Article](https://www.sciencedirect.com/science/article/pii/S0048733320302225) |
-| Belcher and Halliwell, *Conceptualizing the elements of research impact: towards semantic standards* (2021) | Output as direct product; outcome as change in knowledge, attitudes, skills, relationships or behaviour; impact as the overarching term for change caused in whole or in part by research. | [Article](https://www.nature.com/articles/s41599-021-00854-2) |
-| Greenhalgh, Raftery, Hanney and Glover, *Research impact: a narrative review* (2016) | Impact as benefits in addition to the academic knowledge base, produced through complex and varied mechanisms. | [Article](https://link.springer.com/article/10.1186/s12916-016-0620-8) |
+| REF 2021, *Guidance on results* | Impact as an effect on, change or benefit to the economy, society, culture, public policy or services, health, the environment or quality of life, beyond academia; impact case studies assess impacts beyond academia, while outputs assess academic quality. | [Page](https://2021.ref.ac.uk/guidance-on-results/guidance-on-ref-2021-results/index.html) |
+| UKRI/ESRC, *Defining impact* | Impact as the demonstrable contribution of excellent research to society and the economy; academic impact and economic and societal impact; instrumental, conceptual and capacity-building impact. | [Page](https://www.ukri.org/councils/esrc/impact-toolkit-for-economic-and-social-sciences/defining-impact) |
+| Penfield, Baker, Scoble and Wykes, *Assessment, evaluations, and definitions of research impact: A review* (2014) | Definitions vary; outputs, outcomes and impacts are distinct, although some find the distinction marginal or confusing; attribution is difficult. | [Article](https://academic.oup.com/rev/article/23/1/21/2889056) |
+| Belcher and Palenberg, *Outcomes and Impacts of Development Interventions: Toward Conceptual Clarity* (2018) | Competing definitions lack clarity; in the OECD definitions time is the main qualifier, and it does not distinguish outcome from impact unambiguously. | [Article](https://journals.sagepub.com/doi/10.1177/1098214018765698) |
+| Reed et al., *Evaluating impact from research: A methodological framework* (2021) | Impact as demonstrable and/or perceptible benefits causally linked (necessarily or sufficiently) to research; impact evaluation assesses the significance and reach of positive and negative effects. | [Article](https://www.sciencedirect.com/science/article/pii/S0048733320302225) |
+| Belcher and Halliwell, *Conceptualizing the elements of research impact: towards semantic standards* (2021) | Output as direct product; outcome as change in knowledge, attitudes, skills and/or relationships, ideally manifest as behaviour; impact as the overarching term for change caused in whole or in part by research. | [Article](https://www.nature.com/articles/s41599-021-00854-2) |
+| Greenhalgh, Raftery, Hanney and Glover, *Research impact: a narrative review* (2016) | Impact as benefits in addition to building the academic knowledge base, produced through complex and varied mechanisms. | [Article](https://link.springer.com/article/10.1186/s12916-016-0620-8) |
+
+### Results, outcomes and impacts: a common reference
+
+The OECD DAC glossary supplies the general vocabulary that the six forms use
+unevenly: *results* is the umbrella term for outputs, outcomes or impacts;
+*outcomes* are the short- or medium-term effects of outputs; *impacts* are the
+higher-level, longer-term effects. It is a development-evaluation vocabulary,
+not a funder template; the matrix uses it only to keep the terms apart.
+
+| Source | What it establishes | Link |
+|---|---|---|
+| OECD DAC, *Glossary of Key Terms in Evaluation and Results Based Management* (2002) | Results = output, outcome or impact (intended or unintended, positive and/or negative); outcome = likely or achieved short-term and medium-term effects of outputs; impacts = positive and negative, primary and secondary long-term effects. | [PDF](https://www.oecd.org/content/dam/oecd/en/publications/reports/2002/08/evaluation-and-aid-effectiveness-no-6-glossary-of-key-terms-in-evaluation-and-results-based-management-in-english-french-and-spanish_g1gh2dcb/9789264034921-en-fr.pdf) |
 
 ## Results, outcomes and impacts in the six funders
 
@@ -55,12 +67,12 @@ section” means the form has no dedicated section.
 
 | Funder | Results | Outcome | Impact |
 |---|---|---|---|
-| [FWO](https://www.fwo.be/media/qi1jlhea/application-form-for-a-phd-fellowship-fundamental-research.pdf) | Expected outcomes (or partial outcomes) inside Scientific research objectives | The form's “expected outcomes” are its term for results; no separate outcome section | No separate impact section; dissemination is described in the method |
-| [VUB](https://www.vub.be/sites/default/files/2025-04/2025_Benodigde_documenten_Template_Research_Plan_PhD_EN.docx) | Hypotheses and (partial) results inside Scientific research goals | Anticipated results; no separate outcome term | Abstract includes “Anticipated Results and Impact”; no separate impact section |
+| [FWO](https://www.fwo.be/media/qi1jlhea/application-form-for-a-phd-fellowship-fundamental-research.pdf) | Expected outcomes (or partial outcomes) inside Scientific research objectives | The form's “expected outcomes” are its term for results; no separate outcome section | No separate impact section; dissemination is described in the method (distinct from Science Communication) |
+| [VUB](https://www.vub.be/sites/default/files/2025-04/2025_Benodigde_documenten_Template_Research_Plan_PhD_EN.docx) | Hypotheses and (partial) results inside Scientific research goals | No separate outcome term; “anticipated results” appear in an Abstract bullet | Abstract requires “Anticipated Results and Impact”; no separate impact section |
 | [Horizon Europe](https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/temp-form/af/af_he-ria-ia_en.pdf) | Results generated during the project | Expected medium-term effects, uptake and use by target groups | Longer-term effects on society, economy and science; 2.1 pathway and 2.2 measures |
 | [DFG](https://www.dfg.de/resource/blob/168328/54-012-en.pdf) | No separate results section | No separate outcome section | No impact section |
-| [SNSF](https://www.snf.ch/en/257qx6wxjo72ODHy/page/funding/documents-downloads/regulations-requirements-for-the-research-plan) | No separate results section | No separate outcome section | 5. Relevance and impact: scientific relevance, expected impacts for the discipline and science (research, education/teaching and society), broader impact |
-| [PRIN](http://prin.mur.gov.it/Attachments/getAttachment?key=oLjLA8JnI6imQjuJ7hMr4A==) | Results in b; scientific, technological and methodological results ([guidelines](https://www.mur.gov.it/sites/default/files/2026-05/D.D.%202298%20All.%203%20Linee%20Guida%20di%20valutazione.pdf), 2.a.1) | Expected results/outcomes; “outcome” is not a distinct form term | Benefits to scientific knowledge, society and territory; pathways, dissemination and valorisation (b; guidelines 2.a–2.b) |
+| [SNSF](https://www.snf.ch/en/257qx6wxjo72ODHy/page/funding/documents-downloads/regulations-requirements-for-the-research-plan) | No separate results section; section 2 reports results obtained so far | No separate outcome section | 5. Relevance and impact: scientific relevance; expected impacts for the discipline and academic learning as a whole (research and education/teaching); publication forms |
+| [PRIN](http://prin.mur.gov.it/Attachments/getAttachment?key=oLjLA8JnI6imQjuJ7hMr4A==) | Results in b; scientific, technological and methodological results ([guidelines](https://www.mur.gov.it/sites/default/files/2026-05/D.D.%202298%20All.%203%20Linee%20Guida%20di%20valutazione.pdf), 2.a.1) | Expected results and impacts; “outcome” is not a form term | Benefits to scientific knowledge, society and territory; pathways, dissemination and valorisation (b; guidelines 2.a–2.b) |
 
 The matrix is a reading of the forms, not a claim that all six use one
 vocabulary. It supports the mapping: results sections map `results`; outcome is a

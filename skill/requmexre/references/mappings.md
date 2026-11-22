@@ -2,8 +2,9 @@
 
 How the five fields become the sections of an FWO, PRIN, VUB, Horizon, DFG or
 SNSF plan. Section names and numbers are taken from the documents cited in
-[`SOURCES.md`](../../../SOURCES.md); page and character limits are set by the
-call and are not reproduced here; `SKILL.md` gives the cut order.
+[`SOURCES.md`](../../../SOURCES.md); where a form does not number its headings,
+the numbers here are editorial. Page and character limits are set by the call and
+are not reproduced here; `SKILL.md` gives the cut order.
 
 The tables read in both directions: fields → sections when writing, sections →
 fields when reviewing. For a review, [`review.md`](review.md) gives the report
@@ -22,8 +23,9 @@ impact narrative.
 
 ## FWO — application form (PhD fellowship, fundamental research)
 
-The document is the application form cited in `SOURCES.md`; this corpus has no
-separate "project outline", and the table below covers sections 1–3 of the form.
+The document is the application form cited in `SOURCES.md`; the table below
+covers the project outline embedded in it. The outline's headings are unnumbered;
+the numbers below are for reference.
 
 | Section | Fields | What to write |
 |---|---|---|
@@ -31,8 +33,8 @@ separate "project outline", and the table below covers sections 1–3 of the for
 | 2. Scientific research objectives | `questions.primary`, `questions.secondary`, `results` | The question or objective as written, then the secondary objectives, then what would count as an answer, then the expected outcomes. FWO has no separate results section, so expected outcomes belong here. Render each claim as an expected result; never its falsifier. See [`fwo-example.md`](fwo-example.md). |
 | 3. Research methodology and work plan | `method` | Approach, sources, procedure, then validity conditions, limits and risks. The work plan is the procedure split into its steps and put in the order it gives, each step saying what it draws on and what it produces (see the sequence rule under Rendering rules). See [`fwo-example.md`](fwo-example.md). |
 
-FWO asks for hypotheses and expected results inside the objectives. Do not open a
-results section of your own; the form's numbering is part of the assessment.
+FWO asks for hypotheses and expected outcomes inside the objectives. Do not open
+a results section of your own; the form's order is part of the assessment.
 
 An `output` is not an expected result: render it in section 3, once, at the end
 of the work plan, as what the procedure delivers (see the output rule under
@@ -119,9 +121,9 @@ not invent one.
 | 2. Current state of your own research | — | Own research is not a model field; do not invent it. |
 | 3. Detailed research plan | `questions.primary`, `questions.secondary`, `method` | Question or objective, approach, sources, procedure, risks. The form also asks for investigations, data collection and team roles; the first two are in the method, the team is not modelled. Outputs close the detailed research plan. |
 | 4. Schedule and milestones | `method.procedure` (partial) | The procedure's sequence; milestones and resources are not modelled. |
-| 5. Relevance and impact | — | Relevance and impact is outside the model: scientific relevance, expected impacts for the discipline and science, publication forms and broader impact are written from the call. Expected results and `standpoint` are not substitutes. |
+| 5. Relevance and impact | — | Relevance and impact is outside the model: scientific relevance; expected impacts for the discipline and academic learning as a whole (research and education/teaching); publication forms. Expected results and `standpoint` are not substitutes. |
 
-SNSF has no results section: do not render one. It also asks for ethics and budget; neither is modelled. `standpoint` is not the relevance and impact section: if it is declared, use its criteria only where the call asks for them; it is not an impact narrative.
+SNSF has no results section: do not render one. Section 2 reports results obtained so far, not expected results. Budget is submitted through the SNSF portal; ethics and animal-welfare requirements sit outside the research-plan sections and are not modelled. `standpoint` is not the relevance and impact section: if it is declared, use its criteria only where the call asks for them; it is not an impact narrative.
 
 ## Rendering rules
 
