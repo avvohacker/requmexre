@@ -4,12 +4,16 @@ Rationale, test mechanics and extension steps behind `RULES.md`. None of this is
 needed to write or validate a plan; it is here so that a rule is changed for a
 reason rather than by accident.
 
-## Why results and standpoint are optional
+## Why results is required and standpoint is optional
 
-`results` is optional because two of the six templates in the README have no
-results section (DFG, SNSF). `standpoint` is optional because a plan may declare
-that it has none or may not address it; `meta.standpoint` distinguishes `none`
-from `undeclared` rather than leaving both silent.
+`results` is required by default because it is one of the three slots the model
+exists to state. The only exemptions are plans whose `meta.funder` is exactly
+`dfg` or `snsf`: those two forms have no results section, and requiring a block
+there would make a faithful plan invent one. A plan without `meta.funder` is not
+exempt; neither is a plan for another funder. `standpoint` remains optional
+because a plan may declare that it has none or may not address it;
+`meta.standpoint` distinguishes `none` from `undeclared` rather than leaving
+both silent.
 
 A result is one of four kinds. A `hypothesis` or an `expected_finding` is a claim
 about the world: it carries a `falsifier` and the `evidence_needed`. An `outcome`

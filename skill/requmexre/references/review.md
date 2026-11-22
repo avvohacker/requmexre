@@ -14,7 +14,7 @@ are in `RULES.md`; the section tables are in `mappings.md`.
 | `questions.primary.completion_criterion` | quoted, or `none` | present / weak / declared none | `R2`, `S3` | as above |
 | `method` | quoted or summarised per subfield, limits excepted | present / weak / missing | `S5` | |
 | `method.limits` | list, or `none` | present / weak / declared none | `R7`, `S5` | |
-| `results` | one row per result | present / weak / missing | `R5`, `R6`, `S6`, `S7` | |
+| `results` | one row per result | present / weak / missing / not required | `R5`, `R6`, `S6`, `S7` | |
 | `warrant.gap_statement` | quoted | present / weak / missing | `R3`, `S8` | |
 | `warrant.evidence` | each string, verbatim | present / weak / missing | `R4`, `S8` | |
 | `standpoint` | quoted, or absent | present / weak / declared none / undeclared | `R8`, `S9` | |
@@ -31,7 +31,8 @@ an unknown funder is a question for the author, not a default.
 - **weak** — content is there but a named check below fails; say which one and
   quote the sentence that fails.
 - **missing** — no content at all. For a required field this blocks the review;
-  do not fill it.
+  do not fill it. `results` is required unless `meta.funder` is `dfg` or
+  `snsf`; for those two forms report **not required** instead of missing.
 - **declared none** — an explicit `"none"` in `completion_criterion` or
   `limits`, or `meta.standpoint: none`. It is a declaration, not a defect; `R2`,
   `R7` and `R8` accept it. Report it as declared, never as missing and never as

@@ -44,7 +44,7 @@ TEMPLATE_PATH = ROOT / "skill" / "requmexre" / "assets" / "template.json"
 if not TEMPLATE_PATH.exists():
     TEMPLATE_PATH = ROOT / "assets" / "template.json"
 
-VERSION = "1.1"
+VERSION = "1.2"
 
 RULE_IDS = [*(f"S{i}" for i in range(1, 11)), *(f"R{i}" for i in range(1, 9))]
 

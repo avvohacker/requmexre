@@ -163,6 +163,44 @@ def test_method_risks_are_optional_and_accepted(v, schema, plan):
     assert semantic(v, plan) == []
 
 
+def test_results_are_required_when_no_funder_is_named(v, schema, plan):
+    plan.pop("results")
+    plan["meta"].pop("funder")
+    assert "S6" in codes(structural(v, schema, plan))
+
+
+def test_results_are_required_for_a_funder_with_a_results_section(v, schema, plan):
+    plan.pop("results")
+    plan["meta"]["funder"] = "fwo"
+    assert "S6" in codes(structural(v, schema, plan))
+
+
+def test_results_are_required_for_an_unknown_funder(v, schema, plan):
+    plan.pop("results")
+    plan["meta"].update(funder="other", scheme="ERC Starting Grant")
+    assert "S6" in codes(structural(v, schema, plan))
+
+
+def test_dfg_without_results_is_valid(v, schema, plan):
+    plan.pop("results")
+    plan["meta"]["funder"] = "dfg"
+    assert structural(v, schema, plan) == []
+    assert semantic(v, plan) == []
+
+
+def test_snsf_without_results_is_valid(v, schema, plan):
+    plan.pop("results")
+    plan["meta"]["funder"] = "snsf"
+    assert structural(v, schema, plan) == []
+    assert semantic(v, plan) == []
+
+
+def test_dfg_exemption_does_not_allow_an_empty_results_list(v, schema, plan):
+    plan["meta"]["funder"] = "dfg"
+    plan["results"] = []
+    assert "S6" in codes(structural(v, schema, plan))
+
+
 # --------------------------------------------------------------------------
 # Layer 2 — R1–R8
 # --------------------------------------------------------------------------

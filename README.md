@@ -4,7 +4,7 @@ A machine-readable model of a research plan written as **research question → m
 
 The name is the three slots: **RE**search **QU**estion + **ME**thodology + e**X**pected **RE**sults.
 
-**Version:** v1.1 · **Licence:** all rights reserved · **Sources:** [SOURCES.md](SOURCES.md)
+**Version:** v1.2 · **Licence:** all rights reserved · **Sources:** [SOURCES.md](SOURCES.md)
 
 ## What the funders ask
 
@@ -17,7 +17,7 @@ The name is the three slots: **RE**search **QU**estion + **ME**thodology + e**X*
 | SNSF — research plan | 3. Detailed research plan | inside 3 | **no section** | [requirements](https://www.snf.ch/en/257qx6wxjo72ODHy/page/funding/documents-downloads/regulations-requirements-for-the-research-plan) |
 | PRIN — scientific proposal | a. Objectives | a. Methodology and risks | b. Results and expected impacts | [form](http://prin.mur.gov.it/Attachments/getAttachment?key=oLjLA8JnI6imQjuJ7hMr4A==) |
 
-Question and method appear in all six. Results appear in four — FWO (inside the objectives), VUB (inside Scientific research goals, as hypotheses and partial results), Horizon, PRIN (block b) — and have no section in DFG and SNSF. The schema therefore does not require a results block; when one is present, R5 still requires a claim or an outcome, never outputs alone.
+Question and method appear in all six. Results appear in four — FWO (inside the objectives), VUB (inside Scientific research goals, as hypotheses and partial results), Horizon, PRIN (block b) — and have no section in DFG and SNSF. The schema therefore requires `results` by default, but exempts a plan whose `meta.funder` is exactly `dfg` or `snsf`; a plan with no funder is not exempt. When results are present, R5 still requires a claim or an outcome, never outputs alone.
 
 Structural notes:
 
@@ -62,7 +62,7 @@ Five fields: three slots plus two guards.
 
 Conditional rules: a comparative question needs a `tertium_comparationis` and carries no evaluative fields; an evaluative question needs criteria and their operationalisation and carries no tertium.
 
-Full rules: [schema/RULES.md](schema/RULES.md). Structural S1–S10 in JSON Schema; semantic R1–R8 in the validator. The schema `$id` is `https://avvohacker.github.io/requmexre/schema/1.1/requmexre.schema.json`, and the Pages build publishes the file at that path. The frozen 1.0 schema remains published at its original `/schema/1.0/` path from `schema/archive/1.0/`.
+Full rules: [schema/RULES.md](schema/RULES.md). Structural S1–S10 in JSON Schema; semantic R1–R8 in the validator. The schema `$id` is `https://avvohacker.github.io/requmexre/schema/1.2/requmexre.schema.json`, and the Pages build publishes the file at that path. The frozen 1.1 schema remains published at its original `/schema/1.1/` path from `schema/archive/1.1/`; the 1.0 schema remains at `/schema/1.0/` from `schema/archive/1.0/`.
 
 ## Files
 
@@ -73,6 +73,7 @@ schema/RULES.md                S1–S10, R1–R8
 schema/validate.py             two-layer validator
 schema/render.py               renders a plan into a funder's sections
 schema/mappings.json           the six section tables, machine-readable
+schema/archive/1.1/           the frozen 1.1 schema, still published at its $id
 schema/archive/1.0/           the frozen 1.0 schema, still published at its $id
 schema/cases/                  fwo, prin, vub, dfg, horizon, negative (fixtures)
 schema/published/              three pilot encodings (convenience sample)
@@ -102,7 +103,7 @@ python3 validate.py cases/prin.json                      # one file
 python3 validate.py ../skill/requmexre/assets/template.json
 python3 validate.py published/*.json                     # the pilot encodings
 python3 validate.py --help                               # usage and exit codes
-python3 validate.py --version                            # requmexre v1.1
+python3 validate.py --version                            # requmexre v1.2
 python3 validate.py --json cases/prin.json               # one machine-readable report
 python3 render.py cases/prin.json                        # draft in PRIN's sections
 python3 render.py cases/fwo.json --out draft.md          # to a file
@@ -131,13 +132,14 @@ Exit code 0 when every pure plan is valid and every negative envelope reports it
 | v0.5 | Six-funder mappings: Horizon, DFG and SNSF added; schema v0.5 |
 | v1.0 | Schema frozen at 1.0.0 and a `CITATION.cff`; no tag or release |
 | v1.1 | Optional `method.risks`: risk and mitigation, rendered in the method section; the 1.0 schema remains published at its original `$id` |
+| v1.2 | `results` required by default; DFG and SNSF plans exempt; the 1.1 schema remains published at its original `$id` |
 
-v1.1 is the current tree on `main`: it is not tagged and has no GitHub release.
+v1.2 is the current tree on `main`: it is not tagged and has no GitHub release.
 
 ## Cite
 
-> *requmexre*, v1.1, 2026.
+> *requmexre*, v1.2, 2026.
 
 The machine-readable record is [CITATION.cff](CITATION.cff). There is no DOI:
-v1.1 is not tagged and not released, so the citation resolves through the
+v1.2 is not tagged and not released, so the citation resolves through the
 repository and the Pages site.

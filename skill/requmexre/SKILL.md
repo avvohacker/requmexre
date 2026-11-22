@@ -31,7 +31,7 @@ proposal that are not the plan.
 |---|---|
 | `questions` | `primary` with `text`, `form`, `answer_type`, `scope`, `completion_criterion`; optional `secondary` |
 | `method` | `approach`, `sources`, `procedure`; optional `validity_conditions`, `limits`, `risks` |
-| `results` | optional; `claim` + `kind`, with `falsifier` and `evidence_needed` for claims, `measure` for outcomes |
+| `results` | required unless `meta.funder` is `dfg` or `snsf`; `claim` + `kind`, with `falsifier` and `evidence_needed` for claims, `measure` for outcomes |
 | `warrant` | `gap_statement`, `evidence` |
 | `standpoint` | optional; `normative_premises`, `criteria`, declared in `meta.standpoint` |
 
@@ -121,7 +121,8 @@ could fail.
 
 ### 4. Results
 
-Only if the funder asks for results, or if the plan needs them to be checkable.
+Required unless `meta.funder` is `dfg` or `snsf`, whose forms have no results
+section. For those two, omit the block; do not invent one.
 
 - `kind` is `hypothesis`, `expected_finding`, `outcome` or `output`.
 - A hypothesis or an expected finding needs a `falsifier`: the observation that
@@ -254,7 +255,7 @@ plan.
 ## Limits
 
 - Six funders are mapped: FWO, PRIN, VUB, Horizon, DFG and SNSF. The schema
-  is v1.1.
+  is v1.2.
 - A funder outside the six known values uses `funder: "other"` and `scheme`;
   there is no section table for it.
 - Fixtures and the template are synthetic: structure from the funder documents,

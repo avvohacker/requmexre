@@ -41,7 +41,7 @@ MAPPINGS_PATH = HERE / "mappings.json"
 if not MAPPINGS_PATH.exists():
     MAPPINGS_PATH = HERE.parent / "assets" / "mappings.json"
 
-VERSION = "1.1"
+VERSION = "1.2"
 
 MODEL_FIELDS = (
     "warrant",

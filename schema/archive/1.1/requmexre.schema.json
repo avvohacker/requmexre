@@ -1,0 +1,274 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://avvohacker.github.io/requmexre/schema/1.1/requmexre.schema.json",
+  "title": "requmexre — research plan",
+  "description": "A research plan as research questions, methodology and expected results, with warrant and standpoint. Structural layer S1–S10; the semantic layer R1–R8 is implemented in validate.py. v1.1: adds optional method.risks to the v1.0 frozen model.",
+  "$comment": "S1 — closed top level: meta, questions, method and warrant are required; results and standpoint are optional",
+  "type": "object",
+  "required": ["meta", "questions", "method", "warrant"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": { "$ref": "#/$defs/meta" },
+    "questions": { "$ref": "#/$defs/questions" },
+    "method": { "$ref": "#/$defs/method" },
+    "results": { "$ref": "#/$defs/results" },
+    "warrant": { "$ref": "#/$defs/warrant" },
+    "standpoint": { "$ref": "#/$defs/standpoint" }
+  },
+  "$defs": {
+    "text": {
+      "$comment": "S10 — every string carries at least one non-blank character",
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "textList": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/text" }
+    },
+    "source": {
+      "$comment": "S5 — a source says what kind of material it is and describes it concretely",
+      "type": "object",
+      "required": ["kind", "description"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "enum": ["data", "literature", "participants", "corpus"] },
+        "description": { "$ref": "#/$defs/text" }
+      }
+    },
+    "meta": {
+      "$comment": "S2 — meta block: standpoint, funder and identity",
+      "type": "object",
+      "required": ["standpoint"],
+      "additionalProperties": false,
+      "properties": {
+          "standpoint": { "enum": ["declared", "none", "undeclared"] },
+        "funder": { "enum": ["fwo", "prin", "vub", "horizon", "dfg", "snsf", "other", "none"] },
+        "scheme": { "$ref": "#/$defs/text" },
+        "title": { "$ref": "#/$defs/text" },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+$"
+        },
+        "date": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "id": { "$ref": "#/$defs/text" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["funder"],
+            "properties": { "funder": { "const": "other" } }
+          },
+          "then": {
+            "$comment": "S2 — an unknown funder is named by its scheme",
+            "required": ["scheme"]
+          },
+          "else": {
+            "$comment": "S2 — a scheme is meaningful only with funder other",
+            "properties": { "scheme": false }
+          }
+        }
+      ]
+    },
+    "questions": {
+      "$comment": "S3 — questions block: one primary question and optional secondary questions",
+      "type": "object",
+      "required": ["primary"],
+      "additionalProperties": false,
+      "properties": {
+        "primary": { "$ref": "#/$defs/primaryQuestion" },
+        "secondary": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/secondaryQuestion" }
+        }
+      }
+    },
+    "question": {
+      "$comment": "S3 — a question states its text and whether it is written as an interrogative or an objective",
+      "type": "object",
+      "required": ["text", "form"],
+      "additionalProperties": false,
+      "properties": {
+        "text": { "$ref": "#/$defs/text" },
+        "form": { "enum": ["interrogative", "objective"] },
+        "answer_type": {
+          "enum": ["descriptive", "exploratory", "comparative", "causal", "evaluative", "methodological", "synthesis", "mechanistic", "feasibility", "validation", "other"]
+        },
+        "scope": { "$ref": "#/$defs/text" },
+        "completion_criterion": { "$ref": "#/$defs/text" },
+        "tertium_comparationis": { "$ref": "#/$defs/text" },
+        "criteria": { "$ref": "#/$defs/textList" },
+        "operationalisation": { "$ref": "#/$defs/text" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["answer_type"],
+            "properties": { "answer_type": { "const": "comparative" } }
+          },
+          "then": {
+            "$comment": "S4 — a comparative question names the dimension on which the cases are compared and carries no evaluative criteria",
+            "required": ["tertium_comparationis"],
+            "properties": {
+              "criteria": false,
+              "operationalisation": false
+            }
+          }
+        },
+        {
+          "if": {
+            "required": ["answer_type"],
+            "properties": { "answer_type": { "const": "evaluative" } }
+          },
+          "then": {
+            "$comment": "S4 — an evaluative question names its criteria and their operationalisation and carries no tertium",
+            "required": ["criteria", "operationalisation"],
+            "properties": { "tertium_comparationis": false }
+          }
+        },
+        {
+          "if": {
+            "required": ["answer_type"],
+            "properties": {
+              "answer_type": { "enum": ["descriptive", "exploratory", "causal", "methodological", "synthesis", "mechanistic", "feasibility", "validation", "other"] }
+            }
+          },
+          "then": {
+            "$comment": "S4 — only comparative questions carry a tertium, only evaluative ones carry criteria",
+            "properties": {
+              "tertium_comparationis": false,
+              "criteria": false,
+              "operationalisation": false
+            }
+          }
+        }
+      ]
+    },
+    "primaryQuestion": {
+      "$comment": "S3 — the primary question adds an answer type, a scope and a completion criterion, which may be the word none",
+      "$ref": "#/$defs/question",
+      "required": ["answer_type", "scope", "completion_criterion"]
+    },
+    "secondaryQuestion": {
+      "$comment": "S3 — a secondary question needs its text and form; the rest is optional",
+      "$ref": "#/$defs/question"
+    },
+    "method": {
+      "$comment": "S5 — method block: approach, sources and procedure, with optional validity conditions, limits (a list or none) and risks",
+      "type": "object",
+      "required": ["approach", "sources", "procedure"],
+      "additionalProperties": false,
+      "properties": {
+        "approach": { "$ref": "#/$defs/text" },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/source" }
+        },
+        "procedure": { "$ref": "#/$defs/text" },
+        "validity_conditions": { "$ref": "#/$defs/textList" },
+        "limits": {
+          "if": { "type": "string" },
+          "then": { "const": "none" },
+          "else": { "$ref": "#/$defs/textList" }
+        },
+        "risks": { "$ref": "#/$defs/risks" }
+      }
+    },
+    "risks": {
+      "$comment": "S5 — optional risks block: a non-empty list of risks with their mitigation",
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/risk" }
+    },
+    "risk": {
+      "$comment": "S5 — every risk names what could go wrong and how it is mitigated",
+      "type": "object",
+      "required": ["risk", "mitigation"],
+      "additionalProperties": false,
+      "properties": {
+        "risk": { "$ref": "#/$defs/text" },
+        "mitigation": { "$ref": "#/$defs/text" }
+      }
+    },
+    "results": {
+      "$comment": "S6 — results block, when present, is a non-empty list of typed results",
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/result" }
+    },
+    "result": {
+      "$comment": "S6 — every result states a claim and its kind",
+      "type": "object",
+      "required": ["claim", "kind"],
+      "additionalProperties": false,
+      "properties": {
+        "claim": { "$ref": "#/$defs/text" },
+        "kind": { "enum": ["hypothesis", "expected_finding", "outcome", "output"] },
+        "falsifier": { "$ref": "#/$defs/text" },
+        "measure": { "$ref": "#/$defs/text" },
+        "evidence_needed": { "$ref": "#/$defs/text" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["kind"],
+            "properties": { "kind": { "enum": ["hypothesis", "expected_finding"] } }
+          },
+          "then": {
+            "$comment": "S7 — a hypothesis or an expected finding names its falsifier and the evidence it needs",
+            "required": ["falsifier", "evidence_needed"]
+          }
+        },
+        {
+          "if": {
+            "required": ["kind"],
+            "properties": { "kind": { "const": "outcome" } }
+          },
+          "then": {
+            "$comment": "S7 — an outcome names the measure that produces it and carries no falsifier",
+            "required": ["measure"],
+            "properties": { "falsifier": false }
+          }
+        },
+        {
+          "if": {
+            "required": ["kind"],
+            "properties": { "kind": { "const": "output" } }
+          },
+          "then": {
+            "$comment": "S7 — an output is produced, not measured or falsified: it carries neither a measure nor a falsifier",
+            "properties": { "falsifier": false, "measure": false }
+          }
+        }
+      ]
+    },
+    "warrant": {
+      "$comment": "S8 — warrant block: a gap statement supported by at least one identifiable source",
+      "type": "object",
+      "required": ["gap_statement", "evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "gap_statement": { "$ref": "#/$defs/text" },
+        "evidence": {
+          "$ref": "#/$defs/textList",
+          "minItems": 1
+        }
+      }
+    },
+    "standpoint": {
+      "$comment": "S9 — standpoint block: normative premises and criteria, present only when meta.standpoint is declared",
+      "type": "object",
+      "required": ["normative_premises", "criteria"],
+      "additionalProperties": false,
+      "properties": {
+        "normative_premises": { "$ref": "#/$defs/textList" },
+        "criteria": { "$ref": "#/$defs/textList" }
+      }
+    }
+  }
+}

@@ -66,6 +66,10 @@ def test_build_publishes_the_current_and_archived_schemas(tmp_path):
     assert result.returncode == 0, result.stdout + result.stderr
     cases = [
         (
+            "schema/1.2/requmexre.schema.json",
+            "https://avvohacker.github.io/requmexre/schema/1.2/requmexre.schema.json",
+        ),
+        (
             "schema/1.1/requmexre.schema.json",
             "https://avvohacker.github.io/requmexre/schema/1.1/requmexre.schema.json",
         ),
