@@ -6,10 +6,10 @@ Accessed 20–22 November 2026. Each entry states what the document is used for.
 
 | Document | What it establishes | Link |
 |---|---|---|
-| FWO, application form for a PhD fellowship (fundamental research) | Project outline headings: “Rationale and positioning with respect to the state of the art”; “Scientific research objectives” (hypotheses, expected outcomes); “Research methodology and work plan”; “References”. The mapping uses this outline; no separate outline document is used. | [PDF](https://www.fwo.be/media/qi1jlhea/application-form-for-a-phd-fellowship-fundamental-research.pdf) |
+| FWO, application form for a PhD fellowship (fundamental research, 4-year) | Project outline headings: “Rationale and positioning with respect to the state of the art”; “Scientific research objectives” (hypotheses, expected outcomes); “Research methodology and work plan”; “References”. The mapping uses this outline; no separate outline document is used. | [PDF](https://www.fwo.be/media/qi1jlhea/application-form-for-a-phd-fellowship-fundamental-research.pdf) |
 | VUB, Central Doctoral Regulations (EN, 2026 version; in force 1 March 2025) | Research plan components: Abstract (max. 250 words); Rationale and positioning within state-of-the-art literature; Research objectives/questions; Methodology and work plan. No results component in the central list; the template in the next row places (partial) results inside “Scientific research goals”. | [PDF](https://www.vub.be/sites/default/files/2026-03/2026_Reglementen_Centraal_Doctoraatsreglement_EN.pdf) |
 | VUB, Research Plan template (EN, 2025-04) | Exact sections: Abstract; Rationale and positioning with regard to the state-of-the-art; Scientific research goals; Research methodology and work plan; PhD advisory committee; Publication strategy; Ethics; Doctoral training programme. Objectives, hypotheses and (partial) results sit inside Scientific research goals. | [DOCX](https://www.vub.be/sites/default/files/2025-04/2025_Benodigde_documenten_Template_Research_Plan_PhD_EN.docx) |
-| European Commission, Horizon Europe proposal template (RIA/IA), Part B | 1.1 Objectives and ambition; 1.2 Methodology; 2 Impact (2.1 Project's pathways towards impact, 2.2 Measures to maximise impact - Dissemination, exploitation and communication, 2.3 optional Summary); 3.1 Work plan and resources; 3.2 Capacity of participants and consortium as a whole | [PDF](https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/temp-form/af/af_he-ria-ia_en.pdf) |
+| European Commission, Horizon Europe proposal template (RIA/IA), Part B (V5.1, 22.01.2026) | 1.1 Objectives and ambition; 1.2 Methodology; 2 Impact (2.1 Project's pathways towards impact, 2.2 Measures to maximise impact - Dissemination, exploitation and communication, 2.3 optional Summary); 3.1 Work plan and resources; 3.2 Capacity of participants and consortium as a whole | [PDF](https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/temp-form/af/af_he-ria-ia_en.pdf) |
 | DFG, project description template 54.012 (09/26) | 1 Starting Point (State of the art and preliminary work); 2.1 Anticipated total duration of the project; 2.2 Objectives; 2.3 Work programme incl. proposed research methods; 2.4 Handling of research data; 2.5 Relevance of sex, gender and/or diversity in the research project; 3 Project- and subject-related list of publications; 4 Supplementary information on the research context; 5 Requested modules/funds. No results section | [PDF](https://www.dfg.de/resource/blob/168328/54-012-en.pdf) |
 | SNSF, requirements for the research plan | Five sections: 1 Current state of research in the field; 2 Current state of your own research; 3 Detailed research plan; 4 Schedule and milestones; 5 Relevance and impact. No separate results section | [Page](https://www.snf.ch/en/257qx6wxjo72ODHy/page/funding/documents-downloads/regulations-requirements-for-the-research-plan) |
 | MUR, PRIN 2026 evaluation guidelines | Italian evaluation criteria: contesto e stato dell'arte, obiettivi, metodologia e piano di lavoro, risultati attesi e impatto. Used for content, not for the form's section names. | [PDF](https://www.mur.gov.it/sites/default/files/2026-05/D.D.%202298%20All.%203%20Linee%20Guida%20di%20valutazione.pdf) |
@@ -49,12 +49,15 @@ the discipline and academic learning (research and education/teaching).
 The OECD DAC glossary supplies the general vocabulary that the six forms use
 unevenly: *results* is the umbrella term for outputs, outcomes or impacts;
 *outcomes* are the short- or medium-term effects of outputs; *impacts* are the
-higher-level, longer-term effects. It is a development-evaluation vocabulary,
-not a funder template; the matrix uses it only to keep the terms apart.
+higher-level effects of outcomes. The 2023 second edition changed the 2002
+wording: *outcome* is no longer “likely or achieved”, and *impacts* are defined
+as higher-level effects of outcomes, distinct from the impact criterion. It is a
+development-evaluation vocabulary, not a funder template; the matrix uses it
+only to keep the terms apart.
 
 | Source | What it establishes | Link |
 |---|---|---|
-| OECD DAC, *Glossary of Key Terms in Evaluation and Results Based Management* (2002) | Results = output, outcome or impact (intended or unintended, positive and/or negative); outcome = likely or achieved short-term and medium-term effects of outputs; impacts = positive and negative, primary and secondary long-term effects. | [PDF](https://www.oecd.org/content/dam/oecd/en/publications/reports/2002/08/evaluation-and-aid-effectiveness-no-6-glossary-of-key-terms-in-evaluation-and-results-based-management-in-english-french-and-spanish_g1gh2dcb/9789264034921-en-fr.pdf) |
+| OECD DAC, *Glossary of Key Terms in Evaluation and Results-Based Management for Sustainable Development* (2nd ed., 2023) | Results = outputs, outcomes or impacts (intended or unintended, positive or negative); outcomes = short-term and medium-term effects of outputs; impacts = higher-level effects of outcomes, including ultimate or longer-term changes; the impact criterion is separate. | [PDF](https://www.oecd.org/content/dam/oecd/en/publications/reports/2023/06/glossary-of-key-terms-in-evaluation-and-results-based-management-for-sustainable-development-second-edition_2767e14e/632da462-en-fr-es.pdf) |
 
 ## Results, outcomes and impacts in the six funders
 
@@ -84,8 +87,8 @@ vocabulary. It supports the mapping: results sections map `results`; outcome is 
 | Source | What it establishes | Link |
 |---|---|---|
 | European Commission, *Project Cycle Management Guidelines* (2004) | Logical Framework Approach: developed for USAID after the 1969 evaluation study, adopted in Commission project cycle management from 1993 | [PDF](https://international-partnerships.ec.europa.eu/system/files/2023-12/methodology-aid-delivery-methods-project-cycle-management-200403_en.pdf) |
-| M. Strathern, "Audit, accountability and the ethnographic virtue" (1997) | "Verifiable" targets and the audit culture that research plans feed | [PDF](https://gwern.net/doc/statistics/decision/1997-strathern.pdf) |
-| M. Strathern (ed.), *Audit Cultures* (2000) | Accountability as a regime of measurement | [Record](https://bera-journals.onlinelibrary.wiley.com/doi/abs/10.1080/713651562) |
+| M. Strathern, “‘Improving ratings’: audit in the British University system” (1997) | “Verifiable” targets and the audit culture that research plans feed | [PDF](https://gwern.net/doc/statistics/decision/1997-strathern.pdf) |
+| M. Strathern (ed.), *Audit Cultures: Anthropological Studies in Accountability, Ethics and the Academy* (2000) | Accountability as a regime of measurement | [DOI](https://doi.org/10.4324/9780203449721) |
 
 ## Why a schema
 
