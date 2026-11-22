@@ -1,6 +1,6 @@
 """The renderer must reproduce its golden drafts, funder by funder.
 
-Each golden file is the whole output for one plan: section names, order, and the
+Each golden file is the whole output for one document: section names, order, and the
 prose the mapping produces. A change in wording, in field placement or in the
 output rule shows up as a diff here before it reaches a reader.
 """
@@ -201,7 +201,7 @@ def test_cli_warns_when_other_uses_the_generic_profile(tmp_path):
     assert "warning: generic profile for ERC Starting Grant" in result.stderr
 
 
-def test_the_cli_refuses_a_plan_the_validator_rejects(tmp_path):
+def test_the_cli_refuses_a_document_the_validator_rejects(tmp_path):
     plan = json.loads(TEMPLATE.read_text(encoding="utf-8"))
     plan["meta"]["funder"] = "fwo"
     plan["questions"]["primary"].update(
@@ -231,7 +231,7 @@ def test_dfg_reports_results_as_a_coverage_gap():
     assert "no results section" in gaps["results"]
 
 
-def test_cli_warns_on_a_dfg_plan_that_carries_results():
+def test_cli_warns_on_a_dfg_document_that_carries_results():
     result = subprocess.run(
         [sys.executable, str(RENDER), str(ROOT / "schema" / "cases" / "dfg.json")],
         capture_output=True,

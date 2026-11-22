@@ -18,7 +18,7 @@
   "allOf": [
     {
       "if": {
-        "$comment": "S1 — a DFG or SNSF plan has no results section and is exempt",
+        "$comment": "S1 — a DFG or SNSF document has no results section and is exempt",
         "properties": {
           "meta": {
             "properties": { "funder": { "enum": ["dfg", "snsf"] } },

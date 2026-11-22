@@ -13,7 +13,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 BUNDLE_URL = "https://raw.githubusercontent.com/avvohacker/requmexre/main/skill/install/requmexre.bundle"
-BUNDLE_SHA256 = "bf284cb10450a16d8cf0a5423402eb4edf642867b1c40898096bd40172542a06"
+BUNDLE_SHA256 = "195572b83dbd6e7b8e7b8b05bb24316317bde302c0bc59468d8640858c41d1f4"
 _CACHE = None
 
 

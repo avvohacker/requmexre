@@ -1,6 +1,6 @@
 ---
 name: requmexre
-description: Build, validate, check and render a document typed as research question, methodology and expected results, with warrant and standpoint. Use when drafting, reviewing or reformatting a grant proposal, a doctoral plan, or any other document that uses those three headings; FWO, PRIN, VUB, Horizon, DFG and SNSF have section tables, and every other document uses the generic three-section profile.
+description: Build, validate, check and render a document typed as research question, methodology and expected results, with warrant and standpoint. Use when drafting, reviewing or reformatting a grant proposal, a doctoral research document, or any other document that uses those three headings; FWO, PRIN, VUB, Horizon, DFG and SNSF have section tables, and every other document uses the generic three-section profile.
 ---
 
 # requmexre
@@ -15,7 +15,7 @@ three-section profile.
 
 ## When to use it
 
-- Drafting a research document, a doctoral research plan, a proposal section or
+- Drafting a research document, a doctoral proposal, a proposal section or
   any other document that has to state a question, a method and results.
 - Reviewing a draft: the validator names the empty slots and the circular ones —
   a question that is a statement, a criterion that repeats the question, a
@@ -39,7 +39,7 @@ proposal that are not the document itself.
 
 Structural rules S1–S10 and semantic rules R1–R8 are in
 [`references/RULES.md`](references/RULES.md). Read them before the first run: the
-validator will refuse a plan that breaks them, and the rules are what the five
+validator will refuse a document that breaks them, and the rules are what the five
 fields mean.
 
 ## Procedure
@@ -94,7 +94,7 @@ often as for questions, and R1 checks the text against the form declared.
 - `scope` bounds the answer: population, setting, period, corpus.
 - `completion_criterion` says what would count as an answer — an estimate with an
   uncertainty, a typology that covers the variation, a comparison that holds. If
-  the plan states none, write `"none"`; do not invent one. When present, it must
+  the document states none, write `"none"`; do not invent one. When present, it must
   not restate the question (R2).
 - `questions.secondary` holds the secondary questions and objectives: `text` and
   `form` are enough, the rest is optional.
@@ -115,11 +115,11 @@ as answered.
 - `validity_conditions`: what has to hold for the finding to stand — matching,
   instrument stability, response rate, coding independence.
 - `limits`: what the design does not cover. A limit is not a condition (R7) and
-  not an apology. When the plan states no limits, write `"none"`; absence means
+  not an apology. When the document states no limits, write `"none"`; absence means
   the field was not addressed.
 - `risks`: what could go wrong and the mitigation. A risk is not a limit, and a
   mitigation is not an apology. Each entry has `risk` and `mitigation`. If the
-  plan states no risks, omit the field; do not invent one.
+  document states no risks, omit the field; do not invent one.
 
 Exit: a method a competent stranger could execute, and a list of the ways it
 could fail.
@@ -150,7 +150,7 @@ Exit: every claim has an observation that could defeat it.
   URL, ISBN or PMID when it has one — not as a note about a source.
 - `standpoint`: if declared, normative premises and the criteria that follow from
   them; if `none` or `undeclared`, the object is absent (R8). `none` says the
-  plan explicitly has no standpoint; `undeclared` says it does not address one.
+  document explicitly has no standpoint; `undeclared` says it does not address one.
 
 Exit: the document says why the question is worth asking now, and from where it
 speaks.
@@ -183,7 +183,7 @@ procedure, report template, status words, five checks and form defects.
 
 Exit: a review report, a copy that passes validation where the draft supplies
 enough to pass, and the named content only the author can provide. A draft that
-lacks a required field ends as blocked on that field, not as a passing plan.
+lacks a required field ends as blocked on that field, not as a passing document.
 
 ## Validation gate
 
@@ -224,7 +224,8 @@ in the selected table. For a generic document whose three headings are
 translated or named differently, pass `--heading-question`, `--heading-method`
 and `--heading-results`; the JSON fields stay the same, and the override applies
 to the generic profile only. The draft copies the document's wording; it is a
-draft to edit, not a finished proposal.
+draft to edit, not a finished proposal. For a form that needs its own table, the
+short guide at the end of `references/mappings.md` gives the steps.
 
 Length is an input, not a guess. Cut the draft to the page or character limit
 the call sets, in the units the call uses. If the limit is not available, ask
@@ -243,7 +244,8 @@ verbatim.
 ## Files
 
 The template at `assets/template.json` is a valid document, not a form with
-blanks: copy it, replace the content, keep the shape. The validator, renderer,
+blanks: copy it, replace the content, keep the shape. The filename `plan.json`
+is only a convention; the object is a document. The validator, renderer,
 citation checker, schema, template, rules and section tables travel in
 `scripts/`, `assets/` and `references/`, byte-identical to the repository's
 `schema/` copies; CI fails if they drift, and nothing else in the repository is

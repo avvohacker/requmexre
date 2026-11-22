@@ -23,8 +23,8 @@ reports what is missing, and the author supplies it.
    them. Where a field has no sentence, leave it empty and mark it. If the draft
    is already a `plan.json`, skip this step and step 3: quote the fields as they
    stand and do not retype them. A rendered proposal carries no `falsifier` and
-   no `evidence_needed` for its claims: the render leaves them in the plan on
-   purpose. Mark both missing and ask the author for the plan or for the two
+   no `evidence_needed` for its claims: the render leaves them in the document on
+   purpose. Mark both missing and ask the author for the document or for the two
    statements; do not reconstruct them from the prose.
 3. **Type — prose only.** Give each extracted question its `form` from the
    sentence as written — `interrogative` or `objective` — never by rewriting it.
@@ -47,7 +47,7 @@ reports what is missing, and the author supplies it.
 
 Exit: a review report, a copy that passes validation where the draft supplies
 enough to pass, and the named content only the author can provide. A draft that
-lacks a required field ends as blocked on that field, not as a passing plan.
+lacks a required field ends as blocked on that field, not as a passing document.
 
 ## Report template
 

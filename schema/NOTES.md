@@ -1,7 +1,7 @@
 # Notes for maintainers
 
 Rationale, test mechanics and extension steps behind `RULES.md`. None of this is
-needed to write or validate a plan; it is here so that a rule is changed for a
+needed to write or validate a document; it is here so that a rule is changed for a
 reason rather than by accident.
 
 ## Why results is required and standpoint is optional
@@ -24,15 +24,15 @@ still fails.
 
 ## Why a form and why "none"
 
-Published research plans state objectives at least as often as questions. Requiring an
+Published research documents state objectives at least as often as questions. Requiring an
 interrogative would fail them for a wording the funder asked for, so every
 question declares its `form` and R1 checks the text against that declaration.
 Secondary objectives are often short: they need only `text` and `form`, while the
 primary question also carries the answer type, the scope and the criterion.
 
-No research plan read for this pilot states what would count as an answer. The
+No research document read for this pilot states what would count as an answer. The
 criterion stays required so that the absence is recorded rather than hidden: a
-plan writes `"none"`, and R2 skips it. The alternative — leaving the field
+document writes `"none"`, and R2 skips it. The alternative — leaving the field
 optional — makes "no criterion" and "not stated" indistinguishable.
 
 ## Why the answer types are a vocabulary, not a gate
@@ -63,9 +63,10 @@ selects it too: the generic profile is the default, not a value the author must
 supply.
 
 A form that renames or merges the three sections needs its own table. Adding one
-is data, not code: a new entry in `mappings.json`, the matching Markdown table,
-and the test suite's table check. The generic profile is not a substitute for
-that work.
+is mostly data — a new entry in `mappings.json`, the matching Markdown table and
+the test suite's table check — but the new id must also enter the `meta.funder`
+enum in the schema, so it is a schema version, not a silent addition. The generic
+profile is not a substitute for that work.
 
 ## Why risks are not limits
 
@@ -75,7 +76,7 @@ mitigation, and SNSF for risks and alternatives. `limits` answers a different
 question: what the design does not cover. A risk is something that could go
 wrong; its mitigation is the response. v1.1 adds an optional `method.risks`
 list of `{risk, mitigation}` so that the two are not conflated. The field is
-optional: a plan that states no risks is valid, and no risk is invented. The
+optional: a document that states no risks is valid, and no risk is invented. The
 1.0 schema remains published from `schema/archive/1.0/` at its original `$id`.
 
 ## How the overlap tests work
@@ -100,20 +101,21 @@ R6. That is a known limit, and the reason these are called form checks.
 
 ## Declaring the expectation
 
-A pure plan is expected to be valid: it must produce no finding. A negative
-fixture wraps the plan in an envelope that says which rule it is meant to break,
+A pure document is expected to be valid: it must produce no finding. A negative
+fixture wraps the document in an envelope that says which rule it is meant to break,
 so that fixtures are self-describing and `python3 validate.py` can return a
 meaningful exit code:
 
-- `"valid"` — the plan must produce no finding.
+- `"valid"` — the document must produce no finding.
 - `"S3"`, `"R7"` — the named rule must fire. Other findings are reported but do
   not change the verdict; a negative fixture should still be written to break one
   rule cleanly.
 
-The envelope is `{ "expect": "R7", "plan": { ... } }`. Positive fixtures, the
-template and the pilot encodings are pure plans, with no `expect`.
+The envelope is `{ "expect": "R7", "plan": { ... } }`; the `plan` key is a
+format name, not the model's object. Positive fixtures, the
+template and the pilot encodings are pure documents, with no `expect`.
 
-The validator exits 0 when every plan is valid and every negative envelope
+The validator exits 0 when every document is valid and every negative envelope
 reports its expected rule, 1 when one does not, 2 when there is nothing to
 check.
 

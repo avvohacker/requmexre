@@ -31,7 +31,7 @@ def schema(v):
 
 @pytest.fixture
 def plan():
-    """A plan with no findings; each test mutates a deep copy of it."""
+    """A document with no findings; each test mutates a deep copy of it."""
     return {
         "meta": {
             "standpoint": "none",

@@ -1,8 +1,8 @@
-"""An installed skill must validate a plan without the repository.
+"""An installed skill must validate a document without the repository.
 
 The skill is distributed as skill/requmexre/: an agent may copy that folder
 somewhere else and have nothing else. These tests copy it to a temporary
-directory, write a plan there and run the bundled validator, so a stale copy or
+directory, write a document there and run the bundled validator, so a stale copy or
 a path that only resolves inside the checkout fails here, not in a session.
 """
 
@@ -64,7 +64,7 @@ def run(skill, *arguments):
     )
 
 
-def test_installed_skill_validates_a_plan_without_the_repository(tmp_path):
+def test_installed_skill_validates_a_document_without_the_repository(tmp_path):
     skill = install(tmp_path)
     write_plan(skill, "plan.json")
 
@@ -75,13 +75,13 @@ def test_installed_skill_validates_a_plan_without_the_repository(tmp_path):
     assert "0 findings" in result.stdout
 
 
-def test_installed_skill_reports_a_broken_plan(tmp_path):
+def test_installed_skill_reports_a_broken_document(tmp_path):
     skill = install(tmp_path)
     write_plan(
         skill,
         "plan.json",
         lambda plan: plan["questions"]["primary"].update(
-            text="This plan measures green space and walking."
+            text="This document measures green space and walking."
         ),
     )
 

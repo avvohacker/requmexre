@@ -1,12 +1,12 @@
 # A minimal FWO render
 
-One plan, three sections, to show the shape of the prose the mapping produces.
-The plan below is invented and short, with the same five fields as
+One document, three sections, to show the shape of the prose the mapping produces.
+The document below is invented and short, with the same five fields as
 `assets/template.json`; the sections are those of the FWO application form. Section names and numbering are
 the funder's. No page or character limit is assumed here: the example is as
 short as the argument allows, and a real draft is cut to the call's own limit.
 
-## The plan, in brief
+## The document, in brief
 
 - Funder: `fwo` — this is what makes the table below the right one.
 - Question: does a four-day week reduce overtime hours in small firms?
@@ -26,7 +26,7 @@ separate reference list is opened because the FWO form has none.
 Payroll records and surveys of working time are held by different agencies, so
 the effect of a four-day week on overtime in small firms has not been estimated
 for Belgium (Social secretariats, payroll records, 2025; Flemish working-time
-survey, 2023). The plan declares no normative standpoint: it estimates an effect
+survey, 2023). The document declares no normative standpoint: it estimates an effect
 and does not argue from premises about how work ought to be organised.
 
 ## 2. Scientific research objectives

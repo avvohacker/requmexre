@@ -25,7 +25,7 @@ Structural notes:
 
 - Horizon Part B also has 2.2 Measures to maximise impact - Dissemination, exploitation and communication, an optional 2.3 Summary, 3.1 Work plan and resources, and 3.2 Capacity of participants and consortium as a whole. 2.1 renders results; the impact pathway, target groups, barriers and measures are not modelled, and `standpoint` is not an impact field. 3.1 renders the procedure's sequence; resources and 3.2 are not modelled.
 - DFG section 1 is Starting Point (State of the art and preliminary work); 2.1 is “Anticipated total duration of the project”, not the state of the art.
-- The SNSF plan has five sections: 1 current state of research in the field, 2 current state of your own research, 3 detailed research plan, 4 schedule and milestones, 5 relevance and impact. Section 5 is outside the model; results and `standpoint` are not substitutes for it.
+- The SNSF research plan has five sections: 1 current state of research in the field, 2 current state of your own research, 3 detailed research plan, 4 schedule and milestones, 5 relevance and impact. Section 5 is outside the model; results and `standpoint` are not substitutes for it.
 - PRIN's SECTION C has blocks a., b. and c. Block b renders results; its impact pathways and measures to maximise impact are not modelled, and `standpoint` is not an impact field. Block c (organization, operational work plan, team, timeframes, resources and budget) is not modelled; draft it from the call.
 - Impact is not one of the five fields. The six-funder matrix in [SOURCES.md](SOURCES.md) separates results, outcomes and impacts; where a form asks for impact, it is written from the call.
 
@@ -117,13 +117,15 @@ python3 verify_citations.py cases/prin.json              # source metadata check
 python3 verify_citations.py --offline plan.json          # extract identifiers only
 ```
 
+The filename `plan.json` is only a convention; the object is a document.
+
 The account skill is installed as the visible schema plus `scripts/requmexre.py`. Its first run downloads `skill/install/requmexre.bundle` from `main`, verifies the SHA-256 and unpacks the rest into the skill directory; later runs use the local copy.
 
 The pytest suite runs from the repository root: `python3 -m pytest -q`. The citation checker uses OpenAlex, Crossref, PubMed, arXiv, Open Library and the URL itself; no API key is required, and `--offline` extracts identifiers without a request. `REQMEXRE_CONTACT_EMAIL` and `NCBI_API_KEY` are optional.
 
 The renderer exits 0 on a draft, 1 when the validator rejects the document, and 2 on bad usage or an unknown profile.
 
-Exit code 0 when every pure plan is valid and every negative envelope reports its expected rule, 1 when one does not, 2 on bad usage. A run with neither a file nor `--fixtures` exits 2, so the built-in corpus can never be mistaken for a check of your plan. `--json` writes one object with `tool`, `version`, `scope` (`fixtures` or `files`), `ok`, `total`, `passed`, `failed` and a `files` list, each entry carrying `path`, `ok`, `expected`, `findings` (`rule`, `path`, `message`) and `note`. Negative fixtures wrap the plan as `{ "expect": ..., "plan": ... }`; positive plans, the template and the pilot encodings are pure. The skill runs six phases — detect, question, method, results, guards, citations — writes `plan.json`, validates it, checks its cited sources, and renders it into a funder's sections or the generic three-section profile.
+Exit code 0 when every pure document is valid and every negative envelope reports its expected rule, 1 when one does not, 2 on bad usage. A run with neither a file nor `--fixtures` exits 2, so the built-in corpus can never be mistaken for a check of your document. `--json` writes one object with `tool`, `version`, `scope` (`fixtures` or `files`), `ok`, `total`, `passed`, `failed` and a `files` list, each entry carrying `path`, `ok`, `expected`, `findings` (`rule`, `path`, `message`) and `note`. Negative fixtures wrap the document in an envelope `{ "expect": ..., "plan": ... }`; the `plan` key is a format name, not the model's object. Positive documents, the template and the pilot encodings are pure. The skill runs six phases — detect, question, method, results, guards, citations — writes `plan.json`, validates it, checks its cited sources, and renders it into a funder's sections or the generic three-section profile.
 
 ## Limits
 
@@ -131,7 +133,7 @@ Exit code 0 when every pure plan is valid and every negative envelope reports it
 - The validator checks form, not truth. `verify_citations.py` checks that a cited source exists and that its title, year and author agree with the citation; it cannot read a paywalled full text or decide whether the source supports a specific claim. The gap-to-abstract overlap is a signal, not a verdict.
 - Six funders are pre-mapped; a document outside them, or with no `meta.funder`, that uses the three headings renders through the generic profile. A form that renames or merges those sections needs its own table.
 - The three slots are an administrative form, not a theory of method. The schema formalises the document, not the research.
-- Registration numbers, ethics approvals and calendar timelines are out of scope: they belong to the funder's submission forms, not to the plan, and the procedure's order is not a timetable. There is no `extensions` field.
+- Registration numbers, ethics approvals and calendar timelines are out of scope: they belong to the funder's submission forms, not to the document, and the procedure's order is not a timetable. There is no `extensions` field.
 
 ## Roadmap
 

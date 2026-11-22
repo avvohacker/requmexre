@@ -87,17 +87,17 @@ vocabulary. It supports the mapping: results sections map `results`; outcome is 
 | Source | What it establishes | Link |
 |---|---|---|
 | European Commission, *Project Cycle Management Guidelines* (2004) | Logical Framework Approach: developed for USAID after the 1969 evaluation study, adopted in Commission project cycle management from 1993 | [PDF](https://international-partnerships.ec.europa.eu/system/files/2023-12/methodology-aid-delivery-methods-project-cycle-management-200403_en.pdf) |
-| M. Strathern, “‘Improving ratings’: audit in the British University system” (1997) | “Verifiable” targets and the audit culture that research plans feed | [PDF](https://gwern.net/doc/statistics/decision/1997-strathern.pdf) |
+| M. Strathern, “‘Improving ratings’: audit in the British University system” (1997) | “Verifiable” targets and the audit culture that research documents feed | [PDF](https://gwern.net/doc/statistics/decision/1997-strathern.pdf) |
 | M. Strathern (ed.), *Audit Cultures: Anthropological Studies in Accountability, Ethics and the Academy* (2000) | Accountability as a regime of measurement | [DOI](https://doi.org/10.4324/9780203449721) |
 
 ## Why a schema
 
 | Source | What it establishes | Link |
 |---|---|---|
-| CERIF | Research-information model: projects, outputs, persons — not the argument of a plan | [Page](https://interoperable-europe.ec.europa.eu/collection/eu-semantic-interoperability-catalogue/solution/common-european-research-information-format) |
+| CERIF | Research-information model: projects, outputs, persons — not the argument of a document | [Page](https://interoperable-europe.ec.europa.eu/collection/eu-semantic-interoperability-catalogue/solution/common-european-research-information-format) |
 | DINGO | Project metadata for funded research; no question/method/results structure | [Page](https://dcodings.github.io/DINGO) |
 | RO-Crate | Packaging of research objects and their metadata | [Profiles](https://www.researchobject.org/ro-crate/profiles) |
-| OpenAIRE | Publication and project graph; no plan-level schema | [Portal](https://www.openaire.eu) |
+| OpenAIRE | Publication and project graph; no document-level schema | [Portal](https://www.openaire.eu) |
 | ARIS, luwill, aleSuglia, Imbad0202 — proposal skills | Agent Skills for grant writing exist; none uses a typed model of the three slots or covers FWO, PRIN, VUB | [ARIS](https://github.com/zycdengdeng/ARIS/blob/main/skills/grant-proposal/SKILL.md) · [luwill](https://github.com/luwill/research-skills) · [aleSuglia](https://github.com/aleSuglia/proposal-agents) · [Imbad0202](https://github.com/imbad0202/academic-research-skills) |
 
 ## Note on method

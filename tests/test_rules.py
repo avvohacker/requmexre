@@ -82,7 +82,7 @@ def test_schema_uses_only_keywords_the_evaluator_implements(schema):
     validate.audit_keywords(schema)
 
 
-def test_base_plan_is_clean(v, schema, plan):
+def test_base_document_is_clean(v, schema, plan):
     assert structural(v, schema, plan) == []
     assert semantic(v, plan) == []
 

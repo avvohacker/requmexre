@@ -3,8 +3,8 @@
 ## v1.2 — 22 November 2026
 
 requmexre v1.2 makes `results` required by default. The only exemptions are
-plans whose `meta.funder` is exactly `dfg` or `snsf`, the two forms with no
-results section. A plan without `meta.funder` is not exempt.
+documents whose `meta.funder` is exactly `dfg` or `snsf`, the two forms with no
+results section. A document without `meta.funder` is not exempt.
 
 ### Schema and validator
 
@@ -28,8 +28,8 @@ results section. A plan without `meta.funder` is not exempt.
 
 ### Migration
 
-- Add a `results` list to every plan whose `meta.funder` is not `dfg` or `snsf`; a plan without a funder needs one too.
-- A DFG or SNSF plan may omit `results`; if it carries one, the non-empty and R5 rules still apply. Do not add an empty list or invent a results section.
+- Add a `results` list to every document whose `meta.funder` is not `dfg` or `snsf`; a document without a funder needs one too.
+- A DFG or SNSF document may omit `results`; if it carries one, the non-empty and R5 rules still apply. Do not add an empty list or invent a results section.
 - The exemption is based on the funder value alone, not on a section table or a missing `meta.funder`.
 
 ### Fixtures and checks

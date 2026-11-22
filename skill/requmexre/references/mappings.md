@@ -174,7 +174,7 @@ for a document without a named funder, not a substitute for the funder's form.
 - The work plan renders the procedure's steps in the order `method.procedure`
   already gives them. Do not add steps, dates, durations, work packages,
   milestones or roles: the model holds the logical order, not a timetable. A
-  timetable the call requires is filled from the form, not from the plan.
+  timetable the call requires is filled from the form, not from the document.
 - An `output` is a deliverable, not a finding. Render it once, as what the
   procedure delivers, in the section the table assigns: at the end of the method
   or work plan, or in PRIN's results section, as outputs. Never open a results
@@ -191,11 +191,11 @@ for a document without a named funder, not a substitute for the funder's form.
 - `standpoint` is rendered where the funder asks for rationale or positioning.
   It is never rendered as an impact section and never substitutes for a pathway,
   beneficiary or measure. If it is `none`, one sentence of declaration is
-  enough. If it is `undeclared`, do not claim the plan has none: flag the
+  enough. If it is `undeclared`, do not claim the document has none: flag the
   silence to the author and, where the form requires positioning, ask for a
   declaration rather than inventing one.
-- `limits: "none"` is a declaration that the plan states no limits: do not
-  invent a limitation. If `limits` is absent, say the plan does not state limits
+- `limits: "none"` is a declaration that the document states no limits: do not
+  invent a limitation. If `limits` is absent, say the document does not state limits
   rather than claiming there are none.
 - `risks` is rendered with its mitigation in the method section, after the
   limits: each entry says what could go wrong and how it is addressed. Never
@@ -207,3 +207,34 @@ for a document without a named funder, not a substitute for the funder's form.
 - Word and page limits change with the call: cut to the limit the author
   supplies, in the call's own units, and say so when none was available.
   `SKILL.md` gives the cut order and the no-padding rule.
+
+## Mapping a form that renames or merges the three sections
+
+Use this only when the form's headings are not the generic three. If it merely
+renames them one-for-one, use the generic profile and the three `--heading-*`
+options; do not add a table.
+
+1. Transcribe the form's sections in order, with the heading verbatim and what
+   the form asks for. Keep the sections the model does not cover: they will be
+   `outside_model`.
+2. Assign each model field to the section where the form asks for it:
+   `questions.primary`, `questions.secondary`, `warrant`, `standpoint`, `method`,
+   `method.procedure`, `results`. A section may carry several fields; do not
+   copy one field into two sections. A merged question/method goes in one
+   section; a split method uses `method` for the approach and
+   `method.procedure` for the steps only when the form asks for them separately.
+3. Mark at most one section `delivers: true`, where outputs close the prose.
+   Mark a section with no model field as `outside_model` and write the sentence
+   the writer must follow. Never invent a field to fill a section.
+4. Add an `absent` entry for a field the form never asks for, saying where it
+   goes by hand or that the form has no place for it. A missing results section
+   is `absent.results`; do not open one.
+5. Add the entry to the repository's `schema/mappings.json` (the bundled
+   `assets/mappings.json` is generated) and a matching table here; rebuild the
+   bundle with `python3 skill/install/build_bundle.py`. Use an `id`, a
+   `language` (`en` or `it`), the form's headings verbatim and the JSON field
+   paths. The `id` must also enter the `meta.funder` enum in the schema: a new
+   named table is a schema version, not a silent addition. Do not rename the
+   JSON fields.
+6. Add a case and a golden render, then run the suite. A field with no section
+   is a coverage gap, not a reason to open a section the form does not have.
