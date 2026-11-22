@@ -48,17 +48,6 @@ VERSION = "1.2"
 
 RULE_IDS = [*(f"S{i}" for i in range(1, 11)), *(f"R{i}" for i in range(1, 9))]
 
-SEMANTIC_RULES = {
-    "R1": "each question matches its declared form",
-    "R2": "each completion criterion does not restate its question",
-    "R3": "the gap statement does not restate the question",
-    "R4": "each piece of warrant evidence is dated or identifiable",
-    "R5": "results make a claim about the world, or measure something, not only outputs",
-    "R6": "each falsifier differs from the claim it tests",
-    "R7": "limits are not validity conditions; the word none is skipped",
-    "R8": "the standpoint is declared, explicitly none, or undeclared, and the body agrees",
-}
-
 PARAPHRASE = 0.70
 
 

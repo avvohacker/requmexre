@@ -233,7 +233,6 @@ def main() -> int:
         rules=render(rules),
         sources=render(sources),
         repo=REPO_URL,
-        blob=BLOB_URL,
     )
     target = OUT / "index.html"
     target.write_text(page, encoding="utf-8")

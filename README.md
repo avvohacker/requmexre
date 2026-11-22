@@ -78,7 +78,6 @@ schema/archive/1.0/           the frozen 1.0 schema, still published at its $id
 schema/cases/                  fwo, prin, vub, dfg, horizon, negative (fixtures)
 schema/published/              three pilot encodings (convenience sample)
 tests/                         pytest suite: rules, fixtures, CLI, render goldens
-schema/BREAKAGES.md            where the model breaks on those plans
 schema/NOTES.md                maintainer notes: rationale, fixtures, extending
 skill/requmexre/SKILL.md       the skill: five fields, five phases
 skill/requmexre/references/    mappings, RULES, FWO example, review report
@@ -124,17 +123,9 @@ Exit code 0 when every pure plan is valid and every negative envelope reports it
 
 ## Roadmap
 
-| Version | Content |
-|---|---|
-| v0.2 | Plural questions, declared form, explicit completion criterion; three pilot encodings in `schema/published` |
-| v0.3 | Outcomes with a measure, and outputs, in `results`; answer types widened; pilot re-run in [schema/BREAKAGES.md](schema/BREAKAGES.md) |
-| v0.4 | Typed sources: `data`, `literature`, `participants`, `corpus` in `method.sources` |
-| v0.5 | Six-funder mappings: Horizon, DFG and SNSF added; schema v0.5 |
-| v1.0 | Schema frozen at 1.0.0 and a `CITATION.cff`; no tag or release |
-| v1.1 | Optional `method.risks`: risk and mitigation, rendered in the method section; the 1.0 schema remains published at its original `$id` |
-| v1.2 | `results` required by default; DFG and SNSF plans exempt; the 1.1 schema remains published at its original `$id` |
-
 v1.2 is the current tree on `main`: it is not tagged and has no GitHub release.
+Earlier versions are frozen in `schema/archive/` and in git history;
+[`VERSION_NOTES.md`](VERSION_NOTES.md) records the current release.
 
 ## Cite
 

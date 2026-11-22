@@ -107,6 +107,7 @@ subschema's `$comment`, then add a negative fixture whose envelope `expect` is
 the new code. `validate.py` refuses any schema keyword it does not implement, so
 a new keyword must be added to its evaluator before the schema will run.
 
-A semantic rule: add a function in the semantic layer, register its code in
-`SEMANTIC_RULES`, add a negative fixture, and run the validator. Keep R codes for
-checks that need the text; anything a JSON Schema can express belongs in S.
+A semantic rule: add the check to `check_semantics`, add its code to `RULE_IDS`
+and to the `_rule_of` pattern when it is a new code, add a negative fixture, and
+run the validator. Keep R codes for checks that need the text; anything a JSON
+Schema can express belongs in S.
