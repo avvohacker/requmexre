@@ -131,3 +131,33 @@ def test_cli_warns_on_a_dfg_plan_that_carries_results():
     assert result.stdout == golden("dfg")
     assert "warning: results has no section for dfg" in result.stderr
     assert "DFG has no results section" in result.stderr
+
+
+@pytest.mark.parametrize(
+    "funder,source,section",
+    [
+        ("dfg", "schema/cases/dfg-no-results.json", "## 2.3 Work programme"),
+        ("snsf", "schema/cases/snsf-no-results.json", "## 3. Detailed research plan"),
+    ],
+    ids=["dfg", "snsf"],
+)
+def test_no_results_exemption_renders_without_a_results_block(funder, source, section):
+    plan = json.loads((ROOT / source).read_text(encoding="utf-8"))
+    assert plan["meta"]["funder"] == funder
+
+    draft = render.render_plan(plan)
+
+    assert section in draft
+    assert "The plan states no results." not in draft
+    assert render.coverage_gaps(plan) == []
+
+    result = subprocess.run(
+        [sys.executable, str(RENDER), str(ROOT / source)],
+        capture_output=True,
+        text=True,
+        cwd=ROOT,
+    )
+
+    assert result.returncode == 0, result.stderr
+    assert result.stdout == draft
+    assert result.stderr == ""

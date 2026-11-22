@@ -23,7 +23,7 @@ results section. A plan without `meta.funder` is not exempt.
 
 - New positive fixtures `dfg-no-results.json` and `snsf-no-results.json` pin the exemption; `negative/s6-missing-results.json` pins the default requirement.
 - The renderer still reports results carried by DFG or SNSF as a coverage gap, because those forms have no section for them.
-- Checks: 32/32 fixtures, 247 tests, and a Pages build that writes `/schema/1.0/`, `/schema/1.1/` and `/schema/1.2/`.
+- Checks: 32/32 fixtures, 249 tests, and a Pages build that writes `/schema/1.0/`, `/schema/1.1/` and `/schema/1.2/`.
 
 ### Citation
 
