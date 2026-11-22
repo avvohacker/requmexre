@@ -18,8 +18,6 @@ Expected finding: Activation reduces avoidable admissions by between 3 and 6 per
 
 The procedure delivers: An open dataset of region-level avoidable-admission rates by condition set and income quintile, 2016-2026, with the code that builds it.
 
-Normative premises: Equal access to care for equal need is a condition of a legitimate regional health service; A reduction in admissions that accrues only to the better-off does not count as an improvement. Criteria: the absolute reduction in avoidable admissions; the ratio between the lowest and the highest income quintile.
-
 ## c. Organization, work plan and resources
 
 *Organization, operational work plan, team roles, timeframes, resources and budget are not modelled: draft this block from the call.*

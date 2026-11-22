@@ -41,8 +41,8 @@ an unknown funder is a question for the author, not a default.
   object. It records silence, not neutrality: do not render an impact argument
   as if criteria existed, and do not call the plan neutral.
 - **outside model** — a section of the call with no field behind it
-  (preliminary work, own research, ethics, budget, timetable). Report it; do not
-  invent a field.
+  (preliminary work, own research, impact pathways and measures, ethics, budget,
+  timetable). Report it; do not invent a field.
 
 A **coverage gap** is not a status of a field: it belongs to check 5, with the
 field path.

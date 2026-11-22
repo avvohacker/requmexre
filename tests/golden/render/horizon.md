@@ -22,8 +22,6 @@ Expected finding: Reserved lots raise the two-year survival of small suppliers b
 
 Outcome: The difference in two-year survival between reserved and matched open lots, by sector and contract size. Measured as: Business-register survival flags at 24 months, compared within matched lot pairs.
 
-Normative premises: Public money may be used to keep capable small suppliers in the market; A price premium is justified only if it buys survival rather than delaying exit. Criteria: the survival gain among small suppliers; the price premium paid for reserved lots.
-
 ## 3.1 Work plan and resources
 
 Select reserved lots for small suppliers and open lots in five procurement categories; match each reserved lot to an open lot on sector, region and contract size; read supplier survival at 24 months from the business register; compute the awarded price divided by the authority's estimate for every lot; estimate the survival difference and the price ratio with lot-pair fixed effects; report both estimates with confidence intervals and repeat them separately for service and works contracts.

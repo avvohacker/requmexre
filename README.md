@@ -21,10 +21,11 @@ Question and method appear in all six. Results appear in four — FWO (inside th
 
 Structural notes:
 
-- Horizon Part B also has 2.2 Measures to maximise impact - Dissemination, exploitation and communication, an optional 2.3 Summary, 3.1 Work plan and resources, and 3.2 Capacity of participants and consortium as a whole. 3.1 renders the procedure's sequence; resources and 3.2 are not modelled.
+- Horizon Part B also has 2.2 Measures to maximise impact - Dissemination, exploitation and communication, an optional 2.3 Summary, 3.1 Work plan and resources, and 3.2 Capacity of participants and consortium as a whole. 2.1 renders results; the impact pathway, target groups, barriers and measures are not modelled, and `standpoint` is not an impact field. 3.1 renders the procedure's sequence; resources and 3.2 are not modelled.
 - DFG section 1 is Starting Point (State of the art and preliminary work); 2.1 is “Anticipated total duration of the project”, not the state of the art.
-- The SNSF plan has five sections: 1 current state of research in the field, 2 current state of your own research, 3 detailed research plan, 4 schedule and milestones, 5 relevance and impact.
-- PRIN's SECTION C has blocks a., b. and c. Block b also asks for impact pathways and measures to maximise impact; those are not modelled. Block c (organization, operational work plan, team, timeframes, resources and budget) is not modelled; draft it from the call.
+- The SNSF plan has five sections: 1 current state of research in the field, 2 current state of your own research, 3 detailed research plan, 4 schedule and milestones, 5 relevance and impact. Section 5 is outside the model; results and `standpoint` are not substitutes for it.
+- PRIN's SECTION C has blocks a., b. and c. Block b renders results; its impact pathways and measures to maximise impact are not modelled, and `standpoint` is not an impact field. Block c (organization, operational work plan, team, timeframes, resources and budget) is not modelled; draft it from the call.
+- Impact is not one of the five fields. The six-funder matrix in [SOURCES.md](SOURCES.md) separates results, outcomes and impacts; where a form asks for impact, it is written from the call.
 
 ## The model
 

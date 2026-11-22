@@ -26,4 +26,4 @@ Recruit 40 adopting and 40 matched non-adopting households; collect seven-day di
 
 ## 5. Relevance and impact
 
-The plan declares no normative standpoint.
+*Relevance and impact is not a model section: expected results and a standpoint are not a substitute. Draft the scientific relevance, expected impacts, publication forms and broader impact from the call.*

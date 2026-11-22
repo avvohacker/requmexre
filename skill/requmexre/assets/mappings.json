@@ -31,7 +31,7 @@
         },
         {
           "name": "b. Pathways to results and expected impacts",
-          "fields": ["results", "standpoint"],
+          "fields": ["results"],
           "delivers": true
         },
         {
@@ -39,7 +39,10 @@
           "fields": [],
           "outside_model": "Organization, operational work plan, team roles, timeframes, resources and budget are not modelled: draft this block from the call."
         }
-      ]
+      ],
+      "absent": {
+        "standpoint": "PRIN has no separate normative standpoint; it is not the impact narrative. If declared, use its criteria by hand only where the call asks for them."
+      }
     },
     {
       "id": "vub",
@@ -77,14 +80,17 @@
         },
         {
           "name": "2.1 Project's pathways towards impact",
-          "fields": ["results", "standpoint"]
+          "fields": ["results"]
         },
         {
           "name": "3.1 Work plan and resources",
           "fields": ["method.procedure"],
           "delivers": true
         }
-      ]
+      ],
+      "absent": {
+        "standpoint": "Horizon has no separate normative standpoint; it is not the impact pathway or the measures. If declared, use its criteria by hand only where the call asks for them."
+      }
     },
     {
       "id": "dfg",
@@ -132,11 +138,13 @@
         },
         {
           "name": "5. Relevance and impact",
-          "fields": ["standpoint"]
+          "fields": [],
+          "outside_model": "Relevance and impact is not a model section: expected results and a standpoint are not a substitute. Draft the scientific relevance, expected impacts, publication forms and broader impact from the call."
         }
       ],
       "absent": {
-        "results": "SNSF has no results section; do not open one."
+        "results": "SNSF has no results section; do not open one.",
+        "standpoint": "SNSF has no separate normative standpoint; it is not the relevance and impact section. If declared, use its criteria by hand only where the call asks for them."
       }
     }
   ]

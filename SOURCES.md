@@ -1,6 +1,6 @@
 # Sources
 
-Accessed 20–21 November 2026. Each entry states what the document is used for.
+Accessed 20–22 November 2026. Each entry states what the document is used for.
 
 ## Funder documents
 
@@ -14,6 +14,58 @@ Accessed 20–21 November 2026. Each entry states what the document is used for.
 | SNSF, requirements for the research plan | Five sections: 1 Current state of research in the field; 2 Current state of your own research; 3 Detailed research plan; 4 Schedule and milestones; 5 Relevance and impact. No separate results section | [Page](https://www.snf.ch/en/257qx6wxjo72ODHy/page/funding/documents-downloads/regulations-requirements-for-the-research-plan) |
 | MUR, PRIN 2026 evaluation guidelines | Italian evaluation criteria: contesto e stato dell'arte, obiettivi, metodologia e piano di lavoro, risultati attesi e impatto. Used for content, not for the form's section names. | [PDF](https://www.mur.gov.it/sites/default/files/2026-05/D.D.%202298%20All.%203%20Linee%20Guida%20di%20valutazione.pdf) |
 | MUR, PRIN 2026 application fac-simile (EN) | The official form has SECTION C — Scientific proposal, with blocks a., b. and c.; the form is in English. The mapping uses these three blocks and English headings; the form gives the letters with long criteria, not short headings. | [PDF](http://prin.mur.gov.it/Attachments/getAttachment?key=oLjLA8JnI6imQjuJ7hMr4A==) |
+
+## Impact
+
+Impact is not one of the three slots. The model has no impact field: `results` and
+`standpoint` can inform an impact section, but neither is an impact narrative. The
+working definition is:
+
+> Impact is a change, effect or benefit — positive or negative, intended or
+> unintended — that research contributes to produce beyond its results, in a
+> specified domain (scientific, economic, social, cultural, environmental,
+> policy), through a pathway of use, adoption or valorisation. It is expected
+> ex ante and realised ex post; it is a contribution, not necessarily a sole
+> attribution.
+
+The definition is deliberately minimal because the sources differ: REF defines
+impact beyond academia and excludes academic impact; UKRI/ESRC includes academic
+impact; Horizon separates results, outcomes and impacts; PRIN separates the
+excellence criterion from the impact criterion; SNSF includes scientific
+relevance and broader impact.
+
+| Source | What it establishes | Link |
+|---|---|---|
+| REF 2021, *Guidance on results* | Impact as an effect on, change or benefit to the economy, society, culture, public policy or services, health, the environment or quality of life, beyond academia; academic impact excluded. | [Page](https://2021.ref.ac.uk/guidance-on-results/guidance-on-ref-2021-results/index.html) |
+| UKRI/ESRC, *Defining impact* | Impact as the demonstrable contribution of excellent research to society and the economy; academic, economic and societal impact; instrumental, conceptual and capacity-building impact. | [Page](https://www.ukri.org/councils/esrc/impact-toolkit-for-economic-and-social-sciences/defining-impact) |
+| Penfield, Baker, Scoble and Wykes, *Assessment, evaluations, and definitions of research impact: A review* (2014) | Definitions vary; outputs, outcomes and impacts are distinct but often confused; attribution is difficult. | [Article](https://academic.oup.com/rev/article/23/1/21/2889056) |
+| Belcher and Palenberg, *Outcomes and Impacts of Development Interventions* (2018) | Outcome and impact are often separated only by timing or degree; those distinctions are unstable and need clearer definitions. | [Article](https://journals.sagepub.com/doi/10.1177/1098214018765698) |
+| Reed et al., *Evaluating impact from research: A methodological framework* (2021) | Impact as demonstrable or perceptible benefits causally linked to research; significance and reach; research may be a necessary or sufficient cause. | [Article](https://www.sciencedirect.com/science/article/pii/S0048733320302225) |
+| Belcher and Halliwell, *Conceptualizing the elements of research impact: towards semantic standards* (2021) | Output as direct product; outcome as change in knowledge, attitudes, skills, relationships or behaviour; impact as the overarching term for change caused in whole or in part by research. | [Article](https://www.nature.com/articles/s41599-021-00854-2) |
+| Greenhalgh, Raftery, Hanney and Glover, *Research impact: a narrative review* (2016) | Impact as benefits in addition to the academic knowledge base, produced through complex and varied mechanisms. | [Article](https://link.springer.com/article/10.1186/s12916-016-0620-8) |
+
+## Results, outcomes and impacts in the six funders
+
+“Outcome” is the analytical middle term: a change in knowledge, behaviour,
+capacity or uptake. Horizon uses it as a defined middle term; FWO calls its
+expected results “expected outcomes”; PRIN, SNSF, DFG and VUB do not use
+“outcome” as a separate term. “Not a separate term” means the form does not
+distinguish it, not that no such change is expected. A cell saying “no separate
+section” means the form has no dedicated section.
+
+| Funder | Results | Outcome | Impact |
+|---|---|---|---|
+| [FWO](https://www.fwo.be/media/qi1jlhea/application-form-for-a-phd-fellowship-fundamental-research.pdf) | Expected outcomes (or partial outcomes) inside Scientific research objectives | The form's “expected outcomes” are its term for results; no separate outcome section | No separate impact section; dissemination is described in the method |
+| [VUB](https://www.vub.be/sites/default/files/2025-04/2025_Benodigde_documenten_Template_Research_Plan_PhD_EN.docx) | Hypotheses and (partial) results inside Scientific research goals | Anticipated results; no separate outcome term | Abstract includes “Anticipated Results and Impact”; no separate impact section |
+| [Horizon Europe](https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/temp-form/af/af_he-ria-ia_en.pdf) | Results generated during the project | Expected medium-term effects, uptake and use by target groups | Longer-term effects on society, economy and science; 2.1 pathway and 2.2 measures |
+| [DFG](https://www.dfg.de/resource/blob/168328/54-012-en.pdf) | No separate results section | No separate outcome section | No impact section |
+| [SNSF](https://www.snf.ch/en/257qx6wxjo72ODHy/page/funding/documents-downloads/regulations-requirements-for-the-research-plan) | No separate results section | No separate outcome section | 5. Relevance and impact: scientific relevance, expected impacts for the discipline and science (research, education/teaching and society), broader impact |
+| [PRIN](http://prin.mur.gov.it/Attachments/getAttachment?key=oLjLA8JnI6imQjuJ7hMr4A==) | Results in b; scientific, technological and methodological results ([guidelines](https://www.mur.gov.it/sites/default/files/2026-05/D.D.%202298%20All.%203%20Linee%20Guida%20di%20valutazione.pdf), 2.a.1) | Expected results/outcomes; “outcome” is not a distinct form term | Benefits to scientific knowledge, society and territory; pathways, dissemination and valorisation (b; guidelines 2.a–2.b) |
+
+The matrix is a reading of the forms, not a claim that all six use one
+vocabulary. It supports the mapping: results sections map `results`; outcome is a
+`results` kind where the model has one; impact stays outside the model.
+`standpoint` is not impact: it holds the normative premises and criteria.
 
 ## Origin of the form
 
@@ -35,4 +87,4 @@ Accessed 20–21 November 2026. Each entry states what the document is used for.
 
 ## Note on method
 
-No document in this corpus states the three slots as a standard. They are enacted in forms and guidelines, not argued in print. The table above records what each document requires, not a theory that the documents share.
+No document in this corpus states the three slots as a standard. They are enacted in forms and guidelines, not argued in print. The tables above record what each document requires, not a theory that the documents share.

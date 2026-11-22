@@ -16,6 +16,10 @@ when the Markdown and the data disagree. The renderer copies the plan's prose an
 does not translate it. A section the table gives no field is emitted as a
 placeholder for the author, not filled.
 
+Impact is not one of the five fields. Where a form asks for it, the section is
+written from the call; `results` and `standpoint` can inform it, but neither is an
+impact narrative.
+
 ## FWO — application form (PhD fellowship, fundamental research)
 
 The document is the application form cited in `SOURCES.md`; this corpus has no
@@ -43,11 +47,13 @@ not short headings; the headings below are short descriptions.
 | Section | Fields | What to write |
 |---|---|---|
 | a. Objectives, state of the art, methodology and risks | `warrant`, `questions.primary`, `questions.secondary`, `method` | The gap with its dated evidence, then the objective or question as written with scope and criteria, then approach, sources, procedure, validity conditions, limits and risks. |
-| b. Pathways to results and expected impacts | `results`, `standpoint` | Expected findings as findings, outcomes as outcomes, outputs as outputs, and the impact argued from the declared criteria. Impact without criteria is a wish. |
+| b. Pathways to results and expected impacts | `results` | Expected findings as findings, outcomes as outcomes, outputs as outputs. The impact pathway, beneficiaries and measures are not modelled: write them from the call. `standpoint` is not an impact field and is not rendered here. |
 | c. Organization, work plan and resources | — | Organization, operational work plan, team roles, timeframes, resources, budget and management are not modelled; draft this block from the call. |
 
 The form's impact pathways and measures to maximise impact are not model fields;
-draft them from the call.
+draft them from the call. `standpoint` is not a PRIN section: if it is declared,
+use its criteria only where the call asks for them; it is not the impact
+narrative.
 
 PRIN's form is in English. Render into English; the JSON keeps its own language,
 and `meta.funder` is `prin`. The Italian evaluation guidelines are used for the
@@ -81,8 +87,11 @@ doctoral training; none of them is modelled.
 |---|---|---|
 | 1.1 Objectives and ambition | `warrant`, `questions.primary`, `questions.secondary` | The gap with its dated evidence, then the question or objective as written with its scope and criterion. Ambition is the advance beyond the state of the art, not a promise. |
 | 1.2 Methodology | `method` | Approach, sources, procedure, validity conditions, limits, risks. |
-| 2.1 Project's pathways towards impact | `results`, `standpoint` | Impact argued from expected findings and outcomes and from the declared criteria. If `meta.standpoint` is `none` or `undeclared`, do not invent a standpoint. |
+| 2.1 Project's pathways towards impact | `results` | Results as the evidence base for the impact narrative. The pathway, target groups, barriers, outcomes and impacts are not modelled: write them from the call. `standpoint` is not an impact field. |
 | 3.1 Work plan and resources | `method.procedure` | The procedure's steps in order, as the work plan. Resources and work-package numbering are not modelled; see the sequence rule under Rendering rules. Outputs close 3.1. |
+
+`standpoint` is not a Horizon section: if it is declared, use its criteria only
+where the call asks for them; it is not the impact pathway or the measures.
 
 Horizon also has 2.2 Measures to maximise impact - Dissemination, exploitation
 and communication, an optional 2.3 Summary, and 3.2 Capacity of participants and
@@ -110,9 +119,9 @@ not invent one.
 | 2. Current state of your own research | — | Own research is not a model field; do not invent it. |
 | 3. Detailed research plan | `questions.primary`, `questions.secondary`, `method` | Question or objective, approach, sources, procedure, risks. The form also asks for investigations, data collection and team roles; the first two are in the method, the team is not modelled. Outputs close the detailed research plan. |
 | 4. Schedule and milestones | `method.procedure` (partial) | The procedure's sequence; milestones and resources are not modelled. |
-| 5. Relevance and impact | `standpoint` | Impact from the plan's expected findings or outcomes, if present, and from the declared criteria. SNSF has no results section; do not open one. If `meta.standpoint` is `none` or `undeclared`, do not invent one. |
+| 5. Relevance and impact | — | Relevance and impact is outside the model: scientific relevance, expected impacts for the discipline and science, publication forms and broader impact are written from the call. Expected results and `standpoint` are not substitutes. |
 
-SNSF has no results section: do not render one. It also asks for ethics and budget; neither is modelled.
+SNSF has no results section: do not render one. It also asks for ethics and budget; neither is modelled. `standpoint` is not the relevance and impact section: if it is declared, use its criteria only where the call asks for them; it is not an impact narrative.
 
 ## Rendering rules
 
@@ -149,11 +158,12 @@ SNSF has no results section: do not render one. It also asks for ethics and budg
   and a dataset" becomes "synthesise narratively". A step that produces the
   output stays: "build context-mechanism-outcome configurations in a realist
   synthesis" is method, and the refined programme theory is the output.
-- `standpoint` is rendered where the funder asks for rationale, impact or
-  positioning. If it is `none`, one sentence of declaration is enough. If it is
-  `undeclared`, do not claim the plan has none: flag the silence to the author
-  and, where the form requires positioning, ask for a declaration rather than
-  inventing one.
+- `standpoint` is rendered where the funder asks for rationale or positioning.
+  It is never rendered as an impact section and never substitutes for a pathway,
+  beneficiary or measure. If it is `none`, one sentence of declaration is
+  enough. If it is `undeclared`, do not claim the plan has none: flag the
+  silence to the author and, where the form requires positioning, ask for a
+  declaration rather than inventing one.
 - `limits: "none"` is a declaration that the plan states no limits: do not
   invent a limitation. If `limits` is absent, say the plan does not state limits
   rather than claiming there are none.
