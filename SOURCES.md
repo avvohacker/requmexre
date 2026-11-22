@@ -100,6 +100,32 @@ vocabulary. It supports the mapping: results sections map `results`; outcome is 
 | OpenAIRE | Publication and project graph; no document-level schema | [Portal](https://www.openaire.eu) |
 | ARIS, luwill, aleSuglia, Imbad0202 — proposal skills | Agent Skills for grant writing exist; none uses a typed model of the three slots or covers FWO, PRIN, VUB | [ARIS](https://github.com/zycdengdeng/ARIS/blob/main/skills/grant-proposal/SKILL.md) · [luwill](https://github.com/luwill/research-skills) · [aleSuglia](https://github.com/aleSuglia/proposal-agents) · [Imbad0202](https://github.com/imbad0202/academic-research-skills) |
 
+## Conceptual sources
+
+The three headings are a writing heuristic, not a standard. These guides explain
+the terms in general research-design and proposal-writing practice; they do not
+define requmexre, and none is normative for the schema. Links checked 22 November
+2026.
+
+| Source | What it explains | Link |
+|---|---|---|
+| University of Salford, *Writing your research proposal* | **Key research questions**, **Methodology** and **Expected results**: the last asks what kinds of results the project hopes to achieve, not what they will be. | [Page](https://www.salford.ac.uk/postgraduate-research/guidance-on-writing-a-research-proposal) |
+| University of Guelph Library, *Key Components of a Research Proposal* | **Research question or hypothesis**, **Proposed methodology** and **Anticipated findings**: expected results are tied to the hypothesis and to what would prove or disprove it. | [Page](https://guides.lib.uoguelph.ca/c.php?g=723880&p=5212060) |
+| University of Johannesburg Library, *Proposal Writing* | **Hypotheses or Research Questions**, **Method** and **Expected Results**: notes that expected results are not required in parts of the social sciences and humanities. | [Page](https://uj.ac.za.libguides.com/scienceresearch/proposalwriting) |
+| University of Portsmouth Library, *Writing a research proposal* | **Research question, aim, and objectives**, **Methodology** and **Intended outcomes** (under Key considerations): methodology follows the question, and predicted outcomes may differ from actual results. | [Page](https://library.port.ac.uk/academic-support/writing-for-assignments/writing-a-research-proposal) |
+| University of Sydney, *How to write a research proposal* | **Aims and objectives**, **Proposed methodology** and **Expected research contribution**; expected outcomes appear in the synopsis, while the contribution section explains why the question matters. | [Page](https://www.sydney.edu.au/study/help/advice/how-to-write-a-research-proposal.html) |
+| University of Sheffield, *How to write a research proposal* | Research question(s), **Research design and methods** and **Implications and contributions to knowledge**: explicitly distinguishes implications from stating the specific results expected. | [Page](https://sheffield.ac.uk/study-skills/research/methods/proposal) |
+
+The vocabulary varies: Salford and Johannesburg say **Expected results**, Guelph
+says **Anticipated findings**, Portsmouth says **Intended outcomes**, and Sydney
+folds expected outcomes into the synopsis and contribution. That variation is why
+the model uses one field, `results`, and why a form's heading is mapped rather than
+renamed.
+
 ## Note on method
 
-No document in this corpus states the three slots as a standard. They are enacted in forms and guidelines, not argued in print. The tables above record what each document requires, not a theory that the documents share.
+No document in the funder tables states the three slots as a standard. They are
+enacted in forms and guidelines, not argued in print. The conceptual guides above
+explain the three terms separately; they do not make the triad a standard. The
+funder tables record what each document requires, not a theory that the documents
+share.
